@@ -3,6 +3,8 @@ PATH
   specs:
     cloudapp (0.0.1)
       main
+      typhoeus
+      yajl-ruby
 
 GEM
   remote: http://rubygems.org/
@@ -16,7 +18,11 @@ GEM
       fattr (~> 2.2.0)
       map (~> 5.1.0)
     map (5.1.0)
+    mime-types (1.17.2)
     rake (0.9.2.2)
+    typhoeus (0.3.3)
+      mime-types
+    yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby

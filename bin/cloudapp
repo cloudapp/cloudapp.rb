@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require 'main'
+require 'typhoeus'
+require 'yajl'
+
+Main do
+  config email: 'arthur@dent.com', password: 'towel'
+
+  # Bookmark a link: `cloudapp bookmark http://getcloudapp.com`
+  mode :bookmark do
+    argument('uri') { cast :uri }
+
+    def run
+      uri      = params[:uri].value
+      body     = Yajl::Encoder.encode item: { redirect_url: uri }
+      response = Typhoeus::Request.post 'http://my.cl.ly/items',
+                   verbose:     ENV.fetch('DEBUG', false),
+                   body:        body,
+                   username:    config[:email],
+                   password:    config[:password],
+                   auth_method: :digest,
+                   headers:     { 'Accept'       => 'application/json',
+                                  'Content-Type' => 'application/json' }
+
+      json = Yajl::Parser.new(:symbolize_keys => true).parse(response.body)
+      puts json.fetch :url
+    end
+  end
+end
