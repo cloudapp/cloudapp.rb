@@ -5,6 +5,8 @@ Experience all the pleasures of sharing with CloudApp now in your terminal.
 
 ## Desired Usage
 
+**These commands don't exist yet. They're just here as a wish list of sorts.**
+
 The goal of `cloudapp` is to be Unix-friendly and handle the following uses:
 
  - Bookmark a link: `cloudapp bookmark http://getcloudapp.com`
