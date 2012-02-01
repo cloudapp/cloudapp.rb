@@ -4,6 +4,10 @@ require 'main'
 require 'typhoeus'
 require 'yajl'
 
+# Explicitly require yaml because ruby 1.9.2 (and greater?) define YAML which
+# causes main to not require it.
+require 'yaml'
+
 Main do
   config email: 'arthur@dent.com', password: 'towel'
 
