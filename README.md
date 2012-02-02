@@ -7,31 +7,31 @@ Experience all the pleasures of sharing with CloudApp now in your terminal.
 
 **These commands don't exist yet. They're just here as a wish list of sorts.**
 
-The goal of `cloudapp` is to be Unix-friendly and handle the following uses:
+The goal of `cloudapp` is to be Unix-friendly and handle the following common
+use cases:
 
- - Bookmark a link: `cloudapp bookmark http://getcloudapp.com`
- - Share a file: `cloudapp file screenshot.png`
- - Share several files: `cloudapp file *.png`
- - Archive and share several files: `cloudapp file --archive *.png`
- - Encrypt and share a file: `cloudapp file --encrypt launch_codes.txt`
- - Download and decrypt an encrypted drop: `cloudapp http://cl.ly/abc123 def456`
+ - Bookmark a link: `cloudapp new http://getcloudapp.com`
+ - Share a file: `cloudapp new screenshot.png`
+ - Share several files: `cloudapp new *.png`
+ - Archive and share several files: `cloudapp new --archive *.png`
+ - Download a drop: `cloudapp download http://cl.ly/abc123`
 
-Ultimately, it'd be swell if it were smart enough to read your mind.
+Ultimately, a little more flare would be swell.
 
- - Bookmark a link: `cloudapp http://getcloudapp.com`
- - Share a file: `cloudapp screenshot.png`
- - Do everything at once: `cloudapp http://google.com *.png http://bing.com`
+ - Share everything at once: `cloudapp new http://google.com *.png http://bing.com`
+ - Encrypt and share a file: `cloudapp new --encrypt launch_codes.txt`
+ - Download and decrypt and encrypted drop: `cloudapp download http://cl.ly/abc123 def456`
 
 While we're dreaming, what could you do if it kept a local copy of all your
 drops?
 
- - List newest drops: `cloudapp --top=5 drops`
- - Find all your screen shots: `cloudapp /^screen ?shot.*\.png$/`
- - Trash all your stale drops: `cloudapp --last-viewed="> 1 month ago" delete`
+ - List newest drops: `cloudapp list --top=5`
+ - Find all your screen shots: `cloudapp list /^screen ?shot.*\.png$/`
+ - Trash all your stale drops: `cloudapp delete --last-viewed="> 1 month ago"`
  - See your drop views in real time: `cloudapp --tail`
 
-There's gotta be a better way to express some of these commands, but you get the
-picture.
+There's bound to be a better way to express some of these commands, but you get
+the picture.
 
 
 ## Authentication
