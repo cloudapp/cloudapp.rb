@@ -8,18 +8,6 @@ PATH
       main
       typhoeus
 
-PATH
-  remote: ~/Code/leadlight
-  specs:
-    leadlight (0.0.2)
-      addressable
-      faraday
-      fattr
-      hookr
-      link_header
-      mime-types
-      multi_json
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -33,6 +21,14 @@ GEM
     fattr (2.2.1)
     hookr (1.1.1)
       fail-fast (= 1.0.0)
+    leadlight (0.0.3)
+      addressable
+      faraday
+      fattr
+      hookr
+      link_header
+      mime-types
+      multi_json
     link_header (0.0.5)
     main (4.8.1)
       arrayfields (~> 4.7.4)
@@ -61,7 +57,6 @@ PLATFORMS
 
 DEPENDENCIES
   cloudapp!
-  leadlight!
   rake
   rspec
   vcr (~> 2.0.0.rc1)
