@@ -43,14 +43,17 @@ Gem::Specification.new do |s|
 
   ## List your runtime dependencies here. Runtime dependencies are those
   ## that are needed for an end user to actually USE your code.
+  s.add_dependency 'addressable'
+  s.add_dependency 'faraday', '~> 0.8.0.rc2'
+  s.add_dependency 'leadlight'
   s.add_dependency 'main'
   s.add_dependency 'typhoeus'
-  s.add_dependency 'yajl-ruby'
 
   ## List your development dependencies here. Development dependencies are
   ## those that are only needed during development
-  s.add_development_dependency 'aruba'
   s.add_development_dependency 'rake'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'vcr', '~> 2.0.0.rc1'
 
   ## Leave this section as-is. It will be automatically generated from the
   ## contents of your Git repository via the gemspec task. DO NOT REMOVE

@@ -2,35 +2,38 @@ PATH
   remote: .
   specs:
     cloudapp (0.0.4)
+      addressable
+      faraday (~> 0.8.0.rc2)
+      leadlight
       main
       typhoeus
-      yajl-ruby
+
+PATH
+  remote: ~/Code/leadlight
+  specs:
+    leadlight (0.0.2)
+      addressable
+      faraday
+      fattr
+      hookr
+      link_header
+      mime-types
+      multi_json
 
 GEM
   remote: http://rubygems.org/
   specs:
+    addressable (2.2.6)
     arrayfields (4.7.4)
-    aruba (0.4.11)
-      childprocess (>= 0.2.3)
-      cucumber (>= 1.1.1)
-      ffi (>= 1.0.11)
-      rspec (>= 2.7.0)
-    builder (3.0.0)
-    childprocess (0.3.0)
-      ffi (~> 1.0.6)
     chronic (0.6.7)
-    cucumber (1.1.4)
-      builder (>= 2.1.2)
-      diff-lcs (>= 1.1.2)
-      gherkin (~> 2.7.1)
-      json (>= 1.4.6)
-      term-ansicolor (>= 1.0.6)
     diff-lcs (1.1.3)
+    fail-fast (1.0.0)
+    faraday (0.8.0.rc2)
+      multipart-post (~> 1.1)
     fattr (2.2.1)
-    ffi (1.0.11)
-    gherkin (2.7.6)
-      json (>= 1.4.6)
-    json (1.6.5)
+    hookr (1.1.1)
+      fail-fast (= 1.0.0)
+    link_header (0.0.5)
     main (4.8.1)
       arrayfields (~> 4.7.4)
       chronic (~> 0.6.2)
@@ -38,6 +41,8 @@ GEM
       map (~> 5.1.0)
     map (5.1.0)
     mime-types (1.17.2)
+    multi_json (1.0.4)
+    multipart-post (1.1.4)
     rake (0.9.2.2)
     rspec (2.8.0)
       rspec-core (~> 2.8.0)
@@ -47,15 +52,16 @@ GEM
     rspec-expectations (2.8.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.8.0)
-    term-ansicolor (1.0.7)
     typhoeus (0.3.3)
       mime-types
-    yajl-ruby (1.1.0)
+    vcr (2.0.0.rc1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  aruba
   cloudapp!
+  leadlight!
   rake
+  rspec
+  vcr (~> 2.0.0.rc1)

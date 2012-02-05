@@ -1,67 +1,43 @@
 #!/usr/bin/env ruby
 
 require 'main'
-require 'typhoeus'
-require 'yajl'
 
 # Explicitly require yaml because ruby 1.9.2 (and greater?) define YAML which
 # causes main to not require it.
 require 'yaml'
 
+require 'cloudapp/drop_service'
+require 'ostruct'
+
 Main do
   config email: 'arthur@dent.com', password: 'towel'
 
-  # Bookmark a link: `cloudapp bookmark http://getcloudapp.com`
-  mode :bookmark do
-    argument('uri') { cast :uri }
+  mode :new do
 
-    def run
-      uri      = params[:uri].value
-      body     = Yajl::Encoder.encode item: { redirect_url: uri }
-      response = Typhoeus::Request.post 'http://my.cl.ly/items',
-                   verbose:     ENV.fetch('DEBUG', false),
-                   body:        body,
-                   username:    config[:email],
-                   password:    config[:password],
-                   auth_method: :digest,
-                   headers:     { 'Accept'       => 'application/json',
-                                  'Content-Type' => 'application/json' }
+    # Bookmark a link: `cloudapp new bookmark http://getcloudapp.com`
+    mode :bookmark do
+      argument('url') { cast :uri }
 
-      json = Yajl::Parser.new(symbolize_keys: true).parse(response.body)
-      puts json.fetch :url
+      def run
+        identity = OpenStruct.new email:    config[:email],
+                                  password: config[:password]
+
+        response = DropService.as_identity(identity).create url: params[:url].value
+        puts response.fetch 'url'
+      end
     end
-  end
 
-  # Share a file: `cloudapp file screenshot.png`
-  mode :file do
-    argument('file') { cast :pathname }
+    # Share a file: `cloudapp new file screenshot.png`
+    mode :file do
+      argument('file') { cast :pathname }
 
-    def run
-      api_params = { username:    config[:email],
-                     password:    config[:password],
-                     auth_method: :digest,
-                     headers:     { 'Accept'       => 'application/json',
-                                    'Content-Type' => 'application/json' }}
+      def run
+        identity = OpenStruct.new email:    config[:email],
+                                  password: config[:password]
 
-      details_response = Typhoeus::Request.get 'http://my.cl.ly/items/new',
-                           api_params.merge(verbose: ENV.fetch('DEBUG', false))
-
-      details = Yajl::Parser.new(symbolize_keys: true).
-                             parse(details_response.body)
-
-      url = details[:url]
-      upload_params = details[:params].merge file: File.open(params[:file].value)
-      upload_response = Typhoeus::Request.post url,
-                          verbose: ENV.fetch('DEBUG', false),
-                          params:  upload_params
-
-      follow_url = upload_response.headers_hash['Location']
-
-      create_response = Typhoeus::Request.get follow_url,
-                           api_params.merge(verbose: ENV.fetch('DEBUG', false))
-
-      json = Yajl::Parser.new(symbolize_keys: true).parse(create_response.body)
-      puts json.fetch :url
+        response = DropService.as_identity(identity).create path: params[:file].value
+        puts response.fetch 'url'
+      end
     end
   end
 end
