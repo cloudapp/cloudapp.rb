@@ -69,10 +69,10 @@ Cloud.app preference:
 defaults write com.linebreak.CloudAppMacOSX CLUploadShouldCopyExternallyUploadedItems -bool YES
 ```
 
-Now the link to every new drop shared with your account--even using a tool other
-than the Mac app--will be copied to your Mac's clipboard. If you're using the
-[stand-alone version][stand-alone] of Cloud.app and not
-[the Mac App Store version][mas], use the domain
+Now after restarting Cloud.app, the link to every new drop shared with your
+account--even using a tool other than the Mac app--will be copied to your Mac's
+clipboard. If you're using the [stand-alone version][stand-alone] of Cloud.app
+and not [the Mac App Store version][mas], use the domain
 `com.linebreak.CloudAppMacOSXSparkle`.
 
 [stand-alone]: http://getcloudapp.com/download
