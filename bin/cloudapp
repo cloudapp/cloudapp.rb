@@ -67,7 +67,7 @@ Main do
       count = params[:count].value
       drops = service.drops count
 
-      name_width  = drops.map {|drop| drop['name'].size }.max
+      name_width  = drops.map {|drop| drop['name'].to_s.size }.max
       views_width = [ 5, drops.map {|drop| drop['view_counter'].to_s.size }.max ].max
       link_width  = drops.map {|drop| drop['url'].size }.max
 
@@ -77,7 +77,7 @@ Main do
       Formatador.display_line header
 
       lines = drops.map do |drop|
-        [ drop['name'].ljust(name_width),
+        [ drop['name'].to_s.ljust(name_width),
           drop['url'],
           drop['view_counter'].to_s.center(views_width)
         ].join ' '
