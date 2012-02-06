@@ -38,6 +38,10 @@ describe CloudApp::DropService, :vcr do
     it 'returns a list of trashed drops' do
       service.trash.should have(2).items
     end
+
+    it 'limits list to the given number of drops' do
+      service.drops(5).should have(5).items
+    end
   end
 
   describe '#create' do
@@ -68,7 +72,7 @@ describe CloudApp::DropService, :vcr do
       drop = service.create path: path
 
       drop['remote_url'].
-        should eq('http://f.cl.ly/items/0T442i0A1z1a3O0h3K0U/favicon.ico')
+        should eq('http://f.cl.ly/items/0L3T3d1q3A3b182V3c3T/favicon.ico')
       drop['name'].should eq('favicon.ico')
     end
   end

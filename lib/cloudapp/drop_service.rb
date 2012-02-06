@@ -53,8 +53,9 @@ module CloudApp
 
       tint 'root' do
         match_path '/'
-        add_link   '/items?api_version=1.2', 'drops', 'List owned drops'
-        add_link   '/items?api_version=1.2&deleted=true', 'trash', 'List owned, trashed drops'
+        add_link '/items?api_version=1.2', 'drops', 'List owned drops'
+        add_link_template '/items?api_version=1.2&per_page={per_page=20}', 'paginated_drops'
+        add_link_template '/items?api_version=1.2&per_page={per_page=20}&deleted=true', 'paginated_trash'
       end
 
       tint 'create' do
@@ -105,12 +106,12 @@ module CloudApp
       end
     end
 
-    def drops
-      root.drops['items']
+    def drops(count = 20)
+      root.paginated_drops(per_page: count)['items']
     end
 
-    def trash
-      root.trash['items']
+    def trash(count = 20)
+      root.paginated_trash(per_page: count)['items']
     end
 
     def create(attributes)

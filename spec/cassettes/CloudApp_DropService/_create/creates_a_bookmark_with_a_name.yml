@@ -18,25 +18,25 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - ! '"b4038f35fa293c8945760e47231549df"'
+      - ! '"4f038f5e114bbf070b2eb5c48d575a35"'
       Last-Modified:
-      - Sun, 05 Feb 2012 01:47:17 GMT
+      - Mon, 06 Feb 2012 17:33:20 GMT
       Server:
       - thin 1.2.11 codename Bat-Shit Crazy
       Set-Cookie:
-      - _engine_session=BAh7CEkiD3Nlc3Npb25faWQGOgZFRiIlZTc4ODE0MGVmMTRiNTg1OWQ4OWZiZjU4NzE0YTMwYzVJIhV1c2VyX2NyZWRlbnRpYWxzBjsARkkiAYAxYTM5Mjg4MzhlZDcwY2UyOGVkYWRkOGE1MDU2NWU1MzFlNzlhOTg4ODQxZmY5NTkxMjAzNWNhYTU1ZmIxZTZhODliMmMzN2VlYzkzMzFmOWE2ZDRjN2Y1ZDM4ZDIwNGE5NjM1ZTI0YTAxNzM1NDNiYThkNDlhNDkxY2M5NDM3MAY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkDp4EB--3c809425b13e08875d67e8cb09d4e27080a5e0f4;
+      - _engine_session=BAh7CEkiD3Nlc3Npb25faWQGOgZFRiIlZGI2NmNiNTY4OWQ0M2Q3N2Y4MWQ0MzU2MGQwZTBlN2ZJIhV1c2VyX2NyZWRlbnRpYWxzBjsARkkiAYAxYTM5Mjg4MzhlZDcwY2UyOGVkYWRkOGE1MDU2NWU1MzFlNzlhOTg4ODQxZmY5NTkxMjAzNWNhYTU1ZmIxZTZhODliMmMzN2VlYzkzMzFmOWE2ZDRjN2Y1ZDM4ZDIwNGE5NjM1ZTI0YTAxNzM1NDNiYThkNDlhNDkxY2M5NDM3MAY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkDp4EB--04e0dd399677043e9b966cb8f40de7806b50fadf;
         path=/; HttpOnly
       - user_credentials=1a3928838ed70ce28edadd8a50565e531e79a988841ff95912035caa55fb1e6a89b2c37eec9331f9a6d4c7f5d38d204a9635e24a0173543ba8d49a491cc94370%3A%3A98727;
-        path=/; expires=Sat, 05-May-2012 01:47:17 GMT
+        path=/; expires=Sun, 06-May-2012 17:33:20 GMT
       X-Runtime:
-      - '0.105933'
+      - '0.178674'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
-    body: ! '[{"created_at":"2012-02-05T01:47:17Z","deleted_at":null,"id":14833285,"item_type":"bookmark","name":null,"private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-02-05T01:47:17Z","view_counter":0,"href":"http://my.cl.ly/items/14833285","url":"http://cl.ly/0Q3K042I3b2o090V3H2E","content_url":"http://cl.ly/0Q3K042I3b2o090V3H2E","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-02-05T01:47:07Z","deleted_at":null,"id":14833282,"item_type":"bookmark","name":"CloudApp","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-02-05T01:47:07Z","view_counter":0,"href":"http://my.cl.ly/items/14833282","url":"http://cl.ly/3D0E2M451r3A312X2N3V","content_url":"http://cl.ly/3D0E2M451r3A312X2N3V","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-02-05T01:47:06Z","deleted_at":null,"id":14833281,"item_type":"bookmark","name":null,"private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-02-05T01:47:06Z","view_counter":0,"href":"http://my.cl.ly/items/14833281","url":"http://cl.ly/123i1n1A1x2O2w2Q2T1f","content_url":"http://cl.ly/123i1n1A1x2O2w2Q2T1f","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-02-05T01:46:56Z","deleted_at":null,"id":14833277,"item_type":"image","name":"favicon.ico","private":true,"redirect_url":null,"remote_url":"http://f.cl.ly/items/460J1J3Q1f0V1r383A2h/favicon.ico","source":null,"updated_at":"2012-02-05T01:46:56Z","view_counter":0,"href":"http://my.cl.ly/items/14833277","url":"http://cl.ly/2e0U2n3B3R3d2U2D3y0g","content_url":"http://cl.ly/2e0U2n3B3R3d2U2D3y0g/favicon.ico","icon":"http://assets.my.cld.me/images/item-types/image.png","thumbnail_url":"http://thumbs.cl.ly/2e0U2n3B3R3d2U2D3y0g","subscribed":false,"download_url":"http://api.cld.me/2e0U2n3B3R3d2U2D3y0g/download/favicon.ico"},{"created_at":"2012-01-12T20:49:23Z","deleted_at":null,"id":13950097,"item_type":"image","name":"favicon.ico","private":true,"redirect_url":null,"remote_url":"http://f.cl.ly/items/0p2t030e0a1N091o2t3o/favicon.ico","source":"Mozilla/5.0
+    body: ! '[{"created_at":"2012-02-06T17:33:20Z","deleted_at":null,"id":14879764,"item_type":"bookmark","name":null,"private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-02-06T17:33:20Z","view_counter":0,"href":"http://my.cl.ly/items/14879764","url":"http://cl.ly/1w122u1c2Z060J443G32","content_url":"http://cl.ly/1w122u1c2Z060J443G32","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-01-12T20:49:23Z","deleted_at":null,"id":13950097,"item_type":"image","name":"favicon.ico","private":true,"redirect_url":null,"remote_url":"http://f.cl.ly/items/0p2t030e0a1N091o2t3o/favicon.ico","source":"Mozilla/5.0
       (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.75
       Safari/535.7","updated_at":"2012-01-18T23:25:10Z","view_counter":2,"href":"http://my.cl.ly/items/13950097","url":"http://cl.ly/0P281s1u1J1p47241B3o","content_url":"http://cl.ly/0P281s1u1J1p47241B3o/favicon.ico","icon":"http://assets.my.cld.me/images/item-types/image.png","thumbnail_url":"http://thumbs.cl.ly/0P281s1u1J1p47241B3o","subscribed":false,"download_url":"http://api.cld.me/0P281s1u1J1p47241B3o/download/favicon.ico"},{"created_at":"2012-01-12T20:49:13Z","deleted_at":null,"id":13950087,"item_type":"image","name":"\u00f8\u00e6\u00d8\u00fc\u00f6\u00e4\u00df!?&+-.jpeg","private":true,"redirect_url":null,"remote_url":"http://f.cl.ly/items/0p2t030e0a1N091o2t3o/%C3%B8%C3%A6%C3%98%C3%BC%C3%B6%C3%A4%C3%9F!%3F&%2B-.jpeg","source":"Mozilla/5.0
       (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.75
@@ -48,12 +48,12 @@ http_interactions:
       (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.75
       Safari/535.7","updated_at":"2012-01-12T20:45:24Z","view_counter":0,"href":"http://my.cl.ly/items/13949886","url":"http://cl.ly/322M3q1t261o30012s32","content_url":"http://cl.ly/322M3q1t261o30012s32/Epic%20Sax%20Guy%20NES%20Remix.mp3","icon":"http://assets.my.cld.me/images/item-types/audio.png","subscribed":false,"download_url":"http://api.cld.me/322M3q1t261o30012s32/download/Epic%20Sax%20Guy%20NES%20Remix.mp3"},{"created_at":"2012-01-12T20:45:05Z","deleted_at":null,"id":13949869,"item_type":"text","name":"2011-05-03-cloudapp-1.5-released.md","private":true,"redirect_url":null,"remote_url":"http://f.cl.ly/items/0p2t030e0a1N091o2t3o/2011-05-03-cloudapp-1.5-released.md","source":"Mozilla/5.0
       (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.75
-      Safari/535.7","updated_at":"2012-01-18T15:18:31Z","view_counter":1,"href":"http://my.cl.ly/items/13949869","url":"http://cl.ly/0s1o3A46290S1s331G28","content_url":"http://cl.ly/0s1o3A46290S1s331G28/2011-05-03-cloudapp-1.5-released.md","icon":"http://assets.my.cld.me/images/item-types/text.png","subscribed":false,"download_url":"http://api.cld.me/0s1o3A46290S1s331G28/download/2011-05-03-cloudapp-1.5-released.md"},{"created_at":"2012-01-12T20:44:58Z","deleted_at":null,"id":13949858,"item_type":"image","name":"Cover.jpeg","private":true,"redirect_url":null,"remote_url":"http://f.cl.ly/items/0p2t030e0a1N091o2t3o/Cover.jpeg","source":"Mozilla/5.0
+      Safari/535.7","updated_at":"2012-02-05T22:45:02Z","view_counter":3,"href":"http://my.cl.ly/items/13949869","url":"http://cl.ly/0s1o3A46290S1s331G28","content_url":"http://cl.ly/0s1o3A46290S1s331G28/2011-05-03-cloudapp-1.5-released.md","icon":"http://assets.my.cld.me/images/item-types/text.png","subscribed":false,"download_url":"http://api.cld.me/0s1o3A46290S1s331G28/download/2011-05-03-cloudapp-1.5-released.md"},{"created_at":"2012-01-12T20:44:58Z","deleted_at":null,"id":13949858,"item_type":"image","name":"Cover.jpeg","private":true,"redirect_url":null,"remote_url":"http://f.cl.ly/items/0p2t030e0a1N091o2t3o/Cover.jpeg","source":"Mozilla/5.0
       (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.75
       Safari/535.7","updated_at":"2012-01-12T20:44:58Z","view_counter":0,"href":"http://my.cl.ly/items/13949858","url":"http://cl.ly/1x200A0m3v101d1n2O1u","content_url":"http://cl.ly/1x200A0m3v101d1n2O1u/Cover.jpeg","icon":"http://assets.my.cld.me/images/item-types/image.png","thumbnail_url":"http://thumbs.cl.ly/1x200A0m3v101d1n2O1u","subscribed":false,"download_url":"http://api.cld.me/1x200A0m3v101d1n2O1u/download/Cover.jpeg"},{"created_at":"2012-01-12T20:44:54Z","deleted_at":null,"id":13949855,"item_type":"text","name":"Chapter
       1.md","private":true,"redirect_url":null,"remote_url":"http://f.cl.ly/items/0p2t030e0a1N091o2t3o/Chapter%201.md","source":"Mozilla/5.0
       (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.75
-      Safari/535.7","updated_at":"2012-01-18T15:18:34Z","view_counter":1,"href":"http://my.cl.ly/items/13949855","url":"http://cl.ly/3U3d3w3r0G0T1T1M0d2T","content_url":"http://cl.ly/3U3d3w3r0G0T1T1M0d2T/Chapter%201.md","icon":"http://assets.my.cld.me/images/item-types/text.png","subscribed":false,"download_url":"http://api.cld.me/3U3d3w3r0G0T1T1M0d2T/download/Chapter%201.md"},{"created_at":"2012-01-12T20:39:04Z","deleted_at":null,"id":13949577,"item_type":"bookmark","name":"Link
+      Safari/535.7","updated_at":"2012-02-05T22:44:14Z","view_counter":6,"href":"http://my.cl.ly/items/13949855","url":"http://cl.ly/3U3d3w3r0G0T1T1M0d2T","content_url":"http://cl.ly/3U3d3w3r0G0T1T1M0d2T/Chapter%201.md","icon":"http://assets.my.cld.me/images/item-types/text.png","subscribed":false,"download_url":"http://api.cld.me/3U3d3w3r0G0T1T1M0d2T/download/Chapter%201.md"},{"created_at":"2012-01-12T20:39:04Z","deleted_at":null,"id":13949577,"item_type":"bookmark","name":"Link
       40","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-18T18:22:29Z","view_counter":2,"href":"http://my.cl.ly/items/13949577","url":"http://cl.ly/2O2J1h3t0H0v1I1u0t0P","content_url":"http://cl.ly/2O2J1h3t0H0v1I1u0t0P","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-01-12T20:39:04Z","deleted_at":null,"id":13949576,"item_type":"bookmark","name":"Link
       39","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:04Z","view_counter":0,"href":"http://my.cl.ly/items/13949576","url":"http://cl.ly/2t062C1h393d2L452U2Z","content_url":"http://cl.ly/2t062C1h393d2L452U2Z","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-01-12T20:39:04Z","deleted_at":null,"id":13949575,"item_type":"bookmark","name":"Link
       38","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:04Z","view_counter":0,"href":"http://my.cl.ly/items/13949575","url":"http://cl.ly/1S131o2v2J3z2r0A0Q0W","content_url":"http://cl.ly/1S131o2v2J3z2r0A0Q0W","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-01-12T20:39:04Z","deleted_at":null,"id":13949574,"item_type":"bookmark","name":"Link
@@ -62,9 +62,12 @@ http_interactions:
       35","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:04Z","view_counter":0,"href":"http://my.cl.ly/items/13949572","url":"http://cl.ly/1Q1G170D1B2c2X3R0C2M","content_url":"http://cl.ly/1Q1G170D1B2c2X3R0C2M","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-01-12T20:39:04Z","deleted_at":null,"id":13949571,"item_type":"bookmark","name":"Link
       34","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:04Z","view_counter":0,"href":"http://my.cl.ly/items/13949571","url":"http://cl.ly/3s153f2u3m1L471T390C","content_url":"http://cl.ly/3s153f2u3m1L471T390C","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-01-12T20:39:04Z","deleted_at":null,"id":13949570,"item_type":"bookmark","name":"Link
       33","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:04Z","view_counter":0,"href":"http://my.cl.ly/items/13949570","url":"http://cl.ly/1W2f000i091B2128303J","content_url":"http://cl.ly/1W2f000i091B2128303J","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-01-12T20:39:04Z","deleted_at":null,"id":13949568,"item_type":"bookmark","name":"Link
-      32","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:04Z","view_counter":0,"href":"http://my.cl.ly/items/13949568","url":"http://cl.ly/333d0V1B403M0d2f2o09","content_url":"http://cl.ly/333d0V1B403M0d2f2o09","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false}]'
+      32","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:04Z","view_counter":0,"href":"http://my.cl.ly/items/13949568","url":"http://cl.ly/333d0V1B403M0d2f2o09","content_url":"http://cl.ly/333d0V1B403M0d2f2o09","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-01-12T20:39:03Z","deleted_at":null,"id":13949567,"item_type":"bookmark","name":"Link
+      31","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:03Z","view_counter":0,"href":"http://my.cl.ly/items/13949567","url":"http://cl.ly/260m2h3T0O2P272k2F3h","content_url":"http://cl.ly/260m2h3T0O2P272k2F3h","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-01-12T20:39:03Z","deleted_at":null,"id":13949566,"item_type":"bookmark","name":"Link
+      30","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:03Z","view_counter":0,"href":"http://my.cl.ly/items/13949566","url":"http://cl.ly/411H1g1a3y2T2B3U322x","content_url":"http://cl.ly/411H1g1a3y2T2B3U322x","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-01-12T20:39:03Z","deleted_at":null,"id":13949565,"item_type":"bookmark","name":"Link
+      29","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:03Z","view_counter":0,"href":"http://my.cl.ly/items/13949565","url":"http://cl.ly/3B1V3H0c0c3s3O2u1Q0c","content_url":"http://cl.ly/3B1V3H0c0c3s3O2u1Q0c","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false}]'
     http_version: 
-  recorded_at: Sun, 05 Feb 2012 01:47:17 GMT
+  recorded_at: Mon, 06 Feb 2012 17:33:20 GMT
 - request:
     method: post
     uri: http://arthur%40dent.com:towel@my.cl.ly/items?api_version=1.2
@@ -85,23 +88,23 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - ! '"87888d800b9609acc0664fe2d403b6bf"'
+      - ! '"0de5ed15c4c0f86e51781fb11218e12c"'
       Server:
       - thin 1.2.11 codename Bat-Shit Crazy
       Set-Cookie:
-      - _engine_session=BAh7CEkiD3Nlc3Npb25faWQGOgZFRiIlOWFiMjg4YWM0ZTQ2NzMyOTU2YzMwYjQ2YjdhODNjZjhJIhV1c2VyX2NyZWRlbnRpYWxzBjsARkkiAYAxYTM5Mjg4MzhlZDcwY2UyOGVkYWRkOGE1MDU2NWU1MzFlNzlhOTg4ODQxZmY5NTkxMjAzNWNhYTU1ZmIxZTZhODliMmMzN2VlYzkzMzFmOWE2ZDRjN2Y1ZDM4ZDIwNGE5NjM1ZTI0YTAxNzM1NDNiYThkNDlhNDkxY2M5NDM3MAY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkDp4EB--2c95d01d95d704265fbcd2dbc25aa5048a8dc8c3;
+      - _engine_session=BAh7CEkiD3Nlc3Npb25faWQGOgZFRiIlNmNkNzE3YWNmNDAxODU2MWI3YTg2ZjVmMTNhZjdhMjJJIhV1c2VyX2NyZWRlbnRpYWxzBjsARkkiAYAxYTM5Mjg4MzhlZDcwY2UyOGVkYWRkOGE1MDU2NWU1MzFlNzlhOTg4ODQxZmY5NTkxMjAzNWNhYTU1ZmIxZTZhODliMmMzN2VlYzkzMzFmOWE2ZDRjN2Y1ZDM4ZDIwNGE5NjM1ZTI0YTAxNzM1NDNiYThkNDlhNDkxY2M5NDM3MAY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkDp4EB--d89551ead0d3a8a7fdc85f76a7c4e20c908d9f09;
         path=/; HttpOnly
       - user_credentials=1a3928838ed70ce28edadd8a50565e531e79a988841ff95912035caa55fb1e6a89b2c37eec9331f9a6d4c7f5d38d204a9635e24a0173543ba8d49a491cc94370%3A%3A98727;
-        path=/; expires=Sat, 05-May-2012 01:47:17 GMT
+        path=/; expires=Sun, 06-May-2012 17:33:20 GMT
       X-Runtime:
-      - '0.133774'
+      - '0.129237'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length:
-      - '465'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
-    body: ! '{"created_at":"2012-02-05T01:47:17Z","deleted_at":null,"id":14833286,"item_type":"bookmark","name":"CloudApp","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-02-05T01:47:17Z","view_counter":0,"href":"http://my.cl.ly/items/14833286","url":"http://cl.ly/0I362B0R192z0Q3w2P1L","content_url":"http://cl.ly/0I362B0R192z0Q3w2P1L","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false}'
+    body: ! '{"created_at":"2012-02-06T17:33:20Z","deleted_at":null,"id":14879765,"item_type":"bookmark","name":"CloudApp","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-02-06T17:33:20Z","view_counter":0,"href":"http://my.cl.ly/items/14879765","url":"http://cl.ly/312u3l431h3D2O3D3x1D","content_url":"http://cl.ly/312u3l431h3D2O3D3x1D","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false}'
     http_version: 
-  recorded_at: Sun, 05 Feb 2012 01:47:17 GMT
+  recorded_at: Mon, 06 Feb 2012 17:33:20 GMT
 recorded_with: VCR 2.0.0.rc1
