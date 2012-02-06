@@ -22,15 +22,16 @@ Installation is done via RubyGems: `gem install cloudapp`.
 
 ### Usage
 
- - Bookmark a link: `cloudapp new http://getcloudapp.com`
- - Share a file: `cloudapp new screenshot.png`
+ - Bookmark a link: `cloudapp new bookmark http://getcloudapp.com`
+ - Share a file: `cloudapp new file screenshot.png`
 
 ### Wish List
 
-Some features that would be great to have:
+Some baseic features that should be added:
 
- - Share several files: `cloudapp new *.png`
- - Archive and share several files: `cloudapp new --archive *.png`
+ - List newest drops: `cloudapp list --count=5`
+ - Share several files: `cloudapp new file *.png`
+ - Archive and share several files: `cloudapp new file --archive *.png`
  - Download a drop: `cloudapp download http://cl.ly/abc123`
 
 A little more flare would be swell.
@@ -42,7 +43,6 @@ A little more flare would be swell.
 While we're dreaming, what could you do if it kept a local copy of all your
 drops? Bonus points for a light weight daemon that kept everything in sync.
 
- - List newest drops: `cloudapp list --top=5`
  - Find all your screen shots: `cloudapp list /^screen ?shot.*\.png$/`
  - Trash all your stale drops: `cloudapp delete --last-viewed="> 1 month ago"`
  - See your drop views in real time: `cloudapp --tail`
