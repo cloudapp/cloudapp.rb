@@ -18,7 +18,7 @@ goal of `cloudapp` is to be simple and Unix-friendly.
 
 ### Installation
 
-Installation is done via RubyGems: `gem install cloudapp`.
+Installation is done via RubyGems: `gem install cloudapp`
 
 ### Usage
 
