@@ -23,6 +23,10 @@ Main do
 
   config email: 'arthur@dent.com', password: 'towel'
 
+  def run
+    puts 'TODO: show help here'
+  end
+
   # Bookmark a link: `cloudapp bookmark http://getcloudapp.com`
   mode :bookmark do
     argument('url') { cast :uri }
