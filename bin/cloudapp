@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'formatador'
 require 'main'
 
 # Explicitly require yaml because ruby 1.9.2 (and greater?) define YAML which
@@ -54,11 +55,26 @@ Main do
     end
 
     def run
-      response = service.drops(params[:count].value).map do |drop|
-        "#{ drop['name'] } - #{ drop['url'] }"
+      count = params[:count].value
+      drops = service.drops count
+
+      name_width  = drops.map {|drop| drop['name'].size }.max
+      views_width = [ 5, drops.map {|drop| drop['view_counter'].to_s.size }.max ].max
+      link_width  = drops.map {|drop| drop['url'].size }.max
+
+      header = [ "[bold]#{ 'Name' .ljust(name_width)   }[/]",
+                 "[bold]#{ 'Link' .ljust(link_width)   }[/]",
+                 "[bold]#{ 'Views'.center(views_width) }[/]" ].join(' ')
+      Formatador.display_line header
+
+      lines = drops.map do |drop|
+        [ drop['name'].ljust(name_width),
+          drop['url'],
+          drop['view_counter'].to_s.center(views_width)
+        ].join ' '
       end
 
-      puts response
+      Formatador.display_lines lines
     end
   end
 
