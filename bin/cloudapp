@@ -10,6 +10,16 @@ require 'cloudapp/drop_service'
 require 'ostruct'
 
 Main do
+  def identity
+    OpenStruct.new email:    config[:email], password: config[:password]
+  end
+
+  def service
+    CloudApp::DropService.as_identity(identity).tap do |service|
+      service.logger.level = Logger::WARN
+    end
+  end
+
   config email: 'arthur@dent.com', password: 'towel'
 
   mode :new do
@@ -19,10 +29,7 @@ Main do
       argument('url') { cast :uri }
 
       def run
-        identity = OpenStruct.new email:    config[:email],
-                                  password: config[:password]
-
-        response = CloudApp::DropService.as_identity(identity).create url: params[:url].value
+        response = service.create url: params[:url].value
         puts response.fetch 'url'
       end
     end
@@ -32,10 +39,7 @@ Main do
       argument('file') { cast :pathname }
 
       def run
-        identity = OpenStruct.new email:    config[:email],
-                                  password: config[:password]
-
-        response = CloudApp::DropService.as_identity(identity).create path: params[:file].value
+        response = service.create path: params[:file].value
         puts response.fetch 'url'
       end
     end
@@ -50,11 +54,11 @@ Main do
     end
 
     def run
-      identity = OpenStruct.new email:    config[:email],
-                                password: config[:password]
+      response = service.drops(params[:count].value).map do |drop|
+        "#{ drop['name'] } - #{ drop['url'] }"
+      end
 
-      response = CloudApp::DropService.as_identity(identity).drops params[:count].value
-      puts response.map { |drop| "#{ drop['name'] } - #{ drop['url'] }" }
+      puts response
     end
   end
 
