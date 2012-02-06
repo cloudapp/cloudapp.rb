@@ -1,29 +1,46 @@
-# CloudApp CLI
+# CloudApp Ruby Client
 
-Experience all the pleasures of sharing with CloudApp now in your terminal.
+Interact with the [CloudApp API][] from Ruby. Comes with a command line
+interface to CloudApp as an added bonus.
+
+[cloudapp api]: http://developer.getcloudapp.com
 
 
-## Desired Usage
+## Usage
 
-**These commands don't exist yet. They're just here as a wish list of sorts.**
+_Usage from Ruby is still a work in progress._
 
-The goal of `cloudapp` is to be Unix-friendly and handle the following common
-use cases:
+
+## CLI
+
+Experience all the pleasures of sharing with CloudApp now in your terminal. The
+goal of `cloudapp` is to be simple and Unix-friendly.
+
+### Installation
+
+Installation is done via RubyGems: `gem install cloudapp`.
+
+### Usage
 
  - Bookmark a link: `cloudapp new http://getcloudapp.com`
  - Share a file: `cloudapp new screenshot.png`
+
+### Wish List
+
+Some features that would be great to have:
+
  - Share several files: `cloudapp new *.png`
  - Archive and share several files: `cloudapp new --archive *.png`
  - Download a drop: `cloudapp download http://cl.ly/abc123`
 
-Ultimately, a little more flare would be swell.
+A little more flare would be swell.
 
  - Share everything at once: `cloudapp new http://google.com *.png http://bing.com`
  - Encrypt and share a file: `cloudapp new --encrypt launch_codes.txt`
  - Download and decrypt and encrypted drop: `cloudapp download http://cl.ly/abc123 def456`
 
 While we're dreaming, what could you do if it kept a local copy of all your
-drops?
+drops? Bonus points for a light weight daemon that kept everything in sync.
 
  - List newest drops: `cloudapp list --top=5`
  - Find all your screen shots: `cloudapp list /^screen ?shot.*\.png$/`
@@ -33,18 +50,16 @@ drops?
 There's bound to be a better way to express some of these commands, but you get
 the picture.
 
-
-## Authentication
+### Authentication
 
 As of right now, `cloudapp` makes use of
 [`main`'s built-in configuration handling][main-config] to store your CloudApp
-credentials **in plain text** at `~/.cloudapp/config.yml`.
-
+credentials **in plain text** at `~/.cloudapp/config.yml`. This file will be
+created and opened in your `$EDITOR` the first time it's needed.
 
 [main-config]: https://github.com/ahoward/main/blob/master/README.erb#L220-232
 
-
-## Harness the Power
+### Harness the Power
 
 Sure you could copy the new drop's link by piping the output to `pbcopy`, but
 that's a lot of extra key presses. Instead, try setting this super secret
