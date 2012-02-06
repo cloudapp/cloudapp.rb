@@ -24,18 +24,18 @@ Installation is done via RubyGems: `gem install cloudapp`.
 
  - Bookmark a link: `cloudapp new bookmark http://getcloudapp.com`
  - Share a file: `cloudapp new file screenshot.png`
+ - List newest drops: `cloudapp list [--count=5]`
 
 ### Wish List
 
 Some baseic features that should be added:
 
- - List newest drops: `cloudapp list --count=5`
- - Share several files: `cloudapp new file *.png`
- - Archive and share several files: `cloudapp new file --archive *.png`
  - Download a drop: `cloudapp download http://cl.ly/abc123`
 
 A little more flare would be swell.
 
+ - Share several files: `cloudapp new *.png`
+ - Archive and share several files: `cloudapp new --archive *.png`
  - Share everything at once: `cloudapp new http://google.com *.png http://bing.com`
  - Encrypt and share a file: `cloudapp new --encrypt launch_codes.txt`
  - Download and decrypt and encrypted drop: `cloudapp download http://cl.ly/abc123 def456`
