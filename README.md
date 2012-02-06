@@ -30,13 +30,13 @@ Installation is done via RubyGems: `gem install cloudapp`.
 
 Some baseic features that should be added:
 
- - Download a drop: `cloudapp download http://cl.ly/abc123`
- - List specific columns: `cloudapp list --columns=name,views,link`
- - Handle input from STDIN: `pbpaste | cloudapp bookmark -`
+ - Share several files: `cloudapp upload *.png`
 
 A little more flare would be swell.
 
- - Share several files: `cloudapp upload *.png`
+ - Download a drop: `cloudapp download http://cl.ly/abc123`
+ - List specific columns: `cloudapp list --columns=name,views,link`
+ - Handle input from STDIN: `pbpaste | cloudapp bookmark -`
  - Archive and share several files: `cloudapp upload --archive *.png`
  - Encrypt and share a file: `cloudapp upload --encrypt launch_codes.txt`
  - Download and decrypt and encrypted drop: `cloudapp download http://cl.ly/abc123 def456`
