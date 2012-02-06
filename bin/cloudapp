@@ -7,12 +7,12 @@ require 'main'
 # causes main to not require it.
 require 'yaml'
 
+require 'cloudapp/identity'
 require 'cloudapp/drop_service'
-require 'ostruct'
 
 Main do
   def identity
-    OpenStruct.new email:    config[:email], password: config[:password]
+    CloudApp::Identity.from_config config
   end
 
   def service
