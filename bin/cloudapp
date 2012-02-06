@@ -23,26 +23,35 @@ Main do
 
   config email: 'arthur@dent.com', password: 'towel'
 
-  mode :new do
+  # Bookmark a link: `cloudapp bookmark http://getcloudapp.com`
+  mode :bookmark do
+    argument('url') { cast :uri }
 
-    # Bookmark a link: `cloudapp new bookmark http://getcloudapp.com`
-    mode :bookmark do
-      argument('url') { cast :uri }
-
-      def run
-        response = service.create url: params[:url].value
-        puts response.fetch 'url'
-      end
+    def url
+      params[:url].value
     end
 
-    # Share a file: `cloudapp new file screenshot.png`
-    mode :file do
-      argument('file') { cast :pathname }
+    def run
+      Formatador.display "Bookmarking #{ url }..."
 
-      def run
-        response = service.create path: params[:file].value
-        puts response.fetch 'url'
-      end
+      response = service.create url: url
+      Formatador.display_line response.fetch 'url'
+    end
+  end
+
+  # Upload a file: `cloudapp upload screenshot.png`
+  mode :upload do
+    argument('file') { cast :pathname }
+
+    def file
+      params[:file].value
+    end
+
+    def run
+      Formatador.display "Uploading #{ file }..."
+
+      response = service.create path: file
+      Formatador.display_line response.fetch 'url'
     end
   end
 
