@@ -40,4 +40,22 @@ Main do
       end
     end
   end
+
+  # List newest drops: `cloudapp list [--count=5]`
+  mode :list do
+    option 'count', 'n' do
+      argument :optional
+      cast :integer
+      default 20
+    end
+
+    def run
+      identity = OpenStruct.new email:    config[:email],
+                                password: config[:password]
+
+      response = CloudApp::DropService.as_identity(identity).drops params[:count].value
+      puts response.map { |drop| "#{ drop['name'] } - #{ drop['url'] }" }
+    end
+  end
+
 end
