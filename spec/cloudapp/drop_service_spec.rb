@@ -7,7 +7,7 @@ Bundler.setup
 
 require 'cloudapp/drop_service'
 
-describe DropService, :vcr do
+describe CloudApp::DropService, :vcr do
 
   let(:logger) do
     logfile = Pathname('../../../log/test.log').expand_path(__FILE__)
@@ -19,7 +19,7 @@ describe DropService, :vcr do
 
   describe '.as_identity' do
     it 'returns a service with given identity' do
-      service = DropService.as_identity identity, service_options
+      service = CloudApp::DropService.as_identity identity, service_options
 
       auth = service.connection.options[:authentication]
       auth.should be
@@ -29,7 +29,7 @@ describe DropService, :vcr do
   end
 
   describe '#drops' do
-    let(:service) { DropService.as_identity identity, service_options }
+    let(:service) { CloudApp::DropService.as_identity identity, service_options }
 
     it 'returns a list of drops' do
       service.drops.should have(20).items
@@ -41,7 +41,7 @@ describe DropService, :vcr do
   end
 
   describe '#create' do
-    let(:service) { DropService.as_identity identity, service_options }
+    let(:service) { CloudApp::DropService.as_identity identity, service_options }
     let(:url)     { 'http://getcloudapp.com' }
     let(:name)    { 'CloudApp' }
 

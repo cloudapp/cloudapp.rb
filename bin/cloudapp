@@ -22,7 +22,7 @@ Main do
         identity = OpenStruct.new email:    config[:email],
                                   password: config[:password]
 
-        response = DropService.as_identity(identity).create url: params[:url].value
+        response = CloudApp::DropService.as_identity(identity).create url: params[:url].value
         puts response.fetch 'url'
       end
     end
@@ -35,7 +35,7 @@ Main do
         identity = OpenStruct.new email:    config[:email],
                                   password: config[:password]
 
-        response = DropService.as_identity(identity).create path: params[:file].value
+        response = CloudApp::DropService.as_identity(identity).create path: params[:file].value
         puts response.fetch 'url'
       end
     end
