@@ -39,7 +39,7 @@ describe CloudApp::DropService, :vcr do
       end
 
       it 'creates Drops' do
-        subject.each {|drop| drop.should be_a(Drop) }
+        subject.each {|drop| drop.should be_a(CloudApp::Drop) }
       end
     end
 
@@ -51,7 +51,7 @@ describe CloudApp::DropService, :vcr do
       end
 
       it 'creates Drops' do
-        subject.each {|drop| drop.should be_a(Drop) }
+        subject.each {|drop| drop.should be_a(CloudApp::Drop) }
       end
     end
 
@@ -74,7 +74,7 @@ describe CloudApp::DropService, :vcr do
       subject { service.create url: url }
 
       it 'is a Drop' do
-        subject.should be_a(Drop)
+        subject.should be_a(CloudApp::Drop)
       end
 
       it 'has the given url' do
@@ -105,7 +105,7 @@ describe CloudApp::DropService, :vcr do
       subject { service.create path: path }
 
       it 'is a Drop' do
-        subject.should be_a(Drop)
+        subject.should be_a(CloudApp::Drop)
       end
 
       it 'has a remote url' do

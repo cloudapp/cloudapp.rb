@@ -1,3 +1,5 @@
 require 'ostruct'
-class Drop < OpenStruct
+module CloudApp
+  class Drop < OpenStruct
+  end
 end
