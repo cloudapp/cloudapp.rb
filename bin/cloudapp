@@ -56,7 +56,7 @@ command [:bookmark, :shorten] do |c|
 
     Formatador.display "Bookmarking #{ url }..."
     response = service(global_options).create url: url
-    Formatador.display_line response.fetch 'url'
+    Formatador.display_line response.url
   end
 end
 
@@ -70,7 +70,7 @@ command :upload do |c|
 
     Formatador.display "Uploading #{ file }..."
     response = service(global_options).create path: file
-    Formatador.display_line response.fetch 'url'
+    Formatador.display_line response.url
   end
 end
 
@@ -88,9 +88,9 @@ command [:list, :ls] do |c|
     count = options[:count].to_i
     drops = service(global_options).drops count
 
-    name_width  = drops.map {|drop| drop['name'].to_s.size }.max
-    views_width = [ 5, drops.map {|drop| drop['view_counter'].to_s.size }.max ].max
-    link_width  = drops.map {|drop| drop['url'].size }.max
+    name_width  = drops.map {|drop| drop.name.to_s.size }.max
+    views_width = [ 5, drops.map {|drop| drop.view_counter.to_s.size }.max ].max
+    link_width  = drops.map {|drop| drop.url.size }.max
 
     header = [ "[bold]#{ 'Name' .ljust(name_width)   }[/]",
                "[bold]#{ 'Link' .ljust(link_width)   }[/]",
@@ -98,9 +98,9 @@ command [:list, :ls] do |c|
     Formatador.display_line header
 
     lines = drops.map do |drop|
-      [ drop['name'].to_s.ljust(name_width),
-        drop['url'],
-        drop['view_counter'].to_s.center(views_width)
+      [ drop.name.to_s.ljust(name_width),
+        drop.url,
+        drop.view_counter.to_s.center(views_width)
       ].join ' '
     end
 

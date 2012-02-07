@@ -1,6 +1,7 @@
 require 'leadlight'
 require 'addressable/uri'
 require 'cloudapp/digestable_typhoeus'
+require 'cloudapp/drop'
 
 # Leadlight service for mucking about with drops in the CloudApp API.
 #
@@ -107,11 +108,15 @@ module CloudApp
     end
 
     def drops(count = 20)
-      root.paginated_drops(per_page: count)['items']
+      root.paginated_drops(per_page: count)['items'].map do |drop_data|
+        Drop.new drop_data
+      end
     end
 
     def trash(count = 20)
-      root.paginated_trash(per_page: count)['items']
+      root.paginated_trash(per_page: count)['items'].map do |drop_data|
+        Drop.new drop_data
+      end
     end
 
     def create(attributes)
@@ -132,7 +137,7 @@ module CloudApp
     def create_bookmark(body)
       root.link('drops').post({}, body).raise_on_error.
         submit_and_wait do |new_drop|
-          return new_drop
+          return Drop.new new_drop
         end
     end
 
@@ -151,7 +156,7 @@ module CloudApp
 
           conn.post(uri.request_uri, payload).on_complete do |env|
             get(env[:response_headers]['Location']).raise_on_error.
-              submit_and_wait { |created| return created }
+              submit_and_wait {|new_drop| return Drop.new new_drop }
           end
         end
     end

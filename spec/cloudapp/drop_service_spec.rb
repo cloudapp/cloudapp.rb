@@ -31,16 +31,37 @@ describe CloudApp::DropService, :vcr do
   describe '#drops' do
     let(:service) { CloudApp::DropService.as_identity identity, service_options }
 
-    it 'returns a list of drops' do
-      service.drops.should have(20).items
+    describe 'listing drops' do
+      subject { service.drops }
+
+      it 'has 20 drops' do
+        subject.should have(20).items
+      end
+
+      it 'creates Drops' do
+        subject.each {|drop| drop.should be_a(Drop) }
+      end
     end
 
-    it 'returns a list of trashed drops' do
-      service.trash.should have(2).items
+    describe 'listing trash' do
+      subject { service.trash }
+
+      it 'has 2 drops' do
+        subject.should have(2).items
+      end
+
+      it 'creates Drops' do
+        subject.each {|drop| drop.should be_a(Drop) }
+      end
     end
 
-    it 'limits list to the given number of drops' do
-      service.drops(5).should have(5).items
+    describe 'limiting drops list' do
+      let(:limit) { 5 }
+      subject { service.drops limit }
+
+      it 'has the given number of drops' do
+        subject.should have(limit).items
+      end
     end
   end
 
@@ -49,31 +70,52 @@ describe CloudApp::DropService, :vcr do
     let(:url)     { 'http://getcloudapp.com' }
     let(:name)    { 'CloudApp' }
 
-    it 'creates a bookmark' do
-      expect_cassettes_used(2) do
-        drop = service.create url: url
+    describe 'creating a bookmark' do
+      subject { service.create url: url }
 
-        drop['redirect_url'].should eq(url)
-        drop['name'].should_not be
+      it 'is a Drop' do
+        subject.should be_a(Drop)
+      end
+
+      it 'has the given url' do
+        subject.redirect_url.should eq(url)
+      end
+
+      it 'has no name' do
+        subject.name.should_not be
       end
     end
 
-    it 'creates a bookmark with a name' do
-      expect_cassettes_used(2) do
-        drop = service.create url: url, name: name
+    describe 'creating a bookmark with a name' do
+      subject { service.create url: url, name: name }
 
-        drop['redirect_url'].should eq(url)
-        drop['name'].should eq(name)
+      it 'has the given url' do
+        subject.redirect_url.should eq(url)
+      end
+
+      it 'has the given name' do
+        subject.name.should eq(name)
       end
     end
 
-    it 'creates a file' do
-      path = Pathname('../../support/files/favicon.ico').expand_path(__FILE__)
-      drop = service.create path: path
+    describe 'uploading a file' do
+      let(:path) do
+        Pathname('../../support/files/favicon.ico').expand_path(__FILE__)
+      end
+      subject { service.create path: path }
 
-      drop['remote_url'].
-        should eq('http://f.cl.ly/items/0L3T3d1q3A3b182V3c3T/favicon.ico')
-      drop['name'].should eq('favicon.ico')
+      it 'is a Drop' do
+        subject.should be_a(Drop)
+      end
+
+      it 'has a remote url' do
+        subject.remote_url.
+          should eq('http://f.cl.ly/items/0L3T3d1q3A3b182V3c3T/favicon.ico')
+      end
+
+      it 'has the name of the file' do
+        subject.name.should eq('favicon.ico')
+      end
     end
   end
 
