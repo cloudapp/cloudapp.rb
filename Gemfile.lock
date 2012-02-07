@@ -20,7 +20,7 @@ GEM
       multipart-post (~> 1.1)
     fattr (2.2.1)
     formatador (0.2.1)
-    gli (1.4.0)
+    gli (1.5.1)
     hookr (1.1.1)
       fail-fast (= 1.0.0)
     hpricot (0.8.6)
