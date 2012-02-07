@@ -4,6 +4,7 @@ $: << File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../lib')
 require 'rubygems'
 require 'gli'
 require 'formatador'
+require 'pathname'
 
 require 'cloudapp'
 require 'cloudapp/drop_service'
