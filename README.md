@@ -16,9 +16,12 @@ _Usage from Ruby is still a work in progress._
 Experience all the pleasures of sharing with CloudApp now in your terminal. The
 goal of `cloudapp` is to be simple and Unix-friendly.
 
-### Installation
+### Quick Start
 
-Installation is done via RubyGems: `gem install cloudapp`
+    gem install cloudapp
+    cloudapp --email=EMAIL --password=PASSWORD initconfig
+    cloudapp list
+    cloudapp bookmark http://douglasadams.com
 
 ### Usage
 
@@ -31,6 +34,7 @@ Installation is done via RubyGems: `gem install cloudapp`
 Some baseic features that should be added:
 
  - Share several files: `cloudapp upload *.png`
+ - Create several bookmarks: `cloudapp bookmark http://douglasadams.com http://zombo.com`
 
 A little more flare would be swell.
 
@@ -51,7 +55,7 @@ drops? Bonus points for a light weight daemon that kept everything in sync.
 There's bound to be a better way to express some of these commands, but you get
 the picture.
 
-### Authentication
+### Security Considerations
 
 As of right now, `cloudapp` makes use of
 [`gli`'s built-in configuration handling][gli-config] to store your CloudApp
@@ -59,9 +63,7 @@ credentials **in plain text** at `~/.cloudapp.rc`. You'll be prompted to run the
 following command if the global `--email` and `--password` options aren't
 provided:
 
-```bash
-cloudapp --email=EMAIL --password=PASSWORD initconfig
-```
+    cloudapp --email=EMAIL --password=PASSWORD initconfig
 
 [gli-config]: https://github.com/davetron5000/gli/wiki/Config
 
@@ -71,9 +73,7 @@ Sure you could copy the new drop's link by piping the output to `pbcopy`, but
 that's a lot of extra key presses. Instead, try setting this super secret
 Cloud.app preference:
 
-```bash
-defaults write com.linebreak.CloudAppMacOSX CLUploadShouldCopyExternallyUploadedItems -bool YES
-```
+    defaults write com.linebreak.CloudAppMacOSX CLUploadShouldCopyExternallyUploadedItems -bool YES
 
 Now after restarting Cloud.app, the link to every new drop shared with your
 account--even using a tool other than the Mac app--will be copied to your Mac's

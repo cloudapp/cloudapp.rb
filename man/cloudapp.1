@@ -1,0 +1,103 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "CLOUDAPP" "1" "February 2012" "" ""
+.
+.SH "NAME"
+\fBcloudapp\fR \- All the pleasures of CloudApp now at your terminal
+.
+.SH "SYNOPSIS"
+.
+.nf
+
+cloudapp [\-\-email=<email>] [\-\-password=<password>] <command> [<args>]
+.
+.fi
+.
+.SH "DESCRIPTION"
+\fBcloudapp\fR is a simple, Unix\-friendly tool for CloudApp meant to augment the Mac and Web apps\. Sometimes it\'s more convenient to share without leaving the terminal and other times it\'s the only tool available\.
+.
+.SH "OPTIONS"
+.
+.TP
+\fB\-\-email=<email>\fR
+CloudApp account email address
+.
+.TP
+\fB\-\-password=<password>\fR
+CloudApp account password
+.
+.SH "EXAMPLES"
+List the latest 20 drops:
+.
+.IP "" 4
+.
+.nf
+
+$ cloudapp list
+  Name                   Link                Views
+  favicon\.ico            http://cl\.ly/0P2\.\.\.   2
+  The Hitchhiker\'s Guide http://cl\.ly/3I2\.\.\.   3
+  CloudApp 1\.5 Released  http://cl\.ly/0s1\.\.\.   3
+  Cover\.jpeg             http://cl\.ly/1x2\.\.\.   0
+  Chapter 1\.md           http://cl\.ly/3U3\.\.\.   6
+  CloudApp               http://cl\.ly/2O2\.\.\.   2
+  \.\.\.
+.
+.fi
+.
+.IP "" 0
+.
+.P
+List the latest 5 drops:
+.
+.IP "" 4
+.
+.nf
+
+cloudapp list \-\-count=5
+$ cloudapp list \-\-count=5
+  Name                   Link                Views
+  favicon\.ico            http://cl\.ly/0P2\.\.\.   2
+  The Hitchhiker\'s Guide http://cl\.ly/3I2\.\.\.   3
+  CloudApp 1\.5 Released  http://cl\.ly/0s1\.\.\.   3
+  Cover\.jpeg             http://cl\.ly/1x2\.\.\.   0
+  Chapter 1\.md           http://cl\.ly/3U3\.\.\.   6
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Share a new bookmark to "http://douglasadams\.com":
+.
+.IP "" 4
+.
+.nf
+
+$ cloudapp bookmark http://douglasadams\.com
+  Bookmarking http://douglasadams\.com\.\.\.  http://cl\.ly/1y0j403g3D0c0X1G0R3m
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Share the file "screenshot\.png":
+.
+.IP "" 4
+.
+.nf
+
+$ cloudapp upload screenshot\.png
+  Uploading screenshot\.png\.\.\.  http://cl\.ly/040u2o3X1w0z1z3n2T04
+.
+.fi
+.
+.IP "" 0
+.
+.SH "SECURITY CONSIDERATIONS"
+As of right now, \fBcloudapp\fR makes use of \fBgli\fR\'s built\-in configuration handling \fIhttps://github\.com/davetron5000/gli/wiki/Config\fR to store your CloudApp credentials \fBin plain text\fR at \fB~/\.cloudapp\.rc\fR\.
+.
+.SH "LICENSE"
+\fBcloudapp\fR is distributed under the MIT license \fIhttps://github\.com/cloudapp/cloudapp/blob/master/MIT\-LICENSE\fR\.

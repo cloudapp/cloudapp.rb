@@ -1,0 +1,71 @@
+cloudapp(1) -- All the pleasures of CloudApp now at your terminal
+=================================================================
+
+## SYNOPSIS
+
+    cloudapp [--email=<email>] [--password=<password>] <command> [<args>]
+
+## DESCRIPTION
+
+`cloudapp` is a simple, Unix-friendly tool for CloudApp meant to augment the Mac
+and Web apps. Sometimes it's more convenient to share without leaving the
+terminal and other times it's the only tool available.
+
+## OPTIONS
+
+  * `--email=<email>`:
+    CloudApp account email address
+
+  * `--password=<password>`:
+    CloudApp account password
+
+## EXAMPLES
+
+List the latest 20 drops:
+
+    $ cloudapp list
+      Name                   Link                Views
+      favicon.ico            http://cl.ly/0P2...   2  
+      The Hitchhiker's Guide http://cl.ly/3I2...   3  
+      CloudApp 1.5 Released  http://cl.ly/0s1...   3  
+      Cover.jpeg             http://cl.ly/1x2...   0  
+      Chapter 1.md           http://cl.ly/3U3...   6  
+      CloudApp               http://cl.ly/2O2...   2  
+      ...
+
+List the latest 5 drops:
+
+    cloudapp list --count=5
+    $ cloudapp list --count=5
+      Name                   Link                Views
+      favicon.ico            http://cl.ly/0P2...   2  
+      The Hitchhiker's Guide http://cl.ly/3I2...   3  
+      CloudApp 1.5 Released  http://cl.ly/0s1...   3  
+      Cover.jpeg             http://cl.ly/1x2...   0  
+      Chapter 1.md           http://cl.ly/3U3...   6  
+
+Share a new bookmark to "http://douglasadams.com":
+
+    $ cloudapp bookmark http://douglasadams.com
+      Bookmarking http://douglasadams.com...  http://cl.ly/1y0j403g3D0c0X1G0R3m
+
+Share the file "screenshot.png":
+
+    $ cloudapp upload screenshot.png
+      Uploading screenshot.png...  http://cl.ly/040u2o3X1w0z1z3n2T04
+
+
+## SECURITY CONSIDERATIONS
+
+As of right now, `cloudapp` makes use of
+[`gli`'s built-in configuration handling][gli-config] to store your CloudApp
+credentials **in plain text** at `~/.cloudapp.rc`.
+
+[gli-config]: https://github.com/davetron5000/gli/wiki/Config
+
+
+## LICENSE
+
+`cloudapp` is distributed under the [MIT license][mit-license].
+
+[mit-license]: https://github.com/cloudapp/cloudapp/blob/master/MIT-LICENSE
