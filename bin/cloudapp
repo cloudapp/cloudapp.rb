@@ -1,94 +1,110 @@
 #!/usr/bin/env ruby
+$: << File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../lib')
 
+require 'rubygems'
+require 'gli'
 require 'formatador'
-require 'main'
 
-# Explicitly require yaml because ruby 1.9.2 (and greater?) define YAML which
-# causes main to not require it.
-require 'yaml'
-
-require 'cloudapp/identity'
+require 'cloudapp'
 require 'cloudapp/drop_service'
+require 'cloudapp/identity'
 
-Main do
-  def identity
-    CloudApp::Identity.from_config config
+
+def service(global_options)
+  identity = CloudApp::Identity.from_config global_options
+  CloudApp::DropService.as_identity(identity).tap do |service|
+    service.logger.level = Logger::WARN
   end
-
-  def service
-    CloudApp::DropService.as_identity(identity).tap do |service|
-      service.logger.level = Logger::WARN
-    end
-  end
-
-  config email: 'arthur@dent.com', password: 'towel'
-
-  def run
-    puts 'TODO: show help here'
-  end
-
-  # Bookmark a link: `cloudapp bookmark http://getcloudapp.com`
-  mode :bookmark do
-    argument('url') { cast :uri }
-
-    def url
-      params[:url].value
-    end
-
-    def run
-      Formatador.display "Bookmarking #{ url }..."
-
-      response = service.create url: url
-      Formatador.display_line response.fetch 'url'
-    end
-  end
-
-  # Upload a file: `cloudapp upload screenshot.png`
-  mode :upload do
-    argument('file') { cast :pathname }
-
-    def file
-      params[:file].value
-    end
-
-    def run
-      Formatador.display "Uploading #{ file }..."
-
-      response = service.create path: file
-      Formatador.display_line response.fetch 'url'
-    end
-  end
-
-  # List newest drops: `cloudapp list [--count=5]`
-  mode :list do
-    option 'count', 'n' do
-      argument :optional
-      cast :integer
-      default 20
-    end
-
-    def run
-      count = params[:count].value
-      drops = service.drops count
-
-      name_width  = drops.map {|drop| drop['name'].to_s.size }.max
-      views_width = [ 5, drops.map {|drop| drop['view_counter'].to_s.size }.max ].max
-      link_width  = drops.map {|drop| drop['url'].size }.max
-
-      header = [ "[bold]#{ 'Name' .ljust(name_width)   }[/]",
-                 "[bold]#{ 'Link' .ljust(link_width)   }[/]",
-                 "[bold]#{ 'Views'.center(views_width) }[/]" ].join(' ')
-      Formatador.display_line header
-
-      lines = drops.map do |drop|
-        [ drop['name'].to_s.ljust(name_width),
-          drop['url'],
-          drop['view_counter'].to_s.center(views_width)
-        ].join ' '
-      end
-
-      Formatador.display_lines lines
-    end
-  end
-
 end
+
+def check_for_credentials(global_options)
+  return unless global_options[:email].nil? and global_options[:password].nil?
+
+  exit_now! [
+    'CloudApp credentials missing. Save them to ~/.cloudapp.rc using:',
+    '  cloudapp --email=EMAIL --password=PASSWORD initconfig' ].join("\n"),
+    1
+end
+
+
+include GLI
+
+program_desc 'All the pleasures of CloudApp now at your terminal'
+version CloudApp::VERSION
+config_file '.cloudapp.rc'
+
+desc 'CloudApp account email'
+arg_name 'email'
+flag :email
+
+desc 'CloudApp account password'
+arg_name 'password'
+flag :password
+
+# c.desc 'Format of the output (default: pretty for TTY, csv otherwise)'
+# c.arg_name 'csv|pretty'
+# c.flag [:f, :format]
+
+desc 'Create a bookmark to each URL'
+arg_name '[url...]'
+command [:bookmark, :shorten] do |c|
+  c.action do |global_options, options, urls|
+    check_for_credentials global_options
+
+    url = URI.parse urls.first
+
+    Formatador.display "Bookmarking #{ url }..."
+    response = service(global_options).create url: url
+    Formatador.display_line response.fetch 'url'
+  end
+end
+
+desc 'Upload each file'
+arg_name '[file...]'
+command :upload do |c|
+  c.action do |global_options, options, files|
+    check_for_credentials global_options
+
+    file = Pathname.new files.first
+
+    Formatador.display "Uploading #{ file }..."
+    response = service(global_options).create path: file
+    Formatador.display_line response.fetch 'url'
+  end
+end
+
+desc 'List your latest drops'
+command [:list, :ls] do |c|
+
+  c.desc 'Number of drops to display'
+  c.arg_name 'count'
+  c.default_value '20'
+  c.flag :n, :count
+
+  c.action do |global_options, options, args|
+    check_for_credentials global_options
+
+    count = options[:count].to_i
+    drops = service(global_options).drops count
+
+    name_width  = drops.map {|drop| drop['name'].to_s.size }.max
+    views_width = [ 5, drops.map {|drop| drop['view_counter'].to_s.size }.max ].max
+    link_width  = drops.map {|drop| drop['url'].size }.max
+
+    header = [ "[bold]#{ 'Name' .ljust(name_width)   }[/]",
+               "[bold]#{ 'Link' .ljust(link_width)   }[/]",
+               "[bold]#{ 'Views'.center(views_width) }[/]" ].join(' ')
+    Formatador.display_line header
+
+    lines = drops.map do |drop|
+      [ drop['name'].to_s.ljust(name_width),
+        drop['url'],
+        drop['view_counter'].to_s.center(views_width)
+      ].join ' '
+    end
+
+    Formatador.display_lines lines
+  end
+end
+
+exit GLI.run(ARGV)

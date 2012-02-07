@@ -54,11 +54,16 @@ the picture.
 ### Authentication
 
 As of right now, `cloudapp` makes use of
-[`main`'s built-in configuration handling][main-config] to store your CloudApp
-credentials **in plain text** at `~/.cloudapp/config.yml`. This file will be
-created and opened in your `$EDITOR` the first time it's needed.
+[`gli`'s built-in configuration handling][gli-config] to store your CloudApp
+credentials **in plain text** at `~/.cloudapp.rc`. You'll be prompted to run the
+following command if the global `--email` and `--password` options aren't
+provided:
 
-[main-config]: https://github.com/ahoward/main/blob/master/README.erb#L220-232
+```bash
+cloudapp --email=EMAIL --password=PASSWORD initconfig
+```
+
+[gli-config]: https://github.com/davetron5000/gli/wiki/Config
 
 ### Harness the Power
 
@@ -74,7 +79,7 @@ Now after restarting Cloud.app, the link to every new drop shared with your
 account--even using a tool other than the Mac app--will be copied to your Mac's
 clipboard. If you're using the [stand-alone version][stand-alone] of Cloud.app
 and not [the Mac App Store version][mas], use the domain
-`com.linebreak.CloudAppMacOSXSparkle`.
+`com.linebreak.CloudAppMacOSXSparkle` instead.
 
 [stand-alone]: http://getcloudapp.com/download
 [mas]:         http://itunes.apple.com/us/app/cloud/id417602904?mt=12&ls=1
