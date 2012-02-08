@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cloudapp (0.0.7)
+    cloudapp (0.0.8)
       addressable
       faraday (~> 0.8.0.rc2)
       formatador
