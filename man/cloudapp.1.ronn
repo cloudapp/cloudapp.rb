@@ -3,7 +3,10 @@ cloudapp(1) -- All the pleasures of CloudApp now at your terminal
 
 ## SYNOPSIS
 
-`cloudapp` [`--email`=<email>] [`--password`=<password>] <command> [<args>]
+`cloudapp` [`--email`=<email>] [`--password`=<password>] <command> [<args>]<br>
+`cloudapp list` [`--count`=<count>]<br>
+`cloudapp bookmark` <url><br>
+`cloudapp upload` <file>
 
 ## DESCRIPTION
 
