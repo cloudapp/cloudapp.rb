@@ -79,7 +79,7 @@ task :release => :build do
 end
 
 desc "Build #{gem_file} into the pkg directory"
-task :build => :gemspec do
+task :build => [:gemspec, :update_bundle] do
   sh "mkdir -p pkg"
   sh "gem build #{gemspec_file}"
   sh "mv #{gem_file} pkg"
@@ -112,6 +112,12 @@ task :gemspec => :validate do
   spec = [head, manifest, tail].join("  # = MANIFEST =\n")
   File.open(gemspec_file, 'w') { |io| io.write(spec) }
   puts "Updated #{gemspec_file}"
+end
+
+desc "Update #{name} in bundle"
+task :update_bundle => :validate do
+  `bundle update #{name}`
+  puts "Bundled #{name} version #{version}"
 end
 
 desc "Validate #{gemspec_file}"
