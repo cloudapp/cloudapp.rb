@@ -3,7 +3,7 @@ cloudapp(1) -- All the pleasures of CloudApp now at your terminal
 
 ## SYNOPSIS
 
-    cloudapp [--email=<email>] [--password=<password>] <command> [<args>]
+`cloudapp` [`--email`=<email>] [`--password`=<password>] <command> [<args>]
 
 ## DESCRIPTION
 
@@ -13,46 +13,69 @@ terminal and other times it's the only tool available.
 
 ## OPTIONS
 
-  * `--email=<email>`:
-    CloudApp account email address
+  * `--email`=<email>:
+    Use <email> for CloudApp account credentials.
 
-  * `--password=<password>`:
-    CloudApp account password
+  * `--password`=<password>:
+    Use <password> for CloudApp account credentials.
+
+  * `-f` <format>, `--format`=<format>:
+    Output using either **pretty** or **csv** format. Default is **pretty**
+    unless output is piped to anther program then **csv** becomes the default.
 
 ## EXAMPLES
 
-List the latest 20 drops:
+List newest 20 drops:
 
     $ cloudapp list
-      Name                   Link                Views
-      favicon.ico            http://cl.ly/0P2...   2  
-      The Hitchhiker's Guide http://cl.ly/3I2...   3  
-      CloudApp 1.5 Released  http://cl.ly/0s1...   3  
-      Cover.jpeg             http://cl.ly/1x2...   0  
-      Chapter 1.md           http://cl.ly/3U3...   6  
-      CloudApp               http://cl.ly/2O2...   2  
+    Name                    Link                  Views
+    favicon.ico             http://cl.ly/0P28...  3    
+    The Hitchhiker's Guide  http://cl.ly/3I28...  4    
+    CloudApp 1.5 Released   http://cl.ly/0s1o...  4    
+    Cover.jpeg              http://cl.ly/1x20...  1    
+    Chapter 1.md            http://cl.ly/3U3d...  7    
+    CloudApp                http://cl.ly/2O2J...  3    
       ...
 
-List the latest 5 drops:
+List newest 5 drops:
 
-    cloudapp list --count=5
     $ cloudapp list --count=5
-      Name                   Link                Views
-      favicon.ico            http://cl.ly/0P2...   2  
-      The Hitchhiker's Guide http://cl.ly/3I2...   3  
-      CloudApp 1.5 Released  http://cl.ly/0s1...   3  
-      Cover.jpeg             http://cl.ly/1x2...   0  
-      Chapter 1.md           http://cl.ly/3U3...   6  
+    Name                    Link                  Views
+    favicon.ico             http://cl.ly/0P28...  3    
+    The Hitchhiker's Guide  http://cl.ly/3I28...  4    
+    CloudApp 1.5 Released   http://cl.ly/0s1o...  4    
+    Cover.jpeg              http://cl.ly/1x20...  1    
+    Chapter 1.md            http://cl.ly/3U3d...  7    
+
+List newest 5 drops in CSV format:
+
+    $ cloudapp --format=csv list --count=5
+    Name,Link,Views
+    favicon.ico,http://cl.ly/0P28...,3
+    The Hitchhiker's Guide to the Galaxy,http://cl.ly/3I28...,4
+    2011-05-03-cloudapp-1.5-released.md,http://cl.ly/0s1o...,4
+    Cover.jpeg,http://cl.ly/1x20...,1
+    Chapter 1.md,http://cl.ly/3U3d...,7
 
 Share a new bookmark to "http://douglasadams.com":
 
     $ cloudapp bookmark http://douglasadams.com
-      Bookmarking http://douglasadams.com...  http://cl.ly/1y0j403g3D0c0X1G0R3m
+    Bookmarking http://douglasadams.com... http://cl.ly/1y0j403g3D0c0X1G0R3m
 
 Share the file "screenshot.png":
 
     $ cloudapp upload screenshot.png
-      Uploading screenshot.png...  http://cl.ly/040u2o3X1w0z1z3n2T04
+    Uploading screenshot.png... http://cl.ly/040u2o3X1w0z1z3n2T04
+
+Share a new bookmark or file and copy the URL to the clipboard (OS X):
+
+    $ cloudapp bookmark http://douglasadams.com | pbcopy
+    $ cloudapp upload screenshot.png | pbcopy
+
+Share a new bookmark and output only the URL:
+
+    $ cloudapp --format=csv bookmark http://douglasadams.com
+    http://cl.ly/1y0j403g3D0c0X1G0R3m
 
 
 ## SECURITY CONSIDERATIONS

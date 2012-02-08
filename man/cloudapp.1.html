@@ -41,12 +41,6 @@
   ol.man-decor li.tc {text-align:center;letter-spacing:4px}
   ol.man-decor li.tr {text-align:right;float:right}
   </style>
-  <style type='text/css' media='all'>
-  /* style: toc */
-  .man-navigation {display:block !important;position:fixed;top:0;left:113ex;height:100%;width:100%;padding:48px 0 0 0;border-left:1px solid #dbdbdb;background:#eee}
-  .man-navigation a,.man-navigation a:hover,.man-navigation a:link,.man-navigation a:visited {display:block;margin:0;padding:5px 2px 5px 30px;color:#999;text-decoration:none}
-  .man-navigation a:hover {color:#111;text-decoration:underline}
-  </style>
 </head>
 <!--
   The following styles are deprecated and will be removed at some point:
@@ -81,8 +75,7 @@
 
 <h2 id="SYNOPSIS">SYNOPSIS</h2>
 
-<pre><code>cloudapp [--email=&lt;email>] [--password=&lt;password>] &lt;command> [&lt;args>]
-</code></pre>
+<p><code>cloudapp</code> [<code>--email</code>=<var>email</var>] [<code>--password</code>=<var>password</var>] <var>command</var> [<var>args</var>]</p>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
@@ -93,48 +86,72 @@ terminal and other times it's the only tool available.</p>
 <h2 id="OPTIONS">OPTIONS</h2>
 
 <dl>
-<dt><code>--email=&lt;email></code></dt><dd><p>CloudApp account email address</p></dd>
-<dt><code>--password=&lt;password></code></dt><dd><p>CloudApp account password</p></dd>
+<dt><code>--email</code>=<var>email</var></dt><dd><p>Use <var>email</var> for CloudApp account credentials.</p></dd>
+<dt><code>--password</code>=<var>password</var></dt><dd><p>Use <var>password</var> for CloudApp account credentials.</p></dd>
+<dt><code>-f</code> <var>format</var>, <code>--format</code>=<var>format</var></dt><dd><p>Output using either <strong>pretty</strong> or <strong>csv</strong> format. Default is <strong>pretty</strong>
+unless output is piped to anther program then <strong>csv</strong> becomes the default.</p></dd>
 </dl>
 
 
 <h2 id="EXAMPLES">EXAMPLES</h2>
 
-<p>List the latest 20 drops:</p>
+<p>List newest 20 drops:</p>
 
 <pre><code>$ cloudapp list
-  Name                   Link                Views
-  favicon.ico            http://cl.ly/0P2...   2  
-  The Hitchhiker's Guide http://cl.ly/3I2...   3  
-  CloudApp 1.5 Released  http://cl.ly/0s1...   3  
-  Cover.jpeg             http://cl.ly/1x2...   0  
-  Chapter 1.md           http://cl.ly/3U3...   6  
-  CloudApp               http://cl.ly/2O2...   2  
+Name                    Link                  Views
+favicon.ico             http://cl.ly/0P28...  3    
+The Hitchhiker's Guide  http://cl.ly/3I28...  4    
+CloudApp 1.5 Released   http://cl.ly/0s1o...  4    
+Cover.jpeg              http://cl.ly/1x20...  1    
+Chapter 1.md            http://cl.ly/3U3d...  7    
+CloudApp                http://cl.ly/2O2J...  3    
   ...
 </code></pre>
 
-<p>List the latest 5 drops:</p>
+<p>List newest 5 drops:</p>
 
-<pre><code>cloudapp list --count=5
-$ cloudapp list --count=5
-  Name                   Link                Views
-  favicon.ico            http://cl.ly/0P2...   2  
-  The Hitchhiker's Guide http://cl.ly/3I2...   3  
-  CloudApp 1.5 Released  http://cl.ly/0s1...   3  
-  Cover.jpeg             http://cl.ly/1x2...   0  
-  Chapter 1.md           http://cl.ly/3U3...   6  
+<pre><code>$ cloudapp list --count=5
+Name                    Link                  Views
+favicon.ico             http://cl.ly/0P28...  3    
+The Hitchhiker's Guide  http://cl.ly/3I28...  4    
+CloudApp 1.5 Released   http://cl.ly/0s1o...  4    
+Cover.jpeg              http://cl.ly/1x20...  1    
+Chapter 1.md            http://cl.ly/3U3d...  7    
+</code></pre>
+
+<p>List newest 5 drops in CSV format:</p>
+
+<pre><code>$ cloudapp --format=csv list --count=5
+Name,Link,Views
+favicon.ico,http://cl.ly/0P28...,3
+The Hitchhiker's Guide to the Galaxy,http://cl.ly/3I28...,4
+2011-05-03-cloudapp-1.5-released.md,http://cl.ly/0s1o...,4
+Cover.jpeg,http://cl.ly/1x20...,1
+Chapter 1.md,http://cl.ly/3U3d...,7
 </code></pre>
 
 <p>Share a new bookmark to "http://douglasadams.com":</p>
 
 <pre><code>$ cloudapp bookmark http://douglasadams.com
-  Bookmarking http://douglasadams.com...  http://cl.ly/1y0j403g3D0c0X1G0R3m
+Bookmarking http://douglasadams.com... http://cl.ly/1y0j403g3D0c0X1G0R3m
 </code></pre>
 
 <p>Share the file "screenshot.png":</p>
 
 <pre><code>$ cloudapp upload screenshot.png
-  Uploading screenshot.png...  http://cl.ly/040u2o3X1w0z1z3n2T04
+Uploading screenshot.png... http://cl.ly/040u2o3X1w0z1z3n2T04
+</code></pre>
+
+<p>Share a new bookmark or file and copy the URL to the clipboard (OS X):</p>
+
+<pre><code>$ cloudapp bookmark http://douglasadams.com | pbcopy
+$ cloudapp upload screenshot.png | pbcopy
+</code></pre>
+
+<p>Share a new bookmark and output only the URL:</p>
+
+<pre><code>$ cloudapp --format=csv bookmark http://douglasadams.com
+http://cl.ly/1y0j403g3D0c0X1G0R3m
 </code></pre>
 
 <h2 id="SECURITY-CONSIDERATIONS">SECURITY CONSIDERATIONS</h2>

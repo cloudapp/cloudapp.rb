@@ -28,6 +28,12 @@ goal of `cloudapp` is to be simple and Unix-friendly.
  - Bookmark a link: `cloudapp bookmark http://getcloudapp.com`
  - Share a file: `cloudapp upload screenshot.png`
  - List newest drops: `cloudapp list [--count=5]`
+ - Copy a new drop's link (OS X): `cloudapp bookmark http://douglasadams.com | pbcopy`
+ - Output drops in CSV: `cloudapp --format=csv list`
+
+More examples can be found on [the man page][man-page].
+
+[man-page]: http://cloudapp.github.com/cloudapp
 
 ### Wish List
 
@@ -39,7 +45,7 @@ Some baseic features that should be added:
 A little more flare would be swell.
 
  - Download a drop: `cloudapp download http://cl.ly/abc123`
- - List specific columns: `cloudapp list --columns=name,views,link`
+ - Output specific columns: `cloudapp list --columns=name,views,link`
  - Handle input from STDIN: `pbpaste | cloudapp bookmark -`
  - Archive and share several files: `cloudapp upload --archive *.png`
  - Encrypt and share a file: `cloudapp upload --encrypt launch_codes.txt`

@@ -7,12 +7,7 @@
 \fBcloudapp\fR \- All the pleasures of CloudApp now at your terminal
 .
 .SH "SYNOPSIS"
-.
-.nf
-
-cloudapp [\-\-email=<email>] [\-\-password=<password>] <command> [<args>]
-.
-.fi
+\fBcloudapp\fR [\fB\-\-email\fR=\fIemail\fR] [\fB\-\-password\fR=\fIpassword\fR] \fIcommand\fR [\fIargs\fR]
 .
 .SH "DESCRIPTION"
 \fBcloudapp\fR is a simple, Unix\-friendly tool for CloudApp meant to augment the Mac and Web apps\. Sometimes it\'s more convenient to share without leaving the terminal and other times it\'s the only tool available\.
@@ -20,28 +15,32 @@ cloudapp [\-\-email=<email>] [\-\-password=<password>] <command> [<args>]
 .SH "OPTIONS"
 .
 .TP
-\fB\-\-email=<email>\fR
-CloudApp account email address
+\fB\-\-email\fR=\fIemail\fR
+Use \fIemail\fR for CloudApp account credentials\.
 .
 .TP
-\fB\-\-password=<password>\fR
-CloudApp account password
+\fB\-\-password\fR=\fIpassword\fR
+Use \fIpassword\fR for CloudApp account credentials\.
+.
+.TP
+\fB\-f\fR \fIformat\fR, \fB\-\-format\fR=\fIformat\fR
+Output using either \fBpretty\fR or \fBcsv\fR format\. Default is \fBpretty\fR unless output is piped to anther program then \fBcsv\fR becomes the default\.
 .
 .SH "EXAMPLES"
-List the latest 20 drops:
+List newest 20 drops:
 .
 .IP "" 4
 .
 .nf
 
 $ cloudapp list
-  Name                   Link                Views
-  favicon\.ico            http://cl\.ly/0P2\.\.\.   2
-  The Hitchhiker\'s Guide http://cl\.ly/3I2\.\.\.   3
-  CloudApp 1\.5 Released  http://cl\.ly/0s1\.\.\.   3
-  Cover\.jpeg             http://cl\.ly/1x2\.\.\.   0
-  Chapter 1\.md           http://cl\.ly/3U3\.\.\.   6
-  CloudApp               http://cl\.ly/2O2\.\.\.   2
+Name                    Link                  Views
+favicon\.ico             http://cl\.ly/0P28\.\.\.  3
+The Hitchhiker\'s Guide  http://cl\.ly/3I28\.\.\.  4
+CloudApp 1\.5 Released   http://cl\.ly/0s1o\.\.\.  4
+Cover\.jpeg              http://cl\.ly/1x20\.\.\.  1
+Chapter 1\.md            http://cl\.ly/3U3d\.\.\.  7
+CloudApp                http://cl\.ly/2O2J\.\.\.  3
   \.\.\.
 .
 .fi
@@ -49,20 +48,38 @@ $ cloudapp list
 .IP "" 0
 .
 .P
-List the latest 5 drops:
+List newest 5 drops:
 .
 .IP "" 4
 .
 .nf
 
-cloudapp list \-\-count=5
 $ cloudapp list \-\-count=5
-  Name                   Link                Views
-  favicon\.ico            http://cl\.ly/0P2\.\.\.   2
-  The Hitchhiker\'s Guide http://cl\.ly/3I2\.\.\.   3
-  CloudApp 1\.5 Released  http://cl\.ly/0s1\.\.\.   3
-  Cover\.jpeg             http://cl\.ly/1x2\.\.\.   0
-  Chapter 1\.md           http://cl\.ly/3U3\.\.\.   6
+Name                    Link                  Views
+favicon\.ico             http://cl\.ly/0P28\.\.\.  3
+The Hitchhiker\'s Guide  http://cl\.ly/3I28\.\.\.  4
+CloudApp 1\.5 Released   http://cl\.ly/0s1o\.\.\.  4
+Cover\.jpeg              http://cl\.ly/1x20\.\.\.  1
+Chapter 1\.md            http://cl\.ly/3U3d\.\.\.  7
+.
+.fi
+.
+.IP "" 0
+.
+.P
+List newest 5 drops in CSV format:
+.
+.IP "" 4
+.
+.nf
+
+$ cloudapp \-\-format=csv list \-\-count=5
+Name,Link,Views
+favicon\.ico,http://cl\.ly/0P28\.\.\.,3
+The Hitchhiker\'s Guide to the Galaxy,http://cl\.ly/3I28\.\.\.,4
+2011\-05\-03\-cloudapp\-1\.5\-released\.md,http://cl\.ly/0s1o\.\.\.,4
+Cover\.jpeg,http://cl\.ly/1x20\.\.\.,1
+Chapter 1\.md,http://cl\.ly/3U3d\.\.\.,7
 .
 .fi
 .
@@ -76,7 +93,7 @@ Share a new bookmark to "http://douglasadams\.com":
 .nf
 
 $ cloudapp bookmark http://douglasadams\.com
-  Bookmarking http://douglasadams\.com\.\.\.  http://cl\.ly/1y0j403g3D0c0X1G0R3m
+Bookmarking http://douglasadams\.com\.\.\. http://cl\.ly/1y0j403g3D0c0X1G0R3m
 .
 .fi
 .
@@ -90,7 +107,35 @@ Share the file "screenshot\.png":
 .nf
 
 $ cloudapp upload screenshot\.png
-  Uploading screenshot\.png\.\.\.  http://cl\.ly/040u2o3X1w0z1z3n2T04
+Uploading screenshot\.png\.\.\. http://cl\.ly/040u2o3X1w0z1z3n2T04
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Share a new bookmark or file and copy the URL to the clipboard (OS X):
+.
+.IP "" 4
+.
+.nf
+
+$ cloudapp bookmark http://douglasadams\.com | pbcopy
+$ cloudapp upload screenshot\.png | pbcopy
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Share a new bookmark and output only the URL:
+.
+.IP "" 4
+.
+.nf
+
+$ cloudapp \-\-format=csv bookmark http://douglasadams\.com
+http://cl\.ly/1y0j403g3D0c0X1G0R3m
 .
 .fi
 .
