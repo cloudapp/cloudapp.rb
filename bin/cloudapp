@@ -7,6 +7,7 @@ require 'formatador'
 require 'pathname'
 
 require 'cloudapp'
+require 'cloudapp/drop_presenter'
 require 'cloudapp/drop_service'
 require 'cloudapp/identity'
 
@@ -27,6 +28,16 @@ def check_for_credentials(global_options)
     1
 end
 
+def format_from(global_options)
+  set_default_format global_options
+  global_options[:format].to_sym
+end
+
+def set_default_format(global_options)
+  return unless global_options[:format].nil?
+  global_options[:format] = $stdout.tty? ? :pretty : :csv
+end
+
 
 include GLI
 
@@ -42,9 +53,9 @@ desc 'CloudApp account password'
 arg_name 'password'
 flag :password
 
-# c.desc 'Format of the output (default: pretty for TTY, csv otherwise)'
-# c.arg_name 'csv|pretty'
-# c.flag [:f, :format]
+desc 'Format of the output (default: pretty for TTY, csv otherwise)'
+arg_name 'csv|pretty'
+flag [:f, :format]
 
 desc 'Create a bookmark to each URL'
 arg_name '[url...]'
@@ -52,11 +63,16 @@ command [:bookmark, :shorten] do |c|
   c.action do |global_options, options, urls|
     check_for_credentials global_options
 
-    url = URI.parse urls.first
+    url     = URI.parse urls.first
+    waiting = "Bookmarking #{ url }... "
+    format  = format_from global_options
 
-    Formatador.display "Bookmarking #{ url }..."
-    response = service(global_options).create url: url
-    Formatador.display_line response.url
+    CloudApp::DropPresenter.print(on:      $stdout,
+                                  waiting: waiting,
+                                  format:  format) do
+      new_drop = service(global_options).create url: url
+      new_drop.url
+    end
   end
 end
 
@@ -66,11 +82,16 @@ command :upload do |c|
   c.action do |global_options, options, files|
     check_for_credentials global_options
 
-    file = Pathname.new files.first
+    file    = Pathname.new files.first
+    waiting = "Uploading #{ file }... "
+    format  = format_from global_options
 
-    Formatador.display "Uploading #{ file }..."
-    response = service(global_options).create path: file
-    Formatador.display_line response.url
+    CloudApp::DropPresenter.print(on:      $stdout,
+                                  waiting: waiting,
+                                  format:  format) do
+      new_drop = service(global_options).create path: file
+      new_drop.url
+    end
   end
 end
 
@@ -85,26 +106,15 @@ command [:list, :ls] do |c|
   c.action do |global_options, options, args|
     check_for_credentials global_options
 
-    count = options[:count].to_i
-    drops = service(global_options).drops count
+    count   = options[:count].to_i
+    columns = { name: 'Name', url: 'Link', view_counter: 'Views' }
+    format  = format_from global_options
 
-    name_width  = drops.map {|drop| drop.name.to_s.size }.max
-    views_width = [ 5, drops.map {|drop| drop.view_counter.to_s.size }.max ].max
-    link_width  = drops.map {|drop| drop.url.size }.max
-
-    header = [ "[bold]#{ 'Name' .ljust(name_width)   }[/]",
-               "[bold]#{ 'Link' .ljust(link_width)   }[/]",
-               "[bold]#{ 'Views'.center(views_width) }[/]" ].join(' ')
-    Formatador.display_line header
-
-    lines = drops.map do |drop|
-      [ drop.name.to_s.ljust(name_width),
-        drop.url,
-        drop.view_counter.to_s.center(views_width)
-      ].join ' '
+    CloudApp::DropPresenter.print(on:      $stdout,
+                                  columns: columns,
+                                  format:  format) do
+      service(global_options).drops count
     end
-
-    Formatador.display_lines lines
   end
 end
 
