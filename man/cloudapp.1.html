@@ -57,6 +57,7 @@
     <a href="#SYNOPSIS">SYNOPSIS</a>
     <a href="#DESCRIPTION">DESCRIPTION</a>
     <a href="#OPTIONS">OPTIONS</a>
+    <a href="#COMMANDS">COMMANDS</a>
     <a href="#EXAMPLES">EXAMPLES</a>
     <a href="#SECURITY-CONSIDERATIONS">SECURITY CONSIDERATIONS</a>
     <a href="#LICENSE">LICENSE</a>
@@ -88,8 +89,18 @@ terminal and other times it's the only tool available.</p>
 <dl>
 <dt><code>--email</code>=<var>email</var></dt><dd><p>Use <var>email</var> for CloudApp account credentials.</p></dd>
 <dt><code>--password</code>=<var>password</var></dt><dd><p>Use <var>password</var> for CloudApp account credentials.</p></dd>
-<dt><code>-f</code> <var>format</var>, <code>--format</code>=<var>format</var></dt><dd><p>Output using either <strong>pretty</strong> or <strong>csv</strong> format. Default is <strong>pretty</strong>
-unless output is piped to anther program then <strong>csv</strong> becomes the default.</p></dd>
+<dt><code>-f</code> <var>format</var>, <code>--format</code>=<var>format</var></dt><dd><p>Output using either <strong>pretty</strong> or <strong>csv</strong> format. (Default: <strong>pretty</strong>  when
+output to a terminal and <strong>csv</strong> when output is piped to another program.)</p></dd>
+<dt><code>-n</code> <var>count</var>, <code>--count</code>=<var>count</var></dt><dd><p>Display <var>count</var> drops. (Default: <strong>20</strong>)</p></dd>
+</dl>
+
+
+<h2 id="COMMANDS">COMMANDS</h2>
+
+<dl>
+<dt><code>list</code> [<code>--count</code>=<var>count</var>]</dt><dd><p>List the most recent <var>count</var> drops. The default is to list <strong>20</strong> drops.</p></dd>
+<dt><code>bookmark</code> <var>url</var> [<var>url</var>...]</dt><dd><p>Create a new bookmark to each <var>url</var> and print each link.</p></dd>
+<dt><code>upload</code> <var>file</var> [<var>file</var>...]</dt><dd><p>Upload each <var>file</var> and print each link.</p></dd>
 </dl>
 
 

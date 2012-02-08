@@ -20,8 +20,22 @@ terminal and other times it's the only tool available.
     Use <password> for CloudApp account credentials.
 
   * `-f` <format>, `--format`=<format>:
-    Output using either **pretty** or **csv** format. Default is **pretty**
-    unless output is piped to anther program then **csv** becomes the default.
+    Output using either **pretty** or **csv** format. (Default: **pretty**  when
+    output to a terminal and **csv** when output is piped to another program.)
+
+  * `-n` <count>, `--count`=<count>:
+    Display <count> drops. (Default: **20**)
+
+## COMMANDS
+
+  * `list` [`--count`=<count>]:
+    List the most recent <count> drops. The default is to list **20** drops.
+
+  * `bookmark` <url> [<url>...]:
+    Create a new bookmark to each <url> and print each link.
+
+  * `upload` <file> [<file>...]:
+    Upload each <file> and print each link.
 
 ## EXAMPLES
 

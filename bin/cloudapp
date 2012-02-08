@@ -53,12 +53,12 @@ desc 'CloudApp account password'
 arg_name 'password'
 flag :password
 
-desc 'Format of the output (default: pretty for TTY, csv otherwise)'
+desc 'Output format (default: pretty for TTY, csv otherwise)'
 arg_name 'csv|pretty'
 flag [:f, :format]
 
-desc 'Create a bookmark to each URL'
-arg_name '[url...]'
+desc 'Create a new bookmark to each URL and print each link'
+arg_name 'url [url...]'
 command [:bookmark, :shorten] do |c|
   c.action do |global_options, options, urls|
     check_for_credentials global_options
@@ -76,8 +76,8 @@ command [:bookmark, :shorten] do |c|
   end
 end
 
-desc 'Upload each file'
-arg_name '[file...]'
+desc 'Upload each FILE and print each link'
+arg_name 'file [file...]'
 command :upload do |c|
   c.action do |global_options, options, files|
     check_for_credentials global_options
@@ -95,7 +95,7 @@ command :upload do |c|
   end
 end
 
-desc 'List your latest drops'
+desc 'List the most recent drops'
 command [:list, :ls] do |c|
 
   c.desc 'Number of drops to display'
