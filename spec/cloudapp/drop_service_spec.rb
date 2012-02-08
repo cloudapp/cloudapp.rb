@@ -7,7 +7,7 @@ Bundler.setup
 
 require 'cloudapp/drop_service'
 
-describe CloudApp::DropService, :vcr do
+describe CloudApp::DropService do
 
   let(:logger) do
     logfile = Pathname('../../../log/test.log').expand_path(__FILE__)
@@ -32,7 +32,11 @@ describe CloudApp::DropService, :vcr do
     let(:service) { CloudApp::DropService.as_identity identity, service_options }
 
     describe 'listing drops' do
-      subject { service.drops }
+      subject do
+        VCR.use_cassette 'DropService/list_drops' do
+          service.drops
+        end
+      end
 
       it 'has 20 drops' do
         subject.should have(20).items
@@ -44,7 +48,11 @@ describe CloudApp::DropService, :vcr do
     end
 
     describe 'listing trash' do
-      subject { service.trash }
+      subject do
+        VCR.use_cassette 'DropService/list_trash' do
+          service.trash
+        end
+      end
 
       it 'has 2 drops' do
         subject.should have(2).items
@@ -57,7 +65,12 @@ describe CloudApp::DropService, :vcr do
 
     describe 'limiting drops list' do
       let(:limit) { 5 }
-      subject { service.drops limit }
+
+      subject do
+        VCR.use_cassette 'DropService/list_drops_with_limit' do
+          service.drops limit
+        end
+      end
 
       it 'has the given number of drops' do
         subject.should have(limit).items
@@ -71,7 +84,11 @@ describe CloudApp::DropService, :vcr do
     let(:name)    { 'CloudApp' }
 
     describe 'creating a bookmark' do
-      subject { service.create url: url }
+      subject do
+        VCR.use_cassette 'DropService/create_bookmark' do
+          service.create url: url
+        end
+      end
 
       it 'is a Drop' do
         subject.should be_a(CloudApp::Drop)
@@ -87,7 +104,11 @@ describe CloudApp::DropService, :vcr do
     end
 
     describe 'creating a bookmark with a name' do
-      subject { service.create url: url, name: name }
+      subject do
+        VCR.use_cassette 'DropService/create_bookmark_with_name' do
+          service.create url: url, name: name
+        end
+      end
 
       it 'has the given url' do
         subject.redirect_url.should eq(url)
@@ -102,7 +123,12 @@ describe CloudApp::DropService, :vcr do
       let(:path) do
         Pathname('../../support/files/favicon.ico').expand_path(__FILE__)
       end
-      subject { service.create path: path }
+
+      subject do
+        VCR.use_cassette 'DropService/upload_file' do
+          service.create path: path
+        end
+      end
 
       it 'is a Drop' do
         subject.should be_a(CloudApp::Drop)
