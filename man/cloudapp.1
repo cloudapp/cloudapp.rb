@@ -13,15 +13,15 @@
 \fBcloudapp list\fR [\fB\-\-count\fR=\fIcount\fR]
 .
 .br
-\fBcloudapp bookmark\fR \fIurl\fR
+\fBcloudapp bookmark\fR [\fB\-\-private\fR] [\fB\-\-public\fR] \fIurl\fR [\fIurl\fR\.\.\.]
 .
 .br
-\fBcloudapp upload\fR \fIfile\fR
+\fBcloudapp upload\fR [\fB\-\-private\fR] [\fB\-\-public\fR] \fIfile\fR [\fIfile\fR\.\.\.]
 .
 .SH "DESCRIPTION"
 \fBcloudapp\fR is a simple, Unix\-friendly tool for CloudApp meant to augment the Mac and Web apps\. Sometimes it\'s more convenient to share without leaving the terminal and other times it\'s the only tool available\.
 .
-.SH "OPTIONS"
+.SH "GLOBAL OPTIONS"
 .
 .TP
 \fB\-\-email\fR=\fIemail\fR
@@ -35,10 +35,6 @@ Use \fIpassword\fR for CloudApp account credentials\.
 \fB\-f\fR \fIformat\fR, \fB\-\-format\fR=\fIformat\fR
 Output using either \fBpretty\fR or \fBcsv\fR format\. (Default: \fBpretty\fR when output to a terminal and \fBcsv\fR when output is piped to another program\.)
 .
-.TP
-\fB\-n\fR \fIcount\fR, \fB\-\-count\fR=\fIcount\fR
-Display \fIcount\fR drops\. (Default: \fB20\fR)
-.
 .SH "COMMANDS"
 .
 .TP
@@ -46,12 +42,26 @@ Display \fIcount\fR drops\. (Default: \fB20\fR)
 List the most recent \fIcount\fR drops\. The default is to list \fB20\fR drops\.
 .
 .TP
-\fBbookmark\fR \fIurl\fR [\fIurl\fR\.\.\.]
+\fBbookmark\fR [\fB\-\-private\fR] [\fB\-\-public\fR] [\fIurl\fR\.\.\.]
 Create a new bookmark to each \fIurl\fR and print each link\.
 .
 .TP
-\fBupload\fR \fIfile\fR [\fIfile\fR\.\.\.]
+\fBupload\fR [\fB\-\-private\fR] [\fB\-\-public\fR] \fIfile\fR [\fIfile\fR\.\.\.]
 Upload each \fIfile\fR and print each link\.
+.
+.SH "COMMAND OPTIONS"
+.
+.TP
+\fB\-\-private\fR
+Use a private (long) link when creating a new drop\.
+.
+.TP
+\fB\-\-public\fR
+Use a public (short) link when creating a new drop\.
+.
+.TP
+\fB\-n\fR \fIcount\fR, \fB\-\-count\fR=\fIcount\fR
+Display \fIcount\fR drops\. (Default: \fB20\fR)
 .
 .SH "EXAMPLES"
 List newest 20 drops:
