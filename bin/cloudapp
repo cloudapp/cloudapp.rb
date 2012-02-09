@@ -24,7 +24,7 @@ def check_for_credentials(global_options)
 
   exit_now! [
     'CloudApp credentials missing. Save them to ~/.cloudapp.rc using:',
-    '  cloudapp --email=EMAIL --password=PASSWORD initconfig' ].join("\n"),
+    '  cloudapp --email=<email> --password=<password> initconfig' ].join("\n"),
     1
 end
 
@@ -53,11 +53,11 @@ desc 'CloudApp account password'
 arg_name 'password'
 flag :password
 
-desc 'Output format (default: pretty for TTY, csv otherwise)'
+desc 'Output format (default: pretty for tty, csv otherwise)'
 arg_name 'csv|pretty'
 flag [:f, :format]
 
-desc 'Create a new bookmark to each URL and print each link'
+desc 'Create a new bookmark to each url and print each link'
 arg_name 'url [url...]'
 command [:bookmark, :shorten] do |c|
   c.action do |global_options, options, urls|
@@ -78,7 +78,7 @@ command [:bookmark, :shorten] do |c|
   end
 end
 
-desc 'Upload each FILE and print each link'
+desc 'Upload each file and print each link'
 arg_name 'file [file...]'
 command :upload do |c|
   c.action do |global_options, options, files|
