@@ -1,4 +1,4 @@
-# CloudApp Ruby Client
+# CloudApp Ruby Client [![Build Status](https://secure.travis-ci.org/cloudapp/cloudapp.png)](http://travis-ci.org/cloudapp/cloudapp)
 
 Interact with the [CloudApp API][] from Ruby. Comes with a command line
 interface to CloudApp as an added bonus.
