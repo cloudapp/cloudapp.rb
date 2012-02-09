@@ -7,8 +7,8 @@ require 'cloudapp/drop'
 #
 # Usage:
 #
-#   service = DropSerivce.as_identity email:    'arthur@dent.com',
-#                                     password: 'towel'
+#   identity = Identity.from_config email: 'arthur@dent.com', password: 'towel'
+#   service  = DropSerivce.as_identity identity
 #
 #   # List all your drops
 #   service.drops
@@ -22,13 +22,13 @@ require 'cloudapp/drop'
 #   # List all your trashed drops
 #   service.trash
 #
-#   # Delete a drop
+#   # Delete a drop (not yet implemented)
 #   service.drops.get(123).destroy
 #
-#   # Delete a drop from the trash
+#   # Delete a drop from the trash (not yet implemented)
 #   service.trash.get(123).destroy
 #
-#   # Restore a drop from the trash
+#   # Restore a drop from the trash (not yet implemented)
 #   service.trash.get(123).restore
 #
 module CloudApp
