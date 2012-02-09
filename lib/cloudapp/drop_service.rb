@@ -7,28 +7,34 @@ require 'cloudapp/drop'
 #
 # Usage:
 #
+#   # Create a new service passing CloudApp account credentials:
 #   identity = Identity.from_config email: 'arthur@dent.com', password: 'towel'
 #   service  = DropSerivce.as_identity identity
 #
-#   # List all your drops
+#   # List all drops:
 #   service.drops
 #
-#   # Create a bookmark
+#   # Create a bookmark:
 #   service.create url: 'http://getcloudapp.com', name: 'CloudApp'
 #
-#   # Upload a file
+#   # Upload a file:
 #   service.create path: #<Pathname>, name: 'Screen shot'
 #
-#   # List all your trashed drops
+#   # Use a public (short) link for the new drop:
+#   service.create url:     'http://getcloudapp.com',
+#                  name:    'CloudApp',
+#                  private: false
+#
+#   # List all trashed drops:
 #   service.trash
 #
-#   # Delete a drop (not yet implemented)
+#   # Delete a drop (not yet implemented):
 #   service.drops.get(123).destroy
 #
-#   # Delete a drop from the trash (not yet implemented)
+#   # Delete a drop from the trash (not yet implemented):
 #   service.trash.get(123).destroy
 #
-#   # Restore a drop from the trash (not yet implemented)
+#   # Restore a drop from the trash (not yet implemented):
 #   service.trash.get(123).restore
 #
 module CloudApp
@@ -121,9 +127,9 @@ module CloudApp
 
     def create(attributes)
       body = { item: {}}
-
-      body[:item][:name]         = attributes[:name] if attributes.key? :name
-      body[:item][:redirect_url] = attributes[:url]  if attributes.key? :url
+      body[:item][:name]         = attributes[:name]    if attributes.key? :name
+      body[:item][:redirect_url] = attributes[:url]     if attributes.key? :url
+      body[:item][:private]      = attributes[:private] if attributes.key? :private
 
       if attributes.key? :path
         create_file attributes[:path], body
