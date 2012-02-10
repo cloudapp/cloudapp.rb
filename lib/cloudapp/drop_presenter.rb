@@ -1,6 +1,5 @@
 require 'csv'
 require 'delegate'
-require 'formatador'
 
 module CloudApp
   class DropPresenter

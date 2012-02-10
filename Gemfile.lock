@@ -4,7 +4,6 @@ PATH
     cloudapp (0.0.11)
       addressable
       faraday (~> 0.8.0.rc2)
-      formatador
       gli
       leadlight
       typhoeus
@@ -19,7 +18,6 @@ GEM
     faraday (0.8.0.rc2)
       multipart-post (~> 1.1)
     fattr (2.2.1)
-    formatador (0.2.1)
     gli (1.5.1)
     hookr (1.1.1)
       fail-fast (= 1.0.0)
