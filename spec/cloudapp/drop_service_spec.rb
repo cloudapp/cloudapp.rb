@@ -129,10 +129,6 @@ describe CloudApp::DropService do
       it 'is public' do
         subject.should be_public
       end
-
-      it 'has a public link' do
-        subject.url.should eq('http://cl.ly/E67c')
-      end
     end
 
     describe 'creating a private bookmark' do
@@ -144,10 +140,6 @@ describe CloudApp::DropService do
 
       it 'is private' do
         subject.should be_private
-      end
-
-      it 'has a private link' do
-        subject.url.should eq('http://cl.ly/160l0R1D1N0I2t0k2L07')
       end
     end
 
@@ -173,6 +165,22 @@ describe CloudApp::DropService do
 
       it 'has the name of the file' do
         subject.name.should eq('favicon.ico')
+      end
+    end
+
+    describe 'uploading a public file' do
+      let(:path) do
+        Pathname('../../support/files/favicon.ico').expand_path(__FILE__)
+      end
+
+      subject do
+        VCR.use_cassette 'DropService/upload_public_file' do
+          service.create path: path, private: false
+        end
+      end
+
+      it 'is public' do
+        subject.should be_public
       end
     end
   end

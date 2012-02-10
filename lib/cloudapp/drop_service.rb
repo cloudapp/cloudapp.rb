@@ -126,29 +126,29 @@ module CloudApp
     end
 
     def create(attributes)
-      body = { item: {}}
-      body[:item][:name]         = attributes[:name]    if attributes.key? :name
-      body[:item][:redirect_url] = attributes[:url]     if attributes.key? :url
-      body[:item][:private]      = attributes[:private] if attributes.key? :private
+      options = { item: {}}
+      options[:item][:name]         = attributes[:name]    if attributes.key? :name
+      options[:item][:redirect_url] = attributes[:url]     if attributes.key? :url
+      options[:item][:private]      = attributes[:private] if attributes.key? :private
 
       if attributes.key? :path
-        create_file attributes[:path], body
+        create_file attributes[:path], options
       else
-        create_bookmark body
+        create_bookmark options
       end
     end
 
     protected
 
-    def create_bookmark(body)
-      root.link('drops').post({}, body).raise_on_error.
+    def create_bookmark(options)
+      root.link('drops').post({}, options).raise_on_error.
         submit_and_wait do |new_drop|
           return Drop.new new_drop
         end
     end
 
-    def create_file(path, body)
-      root.drops.link('create_file').get.raise_on_error.
+    def create_file(path, options)
+      root.drops.link('create_file').get(options).raise_on_error.
         submit_and_wait do |details|
           uri     = Addressable::URI.parse details['url']
           file    = Faraday::UploadIO.new File.open(path), 'image/png'
