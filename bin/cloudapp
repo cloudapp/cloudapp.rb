@@ -159,7 +159,7 @@ command [:list, :ls] do |c|
     check_for_credentials
 
     count   = options[:count].to_i
-    columns = { name: 'Name', url: 'Link', view_counter: 'Views' }
+    columns = { display_name: 'Name', url: 'Link', view_counter: 'Views' }
     format  = format_from global_options
 
     CloudApp::DropPresenter.print(on:      $stdout,
