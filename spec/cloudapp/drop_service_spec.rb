@@ -193,4 +193,48 @@ describe CloudApp::DropService do
   describe '#restore' do
     it 'restores a drop from the trash'
   end
+
+  describe 'with bad authentication' do
+    let(:identity) { stub email: 'ford@prefect', password: 'earthling' }
+    let(:service)  { CloudApp::DropService.as_identity identity, service_options }
+
+    describe '#drops' do
+      subject do
+        VCR.use_cassette 'DropService/list_drops_with_bad_credentials' do
+          service.drops
+        end
+      end
+
+      it 'raises an unauthorized error' do
+        lambda { subject }.
+          should raise_error(CloudApp::DropService::UNAUTHORIZED)
+      end
+    end
+
+    describe '#trash' do
+      subject do
+        VCR.use_cassette 'DropService/list_trash_with_bad_credentials' do
+          service.trash
+        end
+      end
+
+      it 'raises an unauthorized error' do
+        lambda { subject }.
+          should raise_error(CloudApp::DropService::UNAUTHORIZED)
+      end
+    end
+
+    describe '#create' do
+      subject do
+        VCR.use_cassette 'DropService/create_bookmark_with_bad_credentials' do
+          service.create url: 'http://getcloudapp.com'
+        end
+      end
+
+      it 'raises an unauthorized error' do
+        lambda { subject }.
+          should raise_error(CloudApp::DropService::UNAUTHORIZED)
+      end
+    end
+  end
 end

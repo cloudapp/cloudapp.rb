@@ -39,6 +39,10 @@ require 'cloudapp/drop'
 #
 module CloudApp
   class DropService
+
+    # Rased when given credentials are incorrect.
+    class UNAUTHORIZED < StandardError; end
+
     Leadlight.build_connection_common do |c|
       c.request :multipart
       c.request :url_encoded
@@ -117,12 +121,16 @@ module CloudApp
       root.paginated_drops(per_page: count)['items'].map do |drop_data|
         Drop.new drop_data
       end
+    rescue MultiJson::DecodeError => e
+      raise UNAUTHORIZED
     end
 
     def trash(count = 20)
       root.paginated_trash(per_page: count)['items'].map do |drop_data|
         Drop.new drop_data
       end
+    rescue MultiJson::DecodeError => e
+      raise UNAUTHORIZED
     end
 
     def create(attributes)
@@ -136,6 +144,8 @@ module CloudApp
       else
         create_bookmark options
       end
+    rescue MultiJson::DecodeError => e
+      raise UNAUTHORIZED
     end
 
     protected
