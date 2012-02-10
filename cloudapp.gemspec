@@ -46,6 +46,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'addressable'
   s.add_dependency 'faraday', '~> 0.8.0.rc2'
   s.add_dependency 'gli'
+  s.add_dependency 'highline'
   s.add_dependency 'leadlight'
   s.add_dependency 'typhoeus'
 

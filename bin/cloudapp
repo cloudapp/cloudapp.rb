@@ -3,7 +3,9 @@ $: << File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../lib')
 
 require 'rubygems'
 require 'gli'
+require 'highline'
 require 'pathname'
+require 'yaml'
 
 require 'cloudapp'
 require 'cloudapp/drop_presenter'
@@ -11,30 +13,58 @@ require 'cloudapp/drop_service'
 require 'cloudapp/identity'
 
 
-def service(global_options)
-  identity = CloudApp::Identity.from_config global_options
+def service
   CloudApp::DropService.as_identity(identity).tap do |service|
     service.logger.level = Logger::WARN
   end
 end
 
-def check_for_credentials(global_options)
-  return unless global_options[:email].nil? and global_options[:password].nil?
+def config_file
+  File.expand_path '~/.cloudapprc'
+end
 
-  exit_now! [
-    'CloudApp credentials missing. Save them to ~/.cloudapp.rc using:',
-    '  cloudapp --email=<email> --password=<password> initconfig' ].join("\n"),
-    1
+def identity
+  return unless File.exist?(config_file)
+  config = File.open(config_file) {|file| YAML::load(file) }
+  CloudApp::Identity.from_config config
+end
+
+def save_identity(email, password)
+  File.open(config_file, 'w', 0600) do |file|
+    YAML.dump({ email: email, password: password }, file)
+  end
+end
+
+def color(*args)
+  HighLine.new.color *args
+end
+
+def plain_text_credentials_warning
+  """
+#{ color('WARNING', :bold) }
+Your credentials are stored #{ color('in plain text', :bold) } at ~/.cloudapprc. If this worries you,
+keep an eye on issue #10 (https://github.com/cloudapp/cloudapp/issues/10). Some
+sort of non-plaintext authentication is planned before 1.0 is released.
+  """
+end
+
+def check_for_credentials
+  return unless identity.nil?
+
+  $stdout.puts [ plain_text_credentials_warning,
+                 'Sign into your CloudApp account.' ]
+
+  email    = HighLine.new.ask('Email: ')
+  password = HighLine.new.ask('Password: ') {|q| q.echo = false }
+  save_identity email, password
 end
 
 def format_from(global_options)
-  set_default_format global_options
-  global_options[:format].to_sym
-end
-
-def set_default_format(global_options)
-  return unless global_options[:format].nil?
-  global_options[:format] = $stdout.tty? ? :pretty : :csv
+  if global_options[:format].nil?
+    $stdout.tty? ? :pretty : :csv
+  else
+    global_options[:format].to_sym
+  end
 end
 
 def privacy_from(options)
@@ -48,15 +78,6 @@ include GLI
 
 program_desc 'All the pleasures of CloudApp now at your terminal'
 version CloudApp::VERSION
-config_file '.cloudapp.rc'
-
-desc 'CloudApp account email'
-arg_name 'email'
-flag :email
-
-desc 'CloudApp account password'
-arg_name 'password'
-flag :password
 
 desc 'Output format (default: pretty for tty, csv otherwise)'
 arg_name 'csv|pretty'
@@ -73,7 +94,7 @@ command [:bookmark, :shorten] do |c|
   c.switch :public
 
   c.action do |global_options, options, urls|
-    check_for_credentials global_options
+    check_for_credentials
     format  = format_from global_options
     private = privacy_from options
 
@@ -87,7 +108,7 @@ command [:bookmark, :shorten] do |c|
         new_options = { url: url }
         new_options[:private] = private unless private.nil?
 
-        new_drop = service(global_options).create new_options
+        new_drop = service.create new_options
         new_drop.url
       end
     end
@@ -105,7 +126,7 @@ command :upload do |c|
   c.switch :public
 
   c.action do |global_options, options, files|
-    check_for_credentials global_options
+    check_for_credentials
     format  = format_from global_options
     private = privacy_from options
 
@@ -119,7 +140,7 @@ command :upload do |c|
         new_options = { path: file }
         new_options[:private] = private unless private.nil?
 
-        new_drop = service(global_options).create new_options
+        new_drop = service.create new_options
         new_drop.url
       end
     end
@@ -135,7 +156,7 @@ command [:list, :ls] do |c|
   c.flag :n, :count
 
   c.action do |global_options, options, args|
-    check_for_credentials global_options
+    check_for_credentials
 
     count   = options[:count].to_i
     columns = { name: 'Name', url: 'Link', view_counter: 'Views' }
@@ -144,7 +165,7 @@ command [:list, :ls] do |c|
     CloudApp::DropPresenter.print(on:      $stdout,
                                   columns: columns,
                                   format:  format) do
-      service(global_options).drops count
+      service.drops count
     end
   end
 end

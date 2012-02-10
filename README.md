@@ -19,9 +19,9 @@ goal of `cloudapp` is to be simple and Unix-friendly.
 ### Quick Start
 
     gem install cloudapp
-    cloudapp --email=EMAIL --password=PASSWORD initconfig
     cloudapp list
     cloudapp bookmark http://douglasadams.com
+    cloduapp upload ~/Desktop/screenshot.png
 
 ### Usage
 
@@ -63,15 +63,11 @@ the picture.
 
 ### Security Considerations
 
-As of right now, `cloudapp` makes use of
-[`gli`'s built-in configuration handling][gli-config] to store your CloudApp
-credentials **in plain text** at `~/.cloudapp.rc`. You'll be prompted to run the
-following command if the global `--email` and `--password` options aren't
-provided:
+Your credentials are stored **in plain text** at `~/.cloudapprc`. If this
+worries you, keep an eye on [issue #10][issue-10]. Some sort of non-plaintext
+authentication is planned before 1.0 is released.
 
-    cloudapp --email=EMAIL --password=PASSWORD initconfig
-
-[gli-config]: https://github.com/davetron5000/gli/wiki/Config
+[issue-10]: https://github.com/cloudapp/cloudapp/issues/10
 
 ### Harness the Power
 

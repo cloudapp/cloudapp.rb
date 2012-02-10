@@ -7,7 +7,7 @@
 \fBcloudapp\fR \- All the pleasures of CloudApp now at your terminal
 .
 .SH "SYNOPSIS"
-\fBcloudapp\fR [\fB\-\-email\fR=\fIemail\fR] [\fB\-\-password\fR=\fIpassword\fR] \fIcommand\fR [\fIargs\fR]
+\fBcloudapp\fR [\fB\-\-format\fR=\fIformat\fR] \fIcommand\fR [\fIargs\fR]
 .
 .br
 \fBcloudapp list\fR [\fB\-\-count\fR=\fIcount\fR]
@@ -22,14 +22,6 @@
 \fBcloudapp\fR is a simple, Unix\-friendly tool for CloudApp meant to augment the Mac and Web apps\. Sometimes it\'s more convenient to share without leaving the terminal and other times it\'s the only tool available\.
 .
 .SH "GLOBAL OPTIONS"
-.
-.TP
-\fB\-\-email\fR=\fIemail\fR
-Use \fIemail\fR for CloudApp account credentials\.
-.
-.TP
-\fB\-\-password\fR=\fIpassword\fR
-Use \fIpassword\fR for CloudApp account credentials\.
 .
 .TP
 \fB\-f\fR \fIformat\fR, \fB\-\-format\fR=\fIformat\fR
@@ -179,7 +171,7 @@ http://cl\.ly/1y0j403g3D0c0X1G0R3m
 .IP "" 0
 .
 .SH "SECURITY CONSIDERATIONS"
-As of right now, \fBcloudapp\fR makes use of \fBgli\fR\'s built\-in configuration handling \fIhttps://github\.com/davetron5000/gli/wiki/Config\fR to store your CloudApp credentials \fBin plain text\fR at \fB~/\.cloudapp\.rc\fR\.
+Your credentials are stored \fBin plain text\fR at \fB~/\.cloudapprc\fR\. If this worries you, keep an eye on issue #10 \fIhttps://github\.com/cloudapp/cloudapp/issues/10\fR\. Some sort of non\-plaintext authentication is planned before 1\.0 is released\.
 .
 .SH "LICENSE"
 \fBcloudapp\fR is distributed under the MIT license \fIhttps://github\.com/cloudapp/cloudapp/blob/master/MIT\-LICENSE\fR\.

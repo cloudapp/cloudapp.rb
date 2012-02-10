@@ -83,7 +83,7 @@
 
 <h2 id="SYNOPSIS">SYNOPSIS</h2>
 
-<p><code>cloudapp</code> [<code>--email</code>=<var>email</var>] [<code>--password</code>=<var>password</var>] <var>command</var> [<var>args</var>]<br />
+<p><code>cloudapp</code> [<code>--format</code>=<var>format</var>] <var>command</var> [<var>args</var>]<br />
 <code>cloudapp list</code> [<code>--count</code>=<var>count</var>]<br />
 <code>cloudapp bookmark</code> [<code>--private</code>] [<code>--public</code>] <var>url</var> [<var>url</var>...]<br />
 <code>cloudapp upload</code> [<code>--private</code>] [<code>--public</code>] <var>file</var> [<var>file</var>...]</p>
@@ -97,10 +97,8 @@ terminal and other times it's the only tool available.</p>
 <h2 id="GLOBAL-OPTIONS">GLOBAL OPTIONS</h2>
 
 <dl>
-<dt><code>--email</code>=<var>email</var></dt><dd><p>Use <var>email</var> for CloudApp account credentials.</p></dd>
-<dt><code>--password</code>=<var>password</var></dt><dd><p>Use <var>password</var> for CloudApp account credentials.</p></dd>
-<dt><code>-f</code> <var>format</var>, <code>--format</code>=<var>format</var></dt><dd><p>Output using either <strong>pretty</strong> or <strong>csv</strong> format. (Default: <strong>pretty</strong>  when
-output to a terminal and <strong>csv</strong> when output is piped to another program.)</p></dd>
+<dt><code>-f</code> <var>format</var>, <code>--format</code>=<var>format</var></dt><dd>Output using either <strong>pretty</strong> or <strong>csv</strong> format. (Default: <strong>pretty</strong>  when
+output to a terminal and <strong>csv</strong> when output is piped to another program.)</dd>
 </dl>
 
 
@@ -185,9 +183,9 @@ http://cl.ly/1y0j403g3D0c0X1G0R3m
 
 <h2 id="SECURITY-CONSIDERATIONS">SECURITY CONSIDERATIONS</h2>
 
-<p>As of right now, <code>cloudapp</code> makes use of
-<a href="https://github.com/davetron5000/gli/wiki/Config"><code>gli</code>'s built-in configuration handling</a> to store your CloudApp
-credentials <strong>in plain text</strong> at <code>~/.cloudapp.rc</code>.</p>
+<p>Your credentials are stored <strong>in plain text</strong> at <code>~/.cloudapprc</code>. If this
+worries you, keep an eye on <a href="https://github.com/cloudapp/cloudapp/issues/10">issue #10</a>. Some sort of non-plaintext
+authentication is planned before 1.0 is released.</p>
 
 <h2 id="LICENSE">LICENSE</h2>
 

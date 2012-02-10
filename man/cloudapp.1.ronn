@@ -3,7 +3,7 @@ cloudapp(1) -- All the pleasures of CloudApp now at your terminal
 
 ## SYNOPSIS
 
-`cloudapp` [`--email`=<email>] [`--password`=<password>] <command> [<args>]<br>
+`cloudapp` [`--format`=<format>] <command> [<args>]<br>
 `cloudapp list` [`--count`=<count>]<br>
 `cloudapp bookmark` [`--private`] [`--public`] <url> [<url>...]<br>
 `cloudapp upload` [`--private`] [`--public`] <file> [<file>...]
@@ -15,12 +15,6 @@ and Web apps. Sometimes it's more convenient to share without leaving the
 terminal and other times it's the only tool available.
 
 ## GLOBAL OPTIONS
-
-  * `--email`=<email>:
-    Use <email> for CloudApp account credentials.
-
-  * `--password`=<password>:
-    Use <password> for CloudApp account credentials.
 
   * `-f` <format>, `--format`=<format>:
     Output using either **pretty** or **csv** format. (Default: **pretty**  when
@@ -105,12 +99,11 @@ Share a new bookmark and output only the URL:
 
 ## SECURITY CONSIDERATIONS
 
-As of right now, `cloudapp` makes use of
-[`gli`'s built-in configuration handling][gli-config] to store your CloudApp
-credentials **in plain text** at `~/.cloudapp.rc`.
+Your credentials are stored **in plain text** at `~/.cloudapprc`. If this
+worries you, keep an eye on [issue #10][issue-10]. Some sort of non-plaintext
+authentication is planned before 1.0 is released.
 
-[gli-config]: https://github.com/davetron5000/gli/wiki/Config
-
+[issue-10]: https://github.com/cloudapp/cloudapp/issues/10
 
 ## LICENSE
 
