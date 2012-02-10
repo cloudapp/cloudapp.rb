@@ -38,6 +38,12 @@ def set_default_format(global_options)
   global_options[:format] = $stdout.tty? ? :pretty : :csv
 end
 
+def privacy_from(options)
+  if options[:private] || options[:public]
+    options[:private] || !options[:public]
+  end
+end
+
 
 include GLI
 
@@ -60,9 +66,17 @@ flag [:f, :format]
 desc 'Create a new bookmark to each url and print each link'
 arg_name 'url [url...]'
 command [:bookmark, :shorten] do |c|
+
+  c.desc 'Use a private (long) link'
+  c.switch :private
+
+  c.desc 'Use a public (short) link'
+  c.switch :public
+
   c.action do |global_options, options, urls|
     check_for_credentials global_options
-    format = format_from global_options
+    format  = format_from global_options
+    private = privacy_from options
 
     urls.each do |url|
       url     = URI.parse url
@@ -71,7 +85,10 @@ command [:bookmark, :shorten] do |c|
       CloudApp::DropPresenter.print(on:      $stdout,
                                     waiting: waiting,
                                     format:  format) do
-        new_drop = service(global_options).create url: url
+        new_options = { url: url }
+        new_options[:private] = private unless private.nil?
+
+        new_drop = service(global_options).create new_options
         new_drop.url
       end
     end
@@ -81,9 +98,17 @@ end
 desc 'Upload each file and print each link'
 arg_name 'file [file...]'
 command :upload do |c|
+
+  c.desc 'Use a private (long) link'
+  c.switch :private
+
+  c.desc 'Use a public (short) link'
+  c.switch :public
+
   c.action do |global_options, options, files|
     check_for_credentials global_options
-    format = format_from global_options
+    format  = format_from global_options
+    private = privacy_from options
 
     files.each do |file|
       file    = Pathname.new file
@@ -92,7 +117,10 @@ command :upload do |c|
       CloudApp::DropPresenter.print(on:      $stdout,
                                     waiting: waiting,
                                     format:  format) do
-        new_drop = service(global_options).create path: file
+        new_options = { path: file }
+        new_options[:private] = private unless private.nil?
+
+        new_drop = service(global_options).create new_options
         new_drop.url
       end
     end
