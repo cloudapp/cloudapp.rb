@@ -62,16 +62,18 @@ arg_name 'url [url...]'
 command [:bookmark, :shorten] do |c|
   c.action do |global_options, options, urls|
     check_for_credentials global_options
+    format = format_from global_options
 
-    url     = URI.parse urls.first
-    waiting = "Bookmarking #{ url }... "
-    format  = format_from global_options
+    urls.each do |url|
+      url     = URI.parse url
+      waiting = "Bookmarking #{ url }... "
 
-    CloudApp::DropPresenter.print(on:      $stdout,
-                                  waiting: waiting,
-                                  format:  format) do
-      new_drop = service(global_options).create url: url
-      new_drop.url
+      CloudApp::DropPresenter.print(on:      $stdout,
+                                    waiting: waiting,
+                                    format:  format) do
+        new_drop = service(global_options).create url: url
+        new_drop.url
+      end
     end
   end
 end
@@ -81,16 +83,18 @@ arg_name 'file [file...]'
 command :upload do |c|
   c.action do |global_options, options, files|
     check_for_credentials global_options
+    format = format_from global_options
 
-    file    = Pathname.new files.first
-    waiting = "Uploading #{ file }... "
-    format  = format_from global_options
+    files.each do |file|
+      file    = Pathname.new file
+      waiting = "Uploading #{ file }... "
 
-    CloudApp::DropPresenter.print(on:      $stdout,
-                                  waiting: waiting,
-                                  format:  format) do
-      new_drop = service(global_options).create path: file
-      new_drop.url
+      CloudApp::DropPresenter.print(on:      $stdout,
+                                    waiting: waiting,
+                                    format:  format) do
+        new_drop = service(global_options).create path: file
+        new_drop.url
+      end
     end
   end
 end
