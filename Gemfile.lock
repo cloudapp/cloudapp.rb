@@ -24,7 +24,7 @@ GEM
     hookr (1.1.1)
       fail-fast (= 1.0.0)
     hpricot (0.8.6)
-    leadlight (0.0.3)
+    leadlight (0.0.4)
       addressable
       faraday
       fattr
