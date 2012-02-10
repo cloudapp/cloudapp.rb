@@ -35,6 +35,11 @@ def save_identity(email, password)
   end
 end
 
+def clear_identity
+  return unless File.exist?(config_file)
+  File.delete(config_file)
+end
+
 def color(*args)
   HighLine.new.color *args
 end
@@ -167,6 +172,16 @@ command [:list, :ls] do |c|
                                   format:  format) do
       service.drops count
     end
+  end
+end
+
+on_error do |e|
+  if CloudApp::DropService::UNAUTHORIZED === e
+    $stderr.puts color('Email and password given are incorrect.', :bold)
+    clear_identity
+    false
+  else
+    true
   end
 end
 
