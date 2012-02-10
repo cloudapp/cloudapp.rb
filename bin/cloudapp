@@ -90,7 +90,7 @@ flag [:f, :format]
 
 desc 'Create a new bookmark to each url and print each link'
 arg_name 'url [url...]'
-command [:bookmark, :shorten] do |c|
+command :bookmark do |c|
 
   c.desc 'Use a private (long) link'
   c.switch :private
