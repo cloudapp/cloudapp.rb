@@ -97,14 +97,6 @@ Share a new bookmark and output only the URL:
     http://cl.ly/1y0j403g3D0c0X1G0R3m
 
 
-## SECURITY CONSIDERATIONS
-
-Your credentials are stored **in plain text** at `~/.cloudapprc`. If this
-worries you, keep an eye on [issue #10][issue-10]. Some sort of non-plaintext
-authentication is planned before 1.0 is released.
-
-[issue-10]: https://github.com/cloudapp/cloudapp/issues/10
-
 ## LICENSE
 
 `cloudapp` is distributed under the [MIT license][mit-license].

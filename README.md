@@ -61,14 +61,6 @@ drops? Bonus points for a light weight daemon that kept everything in sync.
 There's bound to be a better way to express some of these commands, but you get
 the picture.
 
-### Security Considerations
-
-Your credentials are stored **in plain text** at `~/.cloudapprc`. If this
-worries you, keep an eye on [issue #10][issue-10]. Some sort of non-plaintext
-authentication is planned before 1.0 is released.
-
-[issue-10]: https://github.com/cloudapp/cloudapp/issues/10
-
 ### Harness the Power
 
 Sure you could copy the new drop's link by piping the output to `pbcopy`, but
