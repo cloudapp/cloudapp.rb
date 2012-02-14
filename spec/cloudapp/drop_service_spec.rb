@@ -191,6 +191,19 @@ describe CloudApp::DropService do
     let(:token)   { 'bad-token' }
     let(:service) { CloudApp::DropService.using_token token }
 
+    describe '.retrieve_token' do
+      subject {
+        VCR.use_cassette('DropService/retrieve_token_with_bad_credentials') {
+          CloudApp::DropService.retrieve_token 'ford@prefect.com', 'earthling'
+        }
+      }
+
+      it 'raises an unauthorized error' do
+        lambda { subject }.
+          should raise_error(CloudApp::DropService::UNAUTHORIZED)
+      end
+    end
+
     describe '#drops' do
       subject {
         VCR.use_cassette('DropService/list_drops_with_bad_credentials') {

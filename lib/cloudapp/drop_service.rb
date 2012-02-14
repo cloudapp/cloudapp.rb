@@ -132,6 +132,8 @@ module CloudApp
         raise_on_error.submit_and_wait do |response|
           return response['token']
         end
+    rescue MultiJson::DecodeError => e
+      raise UNAUTHORIZED
     end
 
     def drops(count = 20)
