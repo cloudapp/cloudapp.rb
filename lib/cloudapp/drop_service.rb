@@ -107,14 +107,19 @@ module CloudApp
       end
     end
 
-    def self.using_token(token, service_options = {})
-      new(service_options).tap do |service|
+    def initialize(*args)
+      super
+      logger.level = Logger::WARN
+    end
+
+    def self.using_token(token)
+      new.tap do |service|
         service.token = token
       end
     end
 
-    def self.retrieve_token(email, password, service_options = {})
-      new(service_options).token email, password
+    def self.retrieve_token(email, password)
+      new.token email, password
     end
 
 

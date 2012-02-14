@@ -5,16 +5,10 @@ require 'cloudapp/drop_service'
 
 describe CloudApp::DropService do
 
-  let(:logger) do
-    logfile = Pathname('../../../log/test.log').expand_path(__FILE__)
-    FileUtils.mkdir_p logfile.dirname
-    Logger.new logfile
-  end
-  let(:service_options) {{ logger: logger }}
   let(:token) { '8762f6679f8d001016b2' }
 
   describe '.using_token' do
-    subject { CloudApp::DropService.using_token(token, service_options) }
+    subject { CloudApp::DropService.using_token(token) }
 
     it 'returns a service authenticated with given token' do
       VCR.use_cassette('DropService/list_drops') {
@@ -26,8 +20,7 @@ describe CloudApp::DropService do
   describe '.retrieve_token' do
     subject {
       VCR.use_cassette('DropService/retrieve_token') {
-        CloudApp::DropService.retrieve_token 'arthur@dent.com', 'towel',
-                                             service_options
+        CloudApp::DropService.retrieve_token 'arthur@dent.com', 'towel'
       }
     }
 
@@ -37,7 +30,7 @@ describe CloudApp::DropService do
   end
 
   describe '#drops' do
-    let(:service) { CloudApp::DropService.using_token token, service_options }
+    let(:service) { CloudApp::DropService.using_token token }
 
     describe 'listing drops' do
       subject { VCR.use_cassette('DropService/list_drops') { service.drops }}
@@ -79,7 +72,7 @@ describe CloudApp::DropService do
   end
 
   describe '#create' do
-    let(:service) { CloudApp::DropService.using_token token, service_options }
+    let(:service) { CloudApp::DropService.using_token token }
     let(:url)     { 'http://getcloudapp.com' }
     let(:name)    { 'CloudApp' }
 
@@ -196,7 +189,7 @@ describe CloudApp::DropService do
 
   describe 'with bad authentication' do
     let(:token)   { 'bad-token' }
-    let(:service) { CloudApp::DropService.using_token token, service_options }
+    let(:service) { CloudApp::DropService.using_token token }
 
     describe '#drops' do
       subject {
