@@ -10,32 +10,33 @@ require 'yaml'
 require 'cloudapp'
 require 'cloudapp/drop_presenter'
 require 'cloudapp/drop_service'
-require 'cloudapp/identity'
 
 
 def service
-  CloudApp::DropService.as_identity(identity).tap do |service|
-    service.logger.level = Logger::WARN
-  end
+  CloudApp::DropService.using_token token
+end
+
+def token_for_account(email, password)
+  CloudApp::DropService.retrieve_token email, password
 end
 
 def config_file
   File.expand_path '~/.cloudapprc'
 end
 
-def identity
+def token
   return unless File.exist?(config_file)
   config = File.open(config_file) {|file| YAML::load(file) }
-  CloudApp::Identity.from_config config
+  config[:token]
 end
 
-def save_identity(email, password)
+def save_token(token)
   File.open(config_file, 'w', 0600) do |file|
-    YAML.dump({ email: email, password: password }, file)
+    YAML.dump({ token: token }, file)
   end
 end
 
-def clear_identity
+def clear_token
   return unless File.exist?(config_file)
   File.delete(config_file)
 end
@@ -44,24 +45,16 @@ def color(*args)
   HighLine.new.color *args
 end
 
-def plain_text_credentials_warning
-  """
-#{ color('WARNING', :bold) }
-Your credentials are stored #{ color('in plain text', :bold) } at ~/.cloudapprc. If this worries you,
-keep an eye on issue #10 (https://github.com/cloudapp/cloudapp/issues/10). Some
-sort of non-plaintext authentication is planned before 1.0 is released.
-  """
-end
-
 def check_for_credentials
-  return unless identity.nil?
+  return unless token.nil?
 
-  $stdout.puts [ plain_text_credentials_warning,
-                 'Sign into your CloudApp account.' ]
+  $stdout.puts 'Sign into your CloudApp account.'
 
   email    = HighLine.new.ask('Email: ')
   password = HighLine.new.ask('Password: ') {|q| q.echo = false }
-  save_identity email, password
+  token    = CloudApp::DropService.retrieve_token email, password
+
+  save_token token
 end
 
 def format_from(global_options)
@@ -178,7 +171,7 @@ end
 on_error do |e|
   if CloudApp::DropService::UNAUTHORIZED === e
     $stderr.puts color('Email and password given are incorrect.', :bold)
-    clear_identity
+    clear_token
     false
   else
     true
