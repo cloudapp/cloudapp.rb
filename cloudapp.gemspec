@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   ## If your rubyforge_project name is different, then edit it and comment out
   ## the sub! line in the Rakefile
   s.name              = 'cloudapp'
-  s.version           = '0.0.14'
-  s.date              = '2012-02-10'
+  s.version           = '0.0.15'
+  s.date              = '2012-02-14'
   s.rubyforge_project = 'cloudapp'
 
   ## Make sure your summary is short. The description may be as long
@@ -71,7 +71,6 @@ Gem::Specification.new do |s|
     bin/cloudapp
     cloudapp.gemspec
     lib/cloudapp.rb
-    lib/cloudapp/digestable_typhoeus.rb
     lib/cloudapp/drop.rb
     lib/cloudapp/drop_presenter.rb
     lib/cloudapp/drop_service.rb
@@ -89,6 +88,8 @@ Gem::Specification.new do |s|
     spec/cassettes/DropService/list_drops_with_limit.yml
     spec/cassettes/DropService/list_trash.yml
     spec/cassettes/DropService/list_trash_with_bad_credentials.yml
+    spec/cassettes/DropService/retrieve_token.yml
+    spec/cassettes/DropService/retrieve_token_with_bad_credentials.yml
     spec/cassettes/DropService/upload_file.yml
     spec/cassettes/DropService/upload_public_file.yml
     spec/cloudapp/drop_presenter_spec.rb
