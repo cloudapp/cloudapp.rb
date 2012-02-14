@@ -2,50 +2,37 @@
 http_interactions:
 - request:
     method: get
-    uri: http://arthur%40dent.com:towel@my.cl.ly/
+    uri: http://my.cl.ly/
     body: ''
     headers:
+      Authorization:
+      - Token token="8762f6679f8d001016b2"
       Accept:
       - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
         text/plain
   response:
     status:
       code: 200
-      message: Unauthorized
+      message: OK
     headers:
       Cache-Control:
       - max-age=0, private, must-revalidate
-      - no-cache
       Content-Type:
       - application/json; charset=utf-8
-      - application/json; charset=utf-8
+      Etag:
+      - ! '"6df38c11329d1bc827b7e2c1282b89e6"'
+      Last-Modified:
+      - Tue, 14 Feb 2012 14:41:31 GMT
       Server:
-      - thin 1.2.11 codename Bat-Shit Crazy
-      - thin 1.2.11 codename Bat-Shit Crazy
-      Www-Authenticate:
-      - Digest realm="Application", qop="auth", algorithm=MD5, nonce="MTMyODg5NTMwODo4MzgwNWFiMjQ1ZmQ4ZDcyZmFjMTc2MzJhZWQ4MWY1ZQ==",
-        opaque="9eb56ccb2e8b017ae42bdb4739690863"
+      - thin 1.3.1 codename Triple Espresso
       X-Runtime:
-      - '0.003688'
-      - '0.104270'
+      - '0.190430'
       X-Ua-Compatible:
-      - IE=Edge,chrome=1
       - IE=Edge,chrome=1
       Transfer-Encoding:
       - chunked
-      - chunked
       Connection:
       - keep-alive
-      - keep-alive
-      Etag:
-      - ! '"6170dab5c529d7a45d28b2195bf2c08c"'
-      Last-Modified:
-      - Fri, 10 Feb 2012 15:40:13 GMT
-      Set-Cookie:
-      - _engine_session=BAh7CEkiD3Nlc3Npb25faWQGOgZFRiIlOWQzYTQ1YWI4MzFhMzMzZDZlYTI1Njg5M2MxOWRlMzlJIhV1c2VyX2NyZWRlbnRpYWxzBjsARkkiAYAxYTM5Mjg4MzhlZDcwY2UyOGVkYWRkOGE1MDU2NWU1MzFlNzlhOTg4ODQxZmY5NTkxMjAzNWNhYTU1ZmIxZTZhODliMmMzN2VlYzkzMzFmOWE2ZDRjN2Y1ZDM4ZDIwNGE5NjM1ZTI0YTAxNzM1NDNiYThkNDlhNDkxY2M5NDM3MAY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkDp4EB--c2478de2d193b3f3e41415765a51f8a0fd574e60;
-        path=/; HttpOnly
-      - user_credentials=1a3928838ed70ce28edadd8a50565e531e79a988841ff95912035caa55fb1e6a89b2c37eec9331f9a6d4c7f5d38d204a9635e24a0173543ba8d49a491cc94370%3A%3A98727;
-        path=/; expires=Thu, 10-May-2012 17:35:08 GMT
     body: ! '[{"created_at":"2012-01-12T20:49:23Z","deleted_at":null,"id":13950097,"item_type":"image","name":"favicon.ico","private":true,"redirect_url":null,"remote_url":"http://f.cl.ly/items/0p2t030e0a1N091o2t3o/favicon.ico","source":"Mozilla/5.0
       (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.75
       Safari/535.7","updated_at":"2012-02-07T15:34:17Z","view_counter":3,"href":"http://my.cl.ly/items/13950097","url":"http://cl.ly/0P281s1u1J1p47241B3o","content_url":"http://cl.ly/0P281s1u1J1p47241B3o/favicon.ico","icon":"http://assets.my.cld.me/images/item-types/image.png","thumbnail_url":"http://thumbs.cl.ly/0P281s1u1J1p47241B3o","subscribed":false,"download_url":"http://api.cld.me/0P281s1u1J1p47241B3o/download/favicon.ico"},{"created_at":"2012-01-12T20:49:13Z","deleted_at":null,"id":13950087,"item_type":"image","name":"\u00f8\u00e6\u00d8\u00fc\u00f6\u00e4\u00df!?&+-.jpeg","private":true,"redirect_url":null,"remote_url":"http://f.cl.ly/items/0p2t030e0a1N091o2t3o/%C3%B8%C3%A6%C3%98%C3%BC%C3%B6%C3%A4%C3%9F!%3F&%2B-.jpeg","source":"Mozilla/5.0
@@ -78,12 +65,14 @@ http_interactions:
       29","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:03Z","view_counter":0,"href":"http://my.cl.ly/items/13949565","url":"http://cl.ly/3B1V3H0c0c3s3O2u1Q0c","content_url":"http://cl.ly/3B1V3H0c0c3s3O2u1Q0c","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-01-12T20:39:03Z","deleted_at":null,"id":13949564,"item_type":"bookmark","name":"Link
       28","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:03Z","view_counter":0,"href":"http://my.cl.ly/items/13949564","url":"http://cl.ly/1w2e1K3j0T14193P2y1j","content_url":"http://cl.ly/1w2e1K3j0T14193P2y1j","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false}]'
     http_version: 
-  recorded_at: Fri, 10 Feb 2012 17:35:08 GMT
+  recorded_at: Tue, 14 Feb 2012 14:41:41 GMT
 - request:
     method: get
-    uri: http://arthur%40dent.com:towel@my.cl.ly/items?api_version=1.2
+    uri: http://my.cl.ly/items?api_version=1.2
     body: ''
     headers:
+      Authorization:
+      - Token token="8762f6679f8d001016b2"
       Accept:
       - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
         text/plain
@@ -97,18 +86,13 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - ! '"6170dab5c529d7a45d28b2195bf2c08c"'
+      - ! '"6df38c11329d1bc827b7e2c1282b89e6"'
       Last-Modified:
-      - Fri, 10 Feb 2012 15:40:13 GMT
+      - Tue, 14 Feb 2012 14:41:31 GMT
       Server:
-      - thin 1.2.11 codename Bat-Shit Crazy
-      Set-Cookie:
-      - _engine_session=BAh7CEkiD3Nlc3Npb25faWQGOgZFRiIlOTQwYzk0NWU1MzdkODZhMDI1MzYzZmI0ZmNlMzBhYTVJIhV1c2VyX2NyZWRlbnRpYWxzBjsARkkiAYAxYTM5Mjg4MzhlZDcwY2UyOGVkYWRkOGE1MDU2NWU1MzFlNzlhOTg4ODQxZmY5NTkxMjAzNWNhYTU1ZmIxZTZhODliMmMzN2VlYzkzMzFmOWE2ZDRjN2Y1ZDM4ZDIwNGE5NjM1ZTI0YTAxNzM1NDNiYThkNDlhNDkxY2M5NDM3MAY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkDp4EB--e76495da3635dc32e11fd0d18dfd1f761b695957;
-        path=/; HttpOnly
-      - user_credentials=1a3928838ed70ce28edadd8a50565e531e79a988841ff95912035caa55fb1e6a89b2c37eec9331f9a6d4c7f5d38d204a9635e24a0173543ba8d49a491cc94370%3A%3A98727;
-        path=/; expires=Thu, 10-May-2012 17:35:08 GMT
+      - thin 1.3.1 codename Triple Espresso
       X-Runtime:
-      - '0.116037'
+      - '0.107927'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
@@ -147,12 +131,14 @@ http_interactions:
       29","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:03Z","view_counter":0,"href":"http://my.cl.ly/items/13949565","url":"http://cl.ly/3B1V3H0c0c3s3O2u1Q0c","content_url":"http://cl.ly/3B1V3H0c0c3s3O2u1Q0c","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-01-12T20:39:03Z","deleted_at":null,"id":13949564,"item_type":"bookmark","name":"Link
       28","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:03Z","view_counter":0,"href":"http://my.cl.ly/items/13949564","url":"http://cl.ly/1w2e1K3j0T14193P2y1j","content_url":"http://cl.ly/1w2e1K3j0T14193P2y1j","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false}],"links":{"self":"http://my.cl.ly/items?api_version=1.2&page=1&per_page=20","next":"http://my.cl.ly/items?api_version=1.2&page=2&per_page=20"}}'
     http_version: 
-  recorded_at: Fri, 10 Feb 2012 17:35:08 GMT
+  recorded_at: Tue, 14 Feb 2012 14:41:41 GMT
 - request:
     method: get
-    uri: http://arthur%40dent.com:towel@my.cl.ly/items/new?item%5Bprivate%5D=false
+    uri: http://my.cl.ly/items/new?item%5Bprivate%5D=false
     body: ''
     headers:
+      Authorization:
+      - Token token="8762f6679f8d001016b2"
       Accept:
       - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
         text/plain
@@ -166,27 +152,22 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - ! '"fcda1578e2dc152689e245d448a26379"'
+      - ! '"b9e6bd0dd31c2b0a7d54cf973ea7e376"'
       Link:
       - <http://store.getcloudapp.com/cart?email=arthur%40dent.com>; rel="payment"
       Server:
-      - thin 1.2.11 codename Bat-Shit Crazy
-      Set-Cookie:
-      - _engine_session=BAh7CEkiD3Nlc3Npb25faWQGOgZFRiIlZWQ4OWI0MTYxMDA1M2Q3ZGY1MmUzYjBlMGYzMmRiN2RJIhV1c2VyX2NyZWRlbnRpYWxzBjsARkkiAYAxYTM5Mjg4MzhlZDcwY2UyOGVkYWRkOGE1MDU2NWU1MzFlNzlhOTg4ODQxZmY5NTkxMjAzNWNhYTU1ZmIxZTZhODliMmMzN2VlYzkzMzFmOWE2ZDRjN2Y1ZDM4ZDIwNGE5NjM1ZTI0YTAxNzM1NDNiYThkNDlhNDkxY2M5NDM3MAY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkDp4EB--3fef9dd45777f5a50ff181f32083f048c9bec87d;
-        path=/; HttpOnly
-      - user_credentials=1a3928838ed70ce28edadd8a50565e531e79a988841ff95912035caa55fb1e6a89b2c37eec9331f9a6d4c7f5d38d204a9635e24a0173543ba8d49a491cc94370%3A%3A98727;
-        path=/; expires=Thu, 10-May-2012 17:35:09 GMT
+      - thin 1.3.1 codename Triple Espresso
       X-Runtime:
-      - '0.025434'
+      - '0.143324'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
-    body: ! '{"url":"http://f.cl.ly","max_upload_size":26214400,"uploads_remaining":10,"params":{"AWSAccessKeyId":"AKIAIDPUZISHSBEOFS6Q","acl":"public-read","key":"items/0k1T2d1J360F0r3r3R2t/${filename}","success_action_redirect":"http://my.cl.ly/items/s3?item%5Bprivate%5D=false","policy":"eyJleHBpcmF0aW9uIjoiMjAxMi0wMi0xMFQxNzo1MDowOVoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJmLmNsLmx5In0seyJhY2wiOiJwdWJsaWMtcmVhZCJ9LHsic3VjY2Vzc19hY3Rpb25fcmVkaXJlY3QiOiJodHRwOi8vbXkuY2wubHkvaXRlbXMvczM/aXRlbSU1QnByaXZhdGUlNUQ9ZmFsc2UifSxbImNvbnRlbnQtbGVuZ3RoLXJhbmdlIiwwLDI2MjE0NDAwXSxbInN0YXJ0cy13aXRoIiwiJGtleSIsIml0ZW1zLzBrMVQyZDFKMzYwRjByM3IzUjJ0LyJdXX0=","signature":"4A4teD2P7L7ggZ8wkmEG4cch530="}}'
+    body: ! '{"url":"http://f.cl.ly","max_upload_size":26214400,"uploads_remaining":10,"params":{"AWSAccessKeyId":"AKIAIDPUZISHSBEOFS6Q","acl":"public-read","key":"items/212h0C233L2p3329162a/${filename}","success_action_redirect":"http://my.cl.ly/items/s3?item%5Bprivate%5D=false","policy":"eyJleHBpcmF0aW9uIjoiMjAxMi0wMi0xNFQxNDo1Njo0MVoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJmLmNsLmx5In0seyJhY2wiOiJwdWJsaWMtcmVhZCJ9LHsic3VjY2Vzc19hY3Rpb25fcmVkaXJlY3QiOiJodHRwOi8vbXkuY2wubHkvaXRlbXMvczM/aXRlbSU1QnByaXZhdGUlNUQ9ZmFsc2UifSxbImNvbnRlbnQtbGVuZ3RoLXJhbmdlIiwwLDI2MjE0NDAwXSxbInN0YXJ0cy13aXRoIiwiJGtleSIsIml0ZW1zLzIxMmgwQzIzM0wycDMzMjkxNjJhLyJdXX0=","signature":"62GDpNzTsRvWXN1M1Nnr+LKzOJs="}}'
     http_version: 
-  recorded_at: Fri, 10 Feb 2012 17:35:09 GMT
+  recorded_at: Tue, 14 Feb 2012 14:41:41 GMT
 - request:
     method: post
     uri: http://f.cl.ly/
@@ -197,23 +178,23 @@ http_interactions:
       cnRQb3N0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9
       ImFjbCINCg0KcHVibGljLXJlYWQNCi0tLS0tLS0tLS0tLS1SdWJ5TXVsdGlw
       YXJ0UG9zdA0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1l
-      PSJrZXkiDQoNCml0ZW1zLzBrMVQyZDFKMzYwRjByM3IzUjJ0LyR7ZmlsZW5h
+      PSJrZXkiDQoNCml0ZW1zLzIxMmgwQzIzM0wycDMzMjkxNjJhLyR7ZmlsZW5h
       bWV9DQotLS0tLS0tLS0tLS0tUnVieU11bHRpcGFydFBvc3QNCkNvbnRlbnQt
       RGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0ic3VjY2Vzc19hY3Rpb25f
       cmVkaXJlY3QiDQoNCmh0dHA6Ly9teS5jbC5seS9pdGVtcy9zMz9pdGVtJTVC
       cHJpdmF0ZSU1RD1mYWxzZQ0KLS0tLS0tLS0tLS0tLVJ1YnlNdWx0aXBhcnRQ
       b3N0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9InBv
-      bGljeSINCg0KZXlKbGVIQnBjbUYwYVc5dUlqb2lNakF4TWkwd01pMHhNRlF4
-      TnpvMU1Eb3dPVm9pTENKamIyNWthWFJwYjI1eklqcGJleUppZFdOclpYUWlP
+      bGljeSINCg0KZXlKbGVIQnBjbUYwYVc5dUlqb2lNakF4TWkwd01pMHhORlF4
+      TkRvMU5qbzBNVm9pTENKamIyNWthWFJwYjI1eklqcGJleUppZFdOclpYUWlP
       aUptTG1Oc0xteDVJbjBzZXlKaFkyd2lPaUp3ZFdKc2FXTXRjbVZoWkNKOUxI
       c2ljM1ZqWTJWemMxOWhZM1JwYjI1ZmNtVmthWEpsWTNRaU9pSm9kSFJ3T2k4
       dmJYa3VZMnd1YkhrdmFYUmxiWE12Y3pNL2FYUmxiU1UxUW5CeWFYWmhkR1Vs
       TlVROVptRnNjMlVpZlN4YkltTnZiblJsYm5RdGJHVnVaM1JvTFhKaGJtZGxJ
       aXd3TERJMk1qRTBOREF3WFN4YkluTjBZWEowY3kxM2FYUm9JaXdpSkd0bGVT
-      SXNJbWwwWlcxekx6QnJNVlF5WkRGS016WXdSakJ5TTNJelVqSjBMeUpkWFgw
+      SXNJbWwwWlcxekx6SXhNbWd3UXpJek0wd3ljRE16TWpreE5qSmhMeUpkWFgw
       PQ0KLS0tLS0tLS0tLS0tLVJ1YnlNdWx0aXBhcnRQb3N0DQpDb250ZW50LURp
-      c3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9InNpZ25hdHVyZSINCg0KNEE0
-      dGVEMlA3TDdnZ1o4d2ttRUc0Y2NoNTMwPQ0KLS0tLS0tLS0tLS0tLVJ1YnlN
+      c3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9InNpZ25hdHVyZSINCg0KNjJH
+      RHBOelRzUnZXWE4xTTFObnIrTEt6T0pzPQ0KLS0tLS0tLS0tLS0tLVJ1YnlN
       dWx0aXBhcnRQb3N0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7
       IG5hbWU9ImZpbGUiOyBmaWxlbmFtZT0iZmF2aWNvbi5pY28iDQpDb250ZW50
       LUxlbmd0aDogMTE1MA0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCkNvbnRl
@@ -256,27 +237,29 @@ http_interactions:
       message: Continue
     headers:
       X-Amz-Id-2:
-      - v89GvINtMI1wUmz4Sy6Ubtsf38OE7m7f7NIx+fwKPfQmCisxvecuf4w3VifTHOeE
+      - K6Bx0xvhE6QAaeNe2XHfcro4/la2fIApXbvgVxSPyDxXeRF+WHvZCA/EzuQ7PBSt
       X-Amz-Request-Id:
-      - 4B830D091FE22F40
+      - 3429A5A3B719DB29
       Date:
-      - Fri, 10 Feb 2012 17:35:10 GMT
+      - Tue, 14 Feb 2012 14:41:42 GMT
       Etag:
       - ! '"567d2d49d2d30e2db956d680a4d03f25"'
       Location:
-      - http://my.cl.ly/items/s3?item%5Bprivate%5D=false&bucket=f.cl.ly&key=items%2F0k1T2d1J360F0r3r3R2t%2Ffavicon.ico&etag=%22567d2d49d2d30e2db956d680a4d03f25%22
+      - http://my.cl.ly/items/s3?item%5Bprivate%5D=false&bucket=f.cl.ly&key=items%2F212h0C233L2p3329162a%2Ffavicon.ico&etag=%22567d2d49d2d30e2db956d680a4d03f25%22
       Content-Length:
       - '0'
       Server:
       - AmazonS3
     body: ''
     http_version: 
-  recorded_at: Fri, 10 Feb 2012 17:35:09 GMT
+  recorded_at: Tue, 14 Feb 2012 14:41:41 GMT
 - request:
     method: get
-    uri: http://arthur%40dent.com:towel@my.cl.ly/items/s3?bucket=f.cl.ly&etag=%22567d2d49d2d30e2db956d680a4d03f25%22&key=items/0k1T2d1J360F0r3r3R2t/favicon.ico&item%5Bprivate%5D=false
+    uri: http://my.cl.ly/items/s3?bucket=f.cl.ly&etag=%22567d2d49d2d30e2db956d680a4d03f25%22&key=items/212h0C233L2p3329162a/favicon.ico&item%5Bprivate%5D=false
     body: ''
     headers:
+      Authorization:
+      - Token token="8762f6679f8d001016b2"
       Accept:
       - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
         text/plain
@@ -290,23 +273,21 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - ! '"9a1811985f6f69070eb701373cc1c28d"'
+      - ! '"8be83558ab34150c7ea1e01fc6947559"'
       Server:
-      - thin 1.2.11 codename Bat-Shit Crazy
+      - thin 1.3.1 codename Triple Espresso
       Set-Cookie:
-      - _engine_session=BAh7CUkiD3Nlc3Npb25faWQGOgZFRiIlMTRkZTVlOGM4NmJkMDIxMjQwZTBiN2IzNTY0OGZhZGFJIhV1c2VyX2NyZWRlbnRpYWxzBjsARkkiAYAxYTM5Mjg4MzhlZDcwY2UyOGVkYWRkOGE1MDU2NWU1MzFlNzlhOTg4ODQxZmY5NTkxMjAzNWNhYTU1ZmIxZTZhODliMmMzN2VlYzkzMzFmOWE2ZDRjN2Y1ZDM4ZDIwNGE5NjM1ZTI0YTAxNzM1NDNiYThkNDlhNDkxY2M5NDM3MAY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkDp4EBSSIKZmxhc2gGOwBGSUM6JUFjdGlvbkRpc3BhdGNoOjpGbGFzaDo6Rmxhc2hIYXNoewY6DHN1Y2Nlc3NJIg5VcGxvYWRlZCEGOwBGBjoKQHVzZWRvOghTZXQGOgpAaGFzaHsA--f670319ae5057145f75bbc7d584f3cded5fd7608;
+      - _engine_session=BAh7B0kiD3Nlc3Npb25faWQGOgZFRiIlMmEyYjViOGFmOGY2MzJiNDMwMTNjZGMzYzI5NTcxNjNJIgpmbGFzaAY7AEZJQzolQWN0aW9uRGlzcGF0Y2g6OkZsYXNoOjpGbGFzaEhhc2h7BjoMc3VjY2Vzc0kiDlVwbG9hZGVkIQY7AEYGOgpAdXNlZG86CFNldAY6CkBoYXNoewA%3D--3e7b8812bb6f6f1587f4c2e154503c71f9f101ce;
         path=/; HttpOnly
-      - user_credentials=1a3928838ed70ce28edadd8a50565e531e79a988841ff95912035caa55fb1e6a89b2c37eec9331f9a6d4c7f5d38d204a9635e24a0173543ba8d49a491cc94370%3A%3A98727;
-        path=/; expires=Thu, 10-May-2012 17:35:09 GMT
       X-Runtime:
-      - '0.100044'
+      - '0.129506'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
-    body: ! '{"created_at":"2012-02-10T17:35:09Z","deleted_at":null,"id":15058205,"item_type":"image","name":"favicon.ico","private":false,"redirect_url":null,"remote_url":"http://f.cl.ly/items/0k1T2d1J360F0r3r3R2t/favicon.ico","source":null,"updated_at":"2012-02-10T17:35:09Z","view_counter":0,"href":"http://my.cl.ly/items/15058205","url":"http://cl.ly/E61N","content_url":"http://cl.ly/E61N/favicon.ico","icon":"http://assets.my.cld.me/images/item-types/image.png","thumbnail_url":"http://thumbs.cl.ly/E61N","subscribed":false,"download_url":"http://api.cld.me/E61N/download/favicon.ico"}'
+    body: ! '{"created_at":"2012-02-14T14:41:41Z","deleted_at":null,"id":15182967,"item_type":"image","name":"favicon.ico","private":false,"redirect_url":null,"remote_url":"http://f.cl.ly/items/212h0C233L2p3329162a/favicon.ico","source":null,"updated_at":"2012-02-14T14:41:41Z","view_counter":0,"href":"http://my.cl.ly/items/15182967","url":"http://cl.ly/EBCU","content_url":"http://cl.ly/EBCU/favicon.ico","icon":"http://assets.my.cld.me/images/item-types/image.png","thumbnail_url":"http://thumbs.cl.ly/EBCU","subscribed":false,"download_url":"http://api.cld.me/EBCU/download/favicon.ico"}'
     http_version: 
-  recorded_at: Fri, 10 Feb 2012 17:35:09 GMT
+  recorded_at: Tue, 14 Feb 2012 14:41:41 GMT
 recorded_with: VCR 2.0.0.rc1

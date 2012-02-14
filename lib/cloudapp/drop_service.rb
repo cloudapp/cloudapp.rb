@@ -1,15 +1,16 @@
 require 'leadlight'
 require 'addressable/uri'
-require 'cloudapp/digestable_typhoeus'
 require 'cloudapp/drop'
 
 # Leadlight service for mucking about with drops in the CloudApp API.
 #
 # Usage:
 #
-#   # Create a new service passing CloudApp account credentials:
-#   identity = Identity.from_config email: 'arthur@dent.com', password: 'towel'
-#   service  = DropSerivce.as_identity identity
+#   # Retrieve an account's token
+#   token = DropSerivce.retrieve_token 'arthur@dent.com', 'towel'
+#
+#   # Create a new service passing CloudApp account token:
+#   service = DropSerivce.using_token token
 #
 #   # List all drops:
 #   service.drops
@@ -46,7 +47,7 @@ module CloudApp
     Leadlight.build_connection_common do |c|
       c.request :multipart
       c.request :url_encoded
-      c.adapter :digestable_typhoeus
+      c.adapter :typhoeus
     end
 
     Leadlight.build_service(self) do
@@ -106,15 +107,26 @@ module CloudApp
       end
     end
 
-    def identity=(identity)
-      connection.options[:authentication] = { username: identity.email,
-                                              password: identity.password }
+    def self.using_token(token, service_options = {})
+      new(service_options).tap do |service|
+        service.token = token
+      end
     end
 
-    def self.as_identity(identity, service_options = {})
-      new(service_options).tap do |service|
-        service.identity = identity
-      end
+    def self.retrieve_token(email, password, service_options = {})
+      new(service_options).token email, password
+    end
+
+
+    def token=(token)
+      connection.token_auth token
+    end
+
+    def token(email, password)
+      post('/account/token', {}, { email: email, password: password }).
+        raise_on_error.submit_and_wait do |response|
+          return response['token']
+        end
     end
 
     def drops(count = 20)

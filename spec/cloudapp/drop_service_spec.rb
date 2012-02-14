@@ -1,10 +1,6 @@
 require 'helper'
 require 'support/vcr_rspec'
 
-# Using master branch of Leadlight
-require 'bundler'
-Bundler.setup
-
 require 'cloudapp/drop_service'
 
 describe CloudApp::DropService do
@@ -15,28 +11,36 @@ describe CloudApp::DropService do
     Logger.new logfile
   end
   let(:service_options) {{ logger: logger }}
-  let(:identity) { stub email: 'arthur@dent.com', password: 'towel' }
+  let(:token) { '8762f6679f8d001016b2' }
 
-  describe '.as_identity' do
-    it 'returns a service with given identity' do
-      service = CloudApp::DropService.as_identity identity, service_options
+  describe '.using_token' do
+    subject { CloudApp::DropService.using_token(token, service_options) }
 
-      auth = service.connection.options[:authentication]
-      auth.should be
-      auth[:username].should eq(identity.email)
-      auth[:password].should eq(identity.password)
+    it 'returns a service authenticated with given token' do
+      VCR.use_cassette('DropService/list_drops') {
+        subject.drops
+      }
+    end
+  end
+
+  describe '.retrieve_token' do
+    subject {
+      VCR.use_cassette('DropService/retrieve_token') {
+        CloudApp::DropService.retrieve_token 'arthur@dent.com', 'towel',
+                                             service_options
+      }
+    }
+
+    it 'returns the token from the given account' do
+      subject.should eql(token)
     end
   end
 
   describe '#drops' do
-    let(:service) { CloudApp::DropService.as_identity identity, service_options }
+    let(:service) { CloudApp::DropService.using_token token, service_options }
 
     describe 'listing drops' do
-      subject do
-        VCR.use_cassette 'DropService/list_drops' do
-          service.drops
-        end
-      end
+      subject { VCR.use_cassette('DropService/list_drops') { service.drops }}
 
       it 'has 20 drops' do
         subject.should have(20).items
@@ -48,11 +52,7 @@ describe CloudApp::DropService do
     end
 
     describe 'listing trash' do
-      subject do
-        VCR.use_cassette 'DropService/list_trash' do
-          service.trash
-        end
-      end
+      subject { VCR.use_cassette('DropService/list_trash') { service.trash }}
 
       it 'has 2 drops' do
         subject.should have(2).items
@@ -66,11 +66,11 @@ describe CloudApp::DropService do
     describe 'limiting drops list' do
       let(:limit) { 5 }
 
-      subject do
-        VCR.use_cassette 'DropService/list_drops_with_limit' do
+      subject {
+        VCR.use_cassette('DropService/list_drops_with_limit') {
           service.drops limit
-        end
-      end
+        }
+      }
 
       it 'has the given number of drops' do
         subject.should have(limit).items
@@ -79,16 +79,16 @@ describe CloudApp::DropService do
   end
 
   describe '#create' do
-    let(:service) { CloudApp::DropService.as_identity identity, service_options }
+    let(:service) { CloudApp::DropService.using_token token, service_options }
     let(:url)     { 'http://getcloudapp.com' }
     let(:name)    { 'CloudApp' }
 
     describe 'creating a bookmark' do
-      subject do
-        VCR.use_cassette 'DropService/create_bookmark' do
+      subject {
+        VCR.use_cassette('DropService/create_bookmark') {
           service.create url: url
-        end
-      end
+        }
+      }
 
       it 'is a Drop' do
         subject.should be_a(CloudApp::Drop)
@@ -104,11 +104,11 @@ describe CloudApp::DropService do
     end
 
     describe 'creating a bookmark with a name' do
-      subject do
-        VCR.use_cassette 'DropService/create_bookmark_with_name' do
+      subject {
+        VCR.use_cassette('DropService/create_bookmark_with_name') {
           service.create url: url, name: name
-        end
-      end
+        }
+      }
 
       it 'has the given url' do
         subject.redirect_url.should eq(url)
@@ -120,11 +120,11 @@ describe CloudApp::DropService do
     end
 
     describe 'creating a public bookmark' do
-      subject do
-        VCR.use_cassette 'DropService/create_public_bookmark' do
+      subject {
+        VCR.use_cassette('DropService/create_public_bookmark') {
           service.create url: url, name: name, private: false
-        end
-      end
+        }
+      }
 
       it 'is public' do
         subject.should be_public
@@ -132,11 +132,11 @@ describe CloudApp::DropService do
     end
 
     describe 'creating a private bookmark' do
-      subject do
-        VCR.use_cassette 'DropService/create_private_bookmark' do
+      subject {
+        VCR.use_cassette('DropService/create_private_bookmark') {
           service.create url: url, name: name, private: true
-        end
-      end
+        }
+      }
 
       it 'is private' do
         subject.should be_private
@@ -148,11 +148,11 @@ describe CloudApp::DropService do
         Pathname('../../support/files/favicon.ico').expand_path(__FILE__)
       end
 
-      subject do
-        VCR.use_cassette 'DropService/upload_file' do
+      subject {
+        VCR.use_cassette('DropService/upload_file') {
           service.create path: path
-        end
-      end
+        }
+      }
 
       it 'is a Drop' do
         subject.should be_a(CloudApp::Drop)
@@ -160,7 +160,7 @@ describe CloudApp::DropService do
 
       it 'has a remote url' do
         subject.remote_url.
-          should eq('http://f.cl.ly/items/0L3T3d1q3A3b182V3c3T/favicon.ico')
+          should eq('http://f.cl.ly/items/1n331R181E100P3h2x3f/favicon.ico')
       end
 
       it 'has the name of the file' do
@@ -173,11 +173,11 @@ describe CloudApp::DropService do
         Pathname('../../support/files/favicon.ico').expand_path(__FILE__)
       end
 
-      subject do
-        VCR.use_cassette 'DropService/upload_public_file' do
+      subject {
+        VCR.use_cassette('DropService/upload_public_file') {
           service.create path: path, private: false
-        end
-      end
+        }
+      }
 
       it 'is public' do
         subject.should be_public
@@ -195,15 +195,15 @@ describe CloudApp::DropService do
   end
 
   describe 'with bad authentication' do
-    let(:identity) { stub email: 'ford@prefect', password: 'earthling' }
-    let(:service)  { CloudApp::DropService.as_identity identity, service_options }
+    let(:token)   { 'bad-token' }
+    let(:service) { CloudApp::DropService.using_token token, service_options }
 
     describe '#drops' do
-      subject do
-        VCR.use_cassette 'DropService/list_drops_with_bad_credentials' do
+      subject {
+        VCR.use_cassette('DropService/list_drops_with_bad_credentials') {
           service.drops
-        end
-      end
+        }
+      }
 
       it 'raises an unauthorized error' do
         lambda { subject }.
@@ -212,11 +212,11 @@ describe CloudApp::DropService do
     end
 
     describe '#trash' do
-      subject do
-        VCR.use_cassette 'DropService/list_trash_with_bad_credentials' do
+      subject {
+        VCR.use_cassette('DropService/list_trash_with_bad_credentials') {
           service.trash
-        end
-      end
+        }
+      }
 
       it 'raises an unauthorized error' do
         lambda { subject }.
@@ -225,11 +225,11 @@ describe CloudApp::DropService do
     end
 
     describe '#create' do
-      subject do
-        VCR.use_cassette 'DropService/create_bookmark_with_bad_credentials' do
+      subject {
+        VCR.use_cassette('DropService/create_bookmark_with_bad_credentials') {
           service.create url: 'http://getcloudapp.com'
-        end
-      end
+        }
+      }
 
       it 'raises an unauthorized error' do
         lambda { subject }.

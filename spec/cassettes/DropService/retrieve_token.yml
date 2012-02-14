@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://my.cl.ly/account/token
+    body: ! '{"email":"arthur@dent.com","password":"towel"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - ! '"39f614d38be5006649ceb5349182a0fa"'
+      Server:
+      - thin 1.3.1 codename Triple Espresso
+      Set-Cookie:
+      - _engine_session=BAh7CEkiFXVzZXJfY3JlZGVudGlhbHMGOgZFRkkiAYAxYTM5Mjg4MzhlZDcwY2UyOGVkYWRkOGE1MDU2NWU1MzFlNzlhOTg4ODQxZmY5NTkxMjAzNWNhYTU1ZmIxZTZhODliMmMzN2VlYzkzMzFmOWE2ZDRjN2Y1ZDM4ZDIwNGE5NjM1ZTI0YTAxNzM1NDNiYThkNDlhNDkxY2M5NDM3MAY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkDp4EBSSIPc2Vzc2lvbl9pZAY7AEYiJWY3MTk1N2Y0NmFlMWY4MDc1OGM5MWEzZjNkYmU5OTg2--e2c4249daa8c1893da78c6f68992a4fe452a73b6;
+        path=/; HttpOnly
+      - user_credentials=1a3928838ed70ce28edadd8a50565e531e79a988841ff95912035caa55fb1e6a89b2c37eec9331f9a6d4c7f5d38d204a9635e24a0173543ba8d49a491cc94370%3A%3A98727;
+        path=/; expires=Mon, 14-May-2012 14:25:06 GMT
+      X-Runtime:
+      - '0.022904'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body: ! '{"token":"8762f6679f8d001016b2"}'
+    http_version: 
+  recorded_at: Tue, 14 Feb 2012 14:25:06 GMT
+recorded_with: VCR 2.0.0.rc1
