@@ -1,3 +1,3 @@
 module CloudApp
-  VERSION = '0.0.16'
+  VERSION = '1.0.0'
 end
