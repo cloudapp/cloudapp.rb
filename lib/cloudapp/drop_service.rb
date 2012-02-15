@@ -184,9 +184,10 @@ module CloudApp
           payload = details['params'].merge file: file
 
           conn = Faraday.new(url: uri.site) do |builder|
-            builder.request :multipart
-            builder.request :url_encoded
-            builder.adapter :typhoeus
+            builder.request  :multipart
+            builder.request  :url_encoded
+            builder.response :logger, logger
+            builder.adapter  :typhoeus
           end
 
           conn.post(uri.request_uri, payload).on_complete do |env|
