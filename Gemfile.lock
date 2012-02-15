@@ -5,8 +5,8 @@ PATH
       addressable
       faraday (~> 0.8.0.rc2)
       gli
-      highline (~> 1.6.11)
-      leadlight (~> 0.0.4)
+      highline
+      leadlight (~> 0.0.5)
       typhoeus
 
 GEM
@@ -24,14 +24,14 @@ GEM
     hookr (1.1.1)
       fail-fast (= 1.0.0)
     hpricot (0.8.6)
-    leadlight (0.0.4)
+    leadlight (0.0.5)
       addressable
       faraday
       fattr
       hookr
       link_header
       mime-types
-      multi_json
+      multi_json (~> 1.0.4)
     link_header (0.0.5)
     mime-types (1.17.2)
     multi_json (1.0.4)
