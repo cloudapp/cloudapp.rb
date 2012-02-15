@@ -5,8 +5,8 @@ PATH
       addressable
       faraday (~> 0.8.0.rc2)
       gli
-      highline
-      leadlight
+      highline (~> 1.6.11)
+      leadlight (~> 0.0.4)
       typhoeus
 
 GEM
