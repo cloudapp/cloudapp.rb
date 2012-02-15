@@ -16,6 +16,10 @@ _Usage from Ruby is still a work in progress._
 Experience all the pleasures of sharing with CloudApp now in your terminal. The
 goal of `cloudapp` is to be simple and Unix-friendly.
 
+### Requirements
+
+`cloudapp` requires Ruby 1.9.2 or greater.
+
 ### Quick Start
 
     gem install cloudapp

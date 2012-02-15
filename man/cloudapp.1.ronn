@@ -42,6 +42,10 @@ terminal and other times it's the only tool available.
   * `-n` <count>, `--count`=<count>:
     Display <count> drops. (Default: **20**)
 
+## REQUIREMENTS
+
+`cloudapp` requires Ruby 1.9.2 or greater.
+
 ## EXAMPLES
 
 List newest 20 drops:
