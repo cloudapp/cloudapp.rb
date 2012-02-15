@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://my.cl.ly/
+    uri: https://my.cl.ly/
     body: ''
     headers:
       Authorization:
@@ -68,7 +68,7 @@ http_interactions:
   recorded_at: Tue, 14 Feb 2012 14:39:14 GMT
 - request:
     method: post
-    uri: http://my.cl.ly/items?api_version=1.2
+    uri: https://my.cl.ly/items?api_version=1.2
     body: ! '{"item":{"name":"CloudApp","redirect_url":"http://getcloudapp.com","private":false}}'
     headers:
       Content-Type:

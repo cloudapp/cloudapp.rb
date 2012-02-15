@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://my.cl.ly/
+    uri: https://my.cl.ly/
     body: ''
     headers:
       Authorization:
@@ -68,7 +68,7 @@ http_interactions:
   recorded_at: Tue, 14 Feb 2012 14:28:00 GMT
 - request:
     method: get
-    uri: http://my.cl.ly/items?api_version=1.2&deleted=true&per_page=20
+    uri: https://my.cl.ly/items?api_version=1.2&deleted=true&per_page=20
     body: ''
     headers:
       Authorization:

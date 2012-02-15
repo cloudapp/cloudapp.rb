@@ -51,7 +51,7 @@ module CloudApp
     end
 
     Leadlight.build_service(self) do
-      url 'http://my.cl.ly'
+      url 'https://my.cl.ly'
 
       # Add links present in the response body.
       #   { links: { self: "...", next: "...", prev: "..." } }
@@ -61,6 +61,12 @@ module CloudApp
         self['links'].each do |rel, href|
           add_link href, rel
         end
+      end
+
+      tint 'force_ssl_s3_upload' do
+        match_path '/items/new'
+        uri = Addressable::URI.parse self['url']
+        self['url'] = "https://s3.amazonaws.com/#{ uri.host }#{ uri.request_uri }"
       end
 
       tint 'root' do
@@ -103,6 +109,16 @@ module CloudApp
             link('self').put({}, deleted: true, item: { deleted_at: nil }).
               raise_on_error.submit_and_wait
           end
+        end
+      end
+    end
+
+    # Temporarily disable SSL verification until new SSL cert has been added to
+    # production.
+    on_prepare_request do |event, request|
+      def request.to_env(*args)
+        super.tap do |env|
+          env[:ssl] = { verify: false }
         end
       end
     end
@@ -191,8 +207,13 @@ module CloudApp
           end
 
           conn.post(uri.request_uri, payload).on_complete do |env|
-            get(env[:response_headers]['Location']).raise_on_error.
-              submit_and_wait {|new_drop| return Drop.new new_drop }
+            # Follow redirect back to API using SSL.
+            location = Addressable::URI.parse env[:response_headers]['Location']
+            location.scheme = 'https'
+
+            get(location).raise_on_error.submit_and_wait do |new_drop|
+              return Drop.new new_drop
+            end
           end
         end
     end

@@ -153,7 +153,7 @@ describe CloudApp::DropService do
 
       it 'has a remote url' do
         subject.remote_url.
-          should eq('http://f.cl.ly/items/1n331R181E100P3h2x3f/favicon.ico')
+          should eq('http://f.cl.ly/items/0P3c3c1V3v1H3I3p3x0k/favicon.ico')
       end
 
       it 'has the name of the file' do

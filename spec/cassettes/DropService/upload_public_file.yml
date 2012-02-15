@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://my.cl.ly/
+    uri: https://my.cl.ly/
     body: ''
     headers:
       Authorization:
@@ -20,13 +20,13 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - ! '"6df38c11329d1bc827b7e2c1282b89e6"'
+      - ! '"8338ad65017a4f430109d336992c2424"'
       Last-Modified:
-      - Tue, 14 Feb 2012 14:41:31 GMT
+      - Wed, 15 Feb 2012 14:38:48 GMT
       Server:
       - thin 1.3.1 codename Triple Espresso
       X-Runtime:
-      - '0.190430'
+      - '0.121075'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
@@ -65,10 +65,10 @@ http_interactions:
       29","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:03Z","view_counter":0,"href":"http://my.cl.ly/items/13949565","url":"http://cl.ly/3B1V3H0c0c3s3O2u1Q0c","content_url":"http://cl.ly/3B1V3H0c0c3s3O2u1Q0c","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-01-12T20:39:03Z","deleted_at":null,"id":13949564,"item_type":"bookmark","name":"Link
       28","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:03Z","view_counter":0,"href":"http://my.cl.ly/items/13949564","url":"http://cl.ly/1w2e1K3j0T14193P2y1j","content_url":"http://cl.ly/1w2e1K3j0T14193P2y1j","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false}]'
     http_version: 
-  recorded_at: Tue, 14 Feb 2012 14:41:41 GMT
+  recorded_at: Wed, 15 Feb 2012 14:39:01 GMT
 - request:
     method: get
-    uri: http://my.cl.ly/items?api_version=1.2
+    uri: https://my.cl.ly/items?api_version=1.2
     body: ''
     headers:
       Authorization:
@@ -86,13 +86,13 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - ! '"6df38c11329d1bc827b7e2c1282b89e6"'
+      - ! '"8338ad65017a4f430109d336992c2424"'
       Last-Modified:
-      - Tue, 14 Feb 2012 14:41:31 GMT
+      - Wed, 15 Feb 2012 14:38:48 GMT
       Server:
       - thin 1.3.1 codename Triple Espresso
       X-Runtime:
-      - '0.107927'
+      - '0.093783'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
@@ -129,12 +129,12 @@ http_interactions:
       31","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:03Z","view_counter":0,"href":"http://my.cl.ly/items/13949567","url":"http://cl.ly/260m2h3T0O2P272k2F3h","content_url":"http://cl.ly/260m2h3T0O2P272k2F3h","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-01-12T20:39:03Z","deleted_at":null,"id":13949566,"item_type":"bookmark","name":"Link
       30","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:03Z","view_counter":0,"href":"http://my.cl.ly/items/13949566","url":"http://cl.ly/411H1g1a3y2T2B3U322x","content_url":"http://cl.ly/411H1g1a3y2T2B3U322x","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-01-12T20:39:03Z","deleted_at":null,"id":13949565,"item_type":"bookmark","name":"Link
       29","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:03Z","view_counter":0,"href":"http://my.cl.ly/items/13949565","url":"http://cl.ly/3B1V3H0c0c3s3O2u1Q0c","content_url":"http://cl.ly/3B1V3H0c0c3s3O2u1Q0c","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false},{"created_at":"2012-01-12T20:39:03Z","deleted_at":null,"id":13949564,"item_type":"bookmark","name":"Link
-      28","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:03Z","view_counter":0,"href":"http://my.cl.ly/items/13949564","url":"http://cl.ly/1w2e1K3j0T14193P2y1j","content_url":"http://cl.ly/1w2e1K3j0T14193P2y1j","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false}],"links":{"self":"http://my.cl.ly/items?api_version=1.2&page=1&per_page=20","next":"http://my.cl.ly/items?api_version=1.2&page=2&per_page=20"}}'
+      28","private":true,"redirect_url":"http://getcloudapp.com","remote_url":null,"source":null,"updated_at":"2012-01-12T20:39:03Z","view_counter":0,"href":"http://my.cl.ly/items/13949564","url":"http://cl.ly/1w2e1K3j0T14193P2y1j","content_url":"http://cl.ly/1w2e1K3j0T14193P2y1j","icon":"http://assets.my.cld.me/images/item-types/bookmark.png","subscribed":false}],"links":{"self":"https://my.cl.ly/items?api_version=1.2&page=1&per_page=20","next":"https://my.cl.ly/items?api_version=1.2&page=2&per_page=20"}}'
     http_version: 
-  recorded_at: Tue, 14 Feb 2012 14:41:41 GMT
+  recorded_at: Wed, 15 Feb 2012 14:39:02 GMT
 - request:
     method: get
-    uri: http://my.cl.ly/items/new?item%5Bprivate%5D=false
+    uri: https://my.cl.ly/items/new?item%5Bprivate%5D=false
     body: ''
     headers:
       Authorization:
@@ -152,25 +152,25 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - ! '"b9e6bd0dd31c2b0a7d54cf973ea7e376"'
+      - ! '"2d1af46dfc22262da0e9cf935b9793f4"'
       Link:
       - <http://store.getcloudapp.com/cart?email=arthur%40dent.com>; rel="payment"
       Server:
       - thin 1.3.1 codename Triple Espresso
       X-Runtime:
-      - '0.143324'
+      - '0.037587'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
-    body: ! '{"url":"http://f.cl.ly","max_upload_size":26214400,"uploads_remaining":10,"params":{"AWSAccessKeyId":"AKIAIDPUZISHSBEOFS6Q","acl":"public-read","key":"items/212h0C233L2p3329162a/${filename}","success_action_redirect":"http://my.cl.ly/items/s3?item%5Bprivate%5D=false","policy":"eyJleHBpcmF0aW9uIjoiMjAxMi0wMi0xNFQxNDo1Njo0MVoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJmLmNsLmx5In0seyJhY2wiOiJwdWJsaWMtcmVhZCJ9LHsic3VjY2Vzc19hY3Rpb25fcmVkaXJlY3QiOiJodHRwOi8vbXkuY2wubHkvaXRlbXMvczM/aXRlbSU1QnByaXZhdGUlNUQ9ZmFsc2UifSxbImNvbnRlbnQtbGVuZ3RoLXJhbmdlIiwwLDI2MjE0NDAwXSxbInN0YXJ0cy13aXRoIiwiJGtleSIsIml0ZW1zLzIxMmgwQzIzM0wycDMzMjkxNjJhLyJdXX0=","signature":"62GDpNzTsRvWXN1M1Nnr+LKzOJs="}}'
+    body: ! '{"url":"http://f.cl.ly","max_upload_size":26214400,"uploads_remaining":10,"params":{"AWSAccessKeyId":"AKIAIDPUZISHSBEOFS6Q","acl":"public-read","key":"items/2B0E373Z1J2U1u071E28/${filename}","success_action_redirect":"http://my.cl.ly/items/s3?item%5Bprivate%5D=false","policy":"eyJleHBpcmF0aW9uIjoiMjAxMi0wMi0xNVQxNDo1Mzo1OFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJmLmNsLmx5In0seyJhY2wiOiJwdWJsaWMtcmVhZCJ9LHsic3VjY2Vzc19hY3Rpb25fcmVkaXJlY3QiOiJodHRwOi8vbXkuY2wubHkvaXRlbXMvczM/aXRlbSU1QnByaXZhdGUlNUQ9ZmFsc2UifSxbImNvbnRlbnQtbGVuZ3RoLXJhbmdlIiwwLDI2MjE0NDAwXSxbInN0YXJ0cy13aXRoIiwiJGtleSIsIml0ZW1zLzJCMEUzNzNaMUoyVTF1MDcxRTI4LyJdXX0=","signature":"Z/fOhkEIewdqkSx6J8GoeEf11Zs="}}'
     http_version: 
-  recorded_at: Tue, 14 Feb 2012 14:41:41 GMT
+  recorded_at: Wed, 15 Feb 2012 14:39:02 GMT
 - request:
     method: post
-    uri: http://f.cl.ly/
+    uri: https://s3.amazonaws.com/f.cl.ly/
     body: !binary |-
       LS0tLS0tLS0tLS0tLVJ1YnlNdWx0aXBhcnRQb3N0DQpDb250ZW50LURpc3Bv
       c2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9IkFXU0FjY2Vzc0tleUlkIg0KDQpB
@@ -178,23 +178,23 @@ http_interactions:
       cnRQb3N0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9
       ImFjbCINCg0KcHVibGljLXJlYWQNCi0tLS0tLS0tLS0tLS1SdWJ5TXVsdGlw
       YXJ0UG9zdA0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1l
-      PSJrZXkiDQoNCml0ZW1zLzIxMmgwQzIzM0wycDMzMjkxNjJhLyR7ZmlsZW5h
+      PSJrZXkiDQoNCml0ZW1zLzJCMEUzNzNaMUoyVTF1MDcxRTI4LyR7ZmlsZW5h
       bWV9DQotLS0tLS0tLS0tLS0tUnVieU11bHRpcGFydFBvc3QNCkNvbnRlbnQt
       RGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0ic3VjY2Vzc19hY3Rpb25f
       cmVkaXJlY3QiDQoNCmh0dHA6Ly9teS5jbC5seS9pdGVtcy9zMz9pdGVtJTVC
       cHJpdmF0ZSU1RD1mYWxzZQ0KLS0tLS0tLS0tLS0tLVJ1YnlNdWx0aXBhcnRQ
       b3N0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9InBv
-      bGljeSINCg0KZXlKbGVIQnBjbUYwYVc5dUlqb2lNakF4TWkwd01pMHhORlF4
-      TkRvMU5qbzBNVm9pTENKamIyNWthWFJwYjI1eklqcGJleUppZFdOclpYUWlP
+      bGljeSINCg0KZXlKbGVIQnBjbUYwYVc5dUlqb2lNakF4TWkwd01pMHhOVlF4
+      TkRvMU16bzFPRm9pTENKamIyNWthWFJwYjI1eklqcGJleUppZFdOclpYUWlP
       aUptTG1Oc0xteDVJbjBzZXlKaFkyd2lPaUp3ZFdKc2FXTXRjbVZoWkNKOUxI
       c2ljM1ZqWTJWemMxOWhZM1JwYjI1ZmNtVmthWEpsWTNRaU9pSm9kSFJ3T2k4
       dmJYa3VZMnd1YkhrdmFYUmxiWE12Y3pNL2FYUmxiU1UxUW5CeWFYWmhkR1Vs
       TlVROVptRnNjMlVpZlN4YkltTnZiblJsYm5RdGJHVnVaM1JvTFhKaGJtZGxJ
       aXd3TERJMk1qRTBOREF3WFN4YkluTjBZWEowY3kxM2FYUm9JaXdpSkd0bGVT
-      SXNJbWwwWlcxekx6SXhNbWd3UXpJek0wd3ljRE16TWpreE5qSmhMeUpkWFgw
+      SXNJbWwwWlcxekx6SkNNRVV6TnpOYU1Vb3lWVEYxTURjeFJUSTRMeUpkWFgw
       PQ0KLS0tLS0tLS0tLS0tLVJ1YnlNdWx0aXBhcnRQb3N0DQpDb250ZW50LURp
-      c3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9InNpZ25hdHVyZSINCg0KNjJH
-      RHBOelRzUnZXWE4xTTFObnIrTEt6T0pzPQ0KLS0tLS0tLS0tLS0tLVJ1YnlN
+      c3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9InNpZ25hdHVyZSINCg0KWi9m
+      T2hrRUlld2Rxa1N4Nko4R29lRWYxMVpzPQ0KLS0tLS0tLS0tLS0tLVJ1YnlN
       dWx0aXBhcnRQb3N0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7
       IG5hbWU9ImZpbGUiOyBmaWxlbmFtZT0iZmF2aWNvbi5pY28iDQpDb250ZW50
       LUxlbmd0aDogMTE1MA0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCkNvbnRl
@@ -237,25 +237,25 @@ http_interactions:
       message: Continue
     headers:
       X-Amz-Id-2:
-      - K6Bx0xvhE6QAaeNe2XHfcro4/la2fIApXbvgVxSPyDxXeRF+WHvZCA/EzuQ7PBSt
+      - Nlj8XPnwVy891z4sJdkBCHl7/9MDsbYKe+/E2juC+MnokanBIOCR6mzvcxjDsV8g
       X-Amz-Request-Id:
-      - 3429A5A3B719DB29
+      - 41BAA5FC5FE2314D
       Date:
-      - Tue, 14 Feb 2012 14:41:42 GMT
+      - Wed, 15 Feb 2012 14:39:00 GMT
       Etag:
       - ! '"567d2d49d2d30e2db956d680a4d03f25"'
       Location:
-      - http://my.cl.ly/items/s3?item%5Bprivate%5D=false&bucket=f.cl.ly&key=items%2F212h0C233L2p3329162a%2Ffavicon.ico&etag=%22567d2d49d2d30e2db956d680a4d03f25%22
+      - http://my.cl.ly/items/s3?item%5Bprivate%5D=false&bucket=f.cl.ly&key=items%2F2B0E373Z1J2U1u071E28%2Ffavicon.ico&etag=%22567d2d49d2d30e2db956d680a4d03f25%22
       Content-Length:
       - '0'
       Server:
       - AmazonS3
     body: ''
     http_version: 
-  recorded_at: Tue, 14 Feb 2012 14:41:41 GMT
+  recorded_at: Wed, 15 Feb 2012 14:39:02 GMT
 - request:
     method: get
-    uri: http://my.cl.ly/items/s3?bucket=f.cl.ly&etag=%22567d2d49d2d30e2db956d680a4d03f25%22&key=items/212h0C233L2p3329162a/favicon.ico&item%5Bprivate%5D=false
+    uri: https://my.cl.ly/items/s3?bucket=f.cl.ly&etag=%22567d2d49d2d30e2db956d680a4d03f25%22&key=items/2B0E373Z1J2U1u071E28/favicon.ico&item%5Bprivate%5D=false
     body: ''
     headers:
       Authorization:
@@ -273,21 +273,21 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - ! '"8be83558ab34150c7ea1e01fc6947559"'
+      - ! '"4b1474c95d8a0924601772aacc6e77f1"'
       Server:
       - thin 1.3.1 codename Triple Espresso
       Set-Cookie:
-      - _engine_session=BAh7B0kiD3Nlc3Npb25faWQGOgZFRiIlMmEyYjViOGFmOGY2MzJiNDMwMTNjZGMzYzI5NTcxNjNJIgpmbGFzaAY7AEZJQzolQWN0aW9uRGlzcGF0Y2g6OkZsYXNoOjpGbGFzaEhhc2h7BjoMc3VjY2Vzc0kiDlVwbG9hZGVkIQY7AEYGOgpAdXNlZG86CFNldAY6CkBoYXNoewA%3D--3e7b8812bb6f6f1587f4c2e154503c71f9f101ce;
+      - _engine_session=BAh7B0kiD3Nlc3Npb25faWQGOgZFRiIlYjUwMWYyMGY0MjU3OGZiNGQ4MzkzYzBiMDQ3YzU5Y2ZJIgpmbGFzaAY7AEZJQzolQWN0aW9uRGlzcGF0Y2g6OkZsYXNoOjpGbGFzaEhhc2h7BjoMc3VjY2Vzc0kiDlVwbG9hZGVkIQY7AEYGOgpAdXNlZG86CFNldAY6CkBoYXNoewA%3D--917f84e9cc0e750ba6f476a8949f4b63824a846d;
         path=/; HttpOnly
       X-Runtime:
-      - '0.129506'
+      - '0.063912'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
-    body: ! '{"created_at":"2012-02-14T14:41:41Z","deleted_at":null,"id":15182967,"item_type":"image","name":"favicon.ico","private":false,"redirect_url":null,"remote_url":"http://f.cl.ly/items/212h0C233L2p3329162a/favicon.ico","source":null,"updated_at":"2012-02-14T14:41:41Z","view_counter":0,"href":"http://my.cl.ly/items/15182967","url":"http://cl.ly/EBCU","content_url":"http://cl.ly/EBCU/favicon.ico","icon":"http://assets.my.cld.me/images/item-types/image.png","thumbnail_url":"http://thumbs.cl.ly/EBCU","subscribed":false,"download_url":"http://api.cld.me/EBCU/download/favicon.ico"}'
+    body: ! '{"created_at":"2012-02-15T14:38:59Z","deleted_at":null,"id":15224473,"item_type":"image","name":"favicon.ico","private":false,"redirect_url":null,"remote_url":"http://f.cl.ly/items/2B0E373Z1J2U1u071E28/favicon.ico","source":null,"updated_at":"2012-02-15T14:38:59Z","view_counter":0,"href":"http://my.cl.ly/items/15224473","url":"http://cl.ly/EEIA","content_url":"http://cl.ly/EEIA/favicon.ico","icon":"http://assets.my.cld.me/images/item-types/image.png","thumbnail_url":"http://thumbs.cl.ly/EEIA","subscribed":false,"download_url":"http://api.cld.me/EEIA/download/favicon.ico"}'
     http_version: 
-  recorded_at: Tue, 14 Feb 2012 14:41:41 GMT
+  recorded_at: Wed, 15 Feb 2012 14:39:03 GMT
 recorded_with: VCR 2.0.0.rc1
