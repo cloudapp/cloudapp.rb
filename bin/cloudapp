@@ -23,7 +23,7 @@ def service
   CloudApp::DropService.using_token config.token
 end
 
-def check_for_credentials
+def require_credentials
   return unless config.token.nil?
 
   $stdout.puts 'Sign into your CloudApp account.'
@@ -47,6 +47,22 @@ def privacy_from_options(options)
   end
 end
 
+def create_drop_action_on_command(c)
+  c.desc 'Use a private (long) link'
+  c.switch :private
+
+  c.desc 'Use a public (short) link'
+  c.switch :public
+
+  c.action do |global_options, options, args|
+    require_credentials
+    format  = format_from_options global_options
+    private = privacy_from_options options
+
+    yield format, private, args
+  end
+end
+
 
 include GLI
 
@@ -60,18 +76,7 @@ flag [:f, :format]
 desc 'Create a new bookmark to each url and print each link'
 arg_name 'url [url...]'
 command :bookmark do |c|
-
-  c.desc 'Use a private (long) link'
-  c.switch :private
-
-  c.desc 'Use a public (short) link'
-  c.switch :public
-
-  c.action do |global_options, options, urls|
-    check_for_credentials
-    format  = format_from_options global_options
-    private = privacy_from_options options
-
+  create_drop_action_on_command(c) do |format, private, urls|
     urls.each do |url|
       url     = URI.parse url
       waiting = "Bookmarking #{ url }... "
@@ -92,18 +97,7 @@ end
 desc 'Upload each file and print each link'
 arg_name 'file [file...]'
 command :upload do |c|
-
-  c.desc 'Use a private (long) link'
-  c.switch :private
-
-  c.desc 'Use a public (short) link'
-  c.switch :public
-
-  c.action do |global_options, options, files|
-    check_for_credentials
-    format  = format_from_options global_options
-    private = privacy_from_options options
-
+  create_drop_action_on_command(c) do |format, private, files|
     files.each do |file|
       file    = Pathname.new file
       waiting = "Uploading #{ file }... "
@@ -130,7 +124,7 @@ command [:list, :ls] do |c|
   c.flag :n, :count
 
   c.action do |global_options, options, args|
-    check_for_credentials
+    require_credentials
 
     count   = options[:count].to_i
     columns = { display_name: 'Name', url: 'Link', view_counter: 'Views' }
