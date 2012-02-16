@@ -5,6 +5,10 @@ interface to CloudApp as an added bonus.
 
 [cloudapp api]: http://developer.getcloudapp.com
 
+## Requirements
+
+`cloudapp` requires Ruby 1.9.2 or greater.
+
 
 ## Usage
 
@@ -16,10 +20,6 @@ _Usage from Ruby is still a work in progress._
 Experience all the pleasures of sharing with CloudApp now in your terminal. The
 goal of `cloudapp` is to be simple and Unix-friendly.
 
-### Requirements
-
-`cloudapp` requires Ruby 1.9.2 or greater.
-
 ### Quick Start
 
     gem install cloudapp
@@ -27,7 +27,7 @@ goal of `cloudapp` is to be simple and Unix-friendly.
     cloudapp bookmark http://douglasadams.com
     cloduapp upload ~/Desktop/screenshot.png
 
-### Usage
+### Examples
 
  - Bookmark a link: `cloudapp bookmark http://getcloudapp.com`
  - Bookmark several links: `cloudapp bookmark http://douglasadams.com http://zombo.com`
