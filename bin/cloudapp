@@ -5,56 +5,32 @@ require 'rubygems'
 require 'gli'
 require 'highline'
 require 'pathname'
-require 'yaml'
 
 require 'cloudapp'
+require 'cloudapp/config'
 require 'cloudapp/drop_presenter'
 require 'cloudapp/drop_service'
 
 
+extend Forwardable
+def_delegator 'HighLine.new', :color
+
+def config
+  CloudApp::Config.new
+end
+
 def service
-  CloudApp::DropService.using_token token
-end
-
-def token_for_account(email, password)
-  CloudApp::DropService.retrieve_token email, password
-end
-
-def config_file
-  File.expand_path '~/.cloudapprc'
-end
-
-def token
-  return unless File.exist?(config_file)
-  config = File.open(config_file) {|file| YAML::load(file) }
-  config[:token]
-end
-
-def save_token(token)
-  File.open(config_file, 'w', 0600) do |file|
-    YAML.dump({ token: token }, file)
-  end
-end
-
-def clear_token
-  return unless File.exist?(config_file)
-  File.delete(config_file)
-end
-
-def color(*args)
-  HighLine.new.color *args
+  CloudApp::DropService.using_token config.token
 end
 
 def check_for_credentials
-  return unless token.nil?
+  return unless config.token.nil?
 
   $stdout.puts 'Sign into your CloudApp account.'
 
-  email    = HighLine.new.ask('Email: ')
-  password = HighLine.new.ask('Password: ') {|q| q.echo = false }
-  token    = CloudApp::DropService.retrieve_token email, password
-
-  save_token token
+  email        = HighLine.new.ask('Email: ')
+  password     = HighLine.new.ask('Password: ') {|q| q.echo = false }
+  config.token = CloudApp::DropService.retrieve_token email, password
 end
 
 def format_from(global_options)
@@ -171,7 +147,7 @@ end
 on_error do |e|
   if CloudApp::DropService::UNAUTHORIZED === e
     $stderr.puts color('Email and password given are incorrect.', :bold)
-    clear_token
+    config.token = nil
     false
   else
     true
