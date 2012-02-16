@@ -33,15 +33,15 @@ def check_for_credentials
   config.token = CloudApp::DropService.retrieve_token email, password
 end
 
-def format_from(global_options)
-  if global_options[:format].nil?
+def format_from_options(options)
+  if options[:format].nil?
     $stdout.tty? ? :pretty : :csv
   else
-    global_options[:format].to_sym
+    options[:format].to_sym
   end
 end
 
-def privacy_from(options)
+def privacy_from_options(options)
   if options[:private] || options[:public]
     options[:private] || !options[:public]
   end
@@ -69,8 +69,8 @@ command :bookmark do |c|
 
   c.action do |global_options, options, urls|
     check_for_credentials
-    format  = format_from global_options
-    private = privacy_from options
+    format  = format_from_options global_options
+    private = privacy_from_options options
 
     urls.each do |url|
       url     = URI.parse url
@@ -101,8 +101,8 @@ command :upload do |c|
 
   c.action do |global_options, options, files|
     check_for_credentials
-    format  = format_from global_options
-    private = privacy_from options
+    format  = format_from_options global_options
+    private = privacy_from_options options
 
     files.each do |file|
       file    = Pathname.new file
@@ -134,7 +134,7 @@ command [:list, :ls] do |c|
 
     count   = options[:count].to_i
     columns = { display_name: 'Name', url: 'Link', view_counter: 'Views' }
-    format  = format_from global_options
+    format  = format_from_options global_options
 
     CloudApp::DropPresenter.print(on:      $stdout,
                                   columns: columns,
