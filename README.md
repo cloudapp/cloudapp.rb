@@ -30,7 +30,9 @@ goal of `cloudapp` is to be simple and Unix-friendly.
 ### Usage
 
  - Bookmark a link: `cloudapp bookmark http://getcloudapp.com`
+ - Bookmark several links: `cloudapp bookmark http://douglasadams.com http://zombo.com`
  - Share a file: `cloudapp upload screenshot.png`
+ - Share several files: `cloudapp upload *.png`
  - List newest drops: `cloudapp list [--count=5]`
  - Copy a new drop's link (OS X): `cloudapp bookmark http://douglasadams.com | pbcopy`
  - Output drops in CSV: `cloudapp --format=csv list`
@@ -41,22 +43,19 @@ More examples can be found on [the man page][man-page].
 
 ### Wish List
 
-Some baseic features that should be added:
-
- - Share several files: `cloudapp upload *.png`
- - Create several bookmarks: `cloudapp bookmark http://douglasadams.com http://zombo.com`
-
-A little more flare would be swell.
+`cloudapp` could be awesome with a little more flare.
 
  - Download a drop: `cloudapp download http://cl.ly/abc123`
  - Output specific columns: `cloudapp list --columns=name,views,link`
- - Handle input from STDIN: `pbpaste | cloudapp bookmark -`
+ - Handle bookmarks from STDIN: `pbpaste | cloudapp bookmark`
+ - Handle files from STDIN: `find *.png | cloudapp upload`
  - Archive and share several files: `cloudapp upload --archive *.png`
  - Encrypt and share a file: `cloudapp upload --encrypt launch_codes.txt`
- - Download and decrypt and encrypted drop: `cloudapp download http://cl.ly/abc123 def456`
+ - Download and decrypt and encrypted drop: `cloudapp download --key=def456 http://cl.ly/abc123`
 
-While we're dreaming, what could you do if it kept a local copy of all your
-drops? Bonus points for a light weight daemon that kept everything in sync.
+While we're dreaming, what could you do if `cloudapp` had a database of all your
+drops? Bonus points for a light weight daemon that kept everything in sync at
+all times.
 
  - Find all your screen shots: `cloudapp list /^screen ?shot.*\.png$/`
  - Trash all your stale drops: `cloudapp delete --last-viewed="> 1 month ago"`
