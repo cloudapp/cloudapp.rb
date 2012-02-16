@@ -25,7 +25,7 @@ goal of `cloudapp` is to be simple and Unix-friendly.
     gem install cloudapp
     cloudapp list
     cloudapp bookmark http://douglasadams.com
-    cloduapp upload ~/Desktop/screenshot.png
+    cloudapp upload ~/Desktop/screenshot.png
 
 ### Examples
 
