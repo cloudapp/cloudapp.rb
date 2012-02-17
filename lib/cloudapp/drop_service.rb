@@ -1,5 +1,6 @@
-require 'leadlight'
 require 'addressable/uri'
+require 'leadlight'
+require 'multi_json'
 require 'cloudapp/drop'
 
 # Leadlight service for mucking about with drops in the CloudApp API.
@@ -150,6 +151,36 @@ module CloudApp
         end
     rescue MultiJson::DecodeError => e
       raise UNAUTHORIZED
+    end
+
+    def drop(url)
+      conn = Faraday.new(url: url) do |builder|
+        builder.response :logger, logger
+        builder.adapter  :typhoeus
+      end
+
+      conn.get do |req|
+        req.headers['Accept'] = 'application/json'
+      end.on_complete do |env|
+        if env.fetch(:response).status == 200
+          drop = Drop.new(MultiJson.decode(env[:body]))
+        end
+
+        return drop
+      end
+    end
+
+    def download_drop(url, options = {})
+      drop = drop url
+      return unless drop
+
+      drop.content.tap do |content|
+        filename  = File.basename drop.content_url
+        directory = Pathname.new options.fetch :to
+        path      = directory.join filename
+
+        File.open(path, 'w', 0600) {|file| file << content }
+      end
     end
 
     def drops(count = 20)

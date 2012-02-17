@@ -1,10 +1,10 @@
 require 'helper'
+require 'support/fakefs_rspec'
 require 'support/vcr_rspec'
 
 require 'cloudapp/drop_service'
 
 describe CloudApp::DropService do
-
   let(:token) { '8762f6679f8d001016b2' }
 
   describe '.using_token' do
@@ -26,6 +26,91 @@ describe CloudApp::DropService do
 
     it 'returns the token from the given account' do
       subject.should eql(token)
+    end
+  end
+
+  describe '#drop' do
+    let(:service) { CloudApp::DropService.new }
+
+    describe 'retrieving a drop' do
+      let(:url) { 'http://cl.ly/C23W' }
+      subject {
+        VCR.use_cassette('DropService/drop',
+                         match_requests_on: [:method, :uri, :body, :headers]) {
+          service.drop url
+        }
+      }
+
+      it 'returns the drop' do
+        subject.should be_a(CloudApp::Drop)
+      end
+
+      it 'parses the response' do
+        subject.id.should == 12142483
+      end
+    end
+
+    describe 'retrieving a nonexistent drop' do
+      let(:url) { 'http://cl.ly/nonexistent' }
+      subject {
+        VCR.use_cassette('DropService/drop',
+                         match_requests_on: [:method, :uri, :body, :headers]) {
+          service.drop url
+        }
+      }
+
+      it 'returns nil' do
+        subject.should be_nil
+      end
+    end
+  end
+
+  describe '#download_drop', :fakefs do
+    let(:service)     { CloudApp::DropService.new }
+    let(:url)         { 'http://cl.ly/C23W' }
+    let(:options)     {{ to: '.' }}
+    let(:content)     { 'content' }
+    let(:content_url) { 'http://cl.ly/C23W/drop_presenter.rb' }
+    let(:drop)        { stub :drop, content: content, content_url: content_url }
+
+    before { service.stub(drop: drop) }
+
+    describe 'downloading a drop' do
+      it 'fetches the drop' do
+        service.should_receive(:drop).with(url).and_return(drop)
+        service.download_drop url, options
+      end
+
+      it 'returns the content' do
+        service.download_drop(url, options).should eq(content)
+      end
+
+      it 'saves the file' do
+        service.download_drop url, options
+        downloaded = File.open('drop_presenter.rb') {|f| f.read }
+
+        downloaded.should eq(content)
+      end
+
+      it 'saves to another directory' do
+        Dir.mkdir '/tmp'
+        service.download_drop url, to: '/tmp'
+        downloaded = File.open('/tmp/drop_presenter.rb') {|f| f.read }
+
+        downloaded.should eq(content)
+      end
+    end
+
+    describe 'downloading a nonexistent drop' do
+      let(:drop) { nil }
+
+      it 'returns nil' do
+        service.download_drop(url, options).should be_nil
+      end
+
+      it "doesn't save a file" do
+        FakeFS::FileSystem.files.should be_empty
+      end
     end
   end
 
