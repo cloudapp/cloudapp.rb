@@ -158,8 +158,9 @@ command :download do |c|
       CloudApp::DropPresenter.print(on:      $stdout,
                                     waiting: waiting,
                                     format:  format) do
-        service.download_drop(url, to: options[:directory])
-        'done'
+        content = service.download_drop(url, to: options[:directory])
+
+        { pretty: 'done', csv: content }
       end
     end
   end
