@@ -145,7 +145,6 @@ command :download do |c|
 
   c.desc 'Directory to save the file'
   c.arg_name 'directory'
-  c.default_value '.'
   c.flag :d, :directory
 
   c.action do |global_options, options, urls|
