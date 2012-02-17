@@ -138,6 +138,36 @@ command [:list, :ls] do |c|
   end
 end
 
+
+desc 'Download the drop at the given url'
+arg_name 'url'
+command :download do |c|
+
+  c.desc 'Directory to save the file'
+  c.arg_name 'directory'
+  c.default_value '.'
+  c.flag :d, :directory
+
+  c.action do |global_options, options, urls|
+    format    = format_from_options global_options
+    directory = Pathname.new options[:directory]
+    directory = directory.parent unless directory.directory?
+
+    urls.each do |url|
+      url     = URI.parse url
+      waiting = "Downloading #{ url }... "
+
+      CloudApp::DropPresenter.print(on:      $stdout,
+                                    waiting: waiting,
+                                    format:  format) do
+        service.download_drop(url, to: directory)
+        'done'
+      end
+    end
+  end
+end
+
+
 on_error do |e|
   if CloudApp::DropService::UNAUTHORIZED === e
     $stderr.puts color('Email and password given are incorrect.', :bold)
