@@ -18,6 +18,9 @@
 .br
 \fBcloudapp upload\fR [\fB\-\-private\fR] [\fB\-\-public\fR] \fIfile\fR [\fIfile\fR\.\.\.]
 .
+.br
+\fBcloudapp download\fR [\fB\-\-directory\fR=\fIdirectory\fR] \fIurl\fR
+.
 .SH "DESCRIPTION"
 \fBcloudapp\fR is a simple, Unix\-friendly tool for CloudApp meant to augment the Mac and Web apps\. Sometimes it\'s more convenient to share without leaving the terminal and other times it\'s the only tool available\.
 .
@@ -41,7 +44,19 @@ Create a new bookmark to each \fIurl\fR and print each link\.
 \fBupload\fR [\fB\-\-private\fR] [\fB\-\-public\fR] \fIfile\fR [\fIfile\fR\.\.\.]
 Upload each \fIfile\fR and print each link\.
 .
+.TP
+\fBdownload\fR [\fB\-\-count\fR=\fIcount\fR] \fIurl\fR
+Download \fIurl\fR to \fIdirectory\fR or the current directory\.
+.
 .SH "COMMAND OPTIONS"
+.
+.TP
+\fB\-d\fR \fIdirectory\fR, \fB\-\-directory\fR=\fIdirectory\fR
+Download files to \fIdirectory\fR\. (Default: \fB\.\fR)
+.
+.TP
+\fB\-n\fR \fIcount\fR, \fB\-\-count\fR=\fIcount\fR
+Display \fIcount\fR drops\. (Default: \fB20\fR)
 .
 .TP
 \fB\-\-private\fR
@@ -50,10 +65,6 @@ Use a private (long) link when creating a new drop\.
 .TP
 \fB\-\-public\fR
 Use a public (short) link when creating a new drop\.
-.
-.TP
-\fB\-n\fR \fIcount\fR, \fB\-\-count\fR=\fIcount\fR
-Display \fIcount\fR drops\. (Default: \fB20\fR)
 .
 .SH "REQUIREMENTS"
 \fBcloudapp\fR requires Ruby 1\.9\.2 or greater\.
@@ -118,7 +129,7 @@ Chapter 1\.md,http://cl\.ly/3U3d\.\.\.,7
 .IP "" 0
 .
 .P
-Share a new bookmark to "http://douglasadams\.com":
+Share a new bookmark to \fBhttp://douglasadams\.com\fR:
 .
 .IP "" 4
 .
@@ -132,7 +143,7 @@ Bookmarking http://douglasadams\.com\.\.\. http://cl\.ly/1y0j403g3D0c0X1G0R3m
 .IP "" 0
 .
 .P
-Share the file "screenshot\.png":
+Share the file \fBscreenshot\.png\fR:
 .
 .IP "" 4
 .
@@ -168,6 +179,34 @@ Share a new bookmark and output only the URL:
 
 $ cloudapp \-\-format=csv bookmark http://douglasadams\.com
 http://cl\.ly/1y0j403g3D0c0X1G0R3m
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Download a drop to the current direcctory:
+.
+.IP "" 4
+.
+.nf
+
+$ cloudapp download http://cl\.ly/040u2o3X1w0z1z3n2T04
+Downloading screenshot\.png\.\.\. done
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Download a drop to another direcctory:
+.
+.IP "" 4
+.
+.nf
+
+$ cloudapp download \-\-directory=/Users/Larry http://cl\.ly/040u2o3X1w0z1z3n2T04
+Downloading screenshot\.png to /Users/Larry\.\.\. done
 .
 .fi
 .

@@ -86,7 +86,8 @@
 <p><code>cloudapp</code> [<code>--format</code>=<var>format</var>] <var>command</var> [<var>args</var>]<br />
 <code>cloudapp list</code> [<code>--count</code>=<var>count</var>]<br />
 <code>cloudapp bookmark</code> [<code>--private</code>] [<code>--public</code>] <var>url</var> [<var>url</var>...]<br />
-<code>cloudapp upload</code> [<code>--private</code>] [<code>--public</code>] <var>file</var> [<var>file</var>...]</p>
+<code>cloudapp upload</code> [<code>--private</code>] [<code>--public</code>] <var>file</var> [<var>file</var>...]<br />
+<code>cloudapp download</code> [<code>--directory</code>=<var>directory</var>] <var>url</var></p>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
@@ -108,15 +109,17 @@ output to a terminal and <strong>csv</strong> when output is piped to another pr
 <dt><code>list</code> [<code>--count</code>=<var>count</var>]</dt><dd><p>List the most recent <var>count</var> drops. The default is to list <strong>20</strong> drops.</p></dd>
 <dt><code>bookmark</code> [<code>--private</code>] [<code>--public</code>] [<var>url</var>...]</dt><dd><p>Create a new bookmark to each <var>url</var> and print each link.</p></dd>
 <dt><code>upload</code> [<code>--private</code>] [<code>--public</code>] <var>file</var> [<var>file</var>...]</dt><dd><p>Upload each <var>file</var> and print each link.</p></dd>
+<dt><code>download</code> [<code>--count</code>=<var>count</var>] <var>url</var></dt><dd><p>Download <var>url</var> to <var>directory</var> or the current directory.</p></dd>
 </dl>
 
 
 <h2 id="COMMAND-OPTIONS">COMMAND OPTIONS</h2>
 
 <dl>
+<dt><code>-d</code> <var>directory</var>, <code>--directory</code>=<var>directory</var></dt><dd><p>Download files to <var>directory</var>. (Default: <strong>.</strong>)</p></dd>
+<dt><code>-n</code> <var>count</var>, <code>--count</code>=<var>count</var></dt><dd><p>Display <var>count</var> drops. (Default: <strong>20</strong>)</p></dd>
 <dt><code>--private</code></dt><dd><p>Use a private (long) link when creating a new drop.</p></dd>
 <dt><code>--public</code></dt><dd><p>Use a public (short) link when creating a new drop.</p></dd>
-<dt><code>-n</code> <var>count</var>, <code>--count</code>=<var>count</var></dt><dd><p>Display <var>count</var> drops. (Default: <strong>20</strong>)</p></dd>
 </dl>
 
 
@@ -161,13 +164,13 @@ Cover.jpeg,http://cl.ly/1x20...,1
 Chapter 1.md,http://cl.ly/3U3d...,7
 </code></pre>
 
-<p>Share a new bookmark to "http://douglasadams.com":</p>
+<p>Share a new bookmark to <strong>http://douglasadams.com</strong>:</p>
 
 <pre><code>$ cloudapp bookmark http://douglasadams.com
 Bookmarking http://douglasadams.com... http://cl.ly/1y0j403g3D0c0X1G0R3m
 </code></pre>
 
-<p>Share the file "screenshot.png":</p>
+<p>Share the file <strong>screenshot.png</strong>:</p>
 
 <pre><code>$ cloudapp upload screenshot.png
 Uploading screenshot.png... http://cl.ly/040u2o3X1w0z1z3n2T04
@@ -183,6 +186,18 @@ $ cloudapp upload screenshot.png | pbcopy
 
 <pre><code>$ cloudapp --format=csv bookmark http://douglasadams.com
 http://cl.ly/1y0j403g3D0c0X1G0R3m
+</code></pre>
+
+<p>Download a drop to the current direcctory:</p>
+
+<pre><code>$ cloudapp download http://cl.ly/040u2o3X1w0z1z3n2T04
+Downloading screenshot.png... done
+</code></pre>
+
+<p>Download a drop to another direcctory:</p>
+
+<pre><code>$ cloudapp download --directory=/Users/Larry http://cl.ly/040u2o3X1w0z1z3n2T04
+Downloading screenshot.png to /Users/Larry... done
 </code></pre>
 
 <h2 id="LICENSE">LICENSE</h2>
