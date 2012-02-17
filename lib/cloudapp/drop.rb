@@ -1,4 +1,5 @@
 require 'ostruct'
+
 module CloudApp
   class Drop < OpenStruct
     def private?() private == true end
@@ -6,10 +7,6 @@ module CloudApp
 
     def display_name
       name || redirect_url || url
-    end
-
-    def content
-      DropContent.download content_url
     end
   end
 end

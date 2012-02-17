@@ -68,21 +68,4 @@ describe CloudApp::Drop do
       end
     end
   end
-
-  describe '#content' do
-    let(:content)     { 'content' }
-    let(:content_url) { 'http://cl.ly/C23W/drop_presenter.rb' }
-
-    subject { CloudApp::Drop.new content_url: content_url }
-    before  { DropContent.stub download: content }
-
-    it 'delegates to DropContent' do
-      DropContent.should_receive(:download).with(content_url)
-      subject.content
-    end
-
-    it 'returns the content' do
-      subject.content.should eq(content)
-    end
-  end
 end

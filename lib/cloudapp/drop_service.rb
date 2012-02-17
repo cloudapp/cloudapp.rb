@@ -2,6 +2,7 @@ require 'addressable/uri'
 require 'leadlight'
 require 'multi_json'
 require 'cloudapp/drop'
+require 'cloudapp/drop_content'
 
 # Leadlight service for mucking about with drops in the CloudApp API.
 #
@@ -174,7 +175,7 @@ module CloudApp
       drop = drop url
       return unless drop
 
-      drop.content.tap do |content|
+      DropContent.download(drop).tap do |content|
         filename  = File.basename drop.content_url
         directory = Pathname.new options.fetch :to
         path      = directory.join filename

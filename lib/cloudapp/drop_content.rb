@@ -4,12 +4,12 @@ require 'typhoeus'
 
 module CloudApp
   class DropContent
-    def initialize(content_url)
-      @content_url = content_url
+    def initialize(drop)
+      @content_url = drop.content_url
     end
 
-    def self.download(content_url)
-      new(content_url).content
+    def self.download(drop)
+      new(drop).content
     end
 
     def content(url = @content_url)

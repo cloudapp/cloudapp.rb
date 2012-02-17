@@ -73,11 +73,14 @@ describe CloudApp::DropService do
     let(:content_url) { 'http://cl.ly/C23W/drop_presenter.rb' }
     let(:drop)        { stub :drop, content: content, content_url: content_url }
 
-    before { service.stub(drop: drop) }
+    before do
+      CloudApp::DropContent.stub download: content
+      service.stub drop: drop
+    end
 
     describe 'downloading a drop' do
       it 'fetches the drop' do
-        service.should_receive(:drop).with(url).and_return(drop)
+        CloudApp::DropContent.should_receive(:download).with(drop)
         service.download_drop url, options
       end
 
