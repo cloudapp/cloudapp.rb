@@ -175,10 +175,12 @@ module CloudApp
       drop = drop url
       return unless drop
 
+      directory = Pathname.new(options.fetch(:to)).expand_path
+      directory = directory.parent unless directory.directory?
+
       DropContent.download(drop).tap do |content|
-        filename  = File.basename drop.content_url
-        directory = Pathname.new options.fetch :to
-        path      = directory.join filename
+        filename = File.basename drop.content_url
+        path     = directory.join filename
 
         File.open(path, 'w', 0600) {|file| file << content }
       end

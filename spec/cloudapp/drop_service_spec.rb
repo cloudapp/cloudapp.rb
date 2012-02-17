@@ -68,7 +68,7 @@ describe CloudApp::DropService do
   describe '#download_drop', :fakefs do
     let(:service)     { CloudApp::DropService.new }
     let(:url)         { 'http://cl.ly/C23W' }
-    let(:options)     {{ to: '.' }}
+    let(:options)     {{ to: '/' }}
     let(:content)     { 'content' }
     let(:content_url) { 'http://cl.ly/C23W/drop_presenter.rb' }
     let(:drop)        { stub :drop, content: content, content_url: content_url }
@@ -90,7 +90,7 @@ describe CloudApp::DropService do
 
       it 'saves the file' do
         service.download_drop url, options
-        downloaded = File.open('drop_presenter.rb') {|f| f.read }
+        downloaded = File.open('/drop_presenter.rb') {|f| f.read }
 
         downloaded.should eq(content)
       end
@@ -101,6 +101,23 @@ describe CloudApp::DropService do
         downloaded = File.open('/tmp/drop_presenter.rb') {|f| f.read }
 
         downloaded.should eq(content)
+      end
+
+      it 'saves to the parent directory when direcctory is a file' do
+        Dir.mkdir '/tmp'
+        path = '/tmp/file.txt'
+        FileUtils.touch path
+        service.download_drop url, to: path
+
+        File.exist?('/tmp/drop_presenter.rb').should be_true
+      end
+
+      it 'expands the path of the directory' do
+        path = Pathname.new '~'
+        FileUtils.mkdir_p path.expand_path
+        service.download_drop url, to: path
+
+        File.exist?('~/drop_presenter.rb').should be_true
       end
     end
 

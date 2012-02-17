@@ -149,9 +149,7 @@ command :download do |c|
   c.flag :d, :directory
 
   c.action do |global_options, options, urls|
-    format    = format_from_options global_options
-    directory = Pathname.new options[:directory]
-    directory = directory.parent unless directory.directory?
+    format = format_from_options global_options
 
     urls.each do |url|
       url     = URI.parse url
@@ -160,7 +158,7 @@ command :download do |c|
       CloudApp::DropPresenter.print(on:      $stdout,
                                     waiting: waiting,
                                     format:  format) do
-        service.download_drop(url, to: directory)
+        service.download_drop(url, to: options[:directory])
         'done'
       end
     end
