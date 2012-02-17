@@ -175,7 +175,12 @@ module CloudApp
       drop = drop url
       return unless drop
 
-      directory = Pathname.new(options.fetch(:to)).expand_path
+      to = options[:to] || ''
+      directory = Pathname.new(to).expand_path
+
+      # FakeFS doesn't like Pathname#exist? :(
+      return unless File.exist?(directory)
+
       directory = directory.parent unless directory.directory?
 
       DropContent.download(drop).tap do |content|
