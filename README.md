@@ -26,6 +26,7 @@ goal of `cloudapp` is to be simple and Unix-friendly.
     cloudapp list
     cloudapp bookmark http://douglasadams.com
     cloudapp upload ~/Desktop/screenshot.png
+    cloudapp download http://cl.ly/abc123
 
 ### Examples
 
@@ -36,6 +37,7 @@ goal of `cloudapp` is to be simple and Unix-friendly.
  - List newest drops: `cloudapp list [--count=5]`
  - Copy a new drop's link (OS X): `cloudapp bookmark http://douglasadams.com | pbcopy`
  - Output drops in CSV: `cloudapp --format=csv list`
+ - Download a drop: `cloudapp download http://cl.ly/abc123`
 
 More examples can be found on [the man page][man-page].
 
@@ -45,7 +47,6 @@ More examples can be found on [the man page][man-page].
 
 `cloudapp` could be awesome with a little more flare.
 
- - Download a drop: `cloudapp download http://cl.ly/abc123`
  - Output specific columns: `cloudapp list --columns=name,views,link`
  - Handle bookmarks from STDIN: `pbpaste | cloudapp bookmark`
  - Handle files from STDIN: `find *.png | cloudapp upload`
