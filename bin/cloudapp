@@ -159,7 +159,6 @@ command :download do |c|
       CloudApp::DropPresenter.print(on:      $stdout,
                                     waiting: waiting,
                                     format:  format) do
-
         content = service.download_drop url, download_options
         { pretty: 'done', csv: content }
       end
@@ -169,9 +168,13 @@ end
 
 
 on_error do |e|
-  if CloudApp::DropService::UNAUTHORIZED === e
+  case e
+  when CloudApp::DropService::UNAUTHORIZED
     $stderr.puts color('Email and password given are incorrect.', :bold)
     config.token = nil
+    false
+  when CloudApp::DropService::NO_CONTENT
+    $stderr.puts 'drop was deleted or is a bookmark'
     false
   else
     true
