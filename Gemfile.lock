@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cloudapp (1.0.2)
+    cloudapp (1.1.0)
       addressable
       faraday (~> 0.8.0.rc2)
       gli

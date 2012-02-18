@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   ## If your rubyforge_project name is different, then edit it and comment out
   ## the sub! line in the Rakefile
   s.name              = 'cloudapp'
-  s.version           = '1.0.2'
-  s.date              = '2012-02-15'
+  s.version           = '1.1.0'
+  s.date              = '2012-02-18'
   s.rubyforge_project = 'cloudapp'
 
   ## Make sure your summary is short. The description may be as long
@@ -64,6 +64,7 @@ Gem::Specification.new do |s|
   ## THE MANIFEST COMMENTS, they are used as delimiters by the task.
   # = MANIFEST =
   s.files = %w[
+    CHANGELOG.md
     Gemfile
     Gemfile.lock
     MIT-LICENSE
@@ -72,18 +73,22 @@ Gem::Specification.new do |s|
     bin/cloudapp
     cloudapp.gemspec
     lib/cloudapp.rb
+    lib/cloudapp/config.rb
     lib/cloudapp/drop.rb
+    lib/cloudapp/drop_content.rb
     lib/cloudapp/drop_presenter.rb
     lib/cloudapp/drop_service.rb
     lib/cloudapp/identity.rb
     man/cloudapp.1
     man/cloudapp.1.html
     man/cloudapp.1.ronn
+    spec/cassettes/DropContent/download.yml
     spec/cassettes/DropService/create_bookmark.yml
     spec/cassettes/DropService/create_bookmark_with_bad_credentials.yml
     spec/cassettes/DropService/create_bookmark_with_name.yml
     spec/cassettes/DropService/create_private_bookmark.yml
     spec/cassettes/DropService/create_public_bookmark.yml
+    spec/cassettes/DropService/drop.yml
     spec/cassettes/DropService/list_drops.yml
     spec/cassettes/DropService/list_drops_with_bad_credentials.yml
     spec/cassettes/DropService/list_drops_with_limit.yml
@@ -93,11 +98,14 @@ Gem::Specification.new do |s|
     spec/cassettes/DropService/retrieve_token_with_bad_credentials.yml
     spec/cassettes/DropService/upload_file.yml
     spec/cassettes/DropService/upload_public_file.yml
+    spec/cloudapp/config_spec.rb
+    spec/cloudapp/drop_content_spec.rb
     spec/cloudapp/drop_presenter_spec.rb
     spec/cloudapp/drop_service_spec.rb
     spec/cloudapp/drop_spec.rb
     spec/cloudapp/identity_spec.rb
     spec/helper.rb
+    spec/support/fakefs_rspec.rb
     spec/support/files/favicon.ico
     spec/support/stub_class_or_module.rb
     spec/support/vcr.rb
