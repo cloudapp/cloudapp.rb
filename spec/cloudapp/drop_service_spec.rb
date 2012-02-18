@@ -68,8 +68,7 @@ describe CloudApp::DropService do
   describe '#download_drop', :fakefs do
     let(:service)     { CloudApp::DropService.new }
     let(:url)         { 'http://cl.ly/C23W' }
-    let(:path)        { '/'}
-    let(:options)     {{ to: path }}
+    let(:options)     { {} }
     let(:content)     { 'content' }
     let(:content_url) { 'http://cl.ly/C23W/drop_presenter.rb' }
     let(:drop)        { stub :drop, content: content, content_url: content_url }
@@ -88,64 +87,60 @@ describe CloudApp::DropService do
       service.download_drop(url, options).should eq(content)
     end
 
-    it 'saves the file' do
+    it 'saves the file to the current directory using the remote filename' do
       service.download_drop url, options
-      downloaded = File.open('/drop_presenter.rb') {|f| f.read }
+      downloaded = File.open('drop_presenter.rb') {|f| f.read }
 
       downloaded.should eq(content)
     end
 
-    describe 'a file path' do
-      let(:path) { '/tmp/file.txt' }
+    describe 'to a path' do
+      let(:options) {{ to: '/tmp/file.txt' }}
+
+      it 'saves the file to the given path' do
+        service.download_drop url, options
+        File.exist?(options[:to]).should be_true
+      end
+    end
+
+    describe 'to an existing file' do
+      let(:options) {{ to: '/tmp/file.txt' }}
       before do
         Dir.mkdir '/tmp'
-        FileUtils.touch path
+        File.open(options[:to], 'w', 0600) {|file| file << 'existing' }
       end
 
-      it 'saves the file to the parent directory' do
+      it 'overwrites the file' do
         service.download_drop url, options
-        File.exist?('/tmp/drop_presenter.rb').should be_true
+        downloaded = File.open(options[:to]) {|f| f.read }
+
+        downloaded.should eq(content)
       end
     end
 
     describe 'an unexpanded path' do
-      let(:path) { '~' }
+      let(:options) {{ to: '~/file.txt' }}
       before do
-        FileUtils.mkdir_p File.expand_path(path)
+        FileUtils.mkdir_p File.expand_path('~')
       end
 
       it 'saves the file to the expanded directory' do
         service.download_drop url, options
+        saved_path = File.expand_path(options[:to])
 
-        saved_path = Pathname.new(path).expand_path.join('drop_presenter.rb')
         File.exist?(saved_path).should be_true
       end
     end
 
-    describe 'a nil path' do
-      let(:path) { nil }
+    describe 'to an existing directory' do
+      let(:options) {{ to: '/tmp' }}
       before do
-        FileUtils.mkdir_p File.expand_path('.')
+        Dir.mkdir '/tmp'
       end
 
-      it 'saves the file to the current directory' do
-        service.download_drop url, options
-
-        saved_path = Pathname.new('.').expand_path.join('drop_presenter.rb')
-        File.exist?(saved_path).should be_true
-      end
-    end
-
-    describe 'a nonexistent path' do
-      let(:path) { '/nonexistent' }
-
-      it 'returns nil' do
-        service.download_drop(url, options).should be_nil
-      end
-
-      it "doesn't save a file" do
-        service.download_drop(url, options)
-        FakeFS::FileSystem.files.should be_empty
+      it 'raises an exception' do
+        -> { service.download_drop url, options }.
+          should raise_exception(Errno::EISDIR)
       end
     end
 

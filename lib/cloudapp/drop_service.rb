@@ -1,4 +1,5 @@
 require 'addressable/uri'
+require 'fileutils'
 require 'leadlight'
 require 'multi_json'
 require 'cloudapp/drop'
@@ -175,18 +176,12 @@ module CloudApp
       drop = drop url
       return unless drop
 
-      to = options[:to] || ''
-      directory = Pathname.new(to).expand_path
 
-      # FakeFS doesn't like Pathname#exist? :(
-      return unless File.exist?(directory)
-
-      directory = directory.parent unless directory.directory?
+      filename = File.basename drop.content_url
+      path     = Pathname.new(options.fetch(:to, filename)).expand_path
+      FileUtils.mkdir_p path.parent
 
       DropContent.download(drop).tap do |content|
-        filename = File.basename drop.content_url
-        path     = directory.join filename
-
         File.open(path, 'w', 0600) {|file| file << content }
       end
     end
