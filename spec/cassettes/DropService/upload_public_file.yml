@@ -255,7 +255,7 @@ http_interactions:
   recorded_at: Wed, 15 Feb 2012 14:39:02 GMT
 - request:
     method: get
-    uri: https://my.cl.ly/items/s3?bucket=f.cl.ly&etag=%22567d2d49d2d30e2db956d680a4d03f25%22&key=items/2B0E373Z1J2U1u071E28/favicon.ico&item%5Bprivate%5D=false
+    uri: https://my.cl.ly/items/s3?bucket=f.cl.ly&etag=%22567d2d49d2d30e2db956d680a4d03f25%22&item%5Bprivate%5D=false&key=items/2B0E373Z1J2U1u071E28/favicon.ico
     body: ''
     headers:
       Authorization:
