@@ -11,10 +11,10 @@ describe CloudApp::DropPresenter do
     let(:io)      { StringIO.new }
 
     describe 'a single line' do
-      subject do
+      subject {
         CloudApp::DropPresenter.print(options, &action)
         io.tap(&:rewind).readlines
-      end
+      }
 
       describe 'with no format' do
         let(:options) {{ on: io, waiting: waiting }}
@@ -47,16 +47,16 @@ describe CloudApp::DropPresenter do
 
     describe 'a table of data' do
       let(:columns) {{ name: 'Name', url: 'Link' }}
-      let(:result) do
+      let(:result) {
         [ stub(:result1, name: 'Stub 1', url: 'http://stub1.com'),
           stub(:result2, name: 'Stub 2', url: 'http://stub2.com') ]
-      end
+      }
       let(:options) {{ on: io, format: format, columns: columns }}
 
-      subject do
+      subject {
         CloudApp::DropPresenter.print(options, &action)
         io.tap(&:rewind).readlines
-      end
+      }
 
       describe 'pretty format' do
         let(:format) { :pretty }
@@ -90,6 +90,31 @@ describe CloudApp::DropPresenter do
           subject[2].should eq("Stub 2,http://stub2.com\n")
         end
       end
+    end
+
+    describe 'providing multiple formats' do
+      let(:result) {{ pretty: 'pretty', csv: 'csv' }}
+      subject {
+        CloudApp::DropPresenter.print(options, &action)
+        io.tap(&:rewind).readlines
+      }
+
+      describe 'pretty format' do
+        let(:options) {{ on: io, format: :pretty }}
+
+        it 'pretty prints' do
+          subject.first.should eq("pretty\n")
+        end
+      end
+
+      describe 'csv format' do
+        let(:options) {{ on: io, format: :csv }}
+
+        it 'prints csv' do
+          subject.first.should eq("csv\n")
+        end
+      end
+
     end
   end
 end

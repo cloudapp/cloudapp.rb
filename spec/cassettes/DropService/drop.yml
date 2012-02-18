@@ -1,0 +1,81 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://cl.ly/C23W
+    body: ''
+    headers:
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 16 Feb 2012 20:19:27 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept
+      X-Rack-Cache:
+      - miss
+      Content-Length:
+      - '627'
+      X-Varnish:
+      - '587912818'
+      Age:
+      - '0'
+      Via:
+      - 1.1 varnish
+    body: ! '{"created_at":"2011-11-22T19:40:50Z","deleted_at":null,"id":12142483,"item_type":"text","name":"drop_presenter.rb","private":false,"redirect_url":null,"remote_url":"http://f.cl.ly/items/152S3l2X1y3P2M262D3V/drop_presenter.rb","source":"Cloud/1.5.3b1
+      CFNetwork/520.2.5 Darwin/11.2.0 (x86_64) (MacBookPro5%2C5)","updated_at":"2012-02-16T20:09:52Z","view_counter":90,"href":"http://my.cl.ly/items/12142483","url":"http://cl.ly/C23W","content_url":"http://cl.ly/C23W/drop_presenter.rb","icon":"http://assets.my.cld.me/images/item-types/text.png","subscribed":true,"download_url":"http://api.cld.me/C23W/download/drop_presenter.rb"}'
+    http_version: 
+  recorded_at: Thu, 16 Feb 2012 20:19:27 GMT
+- request:
+    method: get
+    uri: http://cl.ly/nonexistent
+    body: ''
+    headers:
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 16 Feb 2012 20:26:01 GMT
+      Content-Type:
+      - text/html;charset=utf-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept
+      X-Rack-Cache:
+      - miss
+      Content-Length:
+      - '621'
+      X-Varnish:
+      - '2047120769'
+      Age:
+      - '0'
+      Via:
+      - 1.1 varnish
+    body: ! "<!doctype html>\n<html>\n  <head>\n    <meta charset=\"utf-8\">\n\n    <title>CloudApp
+      &mdash; Not Found</title>\n\n    <link href='/favicon.ico' rel='shortcut icon'
+      />\n    <link href=\"/stylesheets/error.css\" rel=\"stylesheet\" type=\"text/css\"
+      />\n\n    <!--[if lt IE 9]>\n    <script src=\"//html5shim.googlecode.com/svn/trunk/html5.js\"></script>\n
+      \   <![endif]-->\n  </head>\n\n  <body>\n    <div class=\"wrapper\">\n      <h1>Cloud<em>App</em></h1>\n\n
+      \     <h2>Sorry, no drops live here.</h2>\n\n      <p>\n        Perhaps the
+      link you clicked was broken or the owner of this drop has\n        deleted it.\n
+      \     </p>\n    </div>\n  </body>\n</html>\n"
+    http_version: 
+  recorded_at: Thu, 16 Feb 2012 20:26:01 GMT
+recorded_with: VCR 2.0.0.rc1

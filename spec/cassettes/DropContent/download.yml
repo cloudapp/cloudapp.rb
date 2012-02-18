@@ -1,0 +1,116 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://cl.ly/C23W/drop_presenter.rb
+    body: ''
+    headers:
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 302
+      message: Moved Temporarily
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 17 Feb 2012 01:43:07 GMT
+      Content-Type:
+      - text/html;charset=utf-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept
+      Cache-Control:
+      - public, max-age=900
+      Location:
+      - http://api.cld.me/C23W/drop_presenter.rb
+      X-Content-Digest:
+      - da39a3ee5e6b4b0d3255bfef95601890afd80709
+      X-Rack-Cache:
+      - stale, invalid, store
+      Content-Length:
+      - '0'
+      X-Varnish:
+      - '1852427632'
+      Age:
+      - '0'
+      Via:
+      - 1.1 varnish
+    body: ''
+    http_version: 
+  recorded_at: Fri, 17 Feb 2012 01:43:07 GMT
+- request:
+    method: get
+    uri: http://api.cld.me/C23W/drop_presenter.rb
+    body: ''
+    headers:
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 302
+      message: Moved Temporarily
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - text/html; charset=utf-8
+      Location:
+      - http://f.cl.ly/items/152S3l2X1y3P2M262D3V/drop_presenter.rb
+      Server:
+      - thin 1.3.1 codename Triple Espresso
+      X-Runtime:
+      - '0.025914'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body: <html><body>You are being <a href="http://f.cl.ly/items/152S3l2X1y3P2M262D3V/drop_presenter.rb">redirected</a>.</body></html>
+    http_version: 
+  recorded_at: Fri, 17 Feb 2012 01:44:07 GMT
+- request:
+    method: get
+    uri: http://f.cl.ly/items/152S3l2X1y3P2M262D3V/drop_presenter.rb
+    body: ''
+    headers:
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - iyFXxRKOKM5CYt1f7jI9bN8btGeacX2VeXxCIMNL2/AQNzPEH7pAIUjQ9A4Q/TYC
+      X-Amz-Request-Id:
+      - 9092E1275FD0C3F5
+      Date:
+      - Fri, 17 Feb 2012 01:44:09 GMT
+      Last-Modified:
+      - Tue, 22 Nov 2011 19:40:51 GMT
+      Etag:
+      - ! '"f24a305d5a90516f0b0877b93158ee0a"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - application/ruby
+      Content-Length:
+      - '610'
+      Server:
+      - AmazonS3
+    body: ! "require 'delegate'\nrequire 'yajl'\n\nclass DropPresenter < SimpleDelegator\n
+      \ def initialize(drop, template)\n    @template = template\n\n    super drop\n
+      \ end\n\n  def render_html\n    if bookmark?\n      @template.redirect_to_api\n
+      \   else\n      @template.erb template_name, locals: { drop: self, body_id:
+      body_id }\n    end\n  end\n\n  def render_json\n    Yajl::Encoder.encode data\n
+      \ end\n\nprivate\n\n  def template_name\n    if image?\n      :image\n    elsif
+      text?\n      :text\n    else\n      :other\n    end\n  end\n\n  def body_id\n
+      \   if image?\n      'image'\n    elsif text?\n      'text'\n    else\n      'other'\n
+      \   end\n  end\n\nend\n"
+    http_version: 
+  recorded_at: Fri, 17 Feb 2012 01:44:08 GMT
+recorded_with: VCR 2.0.0.rc1

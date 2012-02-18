@@ -1,6 +1,7 @@
 require 'helper'
 
 require 'cloudapp/drop'
+stub_class :DropContent
 
 describe CloudApp::Drop do
   describe '#display_name' do
@@ -64,6 +65,24 @@ describe CloudApp::Drop do
 
       it 'is true' do
         subject.public?.should eq(true)
+      end
+    end
+  end
+
+  describe '#has_content?' do
+    describe 'an image' do
+      subject { CloudApp::Drop.new item_type: 'image' }
+
+      it 'is true' do
+        subject.has_content?.should eq(true)
+      end
+    end
+
+    describe 'a bookmark' do
+      subject { CloudApp::Drop.new item_type: 'bookmark' }
+
+      it 'is false' do
+        subject.has_content?.should eq(false)
       end
     end
   end

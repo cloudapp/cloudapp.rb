@@ -70,6 +70,11 @@ module CloudApp
 
     def response
       @response ||= @action.call
+
+      case @response
+      when Hash then @response.fetch(@format, @response)
+      else @response
+      end
     end
   end
 end

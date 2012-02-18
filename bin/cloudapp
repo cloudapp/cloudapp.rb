@@ -138,10 +138,43 @@ command [:list, :ls] do |c|
   end
 end
 
+
+desc 'Download the drop at <url>'
+arg_name 'url'
+command :download do |c|
+
+  c.desc 'Download the file to <file>'
+  c.arg_name 'file'
+  c.flag :o, :output
+
+  c.action do |global_options, options, urls|
+    format  = format_from_options global_options
+    download_options = {}
+    download_options[:to] = options[:output] if options[:output]
+
+    urls.each do |url|
+      url     = URI.parse url
+      waiting = "Downloading #{ url }... "
+
+      CloudApp::DropPresenter.print(on:      $stdout,
+                                    waiting: waiting,
+                                    format:  format) do
+        content = service.download_drop url, download_options
+        { pretty: 'done', csv: content }
+      end
+    end
+  end
+end
+
+
 on_error do |e|
-  if CloudApp::DropService::UNAUTHORIZED === e
+  case e
+  when CloudApp::DropService::UNAUTHORIZED
     $stderr.puts color('Email and password given are incorrect.', :bold)
     config.token = nil
+    false
+  when CloudApp::DropService::NO_CONTENT
+    $stderr.puts 'drop was deleted or is a bookmark'
     false
   else
     true

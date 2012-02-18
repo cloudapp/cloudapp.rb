@@ -1,10 +1,10 @@
 require 'helper'
+require 'support/fakefs_rspec'
 require 'support/vcr_rspec'
 
 require 'cloudapp/drop_service'
 
 describe CloudApp::DropService do
-
   let(:token) { '8762f6679f8d001016b2' }
 
   describe '.using_token' do
@@ -26,6 +26,150 @@ describe CloudApp::DropService do
 
     it 'returns the token from the given account' do
       subject.should eql(token)
+    end
+  end
+
+  describe '#drop' do
+    let(:service) { CloudApp::DropService.new }
+
+    describe 'retrieving a drop' do
+      let(:url) { 'http://cl.ly/C23W' }
+      subject {
+        VCR.use_cassette('DropService/drop',
+                         match_requests_on: [:method, :uri, :body, :headers]) {
+          service.drop url
+        }
+      }
+
+      it 'returns the drop' do
+        subject.should be_a(CloudApp::Drop)
+      end
+
+      it 'parses the response' do
+        subject.id.should == 12142483
+      end
+    end
+
+    describe 'retrieving a nonexistent drop' do
+      let(:url) { 'http://cl.ly/nonexistent' }
+      subject {
+        VCR.use_cassette('DropService/drop',
+                         match_requests_on: [:method, :uri, :body, :headers]) {
+          service.drop url
+        }
+      }
+
+      it 'returns nil' do
+        subject.should be_nil
+      end
+    end
+  end
+
+  describe '#download_drop', :fakefs do
+    let(:service)     { CloudApp::DropService.new }
+    let(:url)         { 'http://cl.ly/C23W' }
+    let(:options)     { {} }
+    let(:content)     { 'content' }
+    let(:content_url) { 'http://cl.ly/C23W/drop_presenter.rb' }
+    let(:drop)        { stub :drop, content:      content,
+                                    content_url:  content_url,
+                                    has_content?: true }
+
+    before do
+      CloudApp::DropContent.stub download: content
+      service.stub drop: drop
+    end
+
+    it 'fetches the drop' do
+      CloudApp::DropContent.should_receive(:download).with(drop)
+      service.download_drop url, options
+    end
+
+    it 'returns the content' do
+      service.download_drop(url, options).should eq(content)
+    end
+
+    it 'saves the file to the current directory using the remote filename' do
+      service.download_drop url, options
+      downloaded = File.open('drop_presenter.rb') {|f| f.read }
+
+      downloaded.should eq(content)
+    end
+
+    describe 'to a path' do
+      let(:options) {{ to: '/tmp/file.txt' }}
+
+      it 'saves the file to the given path' do
+        service.download_drop url, options
+        File.exist?(options[:to]).should be_true
+      end
+    end
+
+    describe 'to an existing file' do
+      let(:options) {{ to: '/tmp/file.txt' }}
+      before do
+        Dir.mkdir '/tmp'
+        File.open(options[:to], 'w', 0600) {|file| file << 'existing' }
+      end
+
+      it 'overwrites the file' do
+        service.download_drop url, options
+        downloaded = File.open(options[:to]) {|f| f.read }
+
+        downloaded.should eq(content)
+      end
+    end
+
+    describe 'an unexpanded path' do
+      let(:options) {{ to: '~/file.txt' }}
+      before do
+        FileUtils.mkdir_p File.expand_path('~')
+      end
+
+      it 'saves the file to the expanded directory' do
+        service.download_drop url, options
+        saved_path = File.expand_path(options[:to])
+
+        File.exist?(saved_path).should be_true
+      end
+    end
+
+    describe 'to an existing directory' do
+      let(:options) {{ to: '/tmp' }}
+      before do
+        Dir.mkdir '/tmp'
+      end
+
+      it 'raises an exception' do
+        -> { service.download_drop url, options }.
+          should raise_exception(Errno::EISDIR)
+      end
+    end
+
+    describe 'a bookmark' do
+    let(:drop) { stub :drop, has_content?: false }
+
+      it 'raises an exception' do
+        -> { service.download_drop url, options }.
+          should raise_exception(CloudApp::DropService::NO_CONTENT)
+      end
+
+      it "doesn't save a file" do
+        FakeFS::FileSystem.files.should be_empty
+      end
+    end
+
+    describe 'a nonexistent drop' do
+      let(:drop) { nil }
+
+      it 'raises an exception' do
+        -> { service.download_drop url, options }.
+          should raise_exception(CloudApp::DropService::NO_CONTENT)
+      end
+
+      it "doesn't save a file" do
+        FakeFS::FileSystem.files.should be_empty
+      end
     end
   end
 
