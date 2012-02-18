@@ -71,7 +71,9 @@ describe CloudApp::DropService do
     let(:options)     { {} }
     let(:content)     { 'content' }
     let(:content_url) { 'http://cl.ly/C23W/drop_presenter.rb' }
-    let(:drop)        { stub :drop, content: content, content_url: content_url }
+    let(:drop)        { stub :drop, content:      content,
+                                    content_url:  content_url,
+                                    has_content?: true }
 
     before do
       CloudApp::DropContent.stub download: content
@@ -144,11 +146,25 @@ describe CloudApp::DropService do
       end
     end
 
+    describe 'a bookmark' do
+    let(:drop) { stub :drop, has_content?: false }
+
+      it 'raises an exception' do
+        -> { service.download_drop url, options }.
+          should raise_exception(CloudApp::DropService::NO_CONTENT)
+      end
+
+      it "doesn't save a file" do
+        FakeFS::FileSystem.files.should be_empty
+      end
+    end
+
     describe 'a nonexistent drop' do
       let(:drop) { nil }
 
-      it 'returns nil' do
-        service.download_drop(url, options).should be_nil
+      it 'raises an exception' do
+        -> { service.download_drop url, options }.
+          should raise_exception(CloudApp::DropService::NO_CONTENT)
       end
 
       it "doesn't save a file" do

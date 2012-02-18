@@ -46,6 +46,7 @@ module CloudApp
 
     # Rased when given credentials are incorrect.
     class UNAUTHORIZED < StandardError; end
+    class NO_CONTENT   < StandardError; end
 
     Leadlight.build_connection_common do |c|
       c.request :multipart
@@ -174,8 +175,7 @@ module CloudApp
 
     def download_drop(url, options = {})
       drop = drop url
-      return unless drop
-
+      raise NO_CONTENT if drop.nil? or !drop.has_content?
 
       filename = File.basename drop.content_url
       path     = Pathname.new(options.fetch(:to, filename)).expand_path
