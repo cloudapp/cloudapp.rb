@@ -113,7 +113,7 @@ Download a drop to the current direcctory:
     $ cloudapp download http://cl.ly/040u2o3X1w0z1z3n2T04
     Downloading screenshot.png... done
 
-Download a drop to another direcctory:
+Download a drop to another path:
 
     $ cloudapp download --output=/Users/Larry/image.png http://cl.ly/040u2o3X1w0z1z3n2T04
     Downloading screenshot.png to /Users/Larry... done
