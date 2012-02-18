@@ -139,16 +139,18 @@ command [:list, :ls] do |c|
 end
 
 
-desc 'Download the drop at the given url'
+desc 'Download the drop at <url>'
 arg_name 'url'
 command :download do |c|
 
-  c.desc 'Directory to save the file'
-  c.arg_name 'directory'
-  c.flag :d, :directory
+  c.desc 'Download the file to <file>'
+  c.arg_name 'file'
+  c.flag :o, :output
 
   c.action do |global_options, options, urls|
-    format = format_from_options global_options
+    format  = format_from_options global_options
+    download_options = {}
+    download_options[:to] = options[:output] if options[:output]
 
     urls.each do |url|
       url     = URI.parse url
@@ -157,8 +159,8 @@ command :download do |c|
       CloudApp::DropPresenter.print(on:      $stdout,
                                     waiting: waiting,
                                     format:  format) do
-        content = service.download_drop(url, to: options[:directory])
 
+        content = service.download_drop url, download_options
         { pretty: 'done', csv: content }
       end
     end
