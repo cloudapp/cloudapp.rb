@@ -19,7 +19,7 @@
 \fBcloudapp upload\fR [\fB\-\-private\fR] [\fB\-\-public\fR] \fIfile\fR [\fIfile\fR\.\.\.]
 .
 .br
-\fBcloudapp download\fR [\fB\-\-directory\fR=\fIdirectory\fR] \fIurl\fR
+\fBcloudapp download\fR [\fB\-\-output\fR=\fIfile\fR] \fIurl\fR
 .
 .SH "DESCRIPTION"
 \fBcloudapp\fR is a simple, Unix\-friendly tool for CloudApp meant to augment the Mac and Web apps\. Sometimes it\'s more convenient to share without leaving the terminal and other times it\'s the only tool available\.
@@ -33,30 +33,30 @@ Output using either \fBpretty\fR or \fBcsv\fR format\. (Default: \fBpretty\fR wh
 .SH "COMMANDS"
 .
 .TP
-\fBlist\fR [\fB\-\-count\fR=\fIcount\fR]
-List the most recent \fIcount\fR drops\. The default is to list \fB20\fR drops\.
-.
-.TP
 \fBbookmark\fR [\fB\-\-private\fR] [\fB\-\-public\fR] [\fIurl\fR\.\.\.]
 Create a new bookmark to each \fIurl\fR and print each link\.
+.
+.TP
+\fBdownload\fR [\fB\-\-output\fR=\fIfile\fR] \fIurl\fR
+Download the file at \fIurl\fR to the current directory or to \fIfile\fR if present\.
+.
+.TP
+\fBlist\fR [\fB\-\-count\fR=\fIcount\fR]
+List the most recent \fIcount\fR drops\. The default is to list \fB20\fR drops\.
 .
 .TP
 \fBupload\fR [\fB\-\-private\fR] [\fB\-\-public\fR] \fIfile\fR [\fIfile\fR\.\.\.]
 Upload each \fIfile\fR and print each link\.
 .
-.TP
-\fBdownload\fR [\fB\-\-count\fR=\fIcount\fR] \fIurl\fR
-Download \fIurl\fR to \fIdirectory\fR or the current directory\.
-.
 .SH "COMMAND OPTIONS"
-.
-.TP
-\fB\-d\fR \fIdirectory\fR, \fB\-\-directory\fR=\fIdirectory\fR
-Download files to \fIdirectory\fR\. (Default: \fB\.\fR)
 .
 .TP
 \fB\-n\fR \fIcount\fR, \fB\-\-count\fR=\fIcount\fR
 Display \fIcount\fR drops\. (Default: \fB20\fR)
+.
+.TP
+\fB\-o\fR \fIfile\fR, \fB\-\-output\fR=\fIfile\fR
+Download file as \fIfile\fR\. (Default: current directory using the remote file\'s name)
 .
 .TP
 \fB\-\-private\fR
@@ -205,7 +205,7 @@ Download a drop to another direcctory:
 .
 .nf
 
-$ cloudapp download \-\-directory=/Users/Larry http://cl\.ly/040u2o3X1w0z1z3n2T04
+$ cloudapp download \-\-output=/Users/Larry/image\.png http://cl\.ly/040u2o3X1w0z1z3n2T04
 Downloading screenshot\.png to /Users/Larry\.\.\. done
 .
 .fi

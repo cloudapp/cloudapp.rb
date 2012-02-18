@@ -7,7 +7,7 @@ cloudapp(1) -- All the pleasures of CloudApp now at your terminal
 `cloudapp list` [`--count`=<count>]<br>
 `cloudapp bookmark` [`--private`] [`--public`] <url> [<url>...]<br>
 `cloudapp upload` [`--private`] [`--public`] <file> [<file>...]<br>
-`cloudapp download` [`--directory`=<directory>] <url>
+`cloudapp download` [`--output`=<file>] <url>
 
 ## DESCRIPTION
 
@@ -26,8 +26,8 @@ terminal and other times it's the only tool available.
   * `bookmark` [`--private`] [`--public`] [<url>...]:
     Create a new bookmark to each <url> and print each link.
 
-  * `download` [`--count`=<count>] <url>:
-    Download <url> to <directory> or the current directory.
+  * `download` [`--output`=<file>] <url>:
+    Download the file at <url> to the current directory or to <file> if present.
 
   * `list` [`--count`=<count>]:
     List the most recent <count> drops. The default is to list **20** drops.
@@ -37,11 +37,12 @@ terminal and other times it's the only tool available.
 
 ## COMMAND OPTIONS
 
-  * `-d` <directory>, `--directory`=<directory>:
-    Download files to <directory>. (Default: **.**)
-
   * `-n` <count>, `--count`=<count>:
     Display <count> drops. (Default: **20**)
+
+  * `-o` <file>, `--output`=<file>:
+    Download file as <file>. (Default: current directory using the remote file's
+    name)
 
   * `--private`:
     Use a private (long) link when creating a new drop.
@@ -114,7 +115,7 @@ Download a drop to the current direcctory:
 
 Download a drop to another direcctory:
 
-    $ cloudapp download --directory=/Users/Larry http://cl.ly/040u2o3X1w0z1z3n2T04
+    $ cloudapp download --output=/Users/Larry/image.png http://cl.ly/040u2o3X1w0z1z3n2T04
     Downloading screenshot.png to /Users/Larry... done
 
 

@@ -87,7 +87,7 @@
 <code>cloudapp list</code> [<code>--count</code>=<var>count</var>]<br />
 <code>cloudapp bookmark</code> [<code>--private</code>] [<code>--public</code>] <var>url</var> [<var>url</var>...]<br />
 <code>cloudapp upload</code> [<code>--private</code>] [<code>--public</code>] <var>file</var> [<var>file</var>...]<br />
-<code>cloudapp download</code> [<code>--directory</code>=<var>directory</var>] <var>url</var></p>
+<code>cloudapp download</code> [<code>--output</code>=<var>file</var>] <var>url</var></p>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
@@ -106,18 +106,19 @@ output to a terminal and <strong>csv</strong> when output is piped to another pr
 <h2 id="COMMANDS">COMMANDS</h2>
 
 <dl>
-<dt><code>list</code> [<code>--count</code>=<var>count</var>]</dt><dd><p>List the most recent <var>count</var> drops. The default is to list <strong>20</strong> drops.</p></dd>
 <dt><code>bookmark</code> [<code>--private</code>] [<code>--public</code>] [<var>url</var>...]</dt><dd><p>Create a new bookmark to each <var>url</var> and print each link.</p></dd>
+<dt><code>download</code> [<code>--output</code>=<var>file</var>] <var>url</var></dt><dd><p>Download the file at <var>url</var> to the current directory or to <var>file</var> if present.</p></dd>
+<dt><code>list</code> [<code>--count</code>=<var>count</var>]</dt><dd><p>List the most recent <var>count</var> drops. The default is to list <strong>20</strong> drops.</p></dd>
 <dt><code>upload</code> [<code>--private</code>] [<code>--public</code>] <var>file</var> [<var>file</var>...]</dt><dd><p>Upload each <var>file</var> and print each link.</p></dd>
-<dt><code>download</code> [<code>--count</code>=<var>count</var>] <var>url</var></dt><dd><p>Download <var>url</var> to <var>directory</var> or the current directory.</p></dd>
 </dl>
 
 
 <h2 id="COMMAND-OPTIONS">COMMAND OPTIONS</h2>
 
 <dl>
-<dt><code>-d</code> <var>directory</var>, <code>--directory</code>=<var>directory</var></dt><dd><p>Download files to <var>directory</var>. (Default: <strong>.</strong>)</p></dd>
 <dt><code>-n</code> <var>count</var>, <code>--count</code>=<var>count</var></dt><dd><p>Display <var>count</var> drops. (Default: <strong>20</strong>)</p></dd>
+<dt><code>-o</code> <var>file</var>, <code>--output</code>=<var>file</var></dt><dd><p>Download file as <var>file</var>. (Default: current directory using the remote file's
+name)</p></dd>
 <dt><code>--private</code></dt><dd><p>Use a private (long) link when creating a new drop.</p></dd>
 <dt><code>--public</code></dt><dd><p>Use a public (short) link when creating a new drop.</p></dd>
 </dl>
@@ -196,7 +197,7 @@ Downloading screenshot.png... done
 
 <p>Download a drop to another direcctory:</p>
 
-<pre><code>$ cloudapp download --directory=/Users/Larry http://cl.ly/040u2o3X1w0z1z3n2T04
+<pre><code>$ cloudapp download --output=/Users/Larry/image.png http://cl.ly/040u2o3X1w0z1z3n2T04
 Downloading screenshot.png to /Users/Larry... done
 </code></pre>
 
