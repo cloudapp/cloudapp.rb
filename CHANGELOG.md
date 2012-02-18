@@ -4,6 +4,9 @@ Below is a complete listing of changes for each revision of `cloudapp`.
 
 ## Unreleased
 
+## 1.1.0
+
+ - Add `download` command
  - General housecleaning in `bin/cloudapp`
  - Fix typo ([#22][] by [Mark Mulder][bittersweet])
  - Extract Config class
