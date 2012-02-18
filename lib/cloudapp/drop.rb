@@ -8,5 +8,9 @@ module CloudApp
     def display_name
       name || redirect_url || url
     end
+
+    def has_content?
+      item_type != 'bookmark'
+    end
   end
 end
