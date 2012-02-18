@@ -147,7 +147,7 @@ describe CloudApp::DropService do
     end
 
     describe 'a bookmark' do
-    let(:drop) { stub :drop, has_content?: false }
+      let(:drop) { stub :drop, has_content?: false }
 
       it 'raises an exception' do
         -> { service.download_drop url, options }.
@@ -156,6 +156,16 @@ describe CloudApp::DropService do
 
       it "doesn't save a file" do
         FakeFS::FileSystem.files.should be_empty
+      end
+    end
+
+    describe 'a file with URL-encoded name' do
+      let(:content_url) { 'http://cl.ly/C23W/screen%20shot.png' }
+
+      it 'decodes the filename' do
+        service.download_drop url, options
+
+        File.exist?('screen shot.png').should be_true
       end
     end
 

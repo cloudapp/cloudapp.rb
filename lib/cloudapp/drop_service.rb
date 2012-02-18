@@ -177,7 +177,7 @@ module CloudApp
       drop = drop url
       raise NO_CONTENT if drop.nil? or !drop.has_content?
 
-      filename = File.basename drop.content_url
+      filename = Addressable::URI.unencode(File.basename(drop.content_url))
       path     = Pathname.new(options.fetch(:to, filename)).expand_path
       FileUtils.mkdir_p path.parent
 
