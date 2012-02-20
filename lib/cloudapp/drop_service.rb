@@ -10,10 +10,10 @@ require 'cloudapp/drop_content'
 # Usage:
 #
 #   # Retrieve an account's token
-#   token = DropSerivce.retrieve_token 'arthur@dent.com', 'towel'
+#   token = DropService.retrieve_token 'arthur@dent.com', 'towel'
 #
 #   # Create a new service passing CloudApp account token:
-#   service = DropSerivce.using_token token
+#   service = DropService.using_token token
 #
 #   # List all drops:
 #   service.drops
