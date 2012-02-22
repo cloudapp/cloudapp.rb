@@ -9,7 +9,6 @@ require 'pathname'
 require 'cloudapp'
 require 'cloudapp/config'
 require 'cloudapp/drop_presenter'
-require 'cloudapp/drop_service'
 
 
 extend Forwardable
@@ -20,7 +19,7 @@ def config
 end
 
 def service
-  CloudApp::DropService.using_token config.token
+  CloudApp::Api.using_token config.token
 end
 
 def require_credentials
@@ -30,7 +29,7 @@ def require_credentials
 
   email        = HighLine.new.ask('Email: ')
   password     = HighLine.new.ask('Password: ') {|q| q.echo = false }
-  config.token = CloudApp::DropService.retrieve_token email, password
+  config.token = CloudApp::Api.token_for_account email, password
 end
 
 def format_from_options(options)
@@ -169,11 +168,11 @@ end
 
 on_error do |e|
   case e
-  when CloudApp::DropService::UNAUTHORIZED
+  when CloudApp::Service::UNAUTHORIZED
     $stderr.puts color('Email and password given are incorrect.', :bold)
     config.token = nil
     false
-  when CloudApp::DropService::NO_CONTENT
+  when CloudApp::Service::NO_CONTENT
     $stderr.puts 'drop was deleted or is a bookmark'
     false
   else

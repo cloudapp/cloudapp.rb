@@ -5,44 +5,8 @@ require 'multi_json'
 require 'cloudapp/drop'
 require 'cloudapp/drop_content'
 
-# Leadlight service for mucking about with drops in the CloudApp API.
-#
-# Usage:
-#
-#   # Retrieve an account's token
-#   token = DropService.retrieve_token 'arthur@dent.com', 'towel'
-#
-#   # Create a new service passing CloudApp account token:
-#   service = DropService.using_token token
-#
-#   # List all drops:
-#   service.drops
-#
-#   # Create a bookmark:
-#   service.create url: 'http://getcloudapp.com', name: 'CloudApp'
-#
-#   # Upload a file:
-#   service.create path: #<Pathname>, name: 'Screen shot'
-#
-#   # Use a public (short) link for the new drop:
-#   service.create url:     'http://getcloudapp.com',
-#                  name:    'CloudApp',
-#                  private: false
-#
-#   # List all trashed drops:
-#   service.trash
-#
-#   # Delete a drop (not yet implemented):
-#   service.drops.get(123).destroy
-#
-#   # Delete a drop from the trash (not yet implemented):
-#   service.trash.get(123).destroy
-#
-#   # Restore a drop from the trash (not yet implemented):
-#   service.trash.get(123).restore
-#
 module CloudApp
-  class DropService
+  class Service
 
     # Rased when given credentials are incorrect.
     class UNAUTHORIZED < StandardError; end
@@ -138,16 +102,11 @@ module CloudApp
       end
     end
 
-    def self.retrieve_token(email, password)
-      new.token email, password
-    end
-
-
     def token=(token)
       connection.token_auth token
     end
 
-    def token(email, password)
+    def token_for_account(email, password)
       post('/account/token', {}, { email: email, password: password }).
         raise_on_error.submit_and_wait do |response|
           return response['token']
@@ -217,7 +176,7 @@ module CloudApp
       raise UNAUTHORIZED
     end
 
-    protected
+  protected
 
     def create_bookmark(options)
       root.link('drops').post({}, options).raise_on_error.

@@ -2,25 +2,26 @@ require 'helper'
 require 'support/fakefs_rspec'
 require 'support/vcr_rspec'
 
-require 'cloudapp/drop_service'
+require 'cloudapp/service'
 
-describe CloudApp::DropService do
+describe CloudApp::Service do
   let(:token) { '8762f6679f8d001016b2' }
 
   describe '.using_token' do
-    subject { CloudApp::DropService.using_token(token) }
+    let(:service) { stub }
 
-    it 'returns a service authenticated with given token' do
-      VCR.use_cassette('DropService/list_drops') {
-        subject.drops
-      }
+    it 'returns a new service using the token' do
+      CloudApp::Service.should_receive(:new).and_return(service)
+      service.should_receive(:token=).with(token)
+
+      CloudApp::Service.using_token token
     end
   end
 
-  describe '.retrieve_token' do
+  describe '#token_for_account' do
     subject {
-      VCR.use_cassette('DropService/retrieve_token') {
-        CloudApp::DropService.retrieve_token 'arthur@dent.com', 'towel'
+      VCR.use_cassette('Service/token_for_account') {
+        CloudApp::Service.new.token_for_account 'arthur@dent.com', 'towel'
       }
     }
 
@@ -30,12 +31,12 @@ describe CloudApp::DropService do
   end
 
   describe '#drop' do
-    let(:service) { CloudApp::DropService.new }
+    let(:service) { CloudApp::Service.new }
 
     describe 'retrieving a drop' do
       let(:url) { 'http://cl.ly/C23W' }
       subject {
-        VCR.use_cassette('DropService/drop',
+        VCR.use_cassette('Service/drop',
                          match_requests_on: [:method, :uri, :body, :headers]) {
           service.drop url
         }
@@ -53,7 +54,7 @@ describe CloudApp::DropService do
     describe 'retrieving a nonexistent drop' do
       let(:url) { 'http://cl.ly/nonexistent' }
       subject {
-        VCR.use_cassette('DropService/drop',
+        VCR.use_cassette('Service/drop',
                          match_requests_on: [:method, :uri, :body, :headers]) {
           service.drop url
         }
@@ -66,7 +67,7 @@ describe CloudApp::DropService do
   end
 
   describe '#download_drop', :fakefs do
-    let(:service)     { CloudApp::DropService.new }
+    let(:service)     { CloudApp::Service.new }
     let(:url)         { 'http://cl.ly/C23W' }
     let(:options)     { {} }
     let(:content)     { 'content' }
@@ -151,7 +152,7 @@ describe CloudApp::DropService do
 
       it 'raises an exception' do
         -> { service.download_drop url, options }.
-          should raise_exception(CloudApp::DropService::NO_CONTENT)
+          should raise_exception(CloudApp::Service::NO_CONTENT)
       end
 
       it "doesn't save a file" do
@@ -174,7 +175,7 @@ describe CloudApp::DropService do
 
       it 'raises an exception' do
         -> { service.download_drop url, options }.
-          should raise_exception(CloudApp::DropService::NO_CONTENT)
+          should raise_exception(CloudApp::Service::NO_CONTENT)
       end
 
       it "doesn't save a file" do
@@ -184,10 +185,10 @@ describe CloudApp::DropService do
   end
 
   describe '#drops' do
-    let(:service) { CloudApp::DropService.using_token token }
+    let(:service) { CloudApp::Service.using_token token }
 
     describe 'listing drops' do
-      subject { VCR.use_cassette('DropService/list_drops') { service.drops }}
+      subject { VCR.use_cassette('Service/list_drops') { service.drops }}
 
       it 'has 20 drops' do
         subject.should have(20).items
@@ -199,7 +200,7 @@ describe CloudApp::DropService do
     end
 
     describe 'listing trash' do
-      subject { VCR.use_cassette('DropService/list_trash') { service.trash }}
+      subject { VCR.use_cassette('Service/list_trash') { service.trash }}
 
       it 'has 2 drops' do
         subject.should have(2).items
@@ -214,7 +215,7 @@ describe CloudApp::DropService do
       let(:limit) { 5 }
 
       subject {
-        VCR.use_cassette('DropService/list_drops_with_limit') {
+        VCR.use_cassette('Service/list_drops_with_limit') {
           service.drops limit
         }
       }
@@ -226,13 +227,13 @@ describe CloudApp::DropService do
   end
 
   describe '#create' do
-    let(:service) { CloudApp::DropService.using_token token }
+    let(:service) { CloudApp::Service.using_token token }
     let(:url)     { 'http://getcloudapp.com' }
     let(:name)    { 'CloudApp' }
 
     describe 'creating a bookmark' do
       subject {
-        VCR.use_cassette('DropService/create_bookmark') {
+        VCR.use_cassette('Service/create_bookmark') {
           service.create url: url
         }
       }
@@ -252,7 +253,7 @@ describe CloudApp::DropService do
 
     describe 'creating a bookmark with a name' do
       subject {
-        VCR.use_cassette('DropService/create_bookmark_with_name') {
+        VCR.use_cassette('Service/create_bookmark_with_name') {
           service.create url: url, name: name
         }
       }
@@ -268,7 +269,7 @@ describe CloudApp::DropService do
 
     describe 'creating a public bookmark' do
       subject {
-        VCR.use_cassette('DropService/create_public_bookmark') {
+        VCR.use_cassette('Service/create_public_bookmark') {
           service.create url: url, name: name, private: false
         }
       }
@@ -280,7 +281,7 @@ describe CloudApp::DropService do
 
     describe 'creating a private bookmark' do
       subject {
-        VCR.use_cassette('DropService/create_private_bookmark') {
+        VCR.use_cassette('Service/create_private_bookmark') {
           service.create url: url, name: name, private: true
         }
       }
@@ -296,7 +297,7 @@ describe CloudApp::DropService do
       end
 
       subject {
-        VCR.use_cassette('DropService/upload_file') {
+        VCR.use_cassette('Service/upload_file') {
           service.create path: path
         }
       }
@@ -321,7 +322,7 @@ describe CloudApp::DropService do
       end
 
       subject {
-        VCR.use_cassette('DropService/upload_public_file') {
+        VCR.use_cassette('Service/upload_public_file') {
           service.create path: path, private: false
         }
       }
@@ -343,57 +344,58 @@ describe CloudApp::DropService do
 
   describe 'with bad authentication' do
     let(:token)   { 'bad-token' }
-    let(:service) { CloudApp::DropService.using_token token }
+    let(:service) { CloudApp::Service.using_token token }
 
-    describe '.retrieve_token' do
+    describe '#token_for_account' do
       subject {
-        VCR.use_cassette('DropService/retrieve_token_with_bad_credentials') {
-          CloudApp::DropService.retrieve_token 'ford@prefect.com', 'earthling'
+        VCR.use_cassette('Service/token_for_account_with_bad_credentials') {
+          CloudApp::Service.new.
+            token_for_account('ford@prefect.com', 'earthling')
         }
       }
 
       it 'raises an unauthorized error' do
         lambda { subject }.
-          should raise_error(CloudApp::DropService::UNAUTHORIZED)
+          should raise_error(CloudApp::Service::UNAUTHORIZED)
       end
     end
 
     describe '#drops' do
       subject {
-        VCR.use_cassette('DropService/list_drops_with_bad_credentials') {
+        VCR.use_cassette('Service/list_drops_with_bad_credentials') {
           service.drops
         }
       }
 
       it 'raises an unauthorized error' do
         lambda { subject }.
-          should raise_error(CloudApp::DropService::UNAUTHORIZED)
+          should raise_error(CloudApp::Service::UNAUTHORIZED)
       end
     end
 
     describe '#trash' do
       subject {
-        VCR.use_cassette('DropService/list_trash_with_bad_credentials') {
+        VCR.use_cassette('Service/list_trash_with_bad_credentials') {
           service.trash
         }
       }
 
       it 'raises an unauthorized error' do
         lambda { subject }.
-          should raise_error(CloudApp::DropService::UNAUTHORIZED)
+          should raise_error(CloudApp::Service::UNAUTHORIZED)
       end
     end
 
     describe '#create' do
       subject {
-        VCR.use_cassette('DropService/create_bookmark_with_bad_credentials') {
+        VCR.use_cassette('Service/create_bookmark_with_bad_credentials') {
           service.create url: 'http://getcloudapp.com'
         }
       }
 
       it 'raises an unauthorized error' do
         lambda { subject }.
-          should raise_error(CloudApp::DropService::UNAUTHORIZED)
+          should raise_error(CloudApp::Service::UNAUTHORIZED)
       end
     end
   end

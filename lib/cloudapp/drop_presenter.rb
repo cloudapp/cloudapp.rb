@@ -27,7 +27,7 @@ module CloudApp
       @io.puts  lines
     end
 
-    protected
+  protected
 
     def lines
       if not @columns
