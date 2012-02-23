@@ -202,6 +202,19 @@ describe CloudApp::Service do
       subject.link('self').should eq(href)
     end
 
+    context 'with href' do
+      let(:href) { 'https://my.cl.ly/items?api_version=1.2&page=2&per_page=20' }
+      subject {
+        VCR.use_cassette('Service/list_drops_with_href') {
+          service.drops href: href
+        }
+      }
+
+      it 'returns the resource at the given href' do
+        subject.link('self').should eq(Addressable::URI.parse(href))
+      end
+    end
+
     context 'with limit' do
       let(:limit) { 5 }
       subject {
@@ -212,6 +225,19 @@ describe CloudApp::Service do
 
       it 'has the given number of drops' do
         subject.should have(limit).items
+      end
+    end
+
+    context 'with limit and href' do
+      let(:href) { 'https://my.cl.ly/items?api_version=1.2&page=2&per_page=20' }
+      subject {
+        VCR.use_cassette('Service/list_drops_with_href') {
+          service.drops href: href, limit: 1
+        }
+      }
+
+      it 'ignores limit' do
+        subject.should have(20).items
       end
     end
   end

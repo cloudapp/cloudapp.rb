@@ -146,15 +146,26 @@ module CloudApp
     end
 
     def drops(options = {})
-      count = options.fetch :limit, 20
-      DropCollection.new root.paginated_drops(per_page: count)
+      href     = options.fetch :href, nil
+      response = :no_response
+
+      if href
+        get(href).raise_on_error.submit_and_wait do |drops|
+          response = drops
+        end
+      else
+        limit = options.fetch :limit, 20
+        response = root.paginated_drops(per_page: limit)
+      end
+
+      DropCollection.new response
     rescue MultiJson::DecodeError
       raise UNAUTHORIZED
     end
 
     def trash(options = {})
-      count = options.fetch :limit, 20
-      DropCollection.new root.paginated_trash(per_page: count)
+      limit = options.fetch :limit, 20
+      DropCollection.new root.paginated_trash(per_page: limit)
     rescue MultiJson::DecodeError
       raise UNAUTHORIZED
     end
