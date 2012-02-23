@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   ## the sub! line in the Rakefile
   s.name              = 'cloudapp'
   s.version           = '1.1.0'
-  s.date              = '2012-02-18'
+  s.date              = '2012-02-23'
   s.rubyforge_project = 'cloudapp'
 
   ## Make sure your summary is short. The description may be as long
@@ -73,37 +73,41 @@ Gem::Specification.new do |s|
     bin/cloudapp
     cloudapp.gemspec
     lib/cloudapp.rb
+    lib/cloudapp/account.rb
     lib/cloudapp/config.rb
     lib/cloudapp/drop.rb
     lib/cloudapp/drop_content.rb
     lib/cloudapp/drop_presenter.rb
-    lib/cloudapp/drop_service.rb
-    lib/cloudapp/identity.rb
+    lib/cloudapp/service.rb
+    lib/cloudapp/token.rb
     man/cloudapp.1
     man/cloudapp.1.html
     man/cloudapp.1.ronn
     spec/cassettes/DropContent/download.yml
-    spec/cassettes/DropService/create_bookmark.yml
-    spec/cassettes/DropService/create_bookmark_with_bad_credentials.yml
-    spec/cassettes/DropService/create_bookmark_with_name.yml
-    spec/cassettes/DropService/create_private_bookmark.yml
-    spec/cassettes/DropService/create_public_bookmark.yml
-    spec/cassettes/DropService/drop.yml
-    spec/cassettes/DropService/list_drops.yml
-    spec/cassettes/DropService/list_drops_with_bad_credentials.yml
-    spec/cassettes/DropService/list_drops_with_limit.yml
-    spec/cassettes/DropService/list_trash.yml
-    spec/cassettes/DropService/list_trash_with_bad_credentials.yml
-    spec/cassettes/DropService/retrieve_token.yml
-    spec/cassettes/DropService/retrieve_token_with_bad_credentials.yml
-    spec/cassettes/DropService/upload_file.yml
-    spec/cassettes/DropService/upload_public_file.yml
+    spec/cassettes/Service/create_bookmark.yml
+    spec/cassettes/Service/create_bookmark_with_bad_credentials.yml
+    spec/cassettes/Service/create_bookmark_with_name.yml
+    spec/cassettes/Service/create_private_bookmark.yml
+    spec/cassettes/Service/create_public_bookmark.yml
+    spec/cassettes/Service/drop.yml
+    spec/cassettes/Service/list_drops.yml
+    spec/cassettes/Service/list_drops_with_bad_credentials.yml
+    spec/cassettes/Service/list_drops_with_href.yml
+    spec/cassettes/Service/list_drops_with_limit.yml
+    spec/cassettes/Service/list_trash.yml
+    spec/cassettes/Service/list_trash_with_bad_credentials.yml
+    spec/cassettes/Service/list_trash_with_limit.yml
+    spec/cassettes/Service/token_for_account.yml
+    spec/cassettes/Service/token_for_account_with_bad_credentials.yml
+    spec/cassettes/Service/upload_file.yml
+    spec/cassettes/Service/upload_public_file.yml
+    spec/cloudapp/account_spec.rb
     spec/cloudapp/config_spec.rb
     spec/cloudapp/drop_content_spec.rb
     spec/cloudapp/drop_presenter_spec.rb
-    spec/cloudapp/drop_service_spec.rb
     spec/cloudapp/drop_spec.rb
-    spec/cloudapp/identity_spec.rb
+    spec/cloudapp/service_spec.rb
+    spec/cloudapp/token_spec.rb
     spec/helper.rb
     spec/support/fakefs_rspec.rb
     spec/support/files/favicon.ico
