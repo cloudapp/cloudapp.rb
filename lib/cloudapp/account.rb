@@ -2,49 +2,46 @@ require 'forwardable'
 
 # Usage:
 #
-#   # Retrieve an account's token
-#   token = CloudApp::Api.token_for_account 'arthur@dent.com', 'towel'
-#
 #   # Create a new service passing CloudApp account token:
-#   api = CloudApp::Api.using_token token
+#   account = CloudApp::Account.using_token token
 #
 #   # Latest drops
-#   api.drops
+#   account.drops
 #
 #   # Latest 5 drops
-#   api.drops 5
+#   account.drops 5
 #
 #   # List all trashed drops:
-#   api.trash
+#   account.trash
 #
 #   # List specific page of drops (not yet implemented):
-#   page1 = api.drops
-#   page2 = api.drops href: page1.href(:next)
-#   page1 = api.drops href: page2.href(:previous)
-#   page1 = api.drops href: page1.href(:self)
+#   page1 = account.drops
+#   page2 = account.drops href: page1.href(:next)
+#   page1 = account.drops href: page2.href(:previous)
+#   page1 = account.drops href: page1.href(:self)
 #
 #   # Create a bookmark:
-#   api.create url: 'http://getcloudapp.com', name: 'CloudApp'
+#   account.create url: 'http://getcloudapp.com', name: 'CloudApp'
 #
 #   # Upload a file:
-#   api.create path: #<Pathname>, name: 'Screen shot'
+#   account.create path: #<Pathname>, name: 'Screen shot'
 #
 #   # Use a public (short) link for the new drop:
-#   api.create url:     'http://getcloudapp.com',
+#   account.create url:     'http://getcloudapp.com',
 #              name:    'CloudApp',
 #              private: false
 #
 #   # Delete a drop (not yet implemented):
-#   api.drops.get(123).destroy
+#   account.drops.get(123).destroy
 #
 #   # Delete a drop from the trash (not yet implemented):
-#   api.trash.get(123).destroy
+#   account.trash.get(123).destroy
 #
 #   # Restore a drop from the trash (not yet implemented):
-#   api.trash.get(123).restore
+#   account.trash.get(123).restore
 #
 module CloudApp
-  class Api
+  class Account
     extend Forwardable
     def_delegators :drop_service, :drops, :trash, :drop, :create
 
@@ -64,12 +61,8 @@ module CloudApp
       @token = token
     end
 
-    def self.token_for_account(email, password)
-      drop_service.token_for_account email, password
-    end
-
     def self.using_token(token)
-      CloudApp::Api.new token
+      CloudApp::Account.new token
     end
 
   protected

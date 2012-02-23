@@ -18,8 +18,8 @@ def config
   CloudApp::Config.new
 end
 
-def service
-  CloudApp::Api.using_token config.token
+def account
+  CloudApp::Account.using_token config.token
 end
 
 def require_credentials
@@ -29,7 +29,7 @@ def require_credentials
 
   email        = HighLine.new.ask('Email: ')
   password     = HighLine.new.ask('Password: ') {|q| q.echo = false }
-  config.token = CloudApp::Api.token_for_account email, password
+  config.token = CloudApp::Token.for_account email, password
 end
 
 def format_from_options(options)
@@ -86,7 +86,7 @@ command :bookmark do |c|
         new_options = { url: url }
         new_options[:private] = private unless private.nil?
 
-        new_drop = service.create new_options
+        new_drop = account.create new_options
         new_drop.url
       end
     end
@@ -107,7 +107,7 @@ command :upload do |c|
         new_options = { path: file }
         new_options[:private] = private unless private.nil?
 
-        new_drop = service.create new_options
+        new_drop = account.create new_options
         new_drop.url
       end
     end
@@ -132,7 +132,7 @@ command [:list, :ls] do |c|
     CloudApp::DropPresenter.print(on:      $stdout,
                                   columns: columns,
                                   format:  format) do
-      service.drops count
+      account.drops count
     end
   end
 end
@@ -158,7 +158,7 @@ command :download do |c|
       CloudApp::DropPresenter.print(on:      $stdout,
                                     waiting: waiting,
                                     format:  format) do
-        content = service.download_drop url, download_options
+        content = account.download_drop url, download_options
         { pretty: 'done', csv: content }
       end
     end
