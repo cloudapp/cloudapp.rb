@@ -6,19 +6,19 @@
 module CloudApp
   class Token
     class << self
-      attr_writer :drop_service_source
+      attr_writer :service_source
 
-      def drop_service_source
-        @drop_service_source ||= CloudApp::Service.public_method(:new)
+      def service_source
+        @service_source ||= CloudApp::Service.public_method(:new)
       end
 
-      def drop_service
-        drop_service_source.call
+      def service
+        service_source.call
       end
     end
 
     def self.for_account(email, password)
-      drop_service.token_for_account email, password
+      service.token_for_account email, password
     end
   end
 end
