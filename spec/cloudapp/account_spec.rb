@@ -17,19 +17,13 @@ describe CloudApp::Account do
   end
 
   describe '#drops' do
-    let(:next_link) { stub }
-    let(:drops)     {[ stub(:drop) ]}
+    let(:drops) {[ stub(:drop) ]}
     subject { CloudApp::Account.new(token).drops }
     before do service.stub(drops: drops) end
 
     it 'delegates to the drop service' do
       service.should_receive(:drops).with(args)
       CloudApp::Account.new(token).drops(args)
-    end
-
-    it 'exposes links' do
-      drops.stub
-      subject.link(:next).should eq(next_link)
     end
   end
 
