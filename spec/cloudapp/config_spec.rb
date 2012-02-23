@@ -10,9 +10,12 @@ describe CloudApp::Config do
   let(:config_file) {
     Tempfile.new('cloudapprc', '.').tap do |file|
       file << content
+      file.flush
       file.close
     end
   }
+
+  after do config_file.unlink end
 
   describe '#new' do
     subject { CloudApp::Config.new path }
