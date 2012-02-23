@@ -146,17 +146,13 @@ module CloudApp
     end
 
     def drops(count = 20)
-      root.paginated_drops(per_page: count)['items'].map do |drop_data|
-        Drop.new drop_data
-      end
+      DropCollection.new root.paginated_drops(per_page: count)
     rescue MultiJson::DecodeError
       raise UNAUTHORIZED
     end
 
     def trash(count = 20)
-      root.paginated_trash(per_page: count)['items'].map do |drop_data|
-        Drop.new drop_data
-      end
+      DropCollection.new root.paginated_trash(per_page: count)
     rescue MultiJson::DecodeError
       raise UNAUTHORIZED
     end
@@ -209,6 +205,23 @@ module CloudApp
             end
           end
         end
+    end
+
+    class DropCollection < SimpleDelegator
+      def initialize(response)
+        @response = response
+        super drops
+      end
+
+      def link(name)
+        @response.link(name).href
+      end
+
+    private
+
+      def drops
+        @drops ||= @response['items'].map {|drop| Drop.new drop }
+      end
     end
   end
 end

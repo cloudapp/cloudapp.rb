@@ -186,34 +186,24 @@ describe CloudApp::Service do
 
   describe '#drops' do
     let(:service) { CloudApp::Service.using_token token }
+    subject { VCR.use_cassette('Service/list_drops') { service.drops }}
 
-    describe 'listing drops' do
-      subject { VCR.use_cassette('Service/list_drops') { service.drops }}
-
-      it 'has 20 drops' do
-        subject.should have(20).items
-      end
-
-      it 'creates Drops' do
-        subject.each {|drop| drop.should be_a(CloudApp::Drop) }
-      end
+    it 'has 20 drops' do
+      subject.should have(20).items
     end
 
-    describe 'listing trash' do
-      subject { VCR.use_cassette('Service/list_trash') { service.trash }}
-
-      it 'has 2 drops' do
-        subject.should have(2).items
-      end
-
-      it 'creates Drops' do
-        subject.each {|drop| drop.should be_a(CloudApp::Drop) }
-      end
+    it 'creates Drops' do
+      subject.each {|drop| drop.should be_a(CloudApp::Drop) }
     end
 
-    describe 'limiting drops list' do
+    it 'delegates links to response' do
+      href = Addressable::URI.
+               parse('https://my.cl.ly/items?api_version=1.2&per_page=20')
+      subject.link('self').should eq(href)
+    end
+
+    context 'with limit' do
       let(:limit) { 5 }
-
       subject {
         VCR.use_cassette('Service/list_drops_with_limit') {
           service.drops limit
@@ -223,6 +213,25 @@ describe CloudApp::Service do
       it 'has the given number of drops' do
         subject.should have(limit).items
       end
+    end
+  end
+
+  describe '#trash' do
+    let(:service) { CloudApp::Service.using_token token }
+    subject { VCR.use_cassette('Service/list_trash') { service.trash }}
+
+    it 'has 2 drops' do
+      subject.should have(2).items
+    end
+
+    it 'creates Drops' do
+      subject.each {|drop| drop.should be_a(CloudApp::Drop) }
+    end
+
+    it 'delegates links to response' do
+      href = Addressable::URI.
+               parse('https://my.cl.ly/items?api_version=1.2&per_page=20&deleted=true')
+      subject.link('self').should eq(href)
     end
   end
 
