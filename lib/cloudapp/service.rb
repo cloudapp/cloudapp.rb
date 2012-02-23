@@ -13,8 +13,6 @@ module CloudApp
     class NO_CONTENT   < StandardError; end
 
     Leadlight.build_connection_common do |c|
-      c.request :multipart
-      c.request :url_encoded
       c.adapter :typhoeus
     end
 
