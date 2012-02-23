@@ -206,7 +206,7 @@ describe CloudApp::Service do
       let(:limit) { 5 }
       subject {
         VCR.use_cassette('Service/list_drops_with_limit') {
-          service.drops limit
+          service.drops limit: limit
         }
       }
 
@@ -232,6 +232,19 @@ describe CloudApp::Service do
       href = Addressable::URI.
                parse('https://my.cl.ly/items?api_version=1.2&per_page=20&deleted=true')
       subject.link('self').should eq(href)
+    end
+
+    context 'with limit' do
+      let(:limit) { 1 }
+      subject {
+        VCR.use_cassette('Service/list_trash_with_limit') {
+          service.trash limit: limit
+        }
+      }
+
+      it 'has the given number of drops' do
+        subject.should have(limit).items
+      end
     end
   end
 

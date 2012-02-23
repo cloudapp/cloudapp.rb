@@ -132,7 +132,7 @@ command [:list, :ls] do |c|
     CloudApp::DropPresenter.print(on:      $stdout,
                                   columns: columns,
                                   format:  format) do
-      account.drops count
+      account.drops limit: count
     end
   end
 end

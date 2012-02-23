@@ -145,13 +145,15 @@ module CloudApp
       end
     end
 
-    def drops(count = 20)
+    def drops(options = {})
+      count = options.fetch :limit, 20
       DropCollection.new root.paginated_drops(per_page: count)
     rescue MultiJson::DecodeError
       raise UNAUTHORIZED
     end
 
-    def trash(count = 20)
+    def trash(options = {})
+      count = options.fetch :limit, 20
       DropCollection.new root.paginated_trash(per_page: count)
     rescue MultiJson::DecodeError
       raise UNAUTHORIZED
