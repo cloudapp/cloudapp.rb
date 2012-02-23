@@ -146,8 +146,8 @@ module CloudApp
     end
 
     def drops(options = {})
-      href     = options.fetch :href, nil
       response = :no_response
+      href     = options.fetch :href, nil
 
       if href
         get(href).raise_on_error.submit_and_wait do |drops|
@@ -227,7 +227,9 @@ module CloudApp
       end
 
       def link(name)
-        @response.link(name).href
+        fallback = -> { OpenStruct.new href: nil }
+        href = @response.link(name, &fallback).href
+        href && href.to_s
       end
 
     private

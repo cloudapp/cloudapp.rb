@@ -197,9 +197,12 @@ describe CloudApp::Service do
     end
 
     it 'delegates links to response' do
-      href = Addressable::URI.
-               parse('https://my.cl.ly/items?api_version=1.2&per_page=20')
+      href = 'https://my.cl.ly/items?api_version=1.2&per_page=20'
       subject.link('self').should eq(href)
+    end
+
+    it 'returns nil for a nonexistent link' do
+      subject.link('nonexistent').should be_nil
     end
 
     context 'with href' do
@@ -211,7 +214,7 @@ describe CloudApp::Service do
       }
 
       it 'returns the resource at the given href' do
-        subject.link('self').should eq(Addressable::URI.parse(href))
+        subject.link('self').should eq(href)
       end
     end
 
@@ -255,8 +258,7 @@ describe CloudApp::Service do
     end
 
     it 'delegates links to response' do
-      href = Addressable::URI.
-               parse('https://my.cl.ly/items?api_version=1.2&per_page=20&deleted=true')
+      href = 'https://my.cl.ly/items?api_version=1.2&per_page=20&deleted=true'
       subject.link('self').should eq(href)
     end
 
