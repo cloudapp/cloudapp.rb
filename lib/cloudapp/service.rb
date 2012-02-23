@@ -111,7 +111,7 @@ module CloudApp
         raise_on_error.submit_and_wait do |response|
           return response['token']
         end
-    rescue MultiJson::DecodeError => e
+    rescue MultiJson::DecodeError
       raise UNAUTHORIZED
     end
 
@@ -149,7 +149,7 @@ module CloudApp
       root.paginated_drops(per_page: count)['items'].map do |drop_data|
         Drop.new drop_data
       end
-    rescue MultiJson::DecodeError => e
+    rescue MultiJson::DecodeError
       raise UNAUTHORIZED
     end
 
@@ -157,7 +157,7 @@ module CloudApp
       root.paginated_trash(per_page: count)['items'].map do |drop_data|
         Drop.new drop_data
       end
-    rescue MultiJson::DecodeError => e
+    rescue MultiJson::DecodeError
       raise UNAUTHORIZED
     end
 
@@ -172,7 +172,7 @@ module CloudApp
       else
         create_bookmark options
       end
-    rescue MultiJson::DecodeError => e
+    rescue MultiJson::DecodeError
       raise UNAUTHORIZED
     end
 

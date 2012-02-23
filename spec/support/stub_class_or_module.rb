@@ -15,5 +15,5 @@ def stub_class_or_module(full_name, kind, &block)
     end
   end
 
-  Object.const_get(full_name).class_eval &block if block
+  Object.const_get(full_name).class_eval(&block) if block
 end
