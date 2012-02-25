@@ -3,6 +3,7 @@ require 'fileutils'
 require 'leadlight'
 require 'multi_json'
 require 'cloudapp/drop'
+require 'cloudapp/drop_collection'
 require 'cloudapp/drop_content'
 
 module CloudApp
@@ -216,25 +217,6 @@ module CloudApp
             end
           end
         end
-    end
-
-    class DropCollection < SimpleDelegator
-      def initialize(response)
-        @response = response
-        super drops
-      end
-
-      def link(name)
-        fallback = -> { OpenStruct.new href: nil }
-        href = @response.link(name, &fallback).href
-        href && href.to_s
-      end
-
-    private
-
-      def drops
-        @drops ||= @response['items'].map {|drop| Drop.new drop }
-      end
     end
   end
 end

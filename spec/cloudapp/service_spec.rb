@@ -196,15 +196,6 @@ describe CloudApp::Service do
       subject.each {|drop| drop.should be_a(CloudApp::Drop) }
     end
 
-    it 'delegates links to response' do
-      href = 'https://my.cl.ly/items?api_version=1.2&per_page=20'
-      subject.link('self').should eq(href)
-    end
-
-    it 'returns nil for a nonexistent link' do
-      subject.link('nonexistent').should be_nil
-    end
-
     context 'with href' do
       let(:href) { 'https://my.cl.ly/items?api_version=1.2&page=2&per_page=20' }
       subject {
@@ -255,11 +246,6 @@ describe CloudApp::Service do
 
     it 'creates Drops' do
       subject.each {|drop| drop.should be_a(CloudApp::Drop) }
-    end
-
-    it 'delegates links to response' do
-      href = 'https://my.cl.ly/items?api_version=1.2&per_page=20&deleted=true'
-      subject.link('self').should eq(href)
     end
 
     context 'with limit' do
