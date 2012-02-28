@@ -1,0 +1,104 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api2.getcloudapp.dev/
+    body: ''
+    headers:
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Link:
+      - </account/token>; rel="/rels/authenticate"
+      Content-Type:
+      - application/vnd.cloudapp+json
+      Cache-Control:
+      - no-cache
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Runtime:
+      - '0.027360'
+      Connection:
+      - close
+    body: ! ' '
+    http_version: 
+  recorded_at: Tue, 28 Feb 2012 23:25:53 GMT
+- request:
+    method: get
+    uri: http://api2.getcloudapp.dev/account/token
+    body: ''
+    headers:
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/vnd.cloudapp+json; charset=utf-8
+      Etag:
+      - ! '"94d3008bcef2147f8b4a2c86863dfc86"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Runtime:
+      - '0.119921'
+      Connection:
+      - close
+    body: ! '{"email":"{email}","password":"{password}"}'
+    http_version: 
+  recorded_at: Tue, 28 Feb 2012 23:25:53 GMT
+- request:
+    method: post
+    uri: http://api2.getcloudapp.dev/account/token
+    body: ! '{"email":"arthur@dent.com","password":"towel"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Link:
+      - </>; rel="root"
+      Content-Type:
+      - application/vnd.cloudapp+json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Ua-Compatible:
+      - IE=Edge
+      Set-Cookie:
+      - _engine_session=BAh7CEkiFXVzZXJfY3JlZGVudGlhbHMGOgZFRkkiAYAyY2VmN2I1ZjhiNWU3NjgyY2Q1MWI1MTFmNTdlMTQ3MWUzZWE5NmUyM2EzMmNkNjhlYjMzNDY0OWE3NjQ5ODhjMGI2OTNiMGQ2MDcwZDhjMjYxMTIzNDMwZDVjNzY1M2MwZDEwYTg5ODIxNWJhZDc2YmRiNTc1MWVmMjJlMjZmNAY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkHSSIPc2Vzc2lvbl9pZAY7AEYiJTNkMTU3YTBhMmU2ZWY3M2I3MzRlZTU5NGUxZjQzNDE1--300ad470cdf3021b3ffdfa25a9a4322b1344133f;
+        path=/; HttpOnly
+      - user_credentials=2cef7b5f8b5e7682cd51b511f57e1471e3ea96e23a32cd68eb334649a764988c0b693b0d6070d8c261123430d5c7653c0d10a898215bad76bdb5751ef22e26f4%3A%3A2;
+        path=/; expires=Mon, 28-May-2012 23:25:54 GMT
+      X-Runtime:
+      - '0.312711'
+      Connection:
+      - close
+    body: ! '{"token":"abc123"}'
+    http_version: 
+  recorded_at: Tue, 28 Feb 2012 23:25:54 GMT
+recorded_with: VCR 2.0.0.rc1

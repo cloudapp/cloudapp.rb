@@ -26,6 +26,10 @@ describe CloudApp::DropCollection do
     subject.should_not be_unauthorized
   end
 
+  it 'is successful' do
+    subject.should be_successful
+  end
+
   context 'an unauthorized response' do
     let(:response) { :unauthorized }
 

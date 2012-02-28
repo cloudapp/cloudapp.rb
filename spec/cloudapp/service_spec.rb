@@ -80,4 +80,44 @@ describe CloudApp::Service do
       end
     end
   end
+
+  describe '#token_for_account' do
+    let(:service)  { CloudApp::Service.new }
+    let(:email)    { 'arthur@dent.com' }
+    let(:password) { 'towel' }
+    subject {
+      VCR.use_cassette('Service/token_for_account') {
+        CloudApp::Service.new.token_for_account email, password
+      }
+    }
+
+    it 'returns the token from the given account' do
+      subject.should eql(token)
+    end
+
+    it 'is authorized' do
+      subject.should_not be_unauthorized
+    end
+
+    it 'is successful' do
+      subject.should be_successful
+    end
+
+    context 'with bad credentials' do
+      let(:password) { 'wrong' }
+      subject {
+        VCR.use_cassette('Service/token_for_account_with_bad_credentials') {
+          CloudApp::Service.new.token_for_account email, password
+        }
+      }
+
+      it 'is unauthorized' do
+        subject.should be_unauthorized
+      end
+
+      it 'is not successful' do
+        subject.should_not be_successful
+      end
+    end
+  end
 end

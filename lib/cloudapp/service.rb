@@ -24,15 +24,7 @@ module CloudApp
     end
 
     def token_for_account(email, password)
-      root.link('/rels/authenticate').get do |response|
-        form = response.dup
-        form['email']    = email
-        form['password'] = password
-
-        response.link('self').post({}, form) do |response|
-          return response['token']
-        end
-      end
+      Token.new request_token(email, password)
     end
 
     def drops(options = {})
@@ -55,6 +47,29 @@ module CloudApp
         else
           return response
         end
+      end
+    end
+
+    def request_token(email, password)
+      root.link('/rels/authenticate').get do |response|
+        form = response.dup
+        form['email']    = email
+        form['password'] = password
+
+        response.link('self').post({}, form) do |response|
+          return :unauthorized if response.__response__.status == 401
+          return response['token']
+        end
+      end
+    end
+
+    class Token < SimpleDelegator
+      def successful?
+        not unauthorized?
+      end
+
+      def unauthorized?
+        self == :unauthorized
       end
     end
   end

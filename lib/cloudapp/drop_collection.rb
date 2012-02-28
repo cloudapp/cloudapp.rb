@@ -14,6 +14,10 @@ module CloudApp
       link and link.href.to_s
     end
 
+    def successful?
+      not unauthorized?
+    end
+
     def unauthorized?
       @response == :unauthorized
     end
