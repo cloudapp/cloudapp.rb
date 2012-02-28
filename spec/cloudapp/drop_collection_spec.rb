@@ -4,23 +4,38 @@ require 'ostruct'
 require 'cloudapp/drop_collection'
 
 describe CloudApp::DropCollection do
-  let(:drops)      {[{ name: 'one' }, { name: 'two' }]}
-  let(:response)   {{ 'items' => drops }}
+  let(:response)   {[{ name: 'one' }, { name: 'two' }]}
   let(:drop_class) { OpenStruct }
   subject { CloudApp::DropCollection.new response, drop_class }
 
   it 'is a collection of drops' do
-    subject.size.should eq(drops.size)
-    drops.each_with_index do |drop, index|
+    subject.size.should eq(response.size)
+    response.each_with_index do |drop, index|
       subject[index].name.should eq(drop[:name])
     end
   end
 
   it 'decodes each drop' do
-    drops.each do |drop|
+    response.each do |drop|
       drop_class.should_receive(:new).with(drop)
     end
     subject
+  end
+
+  it 'is authorized' do
+    subject.should_not be_unauthorized
+  end
+
+  context 'an unauthorized response' do
+    let(:response) { :unauthorized }
+
+    it 'is unauthorized' do
+      subject.should be_unauthorized
+    end
+
+    it 'is an empty array' do
+      subject.should be_empty
+    end
   end
 
   describe '#link' do

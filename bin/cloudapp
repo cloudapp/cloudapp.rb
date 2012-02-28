@@ -32,6 +32,11 @@ def require_credentials
   config.token = CloudApp::Token.for_account email, password
 end
 
+def print_bad_token
+  $stderr.puts color('email and password given are incorrect.', :bold)
+  config.token = nil
+end
+
 def format_from_options(options)
   if options[:format].nil?
     $stdout.tty? ? :pretty : :csv
@@ -128,11 +133,16 @@ command [:list, :ls] do |c|
     count   = options[:count].to_i
     columns = { display_name: 'Name', url: 'Link', view_counter: 'Views' }
     format  = format_from_options global_options
+    drops   = account.drops limit: count
 
-    CloudApp::DropPresenter.print(on:      $stdout,
-                                  columns: columns,
-                                  format:  format) do
-      account.drops limit: count
+    if not drops.unauthorized?
+      CloudApp::DropPresenter.print(on:      $stdout,
+                                    columns: columns,
+                                    format:  format) do
+        drops
+      end
+    else
+      print_bad_token
     end
   end
 end
@@ -168,11 +178,7 @@ end
 
 on_error do |e|
   case e
-  when CloudApp::Service::UNAUTHORIZED
-    $stderr.puts color('Email and password given are incorrect.', :bold)
-    config.token = nil
-    false
-  when CloudApp::Service::NO_CONTENT
+  when CloudApp::OldService::NO_CONTENT
     $stderr.puts 'drop was deleted or is a bookmark'
     false
   else

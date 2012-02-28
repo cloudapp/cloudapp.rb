@@ -14,10 +14,15 @@ module CloudApp
       link and link.href.to_s
     end
 
+    def unauthorized?
+      @response == :unauthorized
+    end
+
   private
 
     def drops
-      @drops ||= @response['items'].map {|drop| @drop_class.new(drop) }
+      return [] if unauthorized?
+      @drops ||= @response.map {|drop| @drop_class.new(drop) }
     end
   end
 end

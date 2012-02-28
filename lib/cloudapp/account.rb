@@ -6,38 +6,38 @@ require 'forwardable'
 #   account = CloudApp::Account.using_token token
 #
 #   # Latest drops
-#   account.drops
+#   account.drops(:active)   #=> TODO: Active drops
+#   account.drops(:deleted)  #=> TODO: Trashed drops
+#   account.drops            #=> All active or trashed drops
 #
-#   # Latest 5 drops
-#   account.drops 5
+#   # TODO: Latest 5 drops
+#   account.drops :active, limit: 5
 #
-#   # List all trashed drops:
-#   account.trash
-#
-#   # List specific page of drops (not yet implemented):
+#   # List specific page of drops:
 #   page1 = account.drops
-#   page2 = account.drops href: page1.href(:next)
-#   page1 = account.drops href: page2.href(:previous)
-#   page1 = account.drops href: page1.href(:self)
+#   page2 = account.drops href: page1.link('next')
+#   page1 = account.drops href: page2.link('previous')
+#   page1 = account.drops href: page1.link('self')
 #
-#   # Create a bookmark:
+#
+#   # TODO: Create a bookmark:
 #   account.create url: 'http://getcloudapp.com', name: 'CloudApp'
 #
-#   # Upload a file:
+#   # TODO: Upload a file:
 #   account.create path: #<Pathname>, name: 'Screen shot'
 #
-#   # Use a public (short) link for the new drop:
+#   # TODO: Use a public (short) link for the new drop:
 #   account.create url:     'http://getcloudapp.com',
 #              name:    'CloudApp',
 #              private: false
 #
-#   # Delete a drop (not yet implemented):
+#   # TODO: Delete a drop:
 #   account.drops.get(123).destroy
 #
-#   # Delete a drop from the trash (not yet implemented):
+#   # TODO: Delete a drop from the trash:
 #   account.trash.get(123).destroy
 #
-#   # Restore a drop from the trash (not yet implemented):
+#   # TODO: Restore a drop from the trash:
 #   account.trash.get(123).restore
 #
 module CloudApp
