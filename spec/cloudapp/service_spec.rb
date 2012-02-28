@@ -14,6 +14,19 @@ describe CloudApp::Service do
       subject.should have(20).items
     end
 
+    context 'with filter' do
+      let(:filter) { 'trash' }
+      subject {
+        VCR.use_cassette('Service/list_drops_with_filter') {
+          service.drops filter: filter
+        }
+      }
+
+      it 'returns the filtered drops' do
+        subject.should have(19).items
+      end
+    end
+
     context 'with href' do
       let(:href) { 'http://api2.getcloudapp.dev/drops?page=2' }
       subject {

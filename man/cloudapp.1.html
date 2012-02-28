@@ -84,7 +84,7 @@
 <h2 id="SYNOPSIS">SYNOPSIS</h2>
 
 <p><code>cloudapp</code> [<code>--format</code>=<var>format</var>] <var>command</var> [<var>args</var>]<br />
-<code>cloudapp list</code> [<code>--count</code>=<var>count</var>]<br />
+<code>cloudapp list</code> [<code>--count</code>=<var>count</var>] [<code>--filter</code>=<var>all,active,trash</var>]<br />
 <code>cloudapp bookmark</code> [<code>--private</code>] [<code>--public</code>] <var>url</var> [<var>url</var>...]<br />
 <code>cloudapp upload</code> [<code>--private</code>] [<code>--public</code>] <var>file</var> [<var>file</var>...]<br />
 <code>cloudapp download</code> [<code>--output</code>=<var>file</var>] <var>url</var></p>
@@ -108,7 +108,8 @@ output to a terminal and <strong>csv</strong> when output is piped to another pr
 <dl>
 <dt><code>bookmark</code> [<code>--private</code>] [<code>--public</code>] [<var>url</var>...]</dt><dd><p>Create a new bookmark to each <var>url</var> and print each link.</p></dd>
 <dt><code>download</code> [<code>--output</code>=<var>file</var>] <var>url</var></dt><dd><p>Download the file at <var>url</var> to the current directory or to <var>file</var> if present.</p></dd>
-<dt><code>list</code> [<code>--count</code>=<var>count</var>]</dt><dd><p>List the most recent <var>count</var> drops. The default is to list <strong>20</strong> drops.</p></dd>
+<dt><code>list</code> [<code>--count</code>=<var>count</var>] [<code>--filter</code>=<var>all,active,trash</var>]</dt><dd><p>List the newest <var>count</var> of <var>filter</var> drops. The default is to list <strong>20
+active</strong> drops.</p></dd>
 <dt><code>upload</code> [<code>--private</code>] [<code>--public</code>] <var>file</var> [<var>file</var>...]</dt><dd><p>Upload each <var>file</var> and print each link.</p></dd>
 </dl>
 
@@ -116,6 +117,7 @@ output to a terminal and <strong>csv</strong> when output is piped to another pr
 <h2 id="COMMAND-OPTIONS">COMMAND OPTIONS</h2>
 
 <dl>
+<dt><code>--filter</code>=<var>all,active,trash</var></dt><dd><p>Show <var>filter</var> drops. (Default: <strong>active</strong>)</p></dd>
 <dt><code>-n</code> <var>count</var>, <code>--count</code>=<var>count</var></dt><dd><p>Display <var>count</var> drops. (Default: <strong>20</strong>)</p></dd>
 <dt><code>-o</code> <var>file</var>, <code>--output</code>=<var>file</var></dt><dd><p>Download file as <var>file</var>. (Default: current directory using the remote file's
 name)</p></dd>
@@ -130,28 +132,36 @@ name)</p></dd>
 
 <h2 id="EXAMPLES">EXAMPLES</h2>
 
-<p>List newest 20 drops:</p>
+<p>List the newest drops:</p>
 
 <pre><code>$ cloudapp list
 Name                    Link                  Views
-favicon.ico             http://cl.ly/0P28...  3    
-The Hitchhiker's Guide  http://cl.ly/3I28...  4    
-CloudApp 1.5 Released   http://cl.ly/0s1o...  4    
-Cover.jpeg              http://cl.ly/1x20...  1    
-Chapter 1.md            http://cl.ly/3U3d...  7    
-CloudApp                http://cl.ly/2O2J...  3    
+favicon.ico             http://cl.ly/0P28...  3
+The Hitchhiker's Guide  http://cl.ly/3I28...  4
+CloudApp 1.5 Released   http://cl.ly/0s1o...  4
+Cover.jpeg              http://cl.ly/1x20...  1
+Chapter 1.md            http://cl.ly/3U3d...  7
+CloudApp                http://cl.ly/2O2J...  3
   ...
 </code></pre>
 
-<p>List newest 5 drops:</p>
+<p>List the 5 newest drops:</p>
 
 <pre><code>$ cloudapp list --count=5
 Name                    Link                  Views
-favicon.ico             http://cl.ly/0P28...  3    
-The Hitchhiker's Guide  http://cl.ly/3I28...  4    
-CloudApp 1.5 Released   http://cl.ly/0s1o...  4    
-Cover.jpeg              http://cl.ly/1x20...  1    
-Chapter 1.md            http://cl.ly/3U3d...  7    
+favicon.ico             http://cl.ly/0P28...  3
+The Hitchhiker's Guide  http://cl.ly/3I28...  4
+CloudApp 1.5 Released   http://cl.ly/0s1o...  4
+Cover.jpeg              http://cl.ly/1x20...  1
+Chapter 1.md            http://cl.ly/3U3d...  7
+</code></pre>
+
+<p>List newest, deleted drops:</p>
+
+<pre><code>$ cloudapp list --filter=trash
+Name       Link                  Views
+Delete Me  http://cl.ly/1H2C...  0
+  ...
 </code></pre>
 
 <p>List newest 5 drops in CSV format:</p>

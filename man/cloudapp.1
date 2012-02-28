@@ -10,7 +10,7 @@
 \fBcloudapp\fR [\fB\-\-format\fR=\fIformat\fR] \fIcommand\fR [\fIargs\fR]
 .
 .br
-\fBcloudapp list\fR [\fB\-\-count\fR=\fIcount\fR]
+\fBcloudapp list\fR [\fB\-\-count\fR=\fIcount\fR] [\fB\-\-filter\fR=\fIall,active,trash\fR]
 .
 .br
 \fBcloudapp bookmark\fR [\fB\-\-private\fR] [\fB\-\-public\fR] \fIurl\fR [\fIurl\fR\.\.\.]
@@ -41,14 +41,18 @@ Create a new bookmark to each \fIurl\fR and print each link\.
 Download the file at \fIurl\fR to the current directory or to \fIfile\fR if present\.
 .
 .TP
-\fBlist\fR [\fB\-\-count\fR=\fIcount\fR]
-List the most recent \fIcount\fR drops\. The default is to list \fB20\fR drops\.
+\fBlist\fR [\fB\-\-count\fR=\fIcount\fR] [\fB\-\-filter\fR=\fIall,active,trash\fR]
+List the newest \fIcount\fR of \fIfilter\fR drops\. The default is to list \fB20 active\fR drops\.
 .
 .TP
 \fBupload\fR [\fB\-\-private\fR] [\fB\-\-public\fR] \fIfile\fR [\fIfile\fR\.\.\.]
 Upload each \fIfile\fR and print each link\.
 .
 .SH "COMMAND OPTIONS"
+.
+.TP
+\fB\-\-filter\fR=\fIall,active,trash\fR
+Show \fIfilter\fR drops\. (Default: \fBactive\fR)
 .
 .TP
 \fB\-n\fR \fIcount\fR, \fB\-\-count\fR=\fIcount\fR
@@ -70,7 +74,7 @@ Use a public (short) link when creating a new drop\.
 \fBcloudapp\fR requires Ruby 1\.9\.2 or greater\.
 .
 .SH "EXAMPLES"
-List newest 20 drops:
+List the newest drops:
 .
 .IP "" 4
 .
@@ -91,7 +95,7 @@ CloudApp                http://cl\.ly/2O2J\.\.\.  3
 .IP "" 0
 .
 .P
-List newest 5 drops:
+List the 5 newest drops:
 .
 .IP "" 4
 .
@@ -104,6 +108,22 @@ The Hitchhiker\'s Guide  http://cl\.ly/3I28\.\.\.  4
 CloudApp 1\.5 Released   http://cl\.ly/0s1o\.\.\.  4
 Cover\.jpeg              http://cl\.ly/1x20\.\.\.  1
 Chapter 1\.md            http://cl\.ly/3U3d\.\.\.  7
+.
+.fi
+.
+.IP "" 0
+.
+.P
+List newest, deleted drops:
+.
+.IP "" 4
+.
+.nf
+
+$ cloudapp list \-\-filter=trash
+Name       Link                  Views
+Delete Me  http://cl\.ly/1H2C\.\.\.  0
+  \.\.\.
 .
 .fi
 .

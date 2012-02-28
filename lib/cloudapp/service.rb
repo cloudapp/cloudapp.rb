@@ -10,7 +10,7 @@ module CloudApp
 
     def initialize(*args)
       super
-      logger.level = Logger::INFO
+      logger.level = Logger::WARN
     end
 
     def token=(token)
@@ -36,19 +36,22 @@ module CloudApp
     end
 
     def drops(options = {})
-      href = options.fetch :href, '/'
-      DropCollection.new drops_at(href)
+      href   = options.fetch :href, '/'
+      params = {}
+      params[:filter] = options[:filter] if options.has_key?(:filter)
+      DropCollection.new drops_at(href, params)
     end
 
   private
 
-    def drops_at(href)
-      get(href) do |response|
+    # TODO: Only pass `params` to `/rels/drops` href.
+    def drops_at(href, params)
+      get(href, params) do |response|
         return :unauthorized if response.__response__.status == 401
 
         drops_link = response.link('/rels/drops') { nil }
         if drops_link
-          return drops_at(drops_link.href)
+          return drops_at(drops_link.href, params)
         else
           return response
         end

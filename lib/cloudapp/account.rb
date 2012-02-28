@@ -5,13 +5,14 @@ require 'forwardable'
 #   # Create a new service passing CloudApp account token:
 #   account = CloudApp::Account.using_token token
 #
-#   # Latest drops
-#   account.drops(:active)   #=> TODO: Active drops
-#   account.drops(:deleted)  #=> TODO: Trashed drops
-#   account.drops            #=> All active or trashed drops
+#   # Newest drops
+#   account.drops                   #=> Active drops
+#   account.drops(filter: :active)  #=> Active drops
+#   account.drops(filter: :trash)   #=> Trashed drops
+#   account.drops(filter: :all)     #=> All active and trashed drops
 #
-#   # TODO: Latest 5 drops
-#   account.drops :active, limit: 5
+#   # TODO: Newest 5 drops
+#   account.drops limit: 5
 #
 #   # List specific page of drops:
 #   page1 = account.drops

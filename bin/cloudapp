@@ -119,7 +119,7 @@ command :upload do |c|
   end
 end
 
-desc 'List the most recent drops'
+desc 'List the newest drops'
 command [:list, :ls] do |c|
 
   c.desc 'Number of drops to display'
@@ -127,13 +127,19 @@ command [:list, :ls] do |c|
   c.default_value '20'
   c.flag :n, :count
 
+  c.desc 'Filter drops by active, trash, or all'
+  c.arg_name 'filter'
+  c.default_value 'active'
+  c.flag :filter
+
   c.action do |global_options, options, args|
     require_credentials
 
     count   = options[:count].to_i
+    filter  = options[:filter]
     columns = { display_name: 'Name', url: 'Link', view_counter: 'Views' }
     format  = format_from_options global_options
-    drops   = account.drops limit: count
+    drops   = account.drops filter: filter, limit: count
 
     if not drops.unauthorized?
       CloudApp::DropPresenter.print(on:      $stdout,

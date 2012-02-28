@@ -4,7 +4,7 @@ cloudapp(1) -- All the pleasures of CloudApp now at your terminal
 ## SYNOPSIS
 
 `cloudapp` [`--format`=<format>] <command> [<args>]<br>
-`cloudapp list` [`--count`=<count>]<br>
+`cloudapp list` [`--count`=<count>] [`--filter`=<all,active,trash>]<br>
 `cloudapp bookmark` [`--private`] [`--public`] <url> [<url>...]<br>
 `cloudapp upload` [`--private`] [`--public`] <file> [<file>...]<br>
 `cloudapp download` [`--output`=<file>] <url>
@@ -29,13 +29,17 @@ terminal and other times it's the only tool available.
   * `download` [`--output`=<file>] <url>:
     Download the file at <url> to the current directory or to <file> if present.
 
-  * `list` [`--count`=<count>]:
-    List the most recent <count> drops. The default is to list **20** drops.
+  * `list` [`--count`=<count>] [`--filter`=<all,active,trash>]:
+    List the newest <count> of <filter> drops. The default is to list **20
+    active** drops.
 
   * `upload` [`--private`] [`--public`] <file> [<file>...]:
     Upload each <file> and print each link.
 
 ## COMMAND OPTIONS
+
+  * `--filter`=<all,active,trash>:
+    Show <filter> drops. (Default: **active**)
 
   * `-n` <count>, `--count`=<count>:
     Display <count> drops. (Default: **20**)
@@ -56,27 +60,34 @@ terminal and other times it's the only tool available.
 
 ## EXAMPLES
 
-List newest 20 drops:
+List the newest drops:
 
     $ cloudapp list
     Name                    Link                  Views
-    favicon.ico             http://cl.ly/0P28...  3    
-    The Hitchhiker's Guide  http://cl.ly/3I28...  4    
-    CloudApp 1.5 Released   http://cl.ly/0s1o...  4    
-    Cover.jpeg              http://cl.ly/1x20...  1    
-    Chapter 1.md            http://cl.ly/3U3d...  7    
-    CloudApp                http://cl.ly/2O2J...  3    
+    favicon.ico             http://cl.ly/0P28...  3
+    The Hitchhiker's Guide  http://cl.ly/3I28...  4
+    CloudApp 1.5 Released   http://cl.ly/0s1o...  4
+    Cover.jpeg              http://cl.ly/1x20...  1
+    Chapter 1.md            http://cl.ly/3U3d...  7
+    CloudApp                http://cl.ly/2O2J...  3
       ...
 
-List newest 5 drops:
+List the 5 newest drops:
 
     $ cloudapp list --count=5
     Name                    Link                  Views
-    favicon.ico             http://cl.ly/0P28...  3    
-    The Hitchhiker's Guide  http://cl.ly/3I28...  4    
-    CloudApp 1.5 Released   http://cl.ly/0s1o...  4    
-    Cover.jpeg              http://cl.ly/1x20...  1    
-    Chapter 1.md            http://cl.ly/3U3d...  7    
+    favicon.ico             http://cl.ly/0P28...  3
+    The Hitchhiker's Guide  http://cl.ly/3I28...  4
+    CloudApp 1.5 Released   http://cl.ly/0s1o...  4
+    Cover.jpeg              http://cl.ly/1x20...  1
+    Chapter 1.md            http://cl.ly/3U3d...  7
+
+List newest, deleted drops:
+
+    $ cloudapp list --filter=trash
+    Name       Link                  Views
+    Delete Me  http://cl.ly/1H2C...  0
+      ...
 
 List newest 5 drops in CSV format:
 
