@@ -5,7 +5,7 @@ require 'cloudapp/drop_collection'
 module CloudApp
   class Service
     Leadlight.build_service(self) do
-      url 'http://api2.getcloudapp.dev'
+      url 'http://api.getcloudapp.com'
     end
 
     def initialize(*args)

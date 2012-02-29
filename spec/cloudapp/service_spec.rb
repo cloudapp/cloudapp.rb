@@ -28,7 +28,7 @@ describe CloudApp::Service do
     end
 
     context 'with href' do
-      let(:href) { 'http://api2.getcloudapp.dev/drops?page=2' }
+      let(:href) { 'http://api.getcloudapp.com/drops?page=2' }
       subject {
         VCR.use_cassette('Service/list_drops_with_href') {
           service.drops href: href
@@ -55,7 +55,7 @@ describe CloudApp::Service do
     end
 
     context 'with limit and href' do
-      let(:href) { 'http://api2.getcloudapp.dev/drops?page=2' }
+      let(:href) { 'http://api.getcloudapp.com/drops?page=2' }
       subject {
         VCR.use_cassette('Service/list_drops_with_href') {
           service.drops href: href, limit: 1

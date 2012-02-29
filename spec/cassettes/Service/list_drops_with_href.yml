@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api2.getcloudapp.dev/drops?page=2
+    uri: http://api.getcloudapp.com/drops?page=2
     body: ''
     headers:
       Authorization:
@@ -20,7 +20,7 @@ http_interactions:
       message: OK
     headers:
       Link:
-      - <http://api2.getcloudapp.dev/drops?page=2&per_page=20>; rel="self", <http://api2.getcloudapp.dev/drops?page=1&per_page=20>;
+      - <http://api.getcloudapp.com/drops?page=2&per_page=20>; rel="self", <http://api.getcloudapp.com/drops?page=1&per_page=20>;
         rel="previous"
       Content-Type:
       - application/vnd.cloudapp+json; charset=utf-8

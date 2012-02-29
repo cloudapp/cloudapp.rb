@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api2.getcloudapp.dev/
+    uri: http://api.getcloudapp.com/
     body: ''
     headers:
       Authorization:

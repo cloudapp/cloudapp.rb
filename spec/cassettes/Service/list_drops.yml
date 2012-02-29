@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api2.getcloudapp.dev/
+    uri: http://api.getcloudapp.com/
     body: ''
     headers:
       Authorization:
@@ -37,7 +37,7 @@ http_interactions:
   recorded_at: Tue, 28 Feb 2012 11:28:27 GMT
 - request:
     method: get
-    uri: http://api2.getcloudapp.dev/drops
+    uri: http://api.getcloudapp.com/drops
     body: ''
     headers:
       Authorization:
@@ -55,7 +55,7 @@ http_interactions:
       message: OK
     headers:
       Link:
-      - <http://api2.getcloudapp.dev/drops?page=1&per_page=20>; rel="self", <http://api2.getcloudapp.dev/drops?page=2&per_page=20>;
+      - <http://api.getcloudapp.com/drops?page=1&per_page=20>; rel="self", <http://api.getcloudapp.com/drops?page=2&per_page=20>;
         rel="next"
       Content-Type:
       - application/vnd.cloudapp+json; charset=utf-8
