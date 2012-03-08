@@ -8,6 +8,22 @@ describe CloudApp::Drop do
   let(:data)  { {} }
   subject { CloudApp::Drop.new stub(:drop, links: links, data: data) }
 
+  describe '#name' do
+    let(:data) {{ name: 'Drop' }}
+    it 'returns the name' do
+      subject.name.should eq(data[:name])
+    end
+
+    context 'when nil' do
+      let(:data)  {{ name: nil }}
+      let(:links) {[ stub(:link1, rel: 'canonical', href: '/canonical') ]}
+
+      it 'returns the link' do
+        subject.name.should eq('/canonical')
+      end
+    end
+  end
+
   describe '#link' do
     let(:links) {[
       stub(:link1, rel: 'canonical', href: '/canonical'),

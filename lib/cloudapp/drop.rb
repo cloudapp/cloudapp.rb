@@ -8,8 +8,9 @@ module CloudApp
       super collection_item.data
     end
 
+    def name()     super || link   end
     def private?() private == true end
-    def public?() !private? end
+    def public?() !private?        end
 
     def link
       link_for_relation 'canonical'
