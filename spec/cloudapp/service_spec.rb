@@ -111,7 +111,7 @@ describe CloudApp::Service do
     }
 
     it 'returns the token from the given account' do
-      subject.should eql(token)
+      subject.value.should eql(token)
     end
 
     it 'is authorized' do

@@ -77,6 +77,10 @@ module CloudApp
     end
 
     class Token < SimpleDelegator
+      def value
+        __getobj__
+      end
+
       def successful?
         not unauthorized?
       end
