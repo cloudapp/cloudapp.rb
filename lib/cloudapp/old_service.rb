@@ -2,6 +2,7 @@ require 'addressable/uri'
 require 'fileutils'
 require 'leadlight'
 require 'multi_json'
+require 'ostruct'
 require 'cloudapp/drop'
 require 'cloudapp/drop_collection'
 require 'cloudapp/drop_content'
@@ -124,7 +125,7 @@ module CloudApp
         req.headers['Accept'] = 'application/json'
       end.on_complete do |env|
         if env.fetch(:response).status == 200
-          drop = Drop.new(MultiJson.decode(env[:body]))
+          drop = OldDrop.new(MultiJson.decode(env[:body]))
         end
 
         return drop
@@ -164,7 +165,7 @@ module CloudApp
     def create_bookmark(options)
       root.link('drops').post({}, options).raise_on_error.
         submit_and_wait do |new_drop|
-          return Drop.new new_drop
+          return OldDrop.new new_drop
         end
     end
 
@@ -188,10 +189,19 @@ module CloudApp
             location.scheme = 'https'
 
             get(location).raise_on_error.submit_and_wait do |new_drop|
-              return Drop.new new_drop
+              return OldDrop.new new_drop
             end
           end
         end
+    end
+  end
+
+  class OldDrop < OpenStruct
+    def private?() private == true end
+    def public?() !private? end
+
+    def has_content?
+      raise '#has_content? not implemented'
     end
   end
 end

@@ -4,86 +4,42 @@ require 'cloudapp/drop'
 stub_class :DropContent
 
 describe CloudApp::Drop do
-  describe '#display_name' do
-    describe 'a drop with a name' do
-      let(:name) { stub :name }
-      subject    { CloudApp::Drop.new name: name }
+  let(:links) { [] }
+  let(:data)  { {} }
+  subject { CloudApp::Drop.new stub(:drop, links: links, data: data) }
 
-      it 'is its name' do
-        subject.display_name.should eq(name)
-      end
-    end
+  describe '#link' do
+    let(:links) {[
+      stub(:link1, rel: 'canonical', href: '/canonical'),
+      stub(:link1, rel: 'alternate', href: '/alternate')
+    ]}
 
-    describe 'a drop with a redirect url and no a name' do
-      let(:redirect_url) { stub :redirect_url }
-      subject { CloudApp::Drop.new redirect_url: redirect_url }
-
-      it 'is its redirect url' do
-        subject.display_name.should eq(redirect_url)
-      end
-    end
-
-    describe 'a drop with no redirect url and name' do
-      let(:url) { stub :url }
-      subject   { CloudApp::Drop.new url: url }
-
-      it 'is its remote url' do
-        subject.display_name.should eq(url)
-      end
+    it 'returns the href for the canonical link' do
+      subject.link.should eq('/canonical')
     end
   end
 
   describe '#private?' do
     describe 'a private drop' do
-      subject { CloudApp::Drop.new private: true }
-
-      it 'is true' do
-        subject.private?.should eq(true)
-      end
+      let(:data) {{ private: true }}
+      it { should be_private }
     end
 
     describe 'a public drop' do
-      subject { CloudApp::Drop.new private: false }
-
-      it 'is false' do
-        subject.private?.should eq(false)
-      end
+      let(:data) {{ private: false }}
+      it { should_not be_private }
     end
   end
 
   describe '#public?' do
     describe 'a private drop' do
-      subject { CloudApp::Drop.new private: true }
-
-      it 'is false' do
-        subject.public?.should eq(false)
-      end
+      let(:data) {{ private: true }}
+      it { should_not be_public }
     end
 
     describe 'a public drop' do
-      subject { CloudApp::Drop.new private: false }
-
-      it 'is true' do
-        subject.public?.should eq(true)
-      end
-    end
-  end
-
-  describe '#has_content?' do
-    describe 'an image' do
-      subject { CloudApp::Drop.new item_type: 'image' }
-
-      it 'is true' do
-        subject.has_content?.should eq(true)
-      end
-    end
-
-    describe 'a bookmark' do
-      subject { CloudApp::Drop.new item_type: 'bookmark' }
-
-      it 'is false' do
-        subject.has_content?.should eq(false)
-      end
+      let(:data) {{ private: false }}
+      it { should be_public }
     end
   end
 end

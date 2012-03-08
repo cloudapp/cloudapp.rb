@@ -43,7 +43,7 @@ describe CloudApp::OldService do
       }
 
       it 'returns the drop' do
-        subject.should be_a(CloudApp::Drop)
+        subject.should be_a(CloudApp::OldDrop)
       end
 
       it 'parses the response' do
@@ -196,8 +196,8 @@ describe CloudApp::OldService do
         }
       }
 
-      it 'is a Drop' do
-        subject.should be_a(CloudApp::Drop)
+      it 'is an OldDrop' do
+        subject.should be_a(CloudApp::OldDrop)
       end
 
       it 'has the given url' do
@@ -260,8 +260,8 @@ describe CloudApp::OldService do
         }
       }
 
-      it 'is a Drop' do
-        subject.should be_a(CloudApp::Drop)
+      it 'is an OldDrop' do
+        subject.should be_a(CloudApp::OldDrop)
       end
 
       it 'has a remote url' do
@@ -289,15 +289,6 @@ describe CloudApp::OldService do
         subject.should be_public
       end
     end
-  end
-
-  describe '#destroy' do
-    it 'trashes a drop'
-    it 'destroys a trashed drop'
-  end
-
-  describe '#restore' do
-    it 'restores a drop from the trash'
   end
 
   describe 'with bad authentication' do

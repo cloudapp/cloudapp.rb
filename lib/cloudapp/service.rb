@@ -1,11 +1,23 @@
 require 'leadlight'
 require 'cloudapp/drop'
 require 'cloudapp/drop_collection'
+require 'cloudapp/collection_json_representation'
 
 module CloudApp
   class Service
     Leadlight.build_service(self) do
       url 'http://api.getcloudapp.com'
+
+      type_mapping 'application/vnd.collection+json',
+                   CollectionJsonRepresentation,
+                   CollectionJsonType
+
+      tint 'collection+json' do
+        match_content_type 'application/vnd.collection+json'
+        collection_links.each do |link|
+          add_link link.href, link.rel
+        end
+      end
     end
 
     def initialize(*args)
@@ -51,15 +63,16 @@ module CloudApp
     end
 
     def request_token(email, password)
-      root.link('/rels/authenticate').get do |response|
-        form = response.dup
-        form['email']    = email
-        form['password'] = password
+      authenticate_response = root
 
-        response.link('self').post({}, form) do |response|
-          return :unauthorized if response.__response__.status == 401
-          return response['token']
-        end
+      # Refactor filling and posting template into CollectionJsonRepresentation
+      template = authenticate_response.template
+      template.data['email']    = email
+      template.data['password'] = password
+
+      post(authenticate_response.href, {}, template.data) do |response|
+        return :unauthorized if response.__response__.status == 401
+        return response.items.first.data['token']
       end
     end
 

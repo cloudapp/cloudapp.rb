@@ -26,7 +26,7 @@ module CloudApp
 
     def drops
       return [] if unauthorized?
-      @drops ||= @response.map {|drop| @drop_class.new(drop) }
+      @drops ||= @response.items.map {|drop| @drop_class.new(drop) }
     end
   end
 end

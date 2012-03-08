@@ -19,19 +19,17 @@ http_interactions:
       code: 401
       message: Unauthorized
     headers:
-      Link:
-      - </account/token>; rel="/rels/authenticate"
       Content-Type:
-      - application/vnd.cloudapp+json
+      - application/vnd.collection+json; charset=utf-8
       Cache-Control:
       - no-cache
       X-Ua-Compatible:
       - IE=Edge
       X-Runtime:
-      - '0.049274'
+      - '0.164558'
       Connection:
       - close
-    body: ! ' '
+    body: ! '{"collection":{"version":"1.0","href":"/account/token","template":{"data":[{"name":"email","value":""},{"name":"password","value":""}]}}}'
     http_version: 
-  recorded_at: Tue, 28 Feb 2012 15:56:47 GMT
+  recorded_at: Wed, 07 Mar 2012 21:40:53 GMT
 recorded_with: VCR 2.0.0.rc1

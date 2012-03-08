@@ -17,53 +17,19 @@ http_interactions:
       code: 401
       message: Unauthorized
     headers:
-      Link:
-      - </account/token>; rel="/rels/authenticate"
       Content-Type:
-      - application/vnd.cloudapp+json
+      - application/vnd.collection+json; charset=utf-8
       Cache-Control:
       - no-cache
       X-Ua-Compatible:
       - IE=Edge
       X-Runtime:
-      - '0.027360'
+      - '0.117004'
       Connection:
       - close
-    body: ! ' '
+    body: ! '{"collection":{"version":"1.0","href":"/account/token","template":{"data":[{"name":"email","value":""},{"name":"password","value":""}]}}}'
     http_version: 
-  recorded_at: Tue, 28 Feb 2012 23:25:53 GMT
-- request:
-    method: get
-    uri: http://api.getcloudapp.com/account/token
-    body: ''
-    headers:
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/vnd.cloudapp+json; charset=utf-8
-      Etag:
-      - ! '"94d3008bcef2147f8b4a2c86863dfc86"'
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      X-Ua-Compatible:
-      - IE=Edge
-      X-Runtime:
-      - '0.119921'
-      Connection:
-      - close
-    body: ! '{"email":"{email}","password":"{password}"}'
-    http_version: 
-  recorded_at: Tue, 28 Feb 2012 23:25:53 GMT
+  recorded_at: Wed, 07 Mar 2012 21:42:46 GMT
 - request:
     method: post
     uri: http://api.getcloudapp.com/account/token
@@ -81,24 +47,22 @@ http_interactions:
       code: 201
       message: Created
     headers:
-      Link:
-      - </>; rel="root"
       Content-Type:
-      - application/vnd.cloudapp+json; charset=utf-8
+      - application/vnd.collection+json; charset=utf-8
       Cache-Control:
       - no-cache
       X-Ua-Compatible:
       - IE=Edge
       Set-Cookie:
-      - _engine_session=BAh7CEkiFXVzZXJfY3JlZGVudGlhbHMGOgZFRkkiAYAyY2VmN2I1ZjhiNWU3NjgyY2Q1MWI1MTFmNTdlMTQ3MWUzZWE5NmUyM2EzMmNkNjhlYjMzNDY0OWE3NjQ5ODhjMGI2OTNiMGQ2MDcwZDhjMjYxMTIzNDMwZDVjNzY1M2MwZDEwYTg5ODIxNWJhZDc2YmRiNTc1MWVmMjJlMjZmNAY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkHSSIPc2Vzc2lvbl9pZAY7AEYiJTNkMTU3YTBhMmU2ZWY3M2I3MzRlZTU5NGUxZjQzNDE1--300ad470cdf3021b3ffdfa25a9a4322b1344133f;
+      - _engine_session=BAh7CEkiFXVzZXJfY3JlZGVudGlhbHMGOgZFRkkiAYAyY2VmN2I1ZjhiNWU3NjgyY2Q1MWI1MTFmNTdlMTQ3MWUzZWE5NmUyM2EzMmNkNjhlYjMzNDY0OWE3NjQ5ODhjMGI2OTNiMGQ2MDcwZDhjMjYxMTIzNDMwZDVjNzY1M2MwZDEwYTg5ODIxNWJhZDc2YmRiNTc1MWVmMjJlMjZmNAY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkHSSIPc2Vzc2lvbl9pZAY7AEYiJTg5YTA5MmFmMjJmODU0NGFmMTYyODk2MmE0ZGU4NWM3--dea01780ae4e6d0f7322e5fd4cd541b997169b48;
         path=/; HttpOnly
       - user_credentials=2cef7b5f8b5e7682cd51b511f57e1471e3ea96e23a32cd68eb334649a764988c0b693b0d6070d8c261123430d5c7653c0d10a898215bad76bdb5751ef22e26f4%3A%3A2;
-        path=/; expires=Mon, 28-May-2012 23:25:54 GMT
+        path=/; expires=Thu, 07-Jun-2012 21:42:46 GMT
       X-Runtime:
-      - '0.312711'
+      - '0.319769'
       Connection:
       - close
-    body: ! '{"token":"abc123"}'
+    body: ! '{"collection":{"version":"1.0","href":"/account/token","links":[{"rel":"root","href":"/"}],"items":[{"href":"http://api.getcloudapp.com/account/token","data":[{"name":"token","value":"abc123"}]}]}}'
     http_version: 
-  recorded_at: Tue, 28 Feb 2012 23:25:54 GMT
+  recorded_at: Wed, 07 Mar 2012 21:42:46 GMT
 recorded_with: VCR 2.0.0.rc1

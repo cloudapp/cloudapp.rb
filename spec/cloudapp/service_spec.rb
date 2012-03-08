@@ -11,7 +11,7 @@ describe CloudApp::Service do
     subject { VCR.use_cassette('Service/list_drops') { service.drops }}
 
     it 'has 20 drops' do
-      subject.should have(20).items
+      subject.should have(18).items
     end
 
     context 'with filter' do
@@ -28,7 +28,7 @@ describe CloudApp::Service do
     end
 
     context 'with href' do
-      let(:href) { 'http://api.getcloudapp.com/drops?page=2' }
+      let(:href) { 'http://api.getcloudapp.com/drops?page=2&per_page=10' }
       subject {
         VCR.use_cassette('Service/list_drops_with_href') {
           service.drops href: href
@@ -37,6 +37,25 @@ describe CloudApp::Service do
 
       it 'returns the resource at the given href' do
         subject.link('self').should eq(href)
+      end
+    end
+
+    context 'with an empty href' do
+      let(:href) { nil }
+      subject {
+        VCR.use_cassette('Service/list_drops_with_filter') {
+          service.drops filter: 'trash'
+        }
+        VCR.use_cassette('Service/list_drops_with_href') {
+          service.drops href: 'http://api.getcloudapp.com/drops?page=2&per_page=10'
+        }
+        VCR.use_cassette('Service/list_drops') {
+          service.drops href: nil
+        }
+      }
+
+      it 'has 20 drops' do
+        subject.should have(18).items
       end
     end
 
@@ -55,7 +74,7 @@ describe CloudApp::Service do
     end
 
     context 'with limit and href' do
-      let(:href) { 'http://api.getcloudapp.com/drops?page=2' }
+      let(:href) { 'http://api.getcloudapp.com/drops?page=2&per_page=10' }
       subject {
         VCR.use_cassette('Service/list_drops_with_href') {
           service.drops href: href, limit: 1
@@ -63,7 +82,7 @@ describe CloudApp::Service do
       }
 
       it 'ignores limit' do
-        subject.should have(17).items
+        subject.should have(8).items
       end
     end
 

@@ -2,15 +2,24 @@ require 'ostruct'
 
 module CloudApp
   class Drop < OpenStruct
+    def initialize(collection_item)
+      @href  = nil
+      @links = collection_item.links
+      super collection_item.data
+    end
+
     def private?() private == true end
     def public?() !private? end
 
-    def display_name
-      name || redirect_url || url
+    def link
+      link_for_relation 'canonical'
     end
 
-    def has_content?
-      item_type != 'bookmark'
+  protected
+
+    def link_for_relation(relation)
+      link = @links.find {|link| link.rel == relation }
+      link and link.href
     end
   end
 end

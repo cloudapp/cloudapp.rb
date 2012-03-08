@@ -137,7 +137,7 @@ command [:list, :ls] do |c|
 
     count   = options[:count].to_i
     filter  = options[:filter]
-    columns = { display_name: 'Name', url: 'Link', view_counter: 'Views' }
+    columns = { name: 'Name', link: 'Link', views: 'Views' }
     format  = format_from_options global_options
     drops   = account.drops filter: filter, limit: count
 
