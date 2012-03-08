@@ -16,7 +16,7 @@ describe CloudApp::Drop do
 
     context 'when nil' do
       let(:data)  {{ name: nil }}
-      let(:links) {[ stub(:link1, rel: 'canonical', href: '/canonical') ]}
+      let(:links) {[ stub(:link, rel: 'canonical', href: '/canonical') ]}
 
       it 'returns the link' do
         subject.name.should eq('/canonical')
@@ -26,12 +26,26 @@ describe CloudApp::Drop do
 
   describe '#link' do
     let(:links) {[
-      stub(:link1, rel: 'canonical', href: '/canonical'),
-      stub(:link1, rel: 'alternate', href: '/alternate')
+      stub(:canonical, rel: 'canonical', href: '/canonical'),
+      stub(:alternate, rel: 'alternate', href: '/alternate')
     ]}
 
     it 'returns the href for the canonical link' do
       subject.link.should eq('/canonical')
+    end
+  end
+
+  describe '#thumbnail_url' do
+    let(:links) {[
+      stub(:canonical, rel: 'canonical', href: '/canonical'),
+      stub(:icon,      rel: 'icon',      href: '/icon')
+    ]}
+
+    its(:thumbnail_url) { should eq('/icon') }
+
+    context 'without an icon link' do
+      let(:links) {[ stub(:canonical, rel: 'canonical', href: '/canonical') ]}
+      its(:thumbnail_url) { should be_nil }
     end
   end
 

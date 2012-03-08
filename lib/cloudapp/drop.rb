@@ -16,6 +16,10 @@ module CloudApp
       link_for_relation 'canonical'
     end
 
+    def thumbnail_url
+      link_for_relation 'icon'
+    end
+
   protected
 
     def link_for_relation(relation)
