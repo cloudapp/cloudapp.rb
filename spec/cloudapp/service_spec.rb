@@ -11,7 +11,7 @@ describe CloudApp::Service do
     subject { VCR.use_cassette('Service/list_drops') { service.drops }}
 
     it 'has 20 drops' do
-      subject.should have(18).items
+      subject.should have(20).items
     end
 
     context 'with filter' do
@@ -23,12 +23,12 @@ describe CloudApp::Service do
       }
 
       it 'returns the filtered drops' do
-        subject.should have(19).items
+        subject.should have(2).items
       end
     end
 
     context 'with href' do
-      let(:href) { 'http://api.getcloudapp.com/drops?page=2&per_page=10' }
+      let(:href) { 'http://api.getcloudapp.com/drops?page=3&per_page=20' }
       subject {
         VCR.use_cassette('Service/list_drops_with_href') {
           service.drops href: href
@@ -47,7 +47,7 @@ describe CloudApp::Service do
           service.drops filter: 'trash'
         }
         VCR.use_cassette('Service/list_drops_with_href') {
-          service.drops href: 'http://api.getcloudapp.com/drops?page=2&per_page=10'
+          service.drops href: 'http://api.getcloudapp.com/drops?page=3&per_page=20'
         }
         VCR.use_cassette('Service/list_drops') {
           service.drops href: nil
@@ -55,7 +55,7 @@ describe CloudApp::Service do
       }
 
       it 'has 20 drops' do
-        subject.should have(18).items
+        subject.should have(20).items
       end
     end
 
@@ -74,7 +74,7 @@ describe CloudApp::Service do
     end
 
     context 'with limit and href' do
-      let(:href) { 'http://api.getcloudapp.com/drops?page=2&per_page=10' }
+      let(:href) { 'http://api.getcloudapp.com/drops?page=3&per_page=20' }
       subject {
         VCR.use_cassette('Service/list_drops_with_href') {
           service.drops href: href, limit: 1
@@ -82,7 +82,7 @@ describe CloudApp::Service do
       }
 
       it 'ignores limit' do
-        subject.should have(8).items
+        subject.should have(3).items
       end
     end
 
@@ -103,7 +103,7 @@ describe CloudApp::Service do
   describe '#token_for_account' do
     let(:service)  { CloudApp::Service.new }
     let(:email)    { 'arthur@dent.com' }
-    let(:password) { 'towel' }
+    let(:password) { 'towel42' }
     subject {
       VCR.use_cassette('Service/token_for_account') {
         CloudApp::Service.new.token_for_account email, password

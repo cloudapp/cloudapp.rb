@@ -17,23 +17,27 @@ http_interactions:
       code: 401
       message: Unauthorized
     headers:
-      Content-Type:
-      - application/vnd.collection+json; charset=utf-8
       Cache-Control:
       - no-cache
-      X-Ua-Compatible:
-      - IE=Edge
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Server:
+      - thin 1.3.1 codename Triple Espresso
       X-Runtime:
-      - '0.117004'
+      - '0.010376'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '137'
       Connection:
-      - close
+      - keep-alive
     body: ! '{"collection":{"version":"1.0","href":"/account/token","template":{"data":[{"name":"email","value":""},{"name":"password","value":""}]}}}'
     http_version: 
-  recorded_at: Wed, 07 Mar 2012 21:42:46 GMT
+  recorded_at: Thu, 08 Mar 2012 19:24:14 GMT
 - request:
     method: post
     uri: http://api.getcloudapp.com/account/token
-    body: ! '{"email":"arthur@dent.com","password":"towel"}'
+    body: ! '{"email":"arthur@dent.com","password":"towel42"}'
     headers:
       Content-Type:
       - application/json
@@ -47,22 +51,26 @@ http_interactions:
       code: 201
       message: Created
     headers:
-      Content-Type:
-      - application/vnd.collection+json; charset=utf-8
       Cache-Control:
       - no-cache
-      X-Ua-Compatible:
-      - IE=Edge
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Server:
+      - thin 1.3.1 codename Triple Espresso
       Set-Cookie:
-      - _engine_session=BAh7CEkiFXVzZXJfY3JlZGVudGlhbHMGOgZFRkkiAYAyY2VmN2I1ZjhiNWU3NjgyY2Q1MWI1MTFmNTdlMTQ3MWUzZWE5NmUyM2EzMmNkNjhlYjMzNDY0OWE3NjQ5ODhjMGI2OTNiMGQ2MDcwZDhjMjYxMTIzNDMwZDVjNzY1M2MwZDEwYTg5ODIxNWJhZDc2YmRiNTc1MWVmMjJlMjZmNAY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkHSSIPc2Vzc2lvbl9pZAY7AEYiJTg5YTA5MmFmMjJmODU0NGFmMTYyODk2MmE0ZGU4NWM3--dea01780ae4e6d0f7322e5fd4cd541b997169b48;
+      - _engine_session=BAh7CEkiFXVzZXJfY3JlZGVudGlhbHMGOgZFRkkiAYBlN2Q0OGNlNjIzMTUxNjVlZTNhY2I5NGNlOWY1MmJhZmQ1YzY5ZTYzNDVkYTBhZjQyY2RjY2IxZThhNzM4YzRkZmY1MTUxZmNjNDZjYmE3NWI5YWYwNDQ0NjViY2UxYTQ5OThiMWM1NDNmMmM5MjQwZGQ3M2IxMDA5YTRjODg4MgY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkDp4EBSSIPc2Vzc2lvbl9pZAY7AEYiJTNkNWJmZGE0MzVjOWM4ZDYwOTliMjViN2U1NmFhMTky--c62c22eec7adb30bf11e52442dca5b96abf4e39f;
         path=/; HttpOnly
-      - user_credentials=2cef7b5f8b5e7682cd51b511f57e1471e3ea96e23a32cd68eb334649a764988c0b693b0d6070d8c261123430d5c7653c0d10a898215bad76bdb5751ef22e26f4%3A%3A2;
-        path=/; expires=Thu, 07-Jun-2012 21:42:46 GMT
+      - user_credentials=e7d48ce62315165ee3acb94ce9f52bafd5c69e6345da0af42cdccb1e8a738c4dff5151fcc46cba75b9af044465bce1a4998b1c543f2c9240dd73b1009a4c8882%3A%3A98727;
+        path=/; expires=Fri, 08-Jun-2012 19:24:15 GMT
       X-Runtime:
-      - '0.319769'
+      - '0.085823'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Transfer-Encoding:
+      - chunked
       Connection:
-      - close
+      - keep-alive
     body: ! '{"collection":{"version":"1.0","href":"/account/token","links":[{"rel":"root","href":"/"}],"items":[{"href":"http://api.getcloudapp.com/account/token","data":[{"name":"token","value":"abc123"}]}]}}'
     http_version: 
-  recorded_at: Wed, 07 Mar 2012 21:42:46 GMT
+  recorded_at: Thu, 08 Mar 2012 19:24:15 GMT
 recorded_with: VCR 2.0.0.rc1
