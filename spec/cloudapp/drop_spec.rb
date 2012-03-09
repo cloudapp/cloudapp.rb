@@ -18,20 +18,20 @@ describe CloudApp::Drop do
       let(:data)  {{ name: nil }}
       let(:links) {[ stub(:link, rel: 'canonical', href: '/canonical') ]}
 
-      it 'returns the link' do
+      it 'returns the share url' do
         subject.name.should eq('/canonical')
       end
     end
   end
 
-  describe '#link' do
+  describe '#share_url' do
     let(:links) {[
       stub(:canonical, rel: 'canonical', href: '/canonical'),
       stub(:alternate, rel: 'alternate', href: '/alternate')
     ]}
 
     it 'returns the href for the canonical link' do
-      subject.link.should eq('/canonical')
+      subject.share_url.should eq('/canonical')
     end
   end
 

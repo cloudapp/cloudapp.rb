@@ -8,11 +8,11 @@ module CloudApp
       super collection_item.data
     end
 
-    def name()     super || link   end
-    def private?() private == true end
-    def public?() !private?        end
+    def name()     super || share_url end
+    def private?() private == true    end
+    def public?() !private?           end
 
-    def link
+    def share_url
       link_for_relation 'canonical'
     end
 
