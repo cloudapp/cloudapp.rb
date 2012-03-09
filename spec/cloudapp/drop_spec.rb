@@ -10,9 +10,7 @@ describe CloudApp::Drop do
 
   describe '#name' do
     let(:data) {{ name: 'Drop' }}
-    it 'returns the name' do
-      subject.name.should eq(data[:name])
-    end
+    its(:name) { should eq(data[:name]) }
 
     context 'when nil' do
       let(:data)  {{ name: nil }}
@@ -29,10 +27,7 @@ describe CloudApp::Drop do
       stub(:canonical, rel: 'canonical', href: '/canonical'),
       stub(:alternate, rel: 'alternate', href: '/alternate')
     ]}
-
-    it 'returns the href for the canonical link' do
-      subject.share_url.should eq('/canonical')
-    end
+    its(:share_url) { should eq('/canonical') }
   end
 
   describe '#thumbnail_url' do
