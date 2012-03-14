@@ -7,7 +7,8 @@ cloudapp(1) -- All the pleasures of CloudApp now at your terminal
 `cloudapp list` [`--count`=<count>] [`--filter`=<all,active,trash>]<br>
 `cloudapp bookmark` [`--private`] [`--public`] <url> [<url>...]<br>
 `cloudapp upload` [`--private`] [`--public`] <file> [<file>...]<br>
-`cloudapp download` [`--output`=<file>] <url>
+`cloudapp download` [`--output`=<file>] <url><br>
+`cloudapp trash` <id> [<id>...]
 
 ## DESCRIPTION
 
@@ -32,6 +33,9 @@ terminal and other times it's the only tool available.
   * `list` [`--count`=<count>] [`--filter`=<all,active,trash>]:
     List the newest <count> of <filter> drops. The default is to list **20
     active** drops.
+
+  * `trash` <id> [<id>...]:
+    Send each drop with the given <ids> to the trash.
 
   * `upload` [`--private`] [`--public`] <file> [<file>...]:
     Upload each <file> and print each link.
