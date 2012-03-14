@@ -1,7 +1,7 @@
 require 'leadlight'
 require 'cloudapp/drop'
 require 'cloudapp/drop_collection'
-require 'cloudapp/collection_json_representation'
+require 'cloudapp/collection_json'
 
 module CloudApp
   class Service
@@ -9,8 +9,8 @@ module CloudApp
       url 'http://api.getcloudapp.com'
 
       type_mapping 'application/vnd.collection+json',
-                   CollectionJsonRepresentation,
-                   CollectionJsonType
+                   CollectionJson::Representation,
+                   CollectionJson::Type
 
       tint 'collection+json' do
         match_content_type 'application/vnd.collection+json'

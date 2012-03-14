@@ -1,8 +1,8 @@
 require 'helper'
 
-require 'cloudapp/collection_json_representation'
+require 'cloudapp/collection_json'
 
-describe CloudApp::CollectionJsonRepresentation do
+describe CloudApp::CollectionJson::Representation do
   let(:href)  { stub }
   let(:items) { [] }
   let(:response) {
@@ -14,7 +14,7 @@ describe CloudApp::CollectionJsonRepresentation do
     }
   }
 
-  subject { CloudApp::CollectionJsonRepresentation.new response }
+  subject { CloudApp::CollectionJson::Representation.new response }
 
   it 'has an href' do
     subject.href.should eq(href)
