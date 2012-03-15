@@ -36,7 +36,7 @@ module CloudApp
     end
 
     def token_for_account(email, password)
-      Token.new request_token(email, password)
+      SimpleResponse.new request_token(email, password)
     end
 
     def drops(options = {})
@@ -46,10 +46,20 @@ module CloudApp
       DropCollection.new drops_at(href, params)
     end
 
+    def trash(drop_ids)
+      template = drops_at('/').template('/rels/remove')
+      data     = template.fill('drop_ids' => drop_ids)
+
+      delete(template.href, {}, data) do |response|
+        return SimpleResponse.new(response)
+        # return response
+      end
+    end
+
   private
 
     # TODO: Only pass `params` to `/rels/drops` href.
-    def drops_at(href, params)
+    def drops_at(href, params = {})
       get(href, params) do |response|
         return :unauthorized if response.__response__.status == 401
 
@@ -73,7 +83,7 @@ module CloudApp
       end
     end
 
-    class Token < SimpleDelegator
+    class SimpleResponse < SimpleDelegator
       def value
         __getobj__
       end

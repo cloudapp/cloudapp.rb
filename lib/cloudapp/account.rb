@@ -20,6 +20,12 @@ require 'forwardable'
 #   page1 = account.drops href: page2.link('previous')
 #   page1 = account.drops href: page1.link('self')
 #
+#   # TODO: Move a list of drops to the trash:
+#   account.trash [ 1, 2, 3 ]
+#
+#   # TODO: Permanently delete a list of drops:
+#   account.delete [ 1, 2, 3 ]
+#
 #
 #   # TODO: Create a bookmark:
 #   account.create url: 'http://getcloudapp.com', name: 'CloudApp'
@@ -32,19 +38,10 @@ require 'forwardable'
 #              name:    'CloudApp',
 #              private: false
 #
-#   # TODO: Delete a drop:
-#   account.drops.get(123).destroy
-#
-#   # TODO: Delete a drop from the trash:
-#   account.trash.get(123).destroy
-#
-#   # TODO: Restore a drop from the trash:
-#   account.trash.get(123).restore
-#
 module CloudApp
   class Account
     extend Forwardable
-    def_delegators :service, :drops, :trash, :drop, :create
+    def_delegators :service, :drops, :drop, :create, :trash
 
     class << self
       attr_writer :service_source
