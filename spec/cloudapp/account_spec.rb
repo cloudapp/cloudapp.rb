@@ -28,8 +28,7 @@ describe CloudApp::Account do
   end
 
   describe '#trash' do
-    let(:trash) {[ stub(:drop) ]}
-    before do service.stub(trash: trash) end
+    let(:drop_ids) { stub :drop_ids }
 
     it 'delegates to the service' do
       service.should_receive(:trash).with(args)

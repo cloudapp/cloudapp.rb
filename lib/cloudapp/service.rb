@@ -1,7 +1,7 @@
 require 'leadlight'
+require 'cloudapp/collection_json'
 require 'cloudapp/drop'
 require 'cloudapp/drop_collection'
-require 'cloudapp/collection_json'
 
 module CloudApp
   class Service
@@ -64,13 +64,10 @@ module CloudApp
 
     def request_token(email, password)
       authenticate_response = root
+      data = authenticate_response.template('/rels/create').
+               fill('email' => email, 'password' => password)
 
-      # Refactor filling and posting template into CollectionJsonRepresentation
-      template = authenticate_response.template
-      template.data['email']    = email
-      template.data['password'] = password
-
-      post(authenticate_response.href, {}, template.data) do |response|
+      post(authenticate_response.href, {}, data) do |response|
         return :unauthorized if response.__response__.status == 401
         return response.items.first.data['token']
       end
