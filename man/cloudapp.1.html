@@ -88,7 +88,8 @@
 <code>cloudapp bookmark</code> [<code>--private</code>] [<code>--public</code>] <var>url</var> [<var>url</var>...]<br />
 <code>cloudapp upload</code> [<code>--private</code>] [<code>--public</code>] <var>file</var> [<var>file</var>...]<br />
 <code>cloudapp download</code> [<code>--output</code>=<var>file</var>] <var>url</var><br />
-<code>cloudapp trash</code> <var>id</var> [<var>id</var>...]</p>
+<code>cloudapp trash</code> <var>id</var> [<var>id</var>...]<br />
+<code>cloudapp recover</code> <var>id</var> [<var>id</var>...]</p>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
@@ -111,6 +112,7 @@ output to a terminal and <strong>csv</strong> when output is piped to another pr
 <dt><code>download</code> [<code>--output</code>=<var>file</var>] <var>url</var></dt><dd><p>Download the file at <var>url</var> to the current directory or to <var>file</var> if present.</p></dd>
 <dt><code>list</code> [<code>--count</code>=<var>count</var>] [<code>--filter</code>=<var>all,active,trash</var>]</dt><dd><p>List the newest <var>count</var> of <var>filter</var> drops. The default is to list <strong>20
 active</strong> drops.</p></dd>
+<dt><code>recover</code> <var>id</var> [<var>id</var>...]</dt><dd><p>Recover each drop with the given <var>ids</var> from the trash.</p></dd>
 <dt><code>trash</code> <var>id</var> [<var>id</var>...]</dt><dd><p>Send each drop with the given <var>ids</var> to the trash.</p></dd>
 <dt><code>upload</code> [<code>--private</code>] [<code>--public</code>] <var>file</var> [<var>file</var>...]</dt><dd><p>Upload each <var>file</var> and print each link.</p></dd>
 </dl>

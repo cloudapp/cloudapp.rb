@@ -8,7 +8,8 @@ cloudapp(1) -- All the pleasures of CloudApp now at your terminal
 `cloudapp bookmark` [`--private`] [`--public`] <url> [<url>...]<br>
 `cloudapp upload` [`--private`] [`--public`] <file> [<file>...]<br>
 `cloudapp download` [`--output`=<file>] <url><br>
-`cloudapp trash` <id> [<id>...]
+`cloudapp trash` <id> [<id>...]<br>
+`cloudapp recover` <id> [<id>...]
 
 ## DESCRIPTION
 
@@ -33,6 +34,9 @@ terminal and other times it's the only tool available.
   * `list` [`--count`=<count>] [`--filter`=<all,active,trash>]:
     List the newest <count> of <filter> drops. The default is to list **20
     active** drops.
+
+  * `recover` <id> [<id>...]:
+    Recover each drop with the given <ids> from the trash.
 
   * `trash` <id> [<id>...]:
     Send each drop with the given <ids> to the trash.

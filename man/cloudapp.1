@@ -24,6 +24,9 @@
 .br
 \fBcloudapp trash\fR \fIid\fR [\fIid\fR\.\.\.]
 .
+.br
+\fBcloudapp recover\fR \fIid\fR [\fIid\fR\.\.\.]
+.
 .SH "DESCRIPTION"
 \fBcloudapp\fR is a simple, Unix\-friendly tool for CloudApp meant to augment the Mac and Web apps\. Sometimes it\'s more convenient to share without leaving the terminal and other times it\'s the only tool available\.
 .
@@ -46,6 +49,10 @@ Download the file at \fIurl\fR to the current directory or to \fIfile\fR if pres
 .TP
 \fBlist\fR [\fB\-\-count\fR=\fIcount\fR] [\fB\-\-filter\fR=\fIall,active,trash\fR]
 List the newest \fIcount\fR of \fIfilter\fR drops\. The default is to list \fB20 active\fR drops\.
+.
+.TP
+\fBrecover\fR \fIid\fR [\fIid\fR\.\.\.]
+Recover each drop with the given \fIids\fR from the trash\.
 .
 .TP
 \fBtrash\fR \fIid\fR [\fIid\fR\.\.\.]
