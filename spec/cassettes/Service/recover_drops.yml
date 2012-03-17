@@ -1,0 +1,107 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.getcloudapp.com/
+    body: ''
+    headers:
+      Authorization:
+      - Token token="abc123"
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"c3cd2b55f0624033128b8bfbacaba89d"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Runtime:
+      - '0.183143'
+      Connection:
+      - close
+    body: ! '{"collection":{"version":"1.0","href":"/","links":[{"rel":"/rels/account","href":"/account"},{"rel":"/rels/drops","href":"/drops"}]}}'
+    http_version: 
+  recorded_at: Sat, 17 Mar 2012 15:43:58 GMT
+- request:
+    method: get
+    uri: http://api.getcloudapp.com/drops
+    body: ''
+    headers:
+      Authorization:
+      - Token token="abc123"
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"823bf7bac504f81812f44f968fe5aba8"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Runtime:
+      - '0.278021'
+      Connection:
+      - close
+    body: ! '{"collection":{"version":"1.0","href":"/drops?page=1&per_page=20","items":[{"href":"/drops/101","links":[{"rel":"canonical","href":"http://localhost:3000/472k3i21201H2O3O0h2L"},{"rel":"icon","href":"https://localhost:3001/472k3i21201H2O3O0h2L"}],"data":[{"name":"id","value":101},{"name":"name","value":null},{"name":"private","value":true},{"name":"views","value":2}]},{"href":"/drops/95","links":[{"rel":"canonical","href":"http://localhost:3000/1K"},{"rel":"icon","href":"https://localhost:3001/1K"}],"data":[{"name":"id","value":95},{"name":"name","value":null},{"name":"private","value":false},{"name":"views","value":4}]},{"href":"/drops/94","links":[{"rel":"canonical","href":"http://localhost:3000/081T3q0B0b2T160M3n0V"},{"rel":"icon","href":"https://localhost:3001/081T3q0B0b2T160M3n0V"}],"data":[{"name":"id","value":94},{"name":"name","value":"api.md"},{"name":"private","value":true},{"name":"views","value":2}]},{"href":"/drops/93","links":[{"rel":"canonical","href":"http://localhost:3000/2t3h2m1R0n3s2r0T3S1G"},{"rel":"icon","href":"https://localhost:3001/2t3h2m1R0n3s2r0T3S1G"}],"data":[{"name":"id","value":93},{"name":"name","value":null},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/92","links":[{"rel":"canonical","href":"http://localhost:3000/1S113K023N1G210Y1G3v"},{"rel":"icon","href":"https://localhost:3001/1S113K023N1G210Y1G3v"}],"data":[{"name":"id","value":92},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"views","value":2}]},{"href":"/drops/91","links":[{"rel":"canonical","href":"http://localhost:3000/172d0A231m1W451j0d1M"},{"rel":"icon","href":"https://localhost:3001/172d0A231m1W451j0d1M"}],"data":[{"name":"id","value":91},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/90","links":[{"rel":"canonical","href":"http://localhost:3000/0t0b3z1k1G2r3s0a462D"},{"rel":"icon","href":"https://localhost:3001/0t0b3z1k1G2r3s0a462D"}],"data":[{"name":"id","value":90},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/89","links":[{"rel":"canonical","href":"http://localhost:3000/0n2q2x0t2i2p2R1A0j02"},{"rel":"icon","href":"https://localhost:3001/0n2q2x0t2i2p2R1A0j02"}],"data":[{"name":"id","value":89},{"name":"name","value":null},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/88","links":[{"rel":"canonical","href":"http://localhost:3000/3K3U0Q1N1W413P1y1x0N"},{"rel":"icon","href":"https://localhost:3001/3K3U0Q1N1W413P1y1x0N"}],"data":[{"name":"id","value":88},{"name":"name","value":null},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/87","links":[{"rel":"canonical","href":"http://localhost:3000/333f2R26260m1v1Z0I3a"},{"rel":"icon","href":"https://localhost:3001/333f2R26260m1v1Z0I3a"}],"data":[{"name":"id","value":87},{"name":"name","value":null},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/86","links":[{"rel":"canonical","href":"http://localhost:3000/3B333s1x0N2Y1p1W2Q2d"},{"rel":"icon","href":"https://localhost:3001/3B333s1x0N2Y1p1W2Q2d"}],"data":[{"name":"id","value":86},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/85","links":[{"rel":"canonical","href":"http://localhost:3000/2c0B2P2N2y2G1A3i3y2w"},{"rel":"icon","href":"https://localhost:3001/2c0B2P2N2y2G1A3i3y2w"}],"data":[{"name":"id","value":85},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/84","links":[{"rel":"canonical","href":"http://localhost:3000/1P3B1H1V0j0m0F1v3V02"},{"rel":"icon","href":"https://localhost:3001/1P3B1H1V0j0m0F1v3V02"}],"data":[{"name":"id","value":84},{"name":"name","value":"CloudApp"},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/83","links":[{"rel":"canonical","href":"http://localhost:3000/2N2c2l0K2X0e111p331t"},{"rel":"icon","href":"https://localhost:3001/2N2c2l0K2X0e111p331t"}],"data":[{"name":"id","value":83},{"name":"name","value":"Delete
+      Me"},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/68","links":[{"rel":"canonical","href":"http://localhost:3000/2J161F0V0J1n1v381G2x"},{"rel":"icon","href":"https://localhost:3001/2J161F0V0J1n1v381G2x"}],"data":[{"name":"id","value":68},{"name":"name","value":"large.gif"},{"name":"private","value":true},{"name":"views","value":9}]},{"href":"/drops/8","links":[{"rel":"canonical","href":"http://localhost:3000/1l2q0e232q3U3x0v460V"},{"rel":"icon","href":"https://localhost:3001/1l2q0e232q3U3x0v460V"}],"data":[{"name":"id","value":8},{"name":"name","value":"The
+      Hitchhiker''s Guide to the Galaxy"},{"name":"private","value":true},{"name":"views","value":3}]},{"href":"/drops/7","links":[{"rel":"canonical","href":"http://localhost:3000/0v0O3J2w0w3H2p2Y1A2V"},{"rel":"icon","href":"https://localhost:3001/0v0O3J2w0w3H2p2Y1A2V"}],"data":[{"name":"id","value":7},{"name":"name","value":"Cover.jpeg"},{"name":"private","value":true},{"name":"views","value":39}]},{"href":"/drops/6","links":[{"rel":"canonical","href":"http://localhost:3000/1X3Q2U2G12120L1d383D"},{"rel":"icon","href":"https://localhost:3001/1X3Q2U2G12120L1d383D"}],"data":[{"name":"id","value":6},{"name":"name","value":"Chapter
+      1.md"},{"name":"private","value":true},{"name":"views","value":7}]}],"templates":[{"rel":"/rels/recover","href":"/drops?filter=trash","data":[{"name":"drop_ids","value":[]}]},{"rel":"/rels/remove","href":"/drops","data":[{"name":"drop_ids","value":[]}]}]}}'
+    http_version: 
+  recorded_at: Sat, 17 Mar 2012 15:43:58 GMT
+- request:
+    method: post
+    uri: http://api.getcloudapp.com/drops?filter=trash
+    body: ! '{"drop_ids":[103,104]}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token token="abc123"
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Cache-Control:
+      - no-cache
+      X-Ua-Compatible:
+      - IE=Edge
+      Set-Cookie:
+      - _engine_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRiIlMDRjM2Q0OTMyM2M5MDdhMTczMzBkOTg1YWU0ZDAwODE%3D--9c6ea51a69cfbcace20975b6bda47b031e96491d;
+        path=/; HttpOnly
+      X-Runtime:
+      - '0.319838'
+      Connection:
+      - close
+    body: ''
+    http_version: 
+  recorded_at: Sat, 17 Mar 2012 15:43:59 GMT
+recorded_with: VCR 2.0.0.rc1

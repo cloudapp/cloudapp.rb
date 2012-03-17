@@ -27,6 +27,15 @@ describe CloudApp::Account do
     end
   end
 
+  describe '#recover' do
+    let(:drop_ids) { stub :drop_ids }
+
+    it 'delegates to the service' do
+      service.should_receive(:recover).with(args)
+      CloudApp::Account.new(token).recover(args)
+    end
+  end
+
   describe '#trash' do
     let(:drop_ids) { stub :drop_ids }
 

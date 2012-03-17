@@ -46,13 +46,21 @@ module CloudApp
       DropCollection.new drops_at(href, params)
     end
 
+    def recover(drop_ids)
+      template = drops_at('/').template('/rels/recover')
+      data     = template.fill('drop_ids' => drop_ids)
+
+      post(template.href, {}, data) do |response|
+        return SimpleResponse.new(response)
+      end
+    end
+
     def trash(drop_ids)
       template = drops_at('/').template('/rels/remove')
       data     = template.fill('drop_ids' => drop_ids)
 
       delete(template.href, {}, data) do |response|
         return SimpleResponse.new(response)
-        # return response
       end
     end
 

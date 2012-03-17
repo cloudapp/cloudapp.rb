@@ -140,6 +140,16 @@ describe CloudApp::Service do
     end
   end
 
+  describe '#recover' do
+    let(:drop_ids) {[ 103, 104 ]}
+    let(:service)  { CloudApp::Service.using_token token }
+    subject {
+      VCR.use_cassette('Service/recover_drops') { service.recover(drop_ids) }
+    }
+
+    it { should be_successful }
+  end
+
   describe '#trash' do
     let(:drop_ids) {[ 103, 104 ]}
     let(:service)  { CloudApp::Service.using_token token }

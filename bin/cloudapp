@@ -181,6 +181,26 @@ command :download do |c|
   end
 end
 
+desc 'Recover a drop from the trash'
+arg_name 'id [id...]'
+command :recover do |c|
+  c.action do |global_options, options, args|
+    require_credentials
+    format   = format_from_options global_options
+    drop_ids = args.map &:to_i
+    term     = drop_ids.size == 1 ? 'drop' : 'drops'
+    waiting  = "Restoring #{ term } #{ drop_ids.join(', ') }..."
+
+    CloudApp::DropPresenter.print(on:      $stdout,
+                                  waiting: waiting,
+                                  format:  format) do
+
+      account.recover drop_ids
+      { pretty: 'done', csv: nil }
+    end
+  end
+end
+
 desc 'Send a drop to the trash'
 arg_name 'id [id...]'
 command :trash do |c|
