@@ -56,7 +56,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake'
   s.add_development_dependency 'ronn'
   s.add_development_dependency 'rspec'
-  s.add_development_dependency 'vcr', '~> 2.0.0.rc1'
+  s.add_development_dependency 'vcr', '~> 2.0.0'
   s.add_development_dependency 'webmock'
 
   ## Leave this section as-is. It will be automatically generated from the

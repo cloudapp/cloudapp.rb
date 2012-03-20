@@ -54,9 +54,9 @@ GEM
     rspec-mocks (2.9.0)
     typhoeus (0.3.3)
       mime-types
-    vcr (2.0.0.rc1)
-    webmock (1.7.10)
-      addressable (~> 2.2, > 2.2.5)
+    vcr (2.0.0)
+    webmock (1.8.4)
+      addressable (>= 2.2.7)
       crack (>= 0.1.7)
 
 PLATFORMS
@@ -68,5 +68,5 @@ DEPENDENCIES
   rake
   ronn
   rspec
-  vcr (~> 2.0.0.rc1)
+  vcr (~> 2.0.0)
   webmock
