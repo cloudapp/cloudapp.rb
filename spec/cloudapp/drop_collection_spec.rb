@@ -57,7 +57,7 @@ describe CloudApp::DropCollection do
     end
 
     it 'falls back to a nil link' do
-      response.stub(:link) do |name, fallback|
+      response.stub(:link) do |name, &fallback|
         fallback.call.should be_nil
         link
       end
