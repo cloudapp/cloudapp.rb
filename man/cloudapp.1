@@ -19,6 +19,9 @@
 \fBcloudapp upload\fR [\fB\-\-private\fR] [\fB\-\-public\fR] \fIfile\fR [\fIfile\fR\.\.\.]
 .
 .br
+\fBcloudapp details\fR \fIhref\fR
+.
+.br
 \fBcloudapp download\fR [\fB\-\-output\fR=\fIfile\fR] \fIurl\fR
 .
 .br
@@ -41,6 +44,10 @@ Output using either \fBpretty\fR or \fBcsv\fR format\. (Default: \fBpretty\fR wh
 .TP
 \fBbookmark\fR [\fB\-\-private\fR] [\fB\-\-public\fR] [\fIurl\fR\.\.\.]
 Create a new bookmark to each \fIurl\fR and print each link\.
+.
+.TP
+\fBdetails\fR \fIhref\fR
+View the details of the drop at \fIhref\fR\.
 .
 .TP
 \fBdownload\fR [\fB\-\-output\fR=\fIfile\fR] \fIurl\fR
@@ -95,13 +102,13 @@ List the newest drops:
 .nf
 
 $ cloudapp list
-Name                    Link                  Views
-favicon\.ico             http://cl\.ly/0P28\.\.\.  3
-The Hitchhiker\'s Guide  http://cl\.ly/3I28\.\.\.  4
-CloudApp 1\.5 Released   http://cl\.ly/0s1o\.\.\.  4
-Cover\.jpeg              http://cl\.ly/1x20\.\.\.  1
-Chapter 1\.md            http://cl\.ly/3U3d\.\.\.  7
-CloudApp                http://cl\.ly/2O2J\.\.\.  3
+Name                    Href                            Share                 Views
+favicon\.ico             http://api\.getcloudapp\.com/\.\.\.  http://cl\.ly/0P28\.\.\.  3
+The Hitchhiker\'s Guide  http://api\.getcloudapp\.com/\.\.\.  http://cl\.ly/3I28\.\.\.  4
+CloudApp 1\.5 Released   http://api\.getcloudapp\.com/\.\.\.  http://cl\.ly/0s1o\.\.\.  4
+Cover\.jpeg              http://api\.getcloudapp\.com/\.\.\.  http://cl\.ly/1x20\.\.\.  1
+Chapter 1\.md            http://api\.getcloudapp\.com/\.\.\.  http://cl\.ly/3U3d\.\.\.  7
+CloudApp                http://api\.getcloudapp\.com/\.\.\.  http://cl\.ly/2O2J\.\.\.  3
   \.\.\.
 .
 .fi
@@ -116,12 +123,12 @@ List the 5 newest drops:
 .nf
 
 $ cloudapp list \-\-count=5
-Name                    Link                  Views
-favicon\.ico             http://cl\.ly/0P28\.\.\.  3
-The Hitchhiker\'s Guide  http://cl\.ly/3I28\.\.\.  4
-CloudApp 1\.5 Released   http://cl\.ly/0s1o\.\.\.  4
-Cover\.jpeg              http://cl\.ly/1x20\.\.\.  1
-Chapter 1\.md            http://cl\.ly/3U3d\.\.\.  7
+Name                    Href                            Share                 Views
+favicon\.ico             http://api\.getcloudapp\.com/\.\.\.  http://cl\.ly/0P28\.\.\.  3
+The Hitchhiker\'s Guide  http://api\.getcloudapp\.com/\.\.\.  http://cl\.ly/3I28\.\.\.  4
+CloudApp 1\.5 Released   http://api\.getcloudapp\.com/\.\.\.  http://cl\.ly/0s1o\.\.\.  4
+Cover\.jpeg              http://api\.getcloudapp\.com/\.\.\.  http://cl\.ly/1x20\.\.\.  1
+Chapter 1\.md            http://api\.getcloudapp\.com/\.\.\.  http://cl\.ly/3U3d\.\.\.  7
 .
 .fi
 .
@@ -135,8 +142,8 @@ List newest, deleted drops:
 .nf
 
 $ cloudapp list \-\-filter=trash
-Name       Link                  Views
-Delete Me  http://cl\.ly/1H2C\.\.\.  0
+Name       Href                            Share                 Views
+Delete Me  http://api\.getcloudapp\.com/\.\.\.  http://cl\.ly/1H2C\.\.\.  0
   \.\.\.
 .
 .fi
@@ -151,12 +158,46 @@ List newest 5 drops in CSV format:
 .nf
 
 $ cloudapp \-\-format=csv list \-\-count=5
-Name,Link,Views
-favicon\.ico,http://cl\.ly/0P28\.\.\.,3
-The Hitchhiker\'s Guide to the Galaxy,http://cl\.ly/3I28\.\.\.,4
-2011\-05\-03\-cloudapp\-1\.5\-released\.md,http://cl\.ly/0s1o\.\.\.,4
-Cover\.jpeg,http://cl\.ly/1x20\.\.\.,1
-Chapter 1\.md,http://cl\.ly/3U3d\.\.\.,7
+Name,Href,Share,Views
+favicon\.ico,http://api\.getcloudapp\.com/\.\.\.,http://cl\.ly/0P28\.\.\.,3
+The Hitchhiker\'s Guide to the Galaxy,http://api\.getcloudapp\.com/\.\.\.,http://cl\.ly/3I28\.\.\.,4
+2011\-05\-03\-cloudapp\-1\.5\-released\.md,http://api\.getcloudapp\.com/\.\.\.,http://cl\.ly/0s1o\.\.\.,4
+Cover\.jpeg,http://api\.getcloudapp\.com/\.\.\.,http://cl\.ly/1x20\.\.\.,1
+Chapter 1\.md,http://api\.getcloudapp\.com/\.\.\.,http://cl\.ly/3U3d\.\.\.,7
+.
+.fi
+.
+.IP "" 0
+.
+.P
+View the details of a drop give its \fBhref\fR:
+.
+.IP "" 4
+.
+.nf
+
+$ cloudapp http://api\.getcloudapp\.com/drops/12345
+Name:     Cover\.jpg
+Created:  2 days ago
+Privacy:  private
+Share:    http://cl\.ly/1x20\.\.\.
+Emebed:   http://cl\.ly/1x20\.\.\.
+Download: http://cl\.ly/1x20\.\.\.
+.
+.fi
+.
+.IP "" 0
+.
+.P
+View the details of a drop in CSV format:
+.
+.IP "" 4
+.
+.nf
+
+$ cloudapp \-\-format=csv http://api\.getcloudapp\.com/drops/12345
+Name,Created,Privacy,Share,Embed,Download
+Cover\.jpg,2012\-01\-12T20:44:58Z,private,http://cl\.ly/1x20\.\.\.,http://cl\.ly/1x20\.\.\.,http://cl\.ly/1x20\.\.\.
 .
 .fi
 .

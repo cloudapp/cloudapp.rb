@@ -87,6 +87,7 @@
 <code>cloudapp list</code> [<code>--count</code>=<var>count</var>] [<code>--filter</code>=<var>all,active,trash</var>]<br />
 <code>cloudapp bookmark</code> [<code>--private</code>] [<code>--public</code>] <var>url</var> [<var>url</var>...]<br />
 <code>cloudapp upload</code> [<code>--private</code>] [<code>--public</code>] <var>file</var> [<var>file</var>...]<br />
+<code>cloudapp details</code> <var>href</var><br />
 <code>cloudapp download</code> [<code>--output</code>=<var>file</var>] <var>url</var><br />
 <code>cloudapp trash</code> <var>id</var> [<var>id</var>...]<br />
 <code>cloudapp recover</code> <var>id</var> [<var>id</var>...]</p>
@@ -109,6 +110,7 @@ output to a terminal and <strong>csv</strong> when output is piped to another pr
 
 <dl>
 <dt><code>bookmark</code> [<code>--private</code>] [<code>--public</code>] [<var>url</var>...]</dt><dd><p>Create a new bookmark to each <var>url</var> and print each link.</p></dd>
+<dt><code>details</code> <var>href</var></dt><dd><p>View the details of the drop at <var>href</var>.</p></dd>
 <dt><code>download</code> [<code>--output</code>=<var>file</var>] <var>url</var></dt><dd><p>Download the file at <var>url</var> to the current directory or to <var>file</var> if present.</p></dd>
 <dt><code>list</code> [<code>--count</code>=<var>count</var>] [<code>--filter</code>=<var>all,active,trash</var>]</dt><dd><p>List the newest <var>count</var> of <var>filter</var> drops. The default is to list <strong>20
 active</strong> drops.</p></dd>
@@ -139,44 +141,62 @@ name)</p></dd>
 <p>List the newest drops:</p>
 
 <pre><code>$ cloudapp list
-Name                    Link                  Views
-favicon.ico             http://cl.ly/0P28...  3
-The Hitchhiker's Guide  http://cl.ly/3I28...  4
-CloudApp 1.5 Released   http://cl.ly/0s1o...  4
-Cover.jpeg              http://cl.ly/1x20...  1
-Chapter 1.md            http://cl.ly/3U3d...  7
-CloudApp                http://cl.ly/2O2J...  3
+Name                    Href                            Share                 Views
+favicon.ico             http://api.getcloudapp.com/...  http://cl.ly/0P28...  3
+The Hitchhiker's Guide  http://api.getcloudapp.com/...  http://cl.ly/3I28...  4
+CloudApp 1.5 Released   http://api.getcloudapp.com/...  http://cl.ly/0s1o...  4
+Cover.jpeg              http://api.getcloudapp.com/...  http://cl.ly/1x20...  1
+Chapter 1.md            http://api.getcloudapp.com/...  http://cl.ly/3U3d...  7
+CloudApp                http://api.getcloudapp.com/...  http://cl.ly/2O2J...  3
   ...
 </code></pre>
 
 <p>List the 5 newest drops:</p>
 
 <pre><code>$ cloudapp list --count=5
-Name                    Link                  Views
-favicon.ico             http://cl.ly/0P28...  3
-The Hitchhiker's Guide  http://cl.ly/3I28...  4
-CloudApp 1.5 Released   http://cl.ly/0s1o...  4
-Cover.jpeg              http://cl.ly/1x20...  1
-Chapter 1.md            http://cl.ly/3U3d...  7
+Name                    Href                            Share                 Views
+favicon.ico             http://api.getcloudapp.com/...  http://cl.ly/0P28...  3
+The Hitchhiker's Guide  http://api.getcloudapp.com/...  http://cl.ly/3I28...  4
+CloudApp 1.5 Released   http://api.getcloudapp.com/...  http://cl.ly/0s1o...  4
+Cover.jpeg              http://api.getcloudapp.com/...  http://cl.ly/1x20...  1
+Chapter 1.md            http://api.getcloudapp.com/...  http://cl.ly/3U3d...  7
 </code></pre>
 
 <p>List newest, deleted drops:</p>
 
 <pre><code>$ cloudapp list --filter=trash
-Name       Link                  Views
-Delete Me  http://cl.ly/1H2C...  0
+Name       Href                            Share                 Views
+Delete Me  http://api.getcloudapp.com/...  http://cl.ly/1H2C...  0
   ...
 </code></pre>
 
 <p>List newest 5 drops in CSV format:</p>
 
 <pre><code>$ cloudapp --format=csv list --count=5
-Name,Link,Views
-favicon.ico,http://cl.ly/0P28...,3
-The Hitchhiker's Guide to the Galaxy,http://cl.ly/3I28...,4
-2011-05-03-cloudapp-1.5-released.md,http://cl.ly/0s1o...,4
-Cover.jpeg,http://cl.ly/1x20...,1
-Chapter 1.md,http://cl.ly/3U3d...,7
+Name,Href,Share,Views
+favicon.ico,http://api.getcloudapp.com/...,http://cl.ly/0P28...,3
+The Hitchhiker's Guide to the Galaxy,http://api.getcloudapp.com/...,http://cl.ly/3I28...,4
+2011-05-03-cloudapp-1.5-released.md,http://api.getcloudapp.com/...,http://cl.ly/0s1o...,4
+Cover.jpeg,http://api.getcloudapp.com/...,http://cl.ly/1x20...,1
+Chapter 1.md,http://api.getcloudapp.com/...,http://cl.ly/3U3d...,7
+</code></pre>
+
+<p>View the details of a drop give its <strong>href</strong>:</p>
+
+<pre><code>$ cloudapp http://api.getcloudapp.com/drops/12345
+Name:     Cover.jpg
+Created:  2 days ago
+Privacy:  private
+Share:    http://cl.ly/1x20...
+Emebed:   http://cl.ly/1x20...
+Download: http://cl.ly/1x20...
+</code></pre>
+
+<p>View the details of a drop in CSV format:</p>
+
+<pre><code>$ cloudapp --format=csv http://api.getcloudapp.com/drops/12345
+Name,Created,Privacy,Share,Embed,Download
+Cover.jpg,2012-01-12T20:44:58Z,private,http://cl.ly/1x20...,http://cl.ly/1x20...,http://cl.ly/1x20...
 </code></pre>
 
 <p>Share a new bookmark to <strong>http://douglasadams.com</strong>:</p>

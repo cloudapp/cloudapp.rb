@@ -7,6 +7,7 @@ cloudapp(1) -- All the pleasures of CloudApp now at your terminal
 `cloudapp list` [`--count`=<count>] [`--filter`=<all,active,trash>]<br>
 `cloudapp bookmark` [`--private`] [`--public`] <url> [<url>...]<br>
 `cloudapp upload` [`--private`] [`--public`] <file> [<file>...]<br>
+`cloudapp details` <href><br>
 `cloudapp download` [`--output`=<file>] <url><br>
 `cloudapp trash` <id> [<id>...]<br>
 `cloudapp recover` <id> [<id>...]
@@ -27,6 +28,9 @@ terminal and other times it's the only tool available.
 
   * `bookmark` [`--private`] [`--public`] [<url>...]:
     Create a new bookmark to each <url> and print each link.
+
+  * `details` <href>:
+    View the details of the drop at <href>.
 
   * `download` [`--output`=<file>] <url>:
     Download the file at <url> to the current directory or to <file> if present.
@@ -71,41 +75,57 @@ terminal and other times it's the only tool available.
 List the newest drops:
 
     $ cloudapp list
-    Name                    Link                  Views
-    favicon.ico             http://cl.ly/0P28...  3
-    The Hitchhiker's Guide  http://cl.ly/3I28...  4
-    CloudApp 1.5 Released   http://cl.ly/0s1o...  4
-    Cover.jpeg              http://cl.ly/1x20...  1
-    Chapter 1.md            http://cl.ly/3U3d...  7
-    CloudApp                http://cl.ly/2O2J...  3
+    Name                    Href                            Share                 Views
+    favicon.ico             http://api.getcloudapp.com/...  http://cl.ly/0P28...  3
+    The Hitchhiker's Guide  http://api.getcloudapp.com/...  http://cl.ly/3I28...  4
+    CloudApp 1.5 Released   http://api.getcloudapp.com/...  http://cl.ly/0s1o...  4
+    Cover.jpeg              http://api.getcloudapp.com/...  http://cl.ly/1x20...  1
+    Chapter 1.md            http://api.getcloudapp.com/...  http://cl.ly/3U3d...  7
+    CloudApp                http://api.getcloudapp.com/...  http://cl.ly/2O2J...  3
       ...
 
 List the 5 newest drops:
 
     $ cloudapp list --count=5
-    Name                    Link                  Views
-    favicon.ico             http://cl.ly/0P28...  3
-    The Hitchhiker's Guide  http://cl.ly/3I28...  4
-    CloudApp 1.5 Released   http://cl.ly/0s1o...  4
-    Cover.jpeg              http://cl.ly/1x20...  1
-    Chapter 1.md            http://cl.ly/3U3d...  7
+    Name                    Href                            Share                 Views
+    favicon.ico             http://api.getcloudapp.com/...  http://cl.ly/0P28...  3
+    The Hitchhiker's Guide  http://api.getcloudapp.com/...  http://cl.ly/3I28...  4
+    CloudApp 1.5 Released   http://api.getcloudapp.com/...  http://cl.ly/0s1o...  4
+    Cover.jpeg              http://api.getcloudapp.com/...  http://cl.ly/1x20...  1
+    Chapter 1.md            http://api.getcloudapp.com/...  http://cl.ly/3U3d...  7
 
 List newest, deleted drops:
 
     $ cloudapp list --filter=trash
-    Name       Link                  Views
-    Delete Me  http://cl.ly/1H2C...  0
+    Name       Href                            Share                 Views
+    Delete Me  http://api.getcloudapp.com/...  http://cl.ly/1H2C...  0
       ...
 
 List newest 5 drops in CSV format:
 
     $ cloudapp --format=csv list --count=5
-    Name,Link,Views
-    favicon.ico,http://cl.ly/0P28...,3
-    The Hitchhiker's Guide to the Galaxy,http://cl.ly/3I28...,4
-    2011-05-03-cloudapp-1.5-released.md,http://cl.ly/0s1o...,4
-    Cover.jpeg,http://cl.ly/1x20...,1
-    Chapter 1.md,http://cl.ly/3U3d...,7
+    Name,Href,Share,Views
+    favicon.ico,http://api.getcloudapp.com/...,http://cl.ly/0P28...,3
+    The Hitchhiker's Guide to the Galaxy,http://api.getcloudapp.com/...,http://cl.ly/3I28...,4
+    2011-05-03-cloudapp-1.5-released.md,http://api.getcloudapp.com/...,http://cl.ly/0s1o...,4
+    Cover.jpeg,http://api.getcloudapp.com/...,http://cl.ly/1x20...,1
+    Chapter 1.md,http://api.getcloudapp.com/...,http://cl.ly/3U3d...,7
+
+View the details of a drop give its **href**:
+
+    $ cloudapp http://api.getcloudapp.com/drops/12345
+    Name:     Cover.jpg
+    Created:  2 days ago
+    Privacy:  private
+    Share:    http://cl.ly/1x20...
+    Emebed:   http://cl.ly/1x20...
+    Download: http://cl.ly/1x20...
+
+View the details of a drop in CSV format:
+
+    $ cloudapp --format=csv http://api.getcloudapp.com/drops/12345
+    Name,Created,Privacy,Share,Embed,Download
+    Cover.jpg,2012-01-12T20:44:58Z,private,http://cl.ly/1x20...,http://cl.ly/1x20...,http://cl.ly/1x20...
 
 Share a new bookmark to **http://douglasadams.com**:
 
