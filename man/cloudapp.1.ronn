@@ -7,7 +7,7 @@ cloudapp(1) -- All the pleasures of CloudApp now at your terminal
 `cloudapp list` [`--count`=<count>] [`--filter`=<all,active,trash>]<br>
 `cloudapp bookmark` [`--private`] [`--public`] <url> [<url>...]<br>
 `cloudapp upload` [`--private`] [`--public`] <file> [<file>...]<br>
-`cloudapp details` <href><br>
+`cloudapp details` <href> [<href>...]<br>
 `cloudapp download` [`--output`=<file>] <url><br>
 `cloudapp trash` <id> [<id>...]<br>
 `cloudapp recover` <id> [<id>...]
@@ -29,8 +29,8 @@ terminal and other times it's the only tool available.
   * `bookmark` [`--private`] [`--public`] [<url>...]:
     Create a new bookmark to each <url> and print each link.
 
-  * `details` <href>:
-    View the details of the drop at <href>.
+  * `details` <href> [<href>...]:
+    View the details of each drop at <href>.
 
   * `download` [`--output`=<file>] <url>:
     Download the file at <url> to the current directory or to <file> if present.
