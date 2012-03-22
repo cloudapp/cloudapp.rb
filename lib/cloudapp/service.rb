@@ -82,7 +82,7 @@ module CloudApp
 
     def request_token(email, password)
       authenticate_response = root
-      data = authenticate_response.template('/rels/create').
+      data = authenticate_response.template.
                fill('email' => email, 'password' => password)
 
       post(authenticate_response.href, {}, data) do |response|
