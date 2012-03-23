@@ -46,6 +46,10 @@ module CloudApp
       DropCollection.new drops_at(href, params)
     end
 
+    def drop_at(href)
+      DropCollection.new drops_at(href)
+    end
+
     def recover(drop_ids)
       template = drops_at('/').template('/rels/recover')
       data     = template.fill('drop_ids' => drop_ids)

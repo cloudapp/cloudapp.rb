@@ -3,7 +3,7 @@ require 'helper'
 require 'cloudapp/account'
 
 describe CloudApp::Account do
-  let(:args)    { stub }
+  let(:args)    { stub :args }
   let(:token)   { 'token' }
   let(:service) { stub :service, :token= => nil }
   let(:service_source) { -> { service }}
@@ -18,12 +18,31 @@ describe CloudApp::Account do
 
   describe '#drops' do
     let(:drops) {[ stub(:drop) ]}
-    subject { CloudApp::Account.new(token).drops }
+    subject { CloudApp::Account.new(token).drops(args) }
     before do service.stub(drops: drops) end
 
     it 'delegates to the drop service' do
       service.should_receive(:drops).with(args)
-      CloudApp::Account.new(token).drops(args)
+      subject
+    end
+
+    it 'returns the drops' do
+      subject.should eq(drops)
+    end
+  end
+
+  describe '#drop_at' do
+    let(:drop) { stub :drop }
+    subject { CloudApp::Account.new(token).drop_at(args) }
+    before do service.stub(drop_at: drop) end
+
+    it 'delegates to the drop service' do
+      service.should_receive(:drop_at).with(args)
+      subject
+    end
+
+    it 'returns the drop' do
+      subject.should eq(drop)
     end
   end
 
@@ -42,17 +61,6 @@ describe CloudApp::Account do
     it 'delegates to the service' do
       service.should_receive(:trash).with(args)
       CloudApp::Account.new(token).trash(args)
-    end
-  end
-
-  describe '#drop' do
-    let(:service) { stub :service }
-    let(:drop)    { stub :drop }
-    before do service.stub(drop: drop) end
-
-    it 'delegates to the service' do
-      service.should_receive(:drop).with(args)
-      CloudApp::Account.new.drop(args)
     end
   end
 

@@ -20,6 +20,8 @@ require 'forwardable'
 #   page1 = account.drops href: page2.link('previous')
 #   page1 = account.drops href: page1.link('self')
 #
+#   account.drop_at drop.href
+#
 #   # Move a list of drops to the trash:
 #   account.trash [ 1, 2, 3 ]
 #
@@ -44,7 +46,7 @@ require 'forwardable'
 module CloudApp
   class Account
     extend Forwardable
-    def_delegators :service, :drops, :drop, :create, :trash, :recover
+    def_delegators :service, :drops, :drop_at, :create, :trash, :recover
 
     class << self
       attr_writer :service_source

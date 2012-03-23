@@ -10,6 +10,8 @@ describe CloudApp::Service do
     let(:service) { CloudApp::Service.using_token token }
     subject { VCR.use_cassette('Service/list_drops') { service.drops }}
 
+    it { should be_a(CloudApp::DropCollection) }
+
     it 'has 20 drops' do
       subject.should have(20).items
     end
@@ -97,6 +99,18 @@ describe CloudApp::Service do
       it 'is unauthorized' do
         subject.should be_unauthorized
       end
+    end
+  end
+
+  describe '#drop_at' do
+    let(:service) { CloudApp::Service.using_token token }
+    let(:href)    { '/drops/13950097' }
+    subject { VCR.use_cassette('Service/view_drop') { service.drop_at(href) }}
+
+    it { should be_a(CloudApp::DropCollection) }
+
+    it 'returns a drop' do
+      subject.should have(1).item
     end
   end
 
