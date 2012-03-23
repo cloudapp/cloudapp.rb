@@ -4,9 +4,14 @@ require 'cloudapp/drop'
 stub_class :DropContent
 
 describe CloudApp::Drop do
+  let(:href)  { stub :href }
   let(:links) { [] }
   let(:data)  { {} }
-  subject { CloudApp::Drop.new stub(:drop, links: links, data: data) }
+  subject {
+    CloudApp::Drop.new stub(:drop, href: href, links: links, data: data)
+  }
+
+  its(:href) { should eq(href) }
 
   describe '#name' do
     let(:data) {{ name: 'Drop' }}
