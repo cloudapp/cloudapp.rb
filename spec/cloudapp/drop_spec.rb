@@ -49,6 +49,32 @@ describe CloudApp::Drop do
     end
   end
 
+  describe '#embed_url' do
+    let(:links) {[
+      stub(:canonical, rel: 'canonical', href: '/canonical'),
+      stub(:embed,     rel: 'embed',     href: '/embed')
+    ]}
+    its(:embed_url) { should eq('/embed') }
+
+    context 'without an embed link' do
+      let(:links) {[ stub(:canonical, rel: 'canonical', href: '/canonical') ]}
+      its(:embed_url) { should be_nil }
+    end
+  end
+
+  describe '#download_url' do
+    let(:links) {[
+      stub(:canonical, rel: 'canonical', href: '/canonical'),
+      stub(:download,  rel: 'download',  href: '/download')
+    ]}
+    its(:download_url) { should eq('/download') }
+
+    context 'without an download link' do
+      let(:links) {[ stub(:canonical, rel: 'canonical', href: '/canonical') ]}
+      its(:download_url) { should be_nil }
+    end
+  end
+
   describe '#private?' do
     describe 'a private drop' do
       let(:data) {{ private: true }}

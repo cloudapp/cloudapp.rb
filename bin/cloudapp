@@ -158,8 +158,14 @@ command :details do |c|
   c.action do |global_options, options, hrefs|
     require_credentials
 
-    columns = { name: 'Name', href: 'Href', share_url: 'Share', id: 'ID', views: 'Views' }
-    format  = format_from_options global_options
+    columns = { name:         'Name',
+                href:         'Href',
+                share_url:    'Share',
+                embed_url:    'Embed',
+                download_url: 'Download',
+                id:           'ID',
+                views:        'Views' }
+    format = format_from_options global_options
 
     hrefs.each do |href|
       CloudApp::DropPresenter.print(on:      $stdout,
