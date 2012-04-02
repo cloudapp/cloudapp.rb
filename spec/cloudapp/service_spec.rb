@@ -119,12 +119,27 @@ describe CloudApp::Service do
     let(:url)     { 'http://getcloudapp.com' }
     subject {
       VCR.use_cassette('Service/create_bookmark') {
-        service.bookmark url: url
+        service.bookmark url
       }
     }
 
     it { should be_successful }
     it { should be_a(CloudApp::DropCollection) }
+
+    context 'with a name' do
+      let(:name) { 'New Bookmark' }
+      subject {
+        VCR.use_cassette('Service/create_bookmark_with_name') {
+          service.bookmark url, name: name
+        }
+      }
+
+      it { should be_successful }
+
+      it 'has the given name' do
+        subject.first.name.should eq(name)
+      end
+    end
   end
 
   describe '#token_for_account' do

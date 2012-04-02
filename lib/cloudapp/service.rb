@@ -50,10 +50,11 @@ module CloudApp
       DropCollection.new drops_at(href)
     end
 
-    def bookmark(attributes)
-      bookmark_url = attributes.fetch(:url) if attributes.has_key?(:url)
-      template     = drops_at('/').template('/rels/create')
-      data         = template.fill('bookmark_url' => bookmark_url)
+    def bookmark(url, options = {})
+      attributes = { 'bookmark_url' => url }
+      attributes['name'] = options.fetch(:name) if options.has_key?(:name)
+      template   = drops_at('/').template('/rels/create')
+      data       = template.fill(attributes)
 
       post(template.href, {}, data) do |response|
         return DropCollection.new(response)
