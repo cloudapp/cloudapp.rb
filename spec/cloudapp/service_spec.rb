@@ -140,6 +140,20 @@ describe CloudApp::Service do
         subject.first.name.should eq(name)
       end
     end
+
+    context 'with a privacy' do
+      subject {
+        VCR.use_cassette('Service/create_bookmark_with_privacy') {
+          service.bookmark url, private: false
+        }
+      }
+
+      it { should be_successful }
+
+      it 'is public' do
+        subject.first.private.should be_false
+      end
+    end
   end
 
   describe '#token_for_account' do

@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.getcloudapp.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Token token="abc123"
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"c3cd2b55f0624033128b8bfbacaba89d"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Runtime:
+      - '0.261074'
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"/","links":[{"rel":"/rels/account","href":"/account"},{"rel":"/rels/drops","href":"/drops"}]}}'
+    http_version: 
+  recorded_at: Mon, 02 Apr 2012 20:22:54 GMT
+- request:
+    method: get
+    uri: http://api.getcloudapp.com/drops
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Token token="abc123"
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"9601c1e465a8f1ac05d9afab7f29a4c4"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Runtime:
+      - '0.302468'
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"/drops","items":[{"href":"/drops/116","links":[{"rel":"canonical","href":"http://localhost:3000/1H443v101H3L2O3F0716"},{"rel":"icon","href":"https://localhost:3001/1H443v101H3L2O3F0716"}],"data":[{"name":"id","value":116},{"name":"name","value":null},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/115","links":[{"rel":"canonical","href":"http://localhost:3000/2n3o1l0m3l120b3T1H0l"},{"rel":"icon","href":"https://localhost:3001/2n3o1l0m3l120b3T1H0l"}],"data":[{"name":"id","value":115},{"name":"name","value":null},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/114","links":[{"rel":"canonical","href":"http://localhost:3000/3l2L1M2M1w1k2M1t0w2L"},{"rel":"icon","href":"https://localhost:3001/3l2L1M2M1w1k2M1t0w2L"}],"data":[{"name":"id","value":114},{"name":"name","value":null},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/113","links":[{"rel":"canonical","href":"http://localhost:3000/2n2z2X0P3D0c1I2Z3c11"},{"rel":"icon","href":"https://localhost:3001/2n2z2X0P3D0c1I2Z3c11"}],"data":[{"name":"id","value":113},{"name":"name","value":null},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/112","links":[{"rel":"canonical","href":"http://localhost:3000/3O22133C1B0f1j1G3n0X"},{"rel":"icon","href":"https://localhost:3001/3O22133C1B0f1j1G3n0X"}],"data":[{"name":"id","value":112},{"name":"name","value":"New
+        Bookmark"},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/111","links":[{"rel":"canonical","href":"http://localhost:3000/0G3p0S0q441q1z1c3B0A"},{"rel":"icon","href":"https://localhost:3001/0G3p0S0q441q1z1c3B0A"}],"data":[{"name":"id","value":111},{"name":"name","value":null},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/105","links":[{"rel":"canonical","href":"http://localhost:3000/2R0s0A0g3t1c311y1g0k"},{"rel":"icon","href":"https://localhost:3001/2R0s0A0g3t1c311y1g0k"}],"data":[{"name":"id","value":105},{"name":"name","value":"New
+        Drop"},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/104","links":[{"rel":"canonical","href":"http://localhost:3000/2E2P0s2J0W2n0C112v2w"},{"rel":"icon","href":"https://localhost:3001/2E2P0s2J0W2n0C112v2w"}],"data":[{"name":"id","value":104},{"name":"name","value":null},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/103","links":[{"rel":"canonical","href":"http://localhost:3000/03330w11343U27270F05"},{"rel":"icon","href":"https://localhost:3001/03330w11343U27270F05"}],"data":[{"name":"id","value":103},{"name":"name","value":null},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/101","links":[{"rel":"canonical","href":"http://localhost:3000/472k3i21201H2O3O0h2L"},{"rel":"icon","href":"https://localhost:3001/472k3i21201H2O3O0h2L"}],"data":[{"name":"id","value":101},{"name":"name","value":null},{"name":"private","value":true},{"name":"views","value":2}]},{"href":"/drops/95","links":[{"rel":"canonical","href":"http://localhost:3000/1K"},{"rel":"icon","href":"https://localhost:3001/1K"}],"data":[{"name":"id","value":95},{"name":"name","value":null},{"name":"private","value":false},{"name":"views","value":4}]},{"href":"/drops/94","links":[{"rel":"canonical","href":"http://localhost:3000/081T3q0B0b2T160M3n0V"},{"rel":"icon","href":"https://localhost:3001/081T3q0B0b2T160M3n0V"},{"rel":"embed","href":"http://localhost:3000/081T3q0B0b2T160M3n0V/api.md"},{"rel":"download","href":"http://localhost:3000/081T3q0B0b2T160M3n0V/download/api.md"}],"data":[{"name":"id","value":94},{"name":"name","value":"api.md"},{"name":"private","value":true},{"name":"views","value":2}]},{"href":"/drops/93","links":[{"rel":"canonical","href":"http://localhost:3000/2t3h2m1R0n3s2r0T3S1G"},{"rel":"icon","href":"https://localhost:3001/2t3h2m1R0n3s2r0T3S1G"}],"data":[{"name":"id","value":93},{"name":"name","value":null},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/92","links":[{"rel":"canonical","href":"http://localhost:3000/1S113K023N1G210Y1G3v"},{"rel":"icon","href":"https://localhost:3001/1S113K023N1G210Y1G3v"},{"rel":"embed","href":"http://localhost:3000/1S113K023N1G210Y1G3v/favicon.ico"},{"rel":"download","href":"http://localhost:3000/1S113K023N1G210Y1G3v/download/favicon.ico"}],"data":[{"name":"id","value":92},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"views","value":2}]},{"href":"/drops/91","links":[{"rel":"canonical","href":"http://localhost:3000/172d0A231m1W451j0d1M"},{"rel":"icon","href":"https://localhost:3001/172d0A231m1W451j0d1M"},{"rel":"embed","href":"http://localhost:3000/172d0A231m1W451j0d1M/favicon.ico"},{"rel":"download","href":"http://localhost:3000/172d0A231m1W451j0d1M/download/favicon.ico"}],"data":[{"name":"id","value":91},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/90","links":[{"rel":"canonical","href":"http://localhost:3000/0t0b3z1k1G2r3s0a462D"},{"rel":"icon","href":"https://localhost:3001/0t0b3z1k1G2r3s0a462D"},{"rel":"embed","href":"http://localhost:3000/0t0b3z1k1G2r3s0a462D/favicon.ico"},{"rel":"download","href":"http://localhost:3000/0t0b3z1k1G2r3s0a462D/download/favicon.ico"}],"data":[{"name":"id","value":90},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/89","links":[{"rel":"canonical","href":"http://localhost:3000/0n2q2x0t2i2p2R1A0j02"},{"rel":"icon","href":"https://localhost:3001/0n2q2x0t2i2p2R1A0j02"}],"data":[{"name":"id","value":89},{"name":"name","value":null},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/88","links":[{"rel":"canonical","href":"http://localhost:3000/3K3U0Q1N1W413P1y1x0N"},{"rel":"icon","href":"https://localhost:3001/3K3U0Q1N1W413P1y1x0N"}],"data":[{"name":"id","value":88},{"name":"name","value":null},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/87","links":[{"rel":"canonical","href":"http://localhost:3000/333f2R26260m1v1Z0I3a"},{"rel":"icon","href":"https://localhost:3001/333f2R26260m1v1Z0I3a"}],"data":[{"name":"id","value":87},{"name":"name","value":null},{"name":"private","value":true},{"name":"views","value":0}]},{"href":"/drops/86","links":[{"rel":"canonical","href":"http://localhost:3000/3B333s1x0N2Y1p1W2Q2d"},{"rel":"icon","href":"https://localhost:3001/3B333s1x0N2Y1p1W2Q2d"},{"rel":"embed","href":"http://localhost:3000/3B333s1x0N2Y1p1W2Q2d/favicon.ico"},{"rel":"download","href":"http://localhost:3000/3B333s1x0N2Y1p1W2Q2d/download/favicon.ico"}],"data":[{"name":"id","value":86},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"views","value":0}]}],"templates":[{"rel":"/rels/create","href":"/drops","data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},{"rel":"/rels/recover","href":"/drops?filter=trash","data":[{"name":"drop_ids","value":[]}]},{"rel":"/rels/remove","href":"/drops","data":[{"name":"drop_ids","value":[]}]}],"links":[{"rel":"next","href":"/drops?page=2&per_page=20"}]}}'
+    http_version: 
+  recorded_at: Mon, 02 Apr 2012 20:22:54 GMT
+- request:
+    method: post
+    uri: http://api.getcloudapp.com/drops
+    body:
+      encoding: UTF-8
+      string: ! '{"name":null,"private":false,"bookmark_url":"http://getcloudapp.com","file_size":null}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token token="abc123"
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Ua-Compatible:
+      - IE=Edge
+      Set-Cookie:
+      - _engine_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRiIlMjEwNGE2MzBhZGNjZWExODdiZmM2OTllODhlNzc3NTM%3D--a4997c8c43e3c5626862f25023a1b8ed34b850f0;
+        path=/; HttpOnly
+      X-Runtime:
+      - '0.403721'
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"/drops","items":[{"href":"/drops/117","links":[{"rel":"canonical","href":"http://localhost:3000/M"},{"rel":"icon","href":"https://localhost:3001/M"}],"data":[{"name":"id","value":117},{"name":"name","value":null},{"name":"private","value":false},{"name":"views","value":0}]}],"templates":[{"rel":"/rels/create","href":"/drops","data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},{"rel":"/rels/recover","href":"/drops?filter=trash","data":[{"name":"drop_ids","value":[]}]},{"rel":"/rels/remove","href":"/drops","data":[{"name":"drop_ids","value":[]}]}]}}'
+    http_version: 
+  recorded_at: Mon, 02 Apr 2012 20:22:55 GMT
+recorded_with: VCR 2.0.0
