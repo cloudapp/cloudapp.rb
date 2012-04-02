@@ -22,6 +22,16 @@ require 'forwardable'
 #
 #   account.drop_at drop.href
 #
+#   # Create a bookmark:
+#   account.bookmark 'http://getcloudapp.com'
+#   account.bookmark 'http://getcloudapp.com', name: 'CloudApp'
+#   account.bookmark 'http://getcloudapp.com', private: false
+#
+#   # TODO: Upload a file:
+#   account.upload #<Pathname>
+#   account.upload #<Pathname>, name: 'Screen shot'
+#   account.upload #<Pathname>, private: false
+#
 #   # Move a list of drops to the trash:
 #   account.trash [ 1, 2, 3 ]
 #
@@ -31,22 +41,10 @@ require 'forwardable'
 #   # TODO: Permanently delete a list of drops:
 #   account.delete [ 1, 2, 3 ]
 #
-#
-#   # TODO: Create a bookmark:
-#   account.create url: 'http://getcloudapp.com', name: 'CloudApp'
-#
-#   # TODO: Upload a file:
-#   account.create path: #<Pathname>, name: 'Screen shot'
-#
-#   # TODO: Use a public (short) link for the new drop:
-#   account.create url:     'http://getcloudapp.com',
-#              name:    'CloudApp',
-#              private: false
-#
 module CloudApp
   class Account
     extend Forwardable
-    def_delegators :service, :drops, :drop_at, :create, :trash, :recover
+    def_delegators :service, :drops, :drop_at, :bookmark, :trash, :recover
 
     class << self
       attr_writer :service_source

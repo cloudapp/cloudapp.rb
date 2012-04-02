@@ -64,10 +64,10 @@ describe CloudApp::Account do
     end
   end
 
-  describe '#create' do
+  describe '#bookmark' do
     it 'delegates to the service' do
-      service.should_receive(:create).with(args)
-      CloudApp::Account.new.create(args)
+      service.should_receive(:bookmark).with(args)
+      CloudApp::Account.new.bookmark(args)
     end
   end
 

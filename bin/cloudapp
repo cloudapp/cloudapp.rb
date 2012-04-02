@@ -88,11 +88,10 @@ command :bookmark do |c|
       CloudApp::DropPresenter.print(on:      $stdout,
                                     waiting: waiting,
                                     format:  format) do
-        new_options = { url: url }
-        new_options[:private] = private unless private.nil?
+        # new_options[:private] = private unless private.nil?
 
-        new_drop = account.create new_options
-        new_drop.url
+        new_drop = account.bookmark url
+        new_drop.first.share_url
       end
     end
   end

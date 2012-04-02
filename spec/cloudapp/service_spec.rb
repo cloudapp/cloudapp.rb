@@ -114,6 +114,19 @@ describe CloudApp::Service do
     end
   end
 
+  describe '#bookmark' do
+    let(:service) { CloudApp::Service.using_token token }
+    let(:url)     { 'http://getcloudapp.com' }
+    subject {
+      VCR.use_cassette('Service/create_bookmark') {
+        service.bookmark url: url
+      }
+    }
+
+    it { should be_successful }
+    it { should be_a(CloudApp::DropCollection) }
+  end
+
   describe '#token_for_account' do
     let(:service)  { CloudApp::Service.new }
     let(:email)    { 'arthur@dent.com' }
