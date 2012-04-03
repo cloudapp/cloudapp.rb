@@ -3,14 +3,19 @@ cloudapp(1) -- All the pleasures of CloudApp now at your terminal
 
 ## SYNOPSIS
 
-`cloudapp` [`--format`=<format>] <command> [<args>]<br>
+`cloudapp` [`--format`=<format>] <command> [<args>]<br><br>
+
 `cloudapp list` [`--count`=<count>] [`--filter`=<all,active,trash>]<br>
+`cloudapp details` <href> [<href>...]<br>
+`cloudapp download` [`--output`=<file>] <url><br><br>
+
 `cloudapp bookmark` [`--private`] [`--public`] <url> [<url>...]<br>
 `cloudapp upload` [`--private`] [`--public`] <file> [<file>...]<br>
-`cloudapp details` <href> [<href>...]<br>
-`cloudapp download` [`--output`=<file>] <url><br>
-`cloudapp trash` <id> [<id>...]<br>
-`cloudapp recover` <id> [<id>...]
+`cloudapp update` [`--name`=<name>] [`--private`] [`--public`] <href> [<href>...]<br><br>
+
+`cloudapp trash` <href> [<href>...]<br>
+`cloudapp recover` <href> [<href>...]<br>
+`cloudapp delete` <href> [<href>...]
 
 ## DESCRIPTION
 
@@ -26,27 +31,34 @@ terminal and other times it's the only tool available.
 
 ## COMMANDS
 
-  * `bookmark` [`--private`] [`--public`] [<url>...]:
-    Create a new bookmark to each <url> and print each link.
+  * `bookmark` [`--private`] [`--public`] <url> [<url>...]:
+    Create a new bookmark to each <url> and print the share links.
+
+  * `delete` <href> [<href>...]:
+    Permanently delete each drop at <href>.
 
   * `details` <href> [<href>...]:
     View the details of each drop at <href>.
 
   * `download` [`--output`=<file>] <url>:
-    Download the file at <url> to the current directory or to <file> if present.
+    Download the drop's content at <url> to <file>. The default is to download
+    to the **current directory**.
 
   * `list` [`--count`=<count>] [`--filter`=<all,active,trash>]:
     List the newest <count> of <filter> drops. The default is to list **20
     active** drops.
 
-  * `recover` <id> [<id>...]:
-    Recover each drop with the given <ids> from the trash.
+  * `recover` <href> [<href>...]:
+    Recover each drop at <href> from the trash.
 
-  * `trash` <id> [<id>...]:
-    Send each drop with the given <ids> to the trash.
+  * `trash` <href> [<href>...]:
+    Send each drop at <href> to the trash.
+
+  * `update`[`--name`=<name>] [`--private`] [`--public`] <href> [<href>...]:
+    Update the name and privacy of each drop at <href>.
 
   * `upload` [`--private`] [`--public`] <file> [<file>...]:
-    Upload each <file> and print each link.
+    Upload each <file> and print the share links.
 
 ## COMMAND OPTIONS
 
@@ -147,7 +159,7 @@ Share a new bookmark and output only the URL:
     $ cloudapp --format=csv bookmark http://douglasadams.com
     http://cl.ly/1y0j403g3D0c0X1G0R3m
 
-Download a drop to the current direcctory:
+Download a drop to the current directory:
 
     $ cloudapp download http://cl.ly/040u2o3X1w0z1z3n2T04
     Downloading screenshot.png... done

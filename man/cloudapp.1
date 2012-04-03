@@ -1,7 +1,7 @@
 .\" generated with Ronn/v0.7.3
 .\" http://github.com/rtomayko/ronn/tree/0.7.3
 .
-.TH "CLOUDAPP" "1" "March 2012" "" ""
+.TH "CLOUDAPP" "1" "April 2012" "" ""
 .
 .SH "NAME"
 \fBcloudapp\fR \- All the pleasures of CloudApp now at your terminal
@@ -10,13 +10,11 @@
 \fBcloudapp\fR [\fB\-\-format\fR=\fIformat\fR] \fIcommand\fR [\fIargs\fR]
 .
 .br
+.
+.br
+.
+.P
 \fBcloudapp list\fR [\fB\-\-count\fR=\fIcount\fR] [\fB\-\-filter\fR=\fIall,active,trash\fR]
-.
-.br
-\fBcloudapp bookmark\fR [\fB\-\-private\fR] [\fB\-\-public\fR] \fIurl\fR [\fIurl\fR\.\.\.]
-.
-.br
-\fBcloudapp upload\fR [\fB\-\-private\fR] [\fB\-\-public\fR] \fIfile\fR [\fIfile\fR\.\.\.]
 .
 .br
 \fBcloudapp details\fR \fIhref\fR [\fIhref\fR\.\.\.]
@@ -25,10 +23,30 @@
 \fBcloudapp download\fR [\fB\-\-output\fR=\fIfile\fR] \fIurl\fR
 .
 .br
-\fBcloudapp trash\fR \fIid\fR [\fIid\fR\.\.\.]
 .
 .br
-\fBcloudapp recover\fR \fIid\fR [\fIid\fR\.\.\.]
+.
+.P
+\fBcloudapp bookmark\fR [\fB\-\-private\fR] [\fB\-\-public\fR] \fIurl\fR [\fIurl\fR\.\.\.]
+.
+.br
+\fBcloudapp upload\fR [\fB\-\-private\fR] [\fB\-\-public\fR] \fIfile\fR [\fIfile\fR\.\.\.]
+.
+.br
+\fBcloudapp update\fR [\fB\-\-name\fR=\fIname\fR] [\fB\-\-private\fR] [\fB\-\-public\fR] \fIhref\fR [\fIhref\fR\.\.\.]
+.
+.br
+.
+.br
+.
+.P
+\fBcloudapp trash\fR \fIhref\fR [\fIhref\fR\.\.\.]
+.
+.br
+\fBcloudapp recover\fR \fIhref\fR [\fIhref\fR\.\.\.]
+.
+.br
+\fBcloudapp delete\fR \fIhref\fR [\fIhref\fR\.\.\.]
 .
 .SH "DESCRIPTION"
 \fBcloudapp\fR is a simple, Unix\-friendly tool for CloudApp meant to augment the Mac and Web apps\. Sometimes it\'s more convenient to share without leaving the terminal and other times it\'s the only tool available\.
@@ -42,8 +60,12 @@ Output using either \fBpretty\fR or \fBcsv\fR format\. (Default: \fBpretty\fR wh
 .SH "COMMANDS"
 .
 .TP
-\fBbookmark\fR [\fB\-\-private\fR] [\fB\-\-public\fR] [\fIurl\fR\.\.\.]
-Create a new bookmark to each \fIurl\fR and print each link\.
+\fBbookmark\fR [\fB\-\-private\fR] [\fB\-\-public\fR] \fIurl\fR [\fIurl\fR\.\.\.]
+Create a new bookmark to each \fIurl\fR and print the share links\.
+.
+.TP
+\fBdelete\fR \fIhref\fR [\fIhref\fR\.\.\.]
+Permanently delete each drop at \fIhref\fR\.
 .
 .TP
 \fBdetails\fR \fIhref\fR [\fIhref\fR\.\.\.]
@@ -51,23 +73,27 @@ View the details of each drop at \fIhref\fR\.
 .
 .TP
 \fBdownload\fR [\fB\-\-output\fR=\fIfile\fR] \fIurl\fR
-Download the file at \fIurl\fR to the current directory or to \fIfile\fR if present\.
+Download the drop\'s content at \fIurl\fR to \fIfile\fR\. The default is to download to the \fBcurrent directory\fR\.
 .
 .TP
 \fBlist\fR [\fB\-\-count\fR=\fIcount\fR] [\fB\-\-filter\fR=\fIall,active,trash\fR]
 List the newest \fIcount\fR of \fIfilter\fR drops\. The default is to list \fB20 active\fR drops\.
 .
 .TP
-\fBrecover\fR \fIid\fR [\fIid\fR\.\.\.]
-Recover each drop with the given \fIids\fR from the trash\.
+\fBrecover\fR \fIhref\fR [\fIhref\fR\.\.\.]
+Recover each drop at \fIhref\fR from the trash\.
 .
 .TP
-\fBtrash\fR \fIid\fR [\fIid\fR\.\.\.]
-Send each drop with the given \fIids\fR to the trash\.
+\fBtrash\fR \fIhref\fR [\fIhref\fR\.\.\.]
+Send each drop at \fIhref\fR to the trash\.
+.
+.TP
+\fBupdate\fR[\fB\-\-name\fR=\fIname\fR] [\fB\-\-private\fR] [\fB\-\-public\fR] \fIhref\fR [\fIhref\fR\.\.\.]
+Update the name and privacy of each drop at \fIhref\fR\.
 .
 .TP
 \fBupload\fR [\fB\-\-private\fR] [\fB\-\-public\fR] \fIfile\fR [\fIfile\fR\.\.\.]
-Upload each \fIfile\fR and print each link\.
+Upload each \fIfile\fR and print the share links\.
 .
 .SH "COMMAND OPTIONS"
 .
@@ -260,7 +286,7 @@ http://cl\.ly/1y0j403g3D0c0X1G0R3m
 .IP "" 0
 .
 .P
-Download a drop to the current direcctory:
+Download a drop to the current directory:
 .
 .IP "" 4
 .
