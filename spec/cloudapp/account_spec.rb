@@ -46,6 +46,21 @@ describe CloudApp::Account do
     end
   end
 
+  describe '#update' do
+    let(:drop) { stub :drop }
+    subject { CloudApp::Account.new(token).update(args) }
+    before do service.stub(update: drop) end
+
+    it 'delegates to the drop service' do
+      service.should_receive(:update).with(args)
+      subject
+    end
+
+    it 'returns the drop' do
+      subject.should eq(drop)
+    end
+  end
+
   describe '#recover' do
     let(:drop_ids) { stub :drop_ids }
 
