@@ -55,8 +55,9 @@ module CloudApp
       drop       = DropCollection.new(response).first
       attributes = drop.data
 
-      attributes['name']    = options.fetch(:name)    if options.has_key?(:name)
-      attributes['private'] = options.fetch(:private) if options.has_key?(:private)
+      attributes['name']         = options.fetch(:name)         if options.has_key?(:name)
+      attributes['private']      = options.fetch(:private)      if options.has_key?(:private)
+      attributes['bookmark_url'] = options.fetch(:bookmark_url) if options.has_key?(:bookmark_url)
 
       data = response.template('/rels/create').fill(drop.data)
 

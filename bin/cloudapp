@@ -78,7 +78,7 @@ desc 'Output format (default: pretty for tty, csv otherwise)'
 arg_name 'csv|pretty'
 flag [:f, :format]
 
-desc 'Create a new bookmark to each url and print each link'
+desc 'Create a new bookmark to each URL and print each link'
 arg_name 'url [url...]'
 command :bookmark do |c|
   create_drop_action_on_command(c) do |format, private, options, urls|
@@ -184,6 +184,10 @@ command :update do |c|
   c.arg_name 'name'
   c.flag :name
 
+  c.desc 'Bookmark URL'
+  c.arg_name 'bookmark'
+  c.flag :bookmark
+
   create_drop_action_on_command(c) do |format, private, options, hrefs|
     require_credentials
 
@@ -195,17 +199,16 @@ command :update do |c|
                 id:           'ID',
                 views:        'Views' }
 
-    name = options[:name]
-
-    options = {}
-    options[:name]    = name    if name
-    options[:private] = private unless private.nil?
+    params = {}
+    params[:name]         = options[:name]     if options[:name]
+    params[:private]      = private            unless private.nil?
+    params[:bookmark_url] = options[:bookmark] if options[:bookmark]
 
     hrefs.each do |href|
       CloudApp::DropPresenter.print(on:      $stdout,
                                     columns: columns,
                                     format:  format) do
-        account.update(href, options)
+        account.update(href, params)
       end
     end
   end

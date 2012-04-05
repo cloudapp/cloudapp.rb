@@ -117,11 +117,12 @@ describe CloudApp::Service do
   describe '#update' do
     let(:service) { CloudApp::Service.using_token token }
     let(:href)    { '/drops/120' }
+    let(:options) {{ name: name, private: private }}
     let(:name)    { 'New Drop Name' }
     let(:private) { false }
     subject {
       VCR.use_cassette('Service/rename_drop') {
-        service.update(href, name: name, private: private)
+        service.update(href, options)
       }
     }
 
@@ -137,6 +138,20 @@ describe CloudApp::Service do
 
     it 'updates the privacy' do
       subject.first.private.should eq(private)
+    end
+
+    context 'updating bookmark' do
+      let(:options) {{ name: name, private: private, bookmark_url: url }}
+      let(:url)     { 'http://example.org' }
+      subject {
+        VCR.use_cassette('Service/update_drop_bookmark_url') {
+          service.update(href, options)
+        }
+      }
+
+      it 'updates the bookmark' do
+        subject.first.bookmark_url.should eq(url)
+      end
     end
   end
 
