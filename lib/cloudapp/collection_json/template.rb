@@ -8,6 +8,7 @@ module CloudApp
       end
 
       def fill(template_data)
+        template_data = template_data.select {|key| data.has_key?(key) }
         data.merge template_data
       end
     end

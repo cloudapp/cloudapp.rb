@@ -114,6 +114,32 @@ describe CloudApp::Service do
     end
   end
 
+  describe '#update' do
+    let(:service) { CloudApp::Service.using_token token }
+    let(:href)    { '/drops/120' }
+    let(:name)    { 'New Drop Name' }
+    let(:private) { false }
+    subject {
+      VCR.use_cassette('Service/rename_drop') {
+        service.update(href, name: name, private: private)
+      }
+    }
+
+    it { should be_a(CloudApp::DropCollection) }
+
+    it 'returns the updated drop' do
+      subject.should have(1).item
+    end
+
+    it 'updates the name' do
+      subject.first.name.should eq(name)
+    end
+
+    it 'updates the privacy' do
+      subject.first.private.should eq(private)
+    end
+  end
+
   describe '#bookmark' do
     let(:service) { CloudApp::Service.using_token token }
     let(:url)     { 'http://getcloudapp.com' }

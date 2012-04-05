@@ -1,0 +1,84 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.getcloudapp.com/drops/120
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Token token="abc123"
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"7bdfe529c03138349c3d823cf1a6d1d6"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Runtime:
+      - '0.215326'
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"/drops","items":[{"href":"/drops/120","links":[{"rel":"canonical","href":"http://localhost:3000/1U"},{"rel":"icon","href":"https://localhost:3001/1U"}],"data":[{"name":"id","value":120},{"name":"name","value":"New
+        Drop Name"},{"name":"private","value":false},{"name":"views","value":0}]}],"templates":[{"rel":"/rels/create","href":"/drops","data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},{"rel":"/rels/recover","href":"/drops?filter=trash","data":[{"name":"drop_ids","value":[]}]},{"rel":"/rels/remove","href":"/drops","data":[{"name":"drop_ids","value":[]}]}]}}'
+    http_version: 
+  recorded_at: Thu, 05 Apr 2012 18:56:33 GMT
+- request:
+    method: post
+    uri: http://api.getcloudapp.com/drops/120
+    body:
+      encoding: UTF-8
+      string: ! '{"name":"New Drop Name","private":false,"bookmark_url":null,"file_size":null}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token token="abc123"
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"7bdfe529c03138349c3d823cf1a6d1d6"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Ua-Compatible:
+      - IE=Edge
+      Set-Cookie:
+      - _engine_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRiIlY2M3ZjExNTFmZTVlNTY0ZjVmZmY3N2YwZjI0ZDZiOTI%3D--95e49a481708d590153269d9335473feb4350cf0;
+        path=/; HttpOnly
+      X-Runtime:
+      - '0.286482'
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"/drops","items":[{"href":"/drops/120","links":[{"rel":"canonical","href":"http://localhost:3000/1U"},{"rel":"icon","href":"https://localhost:3001/1U"}],"data":[{"name":"id","value":120},{"name":"name","value":"New
+        Drop Name"},{"name":"private","value":false},{"name":"views","value":0}]}],"templates":[{"rel":"/rels/create","href":"/drops","data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},{"rel":"/rels/recover","href":"/drops?filter=trash","data":[{"name":"drop_ids","value":[]}]},{"rel":"/rels/remove","href":"/drops","data":[{"name":"drop_ids","value":[]}]}]}}'
+    http_version: 
+  recorded_at: Thu, 05 Apr 2012 18:56:34 GMT
+recorded_with: VCR 2.0.0

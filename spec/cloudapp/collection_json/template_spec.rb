@@ -34,5 +34,11 @@ describe CloudApp::CollectionJson::Template do
       subject.fill('email' => email)
       subject.data.should eq('email' => '', 'age' => 29)
     end
+
+    it 'ignores attributes not in the template' do
+      expected = { 'email' => email, 'age' => 29 }
+      new_data = { 'email' => email, 'ignore' => 'me' }
+      subject.fill(new_data).should eq(expected)
+    end
   end
 end

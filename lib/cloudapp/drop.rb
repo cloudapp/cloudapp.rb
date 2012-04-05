@@ -2,12 +2,13 @@ require 'ostruct'
 
 module CloudApp
   class Drop < OpenStruct
-    attr_accessor :href
+    attr_accessor :href, :data
 
     def initialize(collection_item)
       @href  = collection_item.href
       @links = collection_item.links
-      super collection_item.data
+      @data  = collection_item.data
+      super @data
     end
 
     def name()     super || share_url end

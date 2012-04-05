@@ -13,6 +13,16 @@ describe CloudApp::Drop do
 
   its(:href) { should eq(href) }
 
+  describe '#data' do
+    let(:data) {{ name: 'Drop' }}
+    its(:data) { should eq(data) }
+
+    context 'with string keys' do
+      let(:data) {{ 'name' => 'Drop' }}
+      its(:data) { should eq(data) }
+    end
+  end
+
   describe '#name' do
     let(:data) {{ name: 'Drop' }}
     its(:name) { should eq(data[:name]) }

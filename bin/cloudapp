@@ -51,6 +51,7 @@ def privacy_from_options(options)
   end
 end
 
+
 def create_drop_action_on_command(c)
   c.desc 'Use a private (long) link'
   c.switch :private
@@ -63,7 +64,7 @@ def create_drop_action_on_command(c)
     format  = format_from_options global_options
     private = privacy_from_options options
 
-    yield format, private, args
+    yield format, private, options, args
   end
 end
 
@@ -80,7 +81,7 @@ flag [:f, :format]
 desc 'Create a new bookmark to each url and print each link'
 arg_name 'url [url...]'
 command :bookmark do |c|
-  create_drop_action_on_command(c) do |format, private, urls|
+  create_drop_action_on_command(c) do |format, private, options, urls|
     urls.each do |url|
       url     = URI.parse url
       waiting = "Bookmarking #{ url }... "
@@ -100,7 +101,7 @@ end
 desc 'Upload each file and print each link'
 arg_name 'file [file...]'
 command :upload do |c|
-  create_drop_action_on_command(c) do |format, private, files|
+  create_drop_action_on_command(c) do |format, private, options, files|
     files.each do |file|
       file    = Pathname.new file
       waiting = "Uploading #{ file }... "
@@ -171,6 +172,40 @@ command :details do |c|
                                     columns: columns,
                                     format:  format) do
         account.drop_at href
+      end
+    end
+  end
+end
+
+desc 'Update the name and privacy of a drop'
+command :update do |c|
+
+  c.desc 'Drop name'
+  c.arg_name 'name'
+  c.flag :name
+
+  create_drop_action_on_command(c) do |format, private, options, hrefs|
+    require_credentials
+
+    columns = { name:         'Name',
+                href:         'Href',
+                share_url:    'Share',
+                embed_url:    'Embed',
+                download_url: 'Download',
+                id:           'ID',
+                views:        'Views' }
+
+    name = options[:name]
+
+    options = {}
+    options[:name]    = name    if name
+    options[:private] = private unless private.nil?
+
+    hrefs.each do |href|
+      CloudApp::DropPresenter.print(on:      $stdout,
+                                    columns: columns,
+                                    format:  format) do
+        account.update(href, options)
       end
     end
   end
