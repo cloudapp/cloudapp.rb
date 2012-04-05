@@ -91,7 +91,7 @@
 
 <p><code>cloudapp bookmark</code> [<code>--private</code>] [<code>--public</code>] <var>url</var> [<var>url</var>...]<br />
 <code>cloudapp upload</code> [<code>--private</code>] [<code>--public</code>] <var>file</var> [<var>file</var>...]<br />
-<code>cloudapp update</code> [<code>--name</code>=<var>name</var>] [<code>--private</code>] [<code>--public</code>] <var>href</var> [<var>href</var>...]<br /><br /></p>
+<code>cloudapp update</code> [<code>--name</code>=<var>name</var>] [<code>--bookmark</code>=<var>bookmark_url</var>] [<code>--private</code>] [<code>--public</code>] <var>href</var> [<var>href</var>...]<br /><br /></p>
 
 <p><code>cloudapp trash</code> <var>href</var> [<var>href</var>...]<br />
 <code>cloudapp recover</code> <var>href</var> [<var>href</var>...]<br />
@@ -123,7 +123,7 @@ to the <strong>current directory</strong>.</p></dd>
 active</strong> drops.</p></dd>
 <dt><code>recover</code> <var>href</var> [<var>href</var>...]</dt><dd><p>Recover each drop at <var>href</var> from the trash.</p></dd>
 <dt><code>trash</code> <var>href</var> [<var>href</var>...]</dt><dd><p>Send each drop at <var>href</var> to the trash.</p></dd>
-<dt><code>update</code>[<code>--name</code>=<var>name</var>] [<code>--private</code>] [<code>--public</code>] <var>href</var> [<var>href</var>...]</dt><dd><p>Update the name and privacy of each drop at <var>href</var>.</p></dd>
+<dt><code>update</code>[<code>--name</code>=<var>name</var>] [<code>--bookmark</code>=<var>bookmark_url</var>] [<code>--private</code>] [<code>--public</code>] <var>href</var> [<var>href</var>...]</dt><dd><p>Update the name, privacy, or bookmark link of each drop at <var>href</var>.</p></dd>
 <dt><code>upload</code> [<code>--private</code>] [<code>--public</code>] <var>file</var> [<var>file</var>...]</dt><dd><p>Upload each <var>file</var> and print the share links.</p></dd>
 </dl>
 

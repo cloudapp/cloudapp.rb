@@ -11,7 +11,7 @@ cloudapp(1) -- All the pleasures of CloudApp now at your terminal
 
 `cloudapp bookmark` [`--private`] [`--public`] <url> [<url>...]<br>
 `cloudapp upload` [`--private`] [`--public`] <file> [<file>...]<br>
-`cloudapp update` [`--name`=<name>] [`--private`] [`--public`] <href> [<href>...]<br><br>
+`cloudapp update` [`--name`=<name>] [`--bookmark`=<bookmark_url>] [`--private`] [`--public`] <href> [<href>...]<br><br>
 
 `cloudapp trash` <href> [<href>...]<br>
 `cloudapp recover` <href> [<href>...]<br>
@@ -54,8 +54,8 @@ terminal and other times it's the only tool available.
   * `trash` <href> [<href>...]:
     Send each drop at <href> to the trash.
 
-  * `update`[`--name`=<name>] [`--private`] [`--public`] <href> [<href>...]:
-    Update the name and privacy of each drop at <href>.
+  * `update`[`--name`=<name>] [`--bookmark`=<bookmark_url>] [`--private`] [`--public`] <href> [<href>...]:
+    Update the name, privacy, or bookmark link of each drop at <href>.
 
   * `upload` [`--private`] [`--public`] <file> [<file>...]:
     Upload each <file> and print the share links.
