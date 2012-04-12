@@ -109,11 +109,10 @@ command :upload do |c|
       CloudApp::DropPresenter.print(on:      $stdout,
                                     waiting: waiting,
                                     format:  format) do
-        new_options = { path: file }
+        new_options = {}
         new_options[:private] = private unless private.nil?
-
-        new_drop = account.create new_options
-        new_drop.url
+        new_drop = account.upload file, new_options
+        new_drop.first.share_url
       end
     end
   end
