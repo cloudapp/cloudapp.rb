@@ -211,6 +211,35 @@ describe CloudApp::Service do
     it { should be_successful }
     it { should be_a(CloudApp::DropCollection) }
 
+    context 'with a name' do
+      let(:name) { 'New File' }
+      subject {
+        VCR.use_cassette('Service/upload_file_with_name') {
+          service.upload path, name: name
+        }
+      }
+
+      it { should be_successful }
+
+      it 'has the given name' do
+        subject.first.name.should eq(name)
+      end
+    end
+
+    context 'with a privacy' do
+      subject {
+        VCR.use_cassette('Service/upload_file_with_privacy') {
+          service.upload path, private: false
+        }
+      }
+
+      it { should be_successful }
+
+      it 'is public' do
+        subject.first.private.should be_false
+      end
+    end
+
     describe 'too large file'
   end
 

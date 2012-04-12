@@ -81,6 +81,8 @@ module CloudApp
 
     def upload(path, options = {})
       attributes = { 'file_size' => FileTest.size(path) }
+      attributes['name']    = options.fetch(:name)    if options.has_key?(:name)
+      attributes['private'] = options.fetch(:private) if options.has_key?(:private)
 
       template   = drops_at('/').template('/rels/create')
       data       = template.fill(attributes)
