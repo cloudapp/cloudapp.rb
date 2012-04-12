@@ -197,6 +197,23 @@ describe CloudApp::Service do
     end
   end
 
+  describe '#upload' do
+    let(:service) { CloudApp::Service.using_token token }
+    let(:path)    {
+      Pathname('../../support/files/favicon.ico').expand_path(__FILE__)
+    }
+    subject {
+      VCR.use_cassette('Service/upload_file') {
+        service.upload path
+      }
+    }
+
+    it { should be_successful }
+    it { should be_a(CloudApp::DropCollection) }
+
+    describe 'too large file'
+  end
+
   describe '#token_for_account' do
     let(:service)  { CloudApp::Service.new }
     let(:email)    { 'arthur@dent.com' }

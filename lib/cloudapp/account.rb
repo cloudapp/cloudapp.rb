@@ -28,7 +28,7 @@ require 'forwardable'
 #   account.bookmark 'http://getcloudapp.com', name: 'CloudApp'
 #   account.bookmark 'http://getcloudapp.com', private: false
 #
-#   # TODO: Upload a file:
+#   # Upload a file:
 #   account.upload #<Pathname>
 #   account.upload #<Pathname>, name: 'Screen shot'
 #   account.upload #<Pathname>, private: false
@@ -50,7 +50,7 @@ module CloudApp
   class Account
     extend Forwardable
     def_delegators :service, :drops, :drop_at,
-                   :bookmark, :update, :trash, :recover
+                   :bookmark, :upload, :update, :trash, :recover
 
     class << self
       attr_writer :service_source

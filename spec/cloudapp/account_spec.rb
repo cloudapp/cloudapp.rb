@@ -86,6 +86,13 @@ describe CloudApp::Account do
     end
   end
 
+  describe '#upload' do
+    it 'delegates to the service' do
+      service.should_receive(:upload).with(args)
+      CloudApp::Account.new.upload(args)
+    end
+  end
+
   describe '#download' do
   end
 end

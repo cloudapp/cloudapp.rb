@@ -79,6 +79,35 @@ module CloudApp
       end
     end
 
+    def upload(path, options = {})
+      attributes = { 'file_size' => FileTest.size(path) }
+
+      template   = drops_at('/').template('/rels/create')
+      data       = template.fill(attributes)
+
+      post(template.href, {}, data) do |response|
+        upload  = response.template('/rels/upload')
+        uri     = Addressable::URI.parse upload.href
+        file    = File.open path
+        file_io = Faraday::UploadIO.new file, 'image/png'
+        fields  = upload.fill('file' => file_io)
+
+        conn = Faraday.new(url: uri.site) do |builder|
+          builder.request  :multipart
+          builder.request  :url_encoded
+          builder.response :logger, logger
+          builder.adapter  :typhoeus
+        end
+
+        conn.post(uri.request_uri, fields).on_complete do |env|
+          location = Addressable::URI.parse env[:response_headers]['Location']
+          get(location) do |upload_response|
+            return DropCollection.new(upload_response)
+          end
+        end
+      end
+    end
+
     def recover(drop_ids)
       template = drops_at('/').template('/rels/recover')
       data     = template.fill('drop_ids' => drop_ids)
