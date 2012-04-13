@@ -11,9 +11,6 @@ require 'forwardable'
 #   account.drops(filter: :trash)   #=> Trashed drops
 #   account.drops(filter: :all)     #=> All active and trashed drops
 #
-#   # TODO: Newest 5 drops
-#   account.drops limit: 5
-#
 #   # List specific page of drops:
 #   page1 = account.drops
 #   page2 = account.drops href: page1.link('next')
@@ -42,6 +39,9 @@ require 'forwardable'
 #
 #   # Recover a list of drops from the trash:
 #   account.recover [ 1, 2, 3 ]
+#
+#   # TODO: Newest 5 drops
+#   account.drops limit: 5
 #
 #   # TODO: Permanently delete a list of drops:
 #   account.delete [ 1, 2, 3 ]

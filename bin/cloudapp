@@ -281,14 +281,4 @@ command :trash do |c|
 end
 
 
-on_error do |e|
-  case e
-  when CloudApp::OldService::NO_CONTENT
-    $stderr.puts 'drop was deleted or is a bookmark'
-    false
-  else
-    true
-  end
-end
-
 exit GLI.run(ARGV)
