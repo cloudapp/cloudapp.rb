@@ -24,15 +24,13 @@ module CloudApp
       end
 
       # # Ultimately this API would be nice.
-      # root.template('/rels/authenticate', email: email, password: password).
+      # root.template(email: email, password: password).
       #   post do |response|
       #     return response
       #   end
-      def template(rel = nil, template_source = default_template_source)
-        return unless collection.has_key?('template') or
-                      collection.has_key?('templates')
-
-        templates(template_source).find {|template| template.rel == rel }
+      def template(template_source = default_template_source)
+        return unless collection.has_key?('template')
+        template_source.call collection.fetch('template')
       end
 
     protected
@@ -47,18 +45,6 @@ module CloudApp
 
       def collection
         self.fetch('collection')
-      end
-
-      def templates(template_source)
-        template_data = if collection.has_key?('template')
-                          [ collection.fetch('template') ]
-                        elsif collection.has_key?('templates')
-                          collection.fetch('templates')
-                        end
-
-        template_data.map {|template|
-          template_source.call(template)
-        }
       end
     end
   end

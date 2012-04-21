@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   ## the sub! line in the Rakefile
   s.name              = 'cloudapp'
   s.version           = '1.1.0'
-  s.date              = '2012-04-12'
+  s.date              = '2012-04-21'
   s.rubyforge_project = 'cloudapp'
 
   ## Make sure your summary is short. The description may be as long
@@ -107,22 +107,13 @@ Gem::Specification.new do |s|
     spec/cassettes/OldService/token_for_account_with_bad_credentials.yml
     spec/cassettes/OldService/upload_file.yml
     spec/cassettes/OldService/upload_public_file.yml
-    spec/cassettes/Service/create_bookmark.yml
-    spec/cassettes/Service/create_bookmark_with_name.yml
-    spec/cassettes/Service/create_bookmark_with_privacy.yml
     spec/cassettes/Service/list_drops.yml
     spec/cassettes/Service/list_drops_with_bad_token.yml
     spec/cassettes/Service/list_drops_with_filter.yml
     spec/cassettes/Service/list_drops_with_href.yml
-    spec/cassettes/Service/recover_drops.yml
     spec/cassettes/Service/rename_drop.yml
     spec/cassettes/Service/token_for_account.yml
     spec/cassettes/Service/token_for_account_with_bad_credentials.yml
-    spec/cassettes/Service/trash_drops.yml
-    spec/cassettes/Service/update_drop_bookmark_url.yml
-    spec/cassettes/Service/upload_file.yml
-    spec/cassettes/Service/upload_file_with_name.yml
-    spec/cassettes/Service/upload_file_with_privacy.yml
     spec/cassettes/Service/view_drop.yml
     spec/cloudapp/account_spec.rb
     spec/cloudapp/collection_json/item_spec.rb

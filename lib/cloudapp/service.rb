@@ -59,9 +59,9 @@ module CloudApp
       attributes['private']      = options.fetch(:private)      if options.has_key?(:private)
       attributes['bookmark_url'] = options.fetch(:bookmark_url) if options.has_key?(:bookmark_url)
 
-      data = response.template('/rels/create').fill(drop.data)
+      data = response.template.fill(drop.data)
 
-      post(drop.href, {}, data) do |response|
+      put(drop.href, {}, data) do |response|
         return DropCollection.new(response)
       end
     end
@@ -71,10 +71,10 @@ module CloudApp
       attributes['name']    = options.fetch(:name)    if options.has_key?(:name)
       attributes['private'] = options.fetch(:private) if options.has_key?(:private)
 
-      template = drops_at('/').template('/rels/create')
+      template = drops_at('/').template
       data     = template.fill(attributes)
 
-      post(template.href, {}, data) do |response|
+      put(template.href, {}, data) do |response|
         return DropCollection.new(response)
       end
     end
@@ -84,11 +84,11 @@ module CloudApp
       attributes['name']    = options.fetch(:name)    if options.has_key?(:name)
       attributes['private'] = options.fetch(:private) if options.has_key?(:private)
 
-      template   = drops_at('/').template('/rels/create')
+      template   = drops_at('/').template
       data       = template.fill(attributes)
 
-      post(template.href, {}, data) do |response|
-        upload  = response.template('/rels/upload')
+      put(template.href, {}, data) do |response|
+        upload  = response.template
         uri     = Addressable::URI.parse upload.href
         file    = File.open path
         file_io = Faraday::UploadIO.new file, 'image/png'
@@ -111,31 +111,21 @@ module CloudApp
     end
 
     def recover(drop_ids)
-      template = drops_at('/').template('/rels/recover')
-      data     = template.fill('drop_ids' => drop_ids)
-
-      post(template.href, {}, data) do |response|
-        return SimpleResponse.new(response)
-      end
+      raise 'Not implemented'
     end
 
     def trash(drop_ids)
-      template = drops_at('/').template('/rels/remove')
-      data     = template.fill('drop_ids' => drop_ids)
-
-      delete(template.href, {}, data) do |response|
-        return SimpleResponse.new(response)
-      end
+      raise 'Not implemented'
     end
 
   private
 
-    # TODO: Only pass `params` to `/rels/drops` href.
+    # TODO: Only pass `params` to `drops` href.
     def drops_at(href, params = {})
       get(href, params) do |response|
         return :unauthorized if response.__response__.status == 401
 
-        drops_link = response.link('/rels/drops') { nil }
+        drops_link = response.link('drops') { nil }
         if drops_link
           return drops_at(drops_link.href, params)
         else

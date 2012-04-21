@@ -21,7 +21,7 @@ describe CloudApp::CollectionJson::Representation do
   end
 
   it 'has no templates' do
-    subject.template(nil, stub(:template_source)).should be_nil
+    subject.template(stub(:template_source)).should be_nil
   end
 
   context 'with collection links' do
@@ -61,7 +61,7 @@ describe CloudApp::CollectionJson::Representation do
   end
 
   context 'with a template' do
-    let(:template)        { stub :template, rel: 'one' }
+    let(:template)        { stub :template }
     let(:template_data)   { stub :template_data }
     let(:template_source) { ->(item) {
       if item == template_data
@@ -72,27 +72,7 @@ describe CloudApp::CollectionJson::Representation do
     before do response['collection']['template'] = template_data end
 
     it 'finds the template' do
-      subject.template('one', template_source).should eq(template)
-    end
-  end
-
-  context 'with several templates' do
-    let(:templates)       {[ stub(:template1, rel: 'one'),
-                             stub(:template2, rel: 'two') ]}
-    let(:template_data)   {[ stub(:template_data1), stub(:template_data2) ]}
-    let(:template_source) { ->(item) {
-      if item == template_data[0]
-        templates[0]
-      elsif item == template_data[1]
-        templates[1]
-      end
-    }}
-
-    before do response['collection']['templates'] = template_data end
-
-    it 'finds the template' do
-      subject.template('one', template_source).should eq(templates[0])
-      subject.template('two', template_source).should eq(templates[1])
+      subject.template(template_source).should eq(template)
     end
   end
 end
