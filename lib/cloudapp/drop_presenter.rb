@@ -2,7 +2,7 @@ require 'csv'
 require 'delegate'
 
 module CloudApp
-  class DropPresenter
+  class OldDropPresenter
     def initialize(io, format, waiting, columns, action)
       @io      = io
       @format  = format

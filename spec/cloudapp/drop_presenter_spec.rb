@@ -3,7 +3,7 @@ require 'stringio'
 
 require 'cloudapp/drop_presenter'
 
-describe CloudApp::DropPresenter do
+describe CloudApp::OldDropPresenter do
   describe '.print' do
     let(:waiting) { 'Bookmarking... ' }
     let(:result)  { 'http://cl.ly/abc123' }
@@ -12,7 +12,7 @@ describe CloudApp::DropPresenter do
 
     describe 'a single line' do
       subject {
-        CloudApp::DropPresenter.print(options, &action)
+        CloudApp::OldDropPresenter.print(options, &action)
         io.tap(&:rewind).readlines
       }
 
@@ -54,7 +54,7 @@ describe CloudApp::DropPresenter do
       let(:options) {{ on: io, format: format, columns: columns }}
 
       subject {
-        CloudApp::DropPresenter.print(options, &action)
+        CloudApp::OldDropPresenter.print(options, &action)
         io.tap(&:rewind).readlines
       }
 
@@ -95,7 +95,7 @@ describe CloudApp::DropPresenter do
     describe 'providing multiple formats' do
       let(:result) {{ pretty: 'pretty', csv: 'csv' }}
       subject {
-        CloudApp::DropPresenter.print(options, &action)
+        CloudApp::OldDropPresenter.print(options, &action)
         io.tap(&:rewind).readlines
       }
 
