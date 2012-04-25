@@ -116,13 +116,14 @@ describe CloudApp::Service do
 
   describe '#update' do
     let(:service) { CloudApp::Service.using_token token }
-    let(:href)    { '/drops/17533090' }
+    let(:url)     { 'http://getcloudapp.com' }
     let(:options) {{ name: name, private: private }}
     let(:name)    { 'New Drop Name' }
     let(:private) { false }
     subject {
       VCR.use_cassette('Service/rename_drop') {
-        service.update(href, options)
+        drop = service.bookmark(url).first
+        service.update drop.href, options
       }
     }
 
@@ -140,148 +141,154 @@ describe CloudApp::Service do
       subject.first.private.should eq(private)
     end
 
-    # context 'updating bookmark' do
-    #   let(:options) {{ name: name, private: private, bookmark_url: url }}
-    #   let(:url)     { 'http://example.org' }
-    #   subject {
-    #     VCR.use_cassette('Service/update_drop_bookmark_url') {
-    #       service.update(href, options)
-    #     }
-    #   }
+    context 'updating bookmark link' do
+      let(:options) {{ url: new_url }}
+      let(:new_url) { 'http://example.org' }
+      subject {
+        VCR.use_cassette('Service/update_drop_bookmark_url') {
+          drop = service.bookmark(url).first
+          service.update(drop.href, options).first
+        }
+      }
 
-    #   it 'updates the bookmark' do
-    #     subject.first.bookmark_url.should eq(url)
-    #   end
-    # end
+      its(:bookmark_url) { should eq(new_url) }
+    end
+
+    context 'updating file' do
+      let(:options) {{ path: path }}
+      let(:path)    {
+        Pathname('../../support/files/favicon.ico').expand_path(__FILE__)
+      }
+      subject {
+        VCR.use_cassette('Service/update_file') {
+          drop = service.bookmark(url).first
+          service.update drop.href, options
+        }
+      }
+
+      it 'should not be a bookmark' do
+        subject.first.bookmark_url.should be_nil
+      end
+    end
   end
 
-  # describe '#bookmark' do
-  #   let(:service) { CloudApp::Service.using_token token }
-  #   let(:url)     { 'http://getcloudapp.com' }
-  #   subject {
-  #     VCR.use_cassette('Service/create_bookmark') {
-  #       service.bookmark url
-  #     }
-  #   }
+  describe '#bookmark' do
+    let(:service) { CloudApp::Service.using_token token }
+    let(:url)     { 'http://getcloudapp.com' }
+    subject {
+      VCR.use_cassette('Service/create_bookmark') {
+        service.bookmark url
+      }
+    }
 
-  #   it { should be_successful }
-  #   it { should be_a(CloudApp::DropCollection) }
+    it { should be_successful }
+    it { should be_a(CloudApp::DropCollection) }
 
-  #   context 'with a name' do
-  #     let(:name) { 'New Bookmark' }
-  #     subject {
-  #       VCR.use_cassette('Service/create_bookmark_with_name') {
-  #         service.bookmark url, name: name
-  #       }
-  #     }
+    context 'with a name' do
+      let(:name) { 'New Bookmark' }
+      subject {
+        VCR.use_cassette('Service/create_bookmark_with_name') {
+          service.bookmark url, name: name
+        }
+      }
 
-  #     it { should be_successful }
+      it { should be_successful }
 
-  #     it 'has the given name' do
-  #       subject.first.name.should eq(name)
-  #     end
-  #   end
+      it 'has the given name' do
+        subject.first.name.should eq(name)
+      end
+    end
 
-  #   context 'with a privacy' do
-  #     subject {
-  #       VCR.use_cassette('Service/create_bookmark_with_privacy') {
-  #         service.bookmark url, private: false
-  #       }
-  #     }
+    context 'with a privacy' do
+      subject {
+        VCR.use_cassette('Service/create_bookmark_with_privacy') {
+          service.bookmark url, private: false
+        }
+      }
 
-  #     it { should be_successful }
+      it { should be_successful }
 
-  #     it 'is public' do
-  #       subject.first.private.should be_false
-  #     end
-  #   end
-  # end
+      it 'is public' do
+        subject.first.private.should be_false
+      end
+    end
+  end
 
-  # describe '#upload' do
-  #   let(:service) { CloudApp::Service.using_token token }
-  #   let(:path)    {
-  #     Pathname('../../support/files/favicon.ico').expand_path(__FILE__)
-  #   }
-  #   subject {
-  #     VCR.use_cassette('Service/upload_file') {
-  #       service.upload path
-  #     }
-  #   }
+  describe '#upload' do
+    let(:service) { CloudApp::Service.using_token token }
+    let(:path)    {
+      Pathname('../../support/files/favicon.ico').expand_path(__FILE__)
+    }
+    subject {
+      VCR.use_cassette('Service/upload_file') {
+        service.upload path
+      }
+    }
 
-  #   it { should be_successful }
-  #   it { should be_a(CloudApp::DropCollection) }
+    it { should be_successful }
+    it { should be_a(CloudApp::DropCollection) }
 
-  #   context 'with a name' do
-  #     let(:name) { 'New File' }
-  #     subject {
-  #       VCR.use_cassette('Service/upload_file_with_name') {
-  #         service.upload path, name: name
-  #       }
-  #     }
+    context 'with a name' do
+      let(:name) { 'New File' }
+      subject {
+        VCR.use_cassette('Service/upload_file_with_name') {
+          service.upload path, name: name
+        }
+      }
 
-  #     it { should be_successful }
+      it { should be_successful }
 
-  #     it 'has the given name' do
-  #       subject.first.name.should eq(name)
-  #     end
-  #   end
+      it 'has the given name' do
+        subject.first.name.should eq(name)
+      end
+    end
 
-  #   context 'with a privacy' do
-  #     subject {
-  #       VCR.use_cassette('Service/upload_file_with_privacy') {
-  #         service.upload path, private: false
-  #       }
-  #     }
+    context 'with a privacy' do
+      subject {
+        VCR.use_cassette('Service/upload_file_with_privacy') {
+          service.upload path, private: false
+        }
+      }
 
-  #     it { should be_successful }
+      it { should be_successful }
 
-  #     it 'is public' do
-  #       subject.first.private.should be_false
-  #     end
-  #   end
+      it 'is public' do
+        subject.first.private.should be_false
+      end
+    end
 
-  #   describe 'too large file'
-  # end
+    describe 'too large file'
+  end
 
-  # describe '#token_for_account' do
-  #   let(:service)  { CloudApp::Service.new }
-  #   let(:email)    { 'arthur@dent.com' }
-  #   let(:password) { 'towel42' }
-  #   subject {
-  #     VCR.use_cassette('Service/token_for_account') {
-  #       CloudApp::Service.new.token_for_account email, password
-  #     }
-  #   }
+  describe '#token_for_account' do
+    let(:service)  { CloudApp::Service.new }
+    let(:email)    { 'arthur@dent.com' }
+    let(:password) { 'towel' }
+    subject {
+      VCR.use_cassette('Service/token_for_account') {
+        CloudApp::Service.new.token_for_account email, password
+      }
+    }
 
-  #   it 'returns the token from the given account' do
-  #     subject.value.should eql(token)
-  #   end
+    it { should     be_successful }
+    it { should_not be_unauthorized }
 
-  #   it 'is authorized' do
-  #     subject.should_not be_unauthorized
-  #   end
+    it 'returns the token from the given account' do
+      subject.value.should eql(token)
+    end
 
-  #   it 'is successful' do
-  #     subject.should be_successful
-  #   end
+    context 'with bad credentials' do
+      let(:password) { 'wrong' }
+      subject {
+        VCR.use_cassette('Service/token_for_account_with_bad_credentials') {
+          CloudApp::Service.new.token_for_account email, password
+        }
+      }
 
-  #   context 'with bad credentials' do
-  #     let(:password) { 'wrong' }
-  #     subject {
-  #       VCR.use_cassette('Service/token_for_account_with_bad_credentials') {
-  #         CloudApp::Service.new.token_for_account email, password
-  #       }
-  #     }
-
-  #     it 'is unauthorized' do
-  #       subject.should be_unauthorized
-  #     end
-
-  #     it 'is not successful' do
-  #       subject.should_not be_successful
-  #     end
-  #   end
-  # end
+      it { should     be_unauthorized }
+      it { should_not be_successful }
+    end
+  end
 
   describe '#recover' do
     it 'recovers'

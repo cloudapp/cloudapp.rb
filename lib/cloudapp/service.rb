@@ -51,62 +51,38 @@ module CloudApp
     end
 
     def update(href, options = {})
-      response   = drops_at(href)
-      drop       = DropCollection.new(response).first
-      attributes = drop.data
+      collection = drops_at href
+      drop       = DropCollection.new(collection).first
+      path       = options.fetch :path, nil
+      attributes = drop.data.merge fetch_drop_attributes(options)
+      data       = collection.template.fill attributes
 
-      attributes['name']         = options.fetch(:name)         if options.has_key?(:name)
-      attributes['private']      = options.fetch(:private)      if options.has_key?(:private)
-      attributes['bookmark_url'] = options.fetch(:bookmark_url) if options.has_key?(:bookmark_url)
-
-      data = response.template.fill(drop.data)
-
-      put(drop.href, {}, data) do |response|
-        return DropCollection.new(response)
+      put(drop.href, {}, data) do |collection|
+        if not path
+          return DropCollection.new(collection)
+        else
+          return upload_file(path, collection)
+        end
       end
     end
 
     def bookmark(url, options = {})
-      attributes = { 'bookmark_url' => url }
-      attributes['name']    = options.fetch(:name)    if options.has_key?(:name)
-      attributes['private'] = options.fetch(:private) if options.has_key?(:private)
+      attributes = fetch_drop_attributes options.merge(url: url)
+      collection = drops_at('/')
+      data       = collection.template.fill(attributes)
 
-      template = drops_at('/').template
-      data     = template.fill(attributes)
-
-      put(template.href, {}, data) do |response|
+      post(collection.href, {}, data) do |response|
         return DropCollection.new(response)
       end
     end
 
     def upload(path, options = {})
-      attributes = { 'file_size' => FileTest.size(path) }
-      attributes['name']    = options.fetch(:name)    if options.has_key?(:name)
-      attributes['private'] = options.fetch(:private) if options.has_key?(:private)
+      attributes = fetch_drop_attributes options.merge(path: path)
+      collection = drops_at('/')
+      data       = collection.template.fill(attributes)
 
-      template   = drops_at('/').template
-      data       = template.fill(attributes)
-
-      put(template.href, {}, data) do |response|
-        upload  = response.template
-        uri     = Addressable::URI.parse upload.href
-        file    = File.open path
-        file_io = Faraday::UploadIO.new file, 'image/png'
-        fields  = upload.fill('file' => file_io)
-
-        conn = Faraday.new(url: uri.site) do |builder|
-          builder.request  :multipart
-          builder.request  :url_encoded
-          builder.response :logger, logger
-          builder.adapter  :typhoeus
-        end
-
-        conn.post(uri.request_uri, fields).on_complete do |env|
-          location = Addressable::URI.parse env[:response_headers]['Location']
-          get(location) do |upload_response|
-            return DropCollection.new(upload_response)
-          end
-        end
+      post(collection.href, {}, data) do |collection|
+        return upload_file(path, collection)
       end
     end
 
@@ -142,6 +118,39 @@ module CloudApp
       post(authenticate_response.href, {}, data) do |response|
         return :unauthorized if response.__response__.status == 401
         return response.items.first.data['token']
+      end
+    end
+
+    def fetch_drop_attributes(options)
+      path = options.delete :path
+      options[:file_size] = FileTest.size(path) if path
+      { url:       'bookmark_url',
+        file_size: 'file_size',
+        name:      'name',
+        private:   'private'
+      }.each_with_object({}) do |(key, name), attributes|
+        attributes[name] = options.fetch(key) if options.has_key?(key)
+      end
+    end
+
+    def upload_file(path, collection)
+      uri     = Addressable::URI.parse collection.href
+      file    = File.open path
+      file_io = Faraday::UploadIO.new file, 'image/png'
+      fields  = collection.template.fill('file' => file_io)
+
+      conn = Faraday.new(url: uri.site) do |builder|
+        builder.request  :multipart
+        builder.request  :url_encoded
+        builder.response :logger, logger
+        builder.adapter  :typhoeus
+      end
+
+      conn.post(uri.request_uri, fields).on_complete do |env|
+        location = Addressable::URI.parse env[:response_headers]['Location']
+        get(location) do |upload_response|
+          return DropCollection.new(upload_response)
+        end
       end
     end
 

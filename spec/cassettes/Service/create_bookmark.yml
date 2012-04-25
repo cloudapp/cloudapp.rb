@@ -30,7 +30,7 @@ http_interactions:
       Server:
       - thin 1.3.1 codename Triple Espresso
       X-Runtime:
-      - '0.015876'
+      - '0.054397'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
@@ -41,7 +41,7 @@ http_interactions:
       encoding: US-ASCII
       string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/","links":[{"rel":"account","href":"http://api.getcloudapp.com/account"},{"rel":"drops","href":"http://api.getcloudapp.com/drops"}]}}'
     http_version: 
-  recorded_at: Wed, 25 Apr 2012 15:58:06 GMT
+  recorded_at: Wed, 25 Apr 2012 15:23:33 GMT
 - request:
     method: get
     uri: http://api.getcloudapp.com/drops
@@ -68,11 +68,11 @@ http_interactions:
       Content-Type:
       - application/vnd.collection+json; charset=utf-8
       Etag:
-      - ! '"0c51417766e65a9fa7688c1d4a76ed29"'
+      - ! '"51c3fa3e6af149f16dffee1193152af2"'
       Server:
       - thin 1.3.1 codename Triple Espresso
       X-Runtime:
-      - '0.111247'
+      - '0.056610'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
@@ -81,7 +81,8 @@ http_interactions:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/drops","items":[{"href":"http://api.getcloudapp.com/drops/13949886","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/322M3q1t261o30012s32"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/322M3q1t261o30012s32"},{"rel":"embed","href":"http://cl.ly/322M3q1t261o30012s32/Epic%20Sax%20Guy%20NES%20Remix.mp3"},{"rel":"download","href":"http://cl.ly/322M3q1t261o30012s32/download/Epic%20Sax%20Guy%20NES%20Remix.mp3"}],"data":[{"name":"id","value":13949886},{"name":"name","value":"Epic
+      string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/drops","items":[{"href":"http://api.getcloudapp.com/drops/17533090","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/G2aO"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/G2aO"},{"rel":"embed","href":"http://cl.ly/G2aO/favicon.ico"},{"rel":"download","href":"http://cl.ly/G2aO/download/favicon.ico"}],"data":[{"name":"id","value":17533090},{"name":"name","value":"New
+        Drop Name"},{"name":"private","value":false},{"name":"bookmark_url","value":null},{"name":"views","value":1}]},{"href":"http://api.getcloudapp.com/drops/13949886","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/322M3q1t261o30012s32"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/322M3q1t261o30012s32"},{"rel":"embed","href":"http://cl.ly/322M3q1t261o30012s32/Epic%20Sax%20Guy%20NES%20Remix.mp3"},{"rel":"download","href":"http://cl.ly/322M3q1t261o30012s32/download/Epic%20Sax%20Guy%20NES%20Remix.mp3"}],"data":[{"name":"id","value":13949886},{"name":"name","value":"Epic
         Sax Guy NES Remix.mp3"},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949869","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/0s1o3A46290S1s331G28"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/0s1o3A46290S1s331G28"},{"rel":"embed","href":"http://cl.ly/0s1o3A46290S1s331G28/2011-05-03-cloudapp-1.5-released.md"},{"rel":"download","href":"http://cl.ly/0s1o3A46290S1s331G28/download/2011-05-03-cloudapp-1.5-released.md"}],"data":[{"name":"id","value":13949869},{"name":"name","value":"2011-05-03-cloudapp-1.5-released.md"},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"views","value":5}]},{"href":"http://api.getcloudapp.com/drops/13949858","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/1x200A0m3v101d1n2O1u"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/1x200A0m3v101d1n2O1u"},{"rel":"embed","href":"http://cl.ly/1x200A0m3v101d1n2O1u/Cover.jpeg"},{"rel":"download","href":"http://cl.ly/1x200A0m3v101d1n2O1u/download/Cover.jpeg"}],"data":[{"name":"id","value":13949858},{"name":"name","value":"Cover.jpeg"},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"views","value":23}]},{"href":"http://api.getcloudapp.com/drops/13949855","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/3U3d3w3r0G0T1T1M0d2T"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/3U3d3w3r0G0T1T1M0d2T"},{"rel":"embed","href":"http://cl.ly/3U3d3w3r0G0T1T1M0d2T/Chapter%201.md"},{"rel":"download","href":"http://cl.ly/3U3d3w3r0G0T1T1M0d2T/download/Chapter%201.md"}],"data":[{"name":"id","value":13949855},{"name":"name","value":"Chapter
         1.md"},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"views","value":8}]},{"href":"http://api.getcloudapp.com/drops/13949577","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/2O2J1h3t0H0v1I1u0t0P"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/2O2J1h3t0H0v1I1u0t0P"}],"data":[{"name":"id","value":13949577},{"name":"name","value":"Renamed
         Drop"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":3}]},{"href":"http://api.getcloudapp.com/drops/13949576","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/2t062C1h393d2L452U2Z"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/2t062C1h393d2L452U2Z"}],"data":[{"name":"id","value":13949576},{"name":"name","value":"Link
@@ -98,10 +99,9 @@ http_interactions:
         29"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949564","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/1w2e1K3j0T14193P2y1j"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/1w2e1K3j0T14193P2y1j"}],"data":[{"name":"id","value":13949564},{"name":"name","value":"Link
         28"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949563","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/071h0U3a270D0z3P2D3E"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/071h0U3a270D0z3P2D3E"}],"data":[{"name":"id","value":13949563},{"name":"name","value":"Link
         27"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949562","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/0s0M350K1c0B0s3E070U"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/0s0M350K1c0B0s3E070U"}],"data":[{"name":"id","value":13949562},{"name":"name","value":"Link
-        26"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949561","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/2T1i1N3R1d1w2G2v0135"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/2T1i1N3R1d1w2G2v0135"}],"data":[{"name":"id","value":13949561},{"name":"name","value":"Link
-        25"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"links":[{"rel":"next","href":"/drops?page=2&per_page=20"}]}}'
+        26"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"links":[{"rel":"next","href":"/drops?page=2&per_page=20"}]}}'
     http_version: 
-  recorded_at: Wed, 25 Apr 2012 15:58:07 GMT
+  recorded_at: Wed, 25 Apr 2012 15:23:33 GMT
 - request:
     method: post
     uri: http://api.getcloudapp.com/drops
@@ -130,10 +130,10 @@ http_interactions:
       Server:
       - thin 1.3.1 codename Triple Espresso
       Set-Cookie:
-      - _engine_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRiIlYjRlNzQ1YTIzZTBhZmEzNGY5OGIxMzg3OTI0NTQ3YzM%3D--07a6da0db1dc175bae618a792db2e057ffe426d7;
+      - _engine_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRiIlOGNjNmMzZmFkZDY5OTJiOWVkNjFlYTM4NmM1YmY3OTc%3D--0503503db7e47cb9d8b8f624dc53894120e23484;
         path=/; HttpOnly
       X-Runtime:
-      - '0.207721'
+      - '0.136963'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Content-Length:
@@ -142,95 +142,7 @@ http_interactions:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/drops","items":[{"href":"http://api.getcloudapp.com/drops/17678678","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/082Q1Q360c191f3l0k31"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/082Q1Q360c191f3l0k31"}],"data":[{"name":"id","value":17678678},{"name":"name","value":null},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]}}}'
+      string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/drops","items":[{"href":"http://api.getcloudapp.com/drops/17677103","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/2D2l1q3Y1w291a2W0u2v"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/2D2l1q3Y1w291a2W0u2v"}],"data":[{"name":"id","value":17677103},{"name":"name","value":null},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]}}}'
     http_version: 
-  recorded_at: Wed, 25 Apr 2012 15:58:07 GMT
-- request:
-    method: get
-    uri: http://api.getcloudapp.com/drops/17678678
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Token token="abc123"
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Content-Type:
-      - application/vnd.collection+json; charset=utf-8
-      Etag:
-      - ! '"f8e24871b05b5213e2cce1a1a828f7ad"'
-      Server:
-      - thin 1.3.1 codename Triple Espresso
-      X-Runtime:
-      - '0.012260'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-    body:
-      encoding: US-ASCII
-      string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/drops","items":[{"href":"http://api.getcloudapp.com/drops/17678678","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/082Q1Q360c191f3l0k31"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/082Q1Q360c191f3l0k31"}],"data":[{"name":"id","value":17678678},{"name":"name","value":null},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]}}}'
-    http_version: 
-  recorded_at: Wed, 25 Apr 2012 15:58:07 GMT
-- request:
-    method: put
-    uri: http://api.getcloudapp.com/drops/17678678
-    body:
-      encoding: UTF-8
-      string: ! '{"name":"New Drop Name","private":false,"bookmark_url":"http://getcloudapp.com","file_size":null}'
-    headers:
-      Content-Type:
-      - application/json
-      Authorization:
-      - Token token="abc123"
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Content-Type:
-      - application/vnd.collection+json; charset=utf-8
-      Etag:
-      - ! '"805f42d18f02bede04f12a45c2262310"'
-      Server:
-      - thin 1.3.1 codename Triple Espresso
-      Set-Cookie:
-      - _engine_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRiIlZWU0OGZkMGVlMWYxZWEzZTUxN2E3MGU1YzA3NjExYTI%3D--7c867d721afddce275cdf4b9f2f5ca6e01634910;
-        path=/; HttpOnly
-      X-Runtime:
-      - '0.070877'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '720'
-      Connection:
-      - keep-alive
-    body:
-      encoding: US-ASCII
-      string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/drops","items":[{"href":"http://api.getcloudapp.com/drops/17678678","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/G7zx"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/G7zx"}],"data":[{"name":"id","value":17678678},{"name":"name","value":"New
-        Drop Name"},{"name":"private","value":false},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]}}}'
-    http_version: 
-  recorded_at: Wed, 25 Apr 2012 15:58:07 GMT
+  recorded_at: Wed, 25 Apr 2012 15:23:34 GMT
 recorded_with: VCR 2.0.0
