@@ -1,17 +1,18 @@
 require 'helper'
-require 'stringio'
+require 'date'
 
 require 'cloudapp/presenters/drop_presenter'
 
 class FakeDrop
-  attr_accessor :name, :views, :private, :href,
+  attr_accessor :name, :private, :created, :views, :href,
                 :share_url, :embed_url, :download_url
   alias_method :private?, :private
 
   def initialize(options = {})
     @name         = options.fetch :name,         'Drop'
-    @views        = options.fetch :views,        0
     @private      = options.fetch :private,      true
+    @created      = options.fetch :created,      DateTime.new(2012, 4, 1)
+    @views        = options.fetch :views,        0
     @href         = options.fetch :href,         'http://href'
     @share_url    = options.fetch :share_url,    'http://share'
     @embed_url    = options.fetch :embed_url,    'http://embed'
@@ -30,6 +31,7 @@ Details
   Name:     Drop
   Views:    0
   Privacy:  Private
+  Created:  April 1, 2012
 
 Links
   Share:    http://share

@@ -14,6 +14,7 @@ Details
   Name:     #{ name }
   Views:    #{ views }
   Privacy:  #{ privacy_label }
+  Created:  #{ created_label }
 
 Links
   Share:    #{ share_url }
@@ -25,6 +26,10 @@ PRETTY
 
     def privacy_label
       private? ? 'Private' : 'Not Private'
+    end
+
+    def created_label
+      created.strftime('%B %-d, %Y')
     end
   end
 end

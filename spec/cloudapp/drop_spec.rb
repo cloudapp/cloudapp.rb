@@ -37,6 +37,38 @@ describe CloudApp::Drop do
     end
   end
 
+  describe '#private?' do
+    describe 'a private drop' do
+      let(:data) {{ private: true }}
+      it { should be_private }
+    end
+
+    describe 'a public drop' do
+      let(:data) {{ private: false }}
+      it { should_not be_private }
+    end
+  end
+
+  describe '#public?' do
+    describe 'a private drop' do
+      let(:data) {{ private: true }}
+      it { should_not be_public }
+    end
+
+    describe 'a public drop' do
+      let(:data) {{ private: false }}
+      it { should be_public }
+    end
+  end
+
+  describe '#created' do
+    let(:data) {{ created: '2012-04-01T00:00:00Z' }}
+    it 'parses date' do
+      expected = DateTime.new(2012, 4, 1)
+      subject.created.should eq(expected)
+    end
+  end
+
   describe '#share_url' do
     let(:links) {[
       stub(:canonical, rel: 'canonical', href: '/canonical'),
@@ -82,30 +114,6 @@ describe CloudApp::Drop do
     context 'without an download link' do
       let(:links) {[ stub(:canonical, rel: 'canonical', href: '/canonical') ]}
       its(:download_url) { should be_nil }
-    end
-  end
-
-  describe '#private?' do
-    describe 'a private drop' do
-      let(:data) {{ private: true }}
-      it { should be_private }
-    end
-
-    describe 'a public drop' do
-      let(:data) {{ private: false }}
-      it { should_not be_private }
-    end
-  end
-
-  describe '#public?' do
-    describe 'a private drop' do
-      let(:data) {{ private: true }}
-      it { should_not be_public }
-    end
-
-    describe 'a public drop' do
-      let(:data) {{ private: false }}
-      it { should be_public }
     end
   end
 end
