@@ -68,12 +68,16 @@ def format_from_options(options)
   end
 end
 
-def add_privacy_flags_to_command(command)
-  command.desc 'Use a private (long) link'
-  command.switch :private
+def add_common_drop_flags(c)
+  c.desc 'Drop name'
+  c.arg_name 'name'
+  c.flag :name
 
-  command.desc 'Use a public (short) link'
-  command.switch :public
+  c.desc 'Use a private (long) link'
+  c.switch :private
+
+  c.desc 'Use a public (short) link'
+  c.switch :public
 end
 
 
@@ -146,13 +150,28 @@ end
 desc 'Create a new bookmark to each URL and print each link'
 arg_name 'url [url...]'
 command :bookmark do |c|
-  add_privacy_flags_to_command c
+  add_common_drop_flags c
 
   add_action_requiring_credentials_to(c) do |options, urls|
     urls.each do |url|
       print "Bookmarking #{ url }... "
       url  = URI.parse url
       drop = account.bookmark url, options
+      puts drop.first.share_url
+    end
+  end
+end
+
+desc 'Upload each file and print each link'
+arg_name 'file [file...]'
+command :upload do |c|
+  add_common_drop_flags c
+
+  add_action_requiring_credentials_to(c) do |options, files|
+    files.each do |file|
+      file = Pathname.new file
+      print "Uploading #{ file }... "
+      drop = account.upload file, options
       puts drop.first.share_url
     end
   end
