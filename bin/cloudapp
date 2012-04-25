@@ -8,7 +8,8 @@ require 'pathname'
 
 require 'cloudapp'
 require 'cloudapp/config'
-require 'cloudapp/drop_presenter'
+require 'cloudapp/presenters/drop_list_presenter'
+require 'cloudapp/presenters/drop_presenter'
 
 
 extend Forwardable
@@ -20,6 +21,17 @@ end
 
 def account
   CloudApp::Account.using_token config.token
+end
+
+
+def add_action_requiring_credentials_to(command)
+  command.action do |global_options, options, args|
+    require_credentials
+
+    set_format_on  options, from: global_options
+    set_privacy_on options
+    yield options, args
+  end
 end
 
 def require_credentials
@@ -37,36 +49,43 @@ def print_bad_token
   config.token = nil
 end
 
+
+def set_format_on(options, from)
+  options[:format] = format_from_options from.fetch(:from)
+end
+
+def set_privacy_on(options)
+  private = options.delete :private
+  public  = options.delete :public
+  options[:private] = private if private || public
+end
+
 def format_from_options(options)
   if options[:format].nil?
-    $stdout.tty? ? :pretty : :csv
+    $stdout.tty? ? 'pretty' : 'csv'
   else
-    options[:format].to_sym
+    options[:format].to_s
   end
 end
 
-def privacy_from_options(options)
-  if options[:private] || options[:public]
-    options[:private] || !options[:public]
-  end
+def add_privacy_flags_to_command(command)
+  command.desc 'Use a private (long) link'
+  command.switch :private
+
+  command.desc 'Use a public (short) link'
+  command.switch :public
 end
 
 
-def create_drop_action_on_command(c)
-  c.desc 'Use a private (long) link'
-  c.switch :private
+# def create_drop_action_on_command(c)
+#   c.action do |global_options, options, args|
+#     require_credentials
+#     format  = format_from_options global_options
+#     private = privacy_from_options options
 
-  c.desc 'Use a public (short) link'
-  c.switch :public
-
-  c.action do |global_options, options, args|
-    require_credentials
-    format  = format_from_options global_options
-    private = privacy_from_options options
-
-    yield format, private, options, args
-  end
-end
+#     yield format, private, options, args
+#   end
+# end
 
 
 include GLI
@@ -75,48 +94,8 @@ program_desc 'All the pleasures of CloudApp now at your terminal'
 version CloudApp::VERSION
 
 desc 'Output format (default: pretty for tty, csv otherwise)'
-arg_name 'csv|pretty'
+arg_name 'csv,pretty'
 flag [:f, :format]
-
-desc 'Create a new bookmark to each URL and print each link'
-arg_name 'url [url...]'
-command :bookmark do |c|
-  create_drop_action_on_command(c) do |format, private, options, urls|
-    urls.each do |url|
-      url     = URI.parse url
-      waiting = "Bookmarking #{ url }... "
-
-      CloudApp::DropPresenter.print(on:      $stdout,
-                                    waiting: waiting,
-                                    format:  format) do
-        new_options = {}
-        new_options[:private] = private unless private.nil?
-        new_drop = account.bookmark url, new_options
-        new_drop.first.share_url
-      end
-    end
-  end
-end
-
-desc 'Upload each file and print each link'
-arg_name 'file [file...]'
-command :upload do |c|
-  create_drop_action_on_command(c) do |format, private, options, files|
-    files.each do |file|
-      file    = Pathname.new file
-      waiting = "Uploading #{ file }... "
-
-      CloudApp::DropPresenter.print(on:      $stdout,
-                                    waiting: waiting,
-                                    format:  format) do
-        new_options = {}
-        new_options[:private] = private unless private.nil?
-        new_drop = account.upload file, new_options
-        new_drop.first.share_url
-      end
-    end
-  end
-end
 
 desc 'List the newest drops'
 command [:list, :ls] do |c|
@@ -131,21 +110,16 @@ command [:list, :ls] do |c|
   c.default_value 'active'
   c.flag :filter
 
-  c.action do |global_options, options, args|
-    require_credentials
+  add_action_requiring_credentials_to(c) do |options, args|
+    puts 'Waiting...'
+    puts
 
-    count   = options[:count].to_i
-    filter  = options[:filter]
-    columns = { name: 'Name', href: 'Href', share_url: 'Share', id: 'ID', views: 'Views' }
-    format  = format_from_options global_options
-    drops   = account.drops filter: filter, limit: count
+    count  = options[:count].to_i
+    filter = options[:filter]
+    drops  = account.drops filter: filter, limit: count
 
     if not drops.unauthorized?
-      CloudApp::DropPresenter.print(on:      $stdout,
-                                    columns: columns,
-                                    format:  format) do
-        drops
-      end
+      puts CloudApp::DropListPresenter.new(drops).present
     else
       print_bad_token
     end
@@ -154,128 +128,32 @@ end
 
 desc 'View the details of a drop'
 command :details do |c|
-  c.action do |global_options, options, hrefs|
-    require_credentials
-
-    columns = { name:         'Name',
-                href:         'Href',
-                share_url:    'Share',
-                embed_url:    'Embed',
-                download_url: 'Download',
-                id:           'ID',
-                views:        'Views' }
-    format = format_from_options global_options
+  add_action_requiring_credentials_to(c) do |options, hrefs|
+    puts 'Waiting...'
+    puts
 
     hrefs.each do |href|
-      CloudApp::DropPresenter.print(on:      $stdout,
-                                    columns: columns,
-                                    format:  format) do
-        account.drop_at href
+      drop = account.drop_at href
+      if not drop.unauthorized?
+        puts CloudApp::DropPresenter.new(drop.first).present
+      else
+        print_bad_token
       end
     end
   end
 end
 
-desc 'Update the name and privacy of a drop'
-command :update do |c|
+desc 'Create a new bookmark to each URL and print each link'
+arg_name 'url [url...]'
+command :bookmark do |c|
+  add_privacy_flags_to_command c
 
-  c.desc 'Drop name'
-  c.arg_name 'name'
-  c.flag :name
-
-  c.desc 'Bookmark URL'
-  c.arg_name 'bookmark'
-  c.flag :bookmark
-
-  create_drop_action_on_command(c) do |format, private, options, hrefs|
-    require_credentials
-
-    columns = { name:         'Name',
-                href:         'Href',
-                share_url:    'Share',
-                embed_url:    'Embed',
-                download_url: 'Download',
-                id:           'ID',
-                views:        'Views' }
-
-    params = {}
-    params[:name]         = options[:name]     if options[:name]
-    params[:private]      = private            unless private.nil?
-    params[:bookmark_url] = options[:bookmark] if options[:bookmark]
-
-    hrefs.each do |href|
-      CloudApp::DropPresenter.print(on:      $stdout,
-                                    columns: columns,
-                                    format:  format) do
-        account.update(href, params)
-      end
-    end
-  end
-end
-
-desc 'Download the drop at <url>'
-arg_name 'url'
-command :download do |c|
-
-  c.desc 'Download the file to <file>'
-  c.arg_name 'file'
-  c.flag :o, :output
-
-  c.action do |global_options, options, urls|
-    format  = format_from_options global_options
-    download_options = {}
-    download_options[:to] = options[:output] if options[:output]
-
+  add_action_requiring_credentials_to(c) do |options, urls|
     urls.each do |url|
-      url     = URI.parse url
-      waiting = "Downloading #{ url }... "
-
-      CloudApp::DropPresenter.print(on:      $stdout,
-                                    waiting: waiting,
-                                    format:  format) do
-        content = account.download_drop url, download_options
-        { pretty: 'done', csv: content }
-      end
-    end
-  end
-end
-
-desc 'Recover a drop from the trash'
-arg_name 'id [id...]'
-command :recover do |c|
-  c.action do |global_options, options, args|
-    require_credentials
-    format   = format_from_options global_options
-    drop_ids = args.map &:to_i
-    term     = drop_ids.size == 1 ? 'drop' : 'drops'
-    waiting  = "Restoring #{ term } #{ drop_ids.join(', ') }..."
-
-    CloudApp::DropPresenter.print(on:      $stdout,
-                                  waiting: waiting,
-                                  format:  format) do
-
-      account.recover drop_ids
-      { pretty: 'done', csv: nil }
-    end
-  end
-end
-
-desc 'Send a drop to the trash'
-arg_name 'id [id...]'
-command :trash do |c|
-  c.action do |global_options, options, args|
-    require_credentials
-    format   = format_from_options global_options
-    drop_ids = args.map &:to_i
-    term     = drop_ids.size == 1 ? 'drop' : 'drops'
-    waiting  = "Trashing #{ term } #{ drop_ids.join(', ') }..."
-
-    CloudApp::DropPresenter.print(on:      $stdout,
-                                  waiting: waiting,
-                                  format:  format) do
-
-      account.trash drop_ids
-      { pretty: 'done', csv: nil }
+      print "Bookmarking #{ url }... "
+      url  = URI.parse url
+      drop = account.bookmark url, options
+      puts drop.first.share_url
     end
   end
 end
