@@ -83,19 +83,13 @@
 
 <h2 id="SYNOPSIS">SYNOPSIS</h2>
 
-<p><code>cloudapp</code> [<code>--format</code>=<var>format</var>] <var>command</var> [<var>args</var>]<br /><br /></p>
-
-<p><code>cloudapp list</code> [<code>--count</code>=<var>count</var>] [<code>--filter</code>=<var>all,active,trash</var>]<br />
-<code>cloudapp details</code> <var>href</var> [<var>href</var>...]<br />
-<code>cloudapp download</code> [<code>--output</code>=<var>file</var>] <var>url</var><br /><br /></p>
-
-<p><code>cloudapp bookmark</code> [<code>--private</code>] [<code>--public</code>] <var>url</var> [<var>url</var>...]<br />
-<code>cloudapp upload</code> [<code>--private</code>] [<code>--public</code>] <var>file</var> [<var>file</var>...]<br />
-<code>cloudapp update</code> [<code>--name</code>=<var>name</var>] [<code>--bookmark</code>=<var>bookmark_url</var>] [<code>--private</code>] [<code>--public</code>] <var>href</var> [<var>href</var>...]<br /><br /></p>
-
-<p><code>cloudapp trash</code> <var>href</var> [<var>href</var>...]<br />
-<code>cloudapp recover</code> <var>href</var> [<var>href</var>...]<br />
-<code>cloudapp delete</code> <var>href</var> [<var>href</var>...]</p>
+<p><code>cloudapp</code> [<var>global</var>] <code>list</code><br />
+<code>cloudapp</code> [<var>global</var>] <code>details</code> <var>href</var> [<var>href</var>...]<br />
+<code>cloudapp</code> [<var>global</var>] <code>bookmark</code> [<var>options</var>] <var>url</var> [<var>url</var>...]<br />
+<code>cloudapp</code> [<var>global</var>] <code>upload</code> [<var>options</var>] <var>file</var> [<var>file</var>...]<br />
+<code>cloudapp</code> [<var>global</var>] <code>update</code> [<var>options</var>] <var>href</var> [<var>href</var>...]<br />
+<code>cloudapp</code> [<var>global</var>] <code>delete</code> <var>href</var> [<var>href</var>...]<br />
+<code>cloudapp</code> [<var>global</var>] <code>restore</code> <var>href</var> [<var>href</var>...]</p>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
@@ -106,7 +100,7 @@ terminal and other times it's the only tool available.</p>
 <h2 id="GLOBAL-OPTIONS">GLOBAL OPTIONS</h2>
 
 <dl>
-<dt><code>-f</code> <var>format</var>, <code>--format</code>=<var>format</var></dt><dd>Output using either <strong>pretty</strong> or <strong>csv</strong> format. (Default: <strong>pretty</strong>  when
+<dt><code>-f</code> <var>pretty,csv</var>, <code>--format</code>=<var>pretty,csv</var></dt><dd>Output using either <strong>pretty</strong> or <strong>csv</strong> format. (Default: <strong>pretty</strong>  when
 output to a terminal and <strong>csv</strong> when output is piped to another program.)</dd>
 </dl>
 
@@ -114,16 +108,14 @@ output to a terminal and <strong>csv</strong> when output is piped to another pr
 <h2 id="COMMANDS">COMMANDS</h2>
 
 <dl>
+<dt><code>--bookmark</code>=<var>url</var></dt><dd><p>Update the drop converting it into a bookmark to <var>url</var>.</p></dd>
 <dt><code>bookmark</code> [<code>--private</code>] [<code>--public</code>] <var>url</var> [<var>url</var>...]</dt><dd><p>Create a new bookmark to each <var>url</var> and print the share links.</p></dd>
 <dt><code>delete</code> <var>href</var> [<var>href</var>...]</dt><dd><p>Permanently delete each drop at <var>href</var>.</p></dd>
 <dt><code>details</code> <var>href</var> [<var>href</var>...]</dt><dd><p>View the details of each drop at <var>href</var>.</p></dd>
-<dt><code>download</code> [<code>--output</code>=<var>file</var>] <var>url</var></dt><dd><p>Download the drop's content at <var>url</var> to <var>file</var>. The default is to download
-to the <strong>current directory</strong>.</p></dd>
-<dt><code>list</code> [<code>--count</code>=<var>count</var>] [<code>--filter</code>=<var>all,active,trash</var>]</dt><dd><p>List the newest <var>count</var> of <var>filter</var> drops. The default is to list <strong>20
+<dt><code>list</code> [<code>--count</code>=<var>count</var>] [<code>--filter</code>=<var>active,trash,all</var>]</dt><dd><p>List the newest <var>count</var> of <var>filter</var> drops. The default is to list <strong>20
 active</strong> drops.</p></dd>
-<dt><code>recover</code> <var>href</var> [<var>href</var>...]</dt><dd><p>Recover each drop at <var>href</var> from the trash.</p></dd>
-<dt><code>trash</code> <var>href</var> [<var>href</var>...]</dt><dd><p>Send each drop at <var>href</var> to the trash.</p></dd>
-<dt><code>update</code>[<code>--name</code>=<var>name</var>] [<code>--bookmark</code>=<var>bookmark_url</var>] [<code>--private</code>] [<code>--public</code>] <var>href</var> [<var>href</var>...]</dt><dd><p>Update the name, privacy, or bookmark link of each drop at <var>href</var>.</p></dd>
+<dt><code>restore</code> <var>href</var> [<var>href</var>...]</dt><dd><p>Restore each drop at <var>href</var> from the trash.</p></dd>
+<dt><code>update</code> [<code>--name</code>=<var>name</var>] [<code>--private</code>] [<code>--public</code>] [<code>--bookmark</code>=<var>url</var>] [<code>--file</code>=<var>file</var>] <var>href</var> [<var>href</var>...]</dt><dd><p>Update the name, privacy, bookmark link, or file of each drop at <var>href</var>.</p></dd>
 <dt><code>upload</code> [<code>--private</code>] [<code>--public</code>] <var>file</var> [<var>file</var>...]</dt><dd><p>Upload each <var>file</var> and print the share links.</p></dd>
 </dl>
 
@@ -131,12 +123,14 @@ active</strong> drops.</p></dd>
 <h2 id="COMMAND-OPTIONS">COMMAND OPTIONS</h2>
 
 <dl>
-<dt><code>--filter</code>=<var>all,active,trash</var></dt><dd><p>Show <var>filter</var> drops. (Default: <strong>active</strong>)</p></dd>
+<dt><code>--bookmark</code>=<var>url</var></dt><dd><p>Update the drop converting it into a bookmark to <var>url</var>.</p></dd>
+<dt><code>--file</code>=<var>file</var></dt><dd><p>Update the drop converting it into a file and replacing its content with
+<var>file</var>.</p></dd>
+<dt><code>--filter</code>=<var>active,trash,all</var></dt><dd><p>Show <var>filter</var> drops. (Default: <strong>active</strong>)</p></dd>
 <dt><code>-n</code> <var>count</var>, <code>--count</code>=<var>count</var></dt><dd><p>Display <var>count</var> drops. (Default: <strong>20</strong>)</p></dd>
-<dt><code>-o</code> <var>file</var>, <code>--output</code>=<var>file</var></dt><dd><p>Download file as <var>file</var>. (Default: current directory using the remote file's
-name)</p></dd>
-<dt><code>--private</code></dt><dd><p>Use a private (long) link when creating a new drop.</p></dd>
-<dt><code>--public</code></dt><dd><p>Use a public (short) link when creating a new drop.</p></dd>
+<dt><code>--name</code>=<var>name</var></dt><dd><p>Update the drop's name to <var>name</var>.</p></dd>
+<dt><code>--private</code></dt><dd><p>Use a private (long) link for the drop.</p></dd>
+<dt><code>--public</code></dt><dd><p>Use a public (short) link for the drop.</p></dd>
 </dl>
 
 
@@ -149,32 +143,32 @@ name)</p></dd>
 <p>List the newest drops:</p>
 
 <pre><code>$ cloudapp list
-Name                    Href                            Share                 Views
-favicon.ico             http://api.getcloudapp.com/...  http://cl.ly/0P28...  3
-The Hitchhiker's Guide  http://api.getcloudapp.com/...  http://cl.ly/3I28...  4
-CloudApp 1.5 Released   http://api.getcloudapp.com/...  http://cl.ly/0s1o...  4
-Cover.jpeg              http://api.getcloudapp.com/...  http://cl.ly/1x20...  1
-Chapter 1.md            http://api.getcloudapp.com/...  http://cl.ly/3U3d...  7
-CloudApp                http://api.getcloudapp.com/...  http://cl.ly/2O2J...  3
+Name                    Views  Href
+favicon.ico             1      http://api.getcloudapp.com/...
+The Hitchhiker's Guide  0      http://api.getcloudapp.com/...
+CloudApp 1.5 Released   5      http://api.getcloudapp.com/...
+Cover.jpeg              23     http://api.getcloudapp.com/...
+Chapter 1.md            8      http://api.getcloudapp.com/...
+CloudApp                3      http://api.getcloudapp.com/...
   ...
 </code></pre>
 
 <p>List the 5 newest drops:</p>
 
 <pre><code>$ cloudapp list --count=5
-Name                    Href                            Share                 Views
-favicon.ico             http://api.getcloudapp.com/...  http://cl.ly/0P28...  3
-The Hitchhiker's Guide  http://api.getcloudapp.com/...  http://cl.ly/3I28...  4
-CloudApp 1.5 Released   http://api.getcloudapp.com/...  http://cl.ly/0s1o...  4
-Cover.jpeg              http://api.getcloudapp.com/...  http://cl.ly/1x20...  1
-Chapter 1.md            http://api.getcloudapp.com/...  http://cl.ly/3U3d...  7
+Name                    Views  Href
+favicon.ico             1      http://api.getcloudapp.com/...
+The Hitchhiker's Guide  0      http://api.getcloudapp.com/...
+CloudApp 1.5 Released   5      http://api.getcloudapp.com/...
+Cover.jpeg              23     http://api.getcloudapp.com/...
+Chapter 1.md            8      http://api.getcloudapp.com/...
 </code></pre>
 
 <p>List newest, deleted drops:</p>
 
 <pre><code>$ cloudapp list --filter=trash
-Name       Href                            Share                 Views
-Delete Me  http://api.getcloudapp.com/...  http://cl.ly/1H2C...  0
+Name       Views  Href
+Delete Me  0      http://api.getcloudapp.com/...
   ...
 </code></pre>
 
@@ -189,20 +183,24 @@ Cover.jpeg,http://api.getcloudapp.com/...,http://cl.ly/1x20...,1
 Chapter 1.md,http://api.getcloudapp.com/...,http://cl.ly/3U3d...,7
 </code></pre>
 
-<p>View the details of a drop give its <strong>href</strong>:</p>
+<p>View the details of a drop by its <strong>href</strong>:</p>
 
-<pre><code>$ cloudapp http://api.getcloudapp.com/drops/12345
-Name:     Cover.jpg
-Created:  2 days ago
-Privacy:  private
-Share:    http://cl.ly/1x20...
-Emebed:   http://cl.ly/1x20...
-Download: http://cl.ly/1x20...
+<pre><code>$ cloudapp details http://api.getcloudapp.com/drops/12345
+Details
+  Name:     Cover.jpeg
+  Views:    23
+  Privacy:  Private
+
+Links
+  Share:    http://cl.ly/1x200A0m3v101d1n2O1u
+  Embed:    http://cl.ly/1x200A0m3v101d1n2O1u/Cover.jpeg
+  Download: http://cl.ly/1x200A0m3v101d1n2O1u/download/Cover.jpeg
+  Href:     http://api.getcloudapp.com/drops/13949858
 </code></pre>
 
 <p>View the details of a drop in CSV format:</p>
 
-<pre><code>$ cloudapp --format=csv http://api.getcloudapp.com/drops/12345
+<pre><code>$ cloudapp --format=csv details http://api.getcloudapp.com/drops/12345
 Name,Created,Privacy,Share,Embed,Download
 Cover.jpg,2012-01-12T20:44:58Z,private,http://cl.ly/1x20...,http://cl.ly/1x20...,http://cl.ly/1x20...
 </code></pre>
@@ -231,16 +229,26 @@ $ cloudapp upload screenshot.png | pbcopy
 http://cl.ly/1y0j403g3D0c0X1G0R3m
 </code></pre>
 
-<p>Download a drop to the current directory:</p>
+<p>Update a drop with a new name and privacy:</p>
 
-<pre><code>$ cloudapp download http://cl.ly/040u2o3X1w0z1z3n2T04
-Downloading screenshot.png... done
+<pre><code>$ cloudapp update --public \
+                  --name='The Late, Great Douglas Adams' \
+                  http://api.getcloudapp.com/drops/12345
+Updating... http://cl.ly/abc123
 </code></pre>
 
-<p>Download a drop to another path:</p>
+<p>Update a drop with a new bookmark URL:</p>
 
-<pre><code>$ cloudapp download --output=/Users/Larry/image.png http://cl.ly/040u2o3X1w0z1z3n2T04
-Downloading screenshot.png to /Users/Larry... done
+<pre><code>$ cloudapp update --bookmark=http://douglasadams.com \
+                  http://api.getcloudapp.com/drops/12345
+Updating... http://cl.ly/1y0j403g3D0c0X1G0R3m
+</code></pre>
+
+<p>Update a drop with a new file:</p>
+
+<pre><code>$ cloudapp update --file=screenshot.png \
+                  http://api.getcloudapp.com/drops/12345
+Updating... http://cl.ly/1y0j403g3D0c0X1G0R3m
 </code></pre>
 
 <h2 id="LICENSE">LICENSE</h2>
