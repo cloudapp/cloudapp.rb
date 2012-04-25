@@ -28,8 +28,11 @@ def add_action_requiring_credentials_to(command)
   command.action do |global_options, options, args|
     require_credentials
 
-    set_format_on  options, from: global_options
-    set_privacy_on options
+    set_format_on     options, from: global_options
+    set_name_on       options
+    set_privacy_on    options
+    set_file_paths_on options
+    set_bookmark_on   options
     yield options, args
   end
 end
@@ -54,10 +57,24 @@ def set_format_on(options, from)
   options[:format] = format_from_options from.fetch(:from)
 end
 
+def set_name_on(options)
+  options.delete(:name) if options.fetch(:name, nil).nil?
+end
+
 def set_privacy_on(options)
   private = options.delete :private
   public  = options.delete :public
   options[:private] = private if private || public
+end
+
+def set_file_paths_on(options)
+  file = options.delete :file
+  options[:path] = Pathname.new(file) if file
+end
+
+def set_bookmark_on(options)
+  url = options.delete :bookmark
+  options[:url] = url if url
 end
 
 def format_from_options(options)
@@ -172,6 +189,27 @@ command :upload do |c|
       file = Pathname.new file
       print "Uploading #{ file }... "
       drop = account.upload file, options
+      puts drop.first.share_url
+    end
+  end
+end
+
+desc "Update a drop's name, privacy, bookmark link or file"
+command :update do |c|
+  add_common_drop_flags c
+
+  c.desc 'Bookmark URL'
+  c.arg_name 'url'
+  c.flag :bookmark
+
+  c.desc 'File'
+  c.arg_name 'file'
+  c.flag :file
+
+  add_action_requiring_credentials_to(c) do |options, hrefs|
+    hrefs.each do |href|
+      print "Uploading #{ href }... "
+      drop = account.update href, options
       puts drop.first.share_url
     end
   end
