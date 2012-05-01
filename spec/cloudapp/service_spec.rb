@@ -290,11 +290,56 @@ describe CloudApp::Service do
     end
   end
 
-  describe '#recover' do
-    it 'recovers'
+  describe '#trash_drop' do
+    let(:service) { CloudApp::Service.using_token token }
+    subject {
+      VCR.use_cassette('Service/trash_drop') {
+        drop = service.bookmark('http://getcloudapp.com').first
+        service.trash_drop drop.href
+      }
+    }
+
+    it { should be_a(CloudApp::DropCollection) }
+
+    it 'returns the trashed drop' do
+      subject.should have(1).item
+    end
+
+    it 'trashes the drop' do
+      subject.first.trash.should eq(true)
+    end
   end
 
-  describe '#trash' do
-    it 'trashes'
+  describe '#recover_drop' do
+    let(:service) { CloudApp::Service.using_token token }
+    subject {
+      VCR.use_cassette('Service/recover_drop') {
+        drop = service.bookmark('http://getcloudapp.com').first
+        service.recover_drop drop.href
+      }
+    }
+
+    # it { should be_a(CloudApp::DropCollection) }
+
+    # it 'returns the recovered drop' do
+    #   subject.should have(1).item
+    # end
+
+    it 'recovers the drop'
+    # it 'recovers the drop' do
+    #   subject.first.trash.should eq(false)
+    # end
+  end
+
+  describe '#delete_drop' do
+    let(:service) { CloudApp::Service.using_token token }
+    subject {
+      VCR.use_cassette('Service/delete_drop') {
+        drop = service.bookmark('http://getcloudapp.com').first
+        service.delete_drop drop.href
+      }
+    }
+
+    it { should be_successful }
   end
 end

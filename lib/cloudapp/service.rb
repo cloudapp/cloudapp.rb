@@ -86,12 +86,14 @@ module CloudApp
       end
     end
 
-    def recover(drop_ids)
-      raise 'Not implemented'
+    def trash_drop(href)
+      update href, trash: true
     end
 
-    def trash(drop_ids)
-      raise 'Not implemented'
+    def delete_drop(href)
+      delete(href) do |response|
+        return SimpleResponse.new(response)
+      end
     end
 
   private
@@ -127,7 +129,8 @@ module CloudApp
       { url:       'bookmark_url',
         file_size: 'file_size',
         name:      'name',
-        private:   'private'
+        private:   'private',
+        trash:     'trash'
       }.each_with_object({}) do |(key, name), attributes|
         attributes[name] = options.fetch(key) if options.has_key?(key)
       end

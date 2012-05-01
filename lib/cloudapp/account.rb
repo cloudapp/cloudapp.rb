@@ -34,11 +34,14 @@ require 'forwardable'
 #   account.update drop.href, name: 'CloudApp'
 #   account.update drop.href, private: false
 #
-#   # Move a list of drops to the trash:
-#   account.trash [ 1, 2, 3 ]
+#   # Trash a drop:
+#   account.trash_drop 42
 #
-#   # Recover a list of drops from the trash:
-#   account.recover [ 1, 2, 3 ]
+#   # TODO: Recover a drop from the trash:
+#   account.recover_drop 42
+#
+#   # Delete a drop:
+#   account.delete_drop 42
 #
 #   # TODO: Newest 5 drops
 #   account.drops limit: 5
@@ -49,8 +52,8 @@ require 'forwardable'
 module CloudApp
   class Account
     extend Forwardable
-    def_delegators :service, :drops, :drop_at,
-                   :bookmark, :upload, :update, :trash, :recover
+    def_delegators :service, :drops, :drop_at, :bookmark, :upload, :update,
+                   :trash_drop, :delete_drop#, :restore_drop
 
     class << self
       attr_writer :service_source
