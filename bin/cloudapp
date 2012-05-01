@@ -139,7 +139,7 @@ command [:list, :ls] do |c|
     filter = options[:filter]
     drops  = account.drops filter: filter, limit: count
 
-    if not drops.unauthorized?
+    if drops.successful?
       puts CloudApp::DropListPresenter.new(drops).present
     else
       print_bad_token
@@ -155,7 +155,7 @@ command :details do |c|
 
     hrefs.each do |href|
       drop = account.drop_at href
-      if not drop.unauthorized?
+      if drop.successful?
         puts CloudApp::DropPresenter.new(drop.first).present
       else
         print_bad_token
@@ -211,6 +211,64 @@ command :update do |c|
       print "Uploading #{ href }... "
       drop = account.update href, options
       puts drop.first.share_url
+    end
+  end
+end
+
+desc 'Send a drop to the trash'
+arg_name 'href [href...]'
+command :trash do |c|
+  add_action_requiring_credentials_to(c) do |options, hrefs|
+    hrefs.each do |href|
+      print "Trashing #{ href }... "
+      drop = account.trash_drop href
+
+      if drop.successful?
+        puts 'done'
+      else
+        print_bad_token
+      end
+    end
+  end
+end
+
+# desc 'Recover a drop from the trash'
+# arg_name 'href [href...]'
+# command :recover do |c|
+#   c.action do |global_options, options, args|
+#     require_credentials
+#     format   = format_from_options global_options
+#     drop_ids = args.map &:to_i
+#     term     = drop_ids.size == 1 ? 'drop' : 'drops'
+#     waiting  = "Restoring #{ term } #{ drop_ids.join(', ') }..."
+
+#     CloudApp::OldDropPresenter.print(on:      $stdout,
+#                                   waiting: waiting,
+#                                   format:  format) do
+
+#       account.recover_drop drop_ids
+#       { pretty: 'done', csv: nil }
+#     end
+#   end
+# end
+
+desc 'Delete a drop bypassing the trash'
+arg_name 'href [href...]'
+command :delete do |c|
+  add_action_requiring_credentials_to(c) do |options, hrefs|
+    hrefs.each do |href|
+      if HighLine.new.agree("Delete #{ href } forever? (y/n)")
+        print "Deleting #{ href }... "
+        drop = account.delete_drop href
+
+        if drop.successful?
+          puts 'done'
+        else
+          print_bad_token
+        end
+      else
+        puts "OK. Not deleting #{ href }."
+      end
     end
   end
 end
