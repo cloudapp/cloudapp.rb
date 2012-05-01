@@ -88,8 +88,9 @@
 <code>cloudapp</code> [<var>global</var>] <code>bookmark</code> [<var>options</var>] <var>url</var> [<var>url</var>...]<br />
 <code>cloudapp</code> [<var>global</var>] <code>upload</code> [<var>options</var>] <var>file</var> [<var>file</var>...]<br />
 <code>cloudapp</code> [<var>global</var>] <code>update</code> [<var>options</var>] <var>href</var> [<var>href</var>...]<br />
-<code>cloudapp</code> [<var>global</var>] <code>delete</code> <var>href</var> [<var>href</var>...]<br />
-<code>cloudapp</code> [<var>global</var>] <code>restore</code> <var>href</var> [<var>href</var>...]</p>
+<code>cloudapp</code> [<var>global</var>] <code>trash</code> <var>href</var> [<var>href</var>...]<br />
+<code>cloudapp</code> [<var>global</var>] <code>restore</code> <var>href</var> [<var>href</var>...]<br />
+<code>cloudapp</code> [<var>global</var>] <code>delete</code> <var>href</var> [<var>href</var>...]</p>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
@@ -115,6 +116,7 @@ output to a terminal and <strong>csv</strong> when output is piped to another pr
 <dt><code>list</code> [<code>--count</code>=<var>count</var>] [<code>--filter</code>=<var>active,trash,all</var>]</dt><dd><p>List the newest <var>count</var> of <var>filter</var> drops. The default is to list <strong>20
 active</strong> drops.</p></dd>
 <dt><code>restore</code> <var>href</var> [<var>href</var>...]</dt><dd><p>Restore each drop at <var>href</var> from the trash.</p></dd>
+<dt><code>trash</code> <var>href</var> [<var>href</var>...]</dt><dd><p>Send each drop at <var>href</var> to the trash.</p></dd>
 <dt><code>update</code> [<code>--name</code>=<var>name</var>] [<code>--private</code>] [<code>--public</code>] [<code>--bookmark</code>=<var>url</var>] [<code>--file</code>=<var>file</var>] <var>href</var> [<var>href</var>...]</dt><dd><p>Update the name, privacy, bookmark link, or file of each drop at <var>href</var>.</p></dd>
 <dt><code>upload</code> [<code>--private</code>] [<code>--public</code>] <var>file</var> [<var>file</var>...]</dt><dd><p>Upload each <var>file</var> and print the share links.</p></dd>
 </dl>
@@ -251,6 +253,20 @@ Updating... http://cl.ly/1y0j403g3D0c0X1G0R3m
 Updating... http://cl.ly/1y0j403g3D0c0X1G0R3m
 </code></pre>
 
+<p>Trash a drop:</p>
+
+<pre><code>$ cloudapp trash http://api.getcloudapp.com/drops/12345
+Trashing http://api.getcloudapp.dev/drops/12345... done
+</code></pre>
+
+<p>Deleting a drop:</p>
+
+<pre><code>$ cloudapp trash http://api.getcloudapp.com/drops/12345
+Delete http://api.getcloudapp.dev/drops/12345 forever? (y/n)
+yes
+Deleting http://api.getcloudapp.dev/drops/12345... done
+</code></pre>
+
 <h2 id="LICENSE">LICENSE</h2>
 
 <p><code>cloudapp</code> is distributed under the <a href="https://github.com/cloudapp/cloudapp/blob/master/MIT-LICENSE">MIT license</a>.</p>
@@ -258,7 +274,7 @@ Updating... http://cl.ly/1y0j403g3D0c0X1G0R3m
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'></li>
-    <li class='tc'>April 2012</li>
+    <li class='tc'>May 2012</li>
     <li class='tr'>cloudapp(1)</li>
   </ol>
 

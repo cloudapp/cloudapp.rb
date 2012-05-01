@@ -1,7 +1,7 @@
 .\" generated with Ronn/v0.7.3
 .\" http://github.com/rtomayko/ronn/tree/0.7.3
 .
-.TH "CLOUDAPP" "1" "April 2012" "" ""
+.TH "CLOUDAPP" "1" "May 2012" "" ""
 .
 .SH "NAME"
 \fBcloudapp\fR \- All the pleasures of CloudApp now at your terminal
@@ -22,10 +22,13 @@
 \fBcloudapp\fR [\fIglobal\fR] \fBupdate\fR [\fIoptions\fR] \fIhref\fR [\fIhref\fR\.\.\.]
 .
 .br
-\fBcloudapp\fR [\fIglobal\fR] \fBdelete\fR \fIhref\fR [\fIhref\fR\.\.\.]
+\fBcloudapp\fR [\fIglobal\fR] \fBtrash\fR \fIhref\fR [\fIhref\fR\.\.\.]
 .
 .br
 \fBcloudapp\fR [\fIglobal\fR] \fBrestore\fR \fIhref\fR [\fIhref\fR\.\.\.]
+.
+.br
+\fBcloudapp\fR [\fIglobal\fR] \fBdelete\fR \fIhref\fR [\fIhref\fR\.\.\.]
 .
 .SH "DESCRIPTION"
 \fBcloudapp\fR is a simple, Unix\-friendly tool for CloudApp meant to augment the Mac and Web apps\. Sometimes it\'s more convenient to share without leaving the terminal and other times it\'s the only tool available\.
@@ -61,6 +64,10 @@ List the newest \fIcount\fR of \fIfilter\fR drops\. The default is to list \fB20
 .TP
 \fBrestore\fR \fIhref\fR [\fIhref\fR\.\.\.]
 Restore each drop at \fIhref\fR from the trash\.
+.
+.TP
+\fBtrash\fR \fIhref\fR [\fIhref\fR\.\.\.]
+Send each drop at \fIhref\fR to the trash\.
 .
 .TP
 \fBupdate\fR [\fB\-\-name\fR=\fIname\fR] [\fB\-\-private\fR] [\fB\-\-public\fR] [\fB\-\-bookmark\fR=\fIurl\fR] [\fB\-\-file\fR=\fIfile\fR] \fIhref\fR [\fIhref\fR\.\.\.]
@@ -313,6 +320,36 @@ Update a drop with a new file:
 $ cloudapp update \-\-file=screenshot\.png \e
                   http://api\.getcloudapp\.com/drops/12345
 Updating\.\.\. http://cl\.ly/1y0j403g3D0c0X1G0R3m
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Trash a drop:
+.
+.IP "" 4
+.
+.nf
+
+$ cloudapp trash http://api\.getcloudapp\.com/drops/12345
+Trashing http://api\.getcloudapp\.dev/drops/12345\.\.\. done
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Deleting a drop:
+.
+.IP "" 4
+.
+.nf
+
+$ cloudapp trash http://api\.getcloudapp\.com/drops/12345
+Delete http://api\.getcloudapp\.dev/drops/12345 forever? (y/n)
+yes
+Deleting http://api\.getcloudapp\.dev/drops/12345\.\.\. done
 .
 .fi
 .

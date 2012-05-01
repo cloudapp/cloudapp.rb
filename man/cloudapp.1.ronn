@@ -8,8 +8,9 @@ cloudapp(1) -- All the pleasures of CloudApp now at your terminal
 `cloudapp` [<global>] `bookmark` [<options>] <url> [<url>...]<br>
 `cloudapp` [<global>] `upload` [<options>] <file> [<file>...]<br>
 `cloudapp` [<global>] `update` [<options>] <href> [<href>...]<br>
-`cloudapp` [<global>] `delete` <href> [<href>...]<br>
-`cloudapp` [<global>] `restore` <href> [<href>...]
+`cloudapp` [<global>] `trash` <href> [<href>...]<br>
+`cloudapp` [<global>] `restore` <href> [<href>...]<br>
+`cloudapp` [<global>] `delete` <href> [<href>...]
 
 ## DESCRIPTION
 
@@ -43,6 +44,9 @@ terminal and other times it's the only tool available.
 
   * `restore` <href> [<href>...]:
     Restore each drop at <href> from the trash.
+
+  * `trash` <href> [<href>...]:
+    Send each drop at <href> to the trash.
 
   * `update` [`--name`=<name>] [`--private`] [`--public`] [`--bookmark`=<url>] [`--file`=<file>] <href> [<href>...]:
     Update the name, privacy, bookmark link, or file of each drop at <href>.
@@ -178,6 +182,17 @@ Update a drop with a new file:
                       http://api.getcloudapp.com/drops/12345
     Updating... http://cl.ly/1y0j403g3D0c0X1G0R3m
 
+Trash a drop:
+
+    $ cloudapp trash http://api.getcloudapp.com/drops/12345
+    Trashing http://api.getcloudapp.dev/drops/12345... done
+
+Deleting a drop:
+
+    $ cloudapp trash http://api.getcloudapp.com/drops/12345
+    Delete http://api.getcloudapp.dev/drops/12345 forever? (y/n)
+    yes
+    Deleting http://api.getcloudapp.dev/drops/12345... done
 
 ## LICENSE
 
