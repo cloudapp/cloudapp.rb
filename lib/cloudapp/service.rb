@@ -42,7 +42,11 @@ module CloudApp
     def drops(options = {})
       href   = options.fetch :href, '/'
       params = {}
-      params[:filter] = options[:filter] if options.has_key?(:filter)
+      unless options.has_key?(:href)
+        params[:filter]   = options[:filter] if options.has_key?(:filter)
+        params[:per_page] = options[:limit]  if options.has_key?(:limit)
+      end
+
       DropCollection.new drops_at(href, params)
     end
 

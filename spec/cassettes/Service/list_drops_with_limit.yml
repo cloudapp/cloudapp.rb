@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.getcloudapp.com/?per_page=3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Token token="abc123"
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"ebdf7b114b2f1575a69b1cc2e58082e5"'
+      Server:
+      - thin 1.3.1 codename Triple Espresso
+      X-Runtime:
+      - '0.057269'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '199'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/","links":[{"rel":"account","href":"http://api.getcloudapp.com/account"},{"rel":"drops","href":"http://api.getcloudapp.com/drops"}]}}'
+    http_version: 
+  recorded_at: Thu, 03 May 2012 19:47:44 GMT
+- request:
+    method: get
+    uri: http://api.getcloudapp.com/drops?per_page=3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Token token="abc123"
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"2e691bdf3c5b9cffd0f48cdb1139bc2a"'
+      Server:
+      - thin 1.3.1 codename Triple Espresso
+      X-Runtime:
+      - '0.159341'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/drops","items":[{"href":"http://api.getcloudapp.com/drops/17953836","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/3j2w1f24072J3C1X0I3v"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/3j2w1f24072J3C1X0I3v"}],"data":[{"name":"id","value":17953836},{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0},{"name":"created","value":"2012-05-03T19:37:17Z"}]},{"href":"http://api.getcloudapp.com/drops/17691061","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/2a2W3y1d1N3i3G022j2n"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/2a2W3y1d1N3i3G022j2n"},{"rel":"embed","href":"http://cl.ly/2a2W3y1d1N3i3G022j2n/favicon.ico"},{"rel":"download","href":"http://cl.ly/2a2W3y1d1N3i3G022j2n/download/favicon.ico"}],"data":[{"name":"id","value":17691061},{"name":"name","value":"The
+        Late, Great Douglas Adams"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":null},{"name":"views","value":6},{"name":"created","value":"2012-04-25T20:41:29Z"}]},{"href":"http://api.getcloudapp.com/drops/13949886","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/322M3q1t261o30012s32"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/322M3q1t261o30012s32"},{"rel":"embed","href":"http://cl.ly/322M3q1t261o30012s32/Epic%20Sax%20Guy%20NES%20Remix.mp3"},{"rel":"download","href":"http://cl.ly/322M3q1t261o30012s32/download/Epic%20Sax%20Guy%20NES%20Remix.mp3"}],"data":[{"name":"id","value":13949886},{"name":"name","value":"Epic
+        Sax Guy NES Remix.mp3"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":null},{"name":"views","value":2},{"name":"created","value":"2012-01-12T20:45:24Z"}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"links":[{"rel":"drops-stream","href":"http://api.getcloudapp.com/drops/stream"},{"rel":"next","href":"http://api.getcloudapp.com/drops?page=2&per_page=3"}]}}'
+    http_version: 
+  recorded_at: Thu, 03 May 2012 19:47:45 GMT
+recorded_with: VCR 2.0.0

@@ -6,16 +6,18 @@ require 'forwardable'
 #   account = CloudApp::Account.using_token token
 #
 #   # Newest drops
-#   account.drops                   #=> Active drops
-#   account.drops(filter: :active)  #=> Active drops
-#   account.drops(filter: :trash)   #=> Trashed drops
-#   account.drops(filter: :all)     #=> All active and trashed drops
+#   account.drops                  #=> Active drops
+#   account.drops filter: :active  #=> Active drops
+#   account.drops filter: :trash   #=> Trashed drops
+#   account.drops filter: :all     #=> All active and trashed drops
 #
 #   # List specific page of drops:
 #   page1 = account.drops
-#   page2 = account.drops href: page1.link('next')
-#   page1 = account.drops href: page2.link('previous')
-#   page1 = account.drops href: page1.link('self')
+#   page2 = account.drops href: page1.link('next')      # Advance to page 2
+#   page1 = account.drops href: page2.link('previous')  # Go back to page 1
+#
+#   # Newest 5 drops
+#   account.drops limit: 5
 #
 #   # View specific drop:
 #   account.drop_at drop.href
@@ -42,9 +44,6 @@ require 'forwardable'
 #
 #   # Delete a drop:
 #   account.delete_drop 42
-#
-#   # TODO: Newest 5 drops
-#   account.drops limit: 5
 #
 module CloudApp
   class Account

@@ -29,6 +29,19 @@ describe CloudApp::Service do
       end
     end
 
+    context 'with limit' do
+      let(:limit) { 3 }
+      subject {
+        VCR.use_cassette('Service/list_drops_with_limit') {
+          service.drops limit: limit
+        }
+      }
+
+      it 'returns the limited drops' do
+        subject.should have(limit).items
+      end
+    end
+
     context 'with href' do
       let(:href) { 'http://api.getcloudapp.com/drops?page=3&per_page=20' }
       subject {
@@ -61,17 +74,16 @@ describe CloudApp::Service do
       end
     end
 
-    context 'with limit' do
-      let(:limit) { 5 }
+    context 'with filter and href' do
+      let(:href) { 'http://api.getcloudapp.com/drops?page=3&per_page=20' }
       subject {
-        VCR.use_cassette('Service/list_drops_with_limit') {
-          service.drops limit: limit
+        VCR.use_cassette('Service/list_drops_with_href') {
+          service.drops href: href, filter: 'trash'
         }
       }
 
-      it 'has the given number of drops' do
-        pending
-        subject.should have(limit).items
+      it 'ignores filter' do
+        subject.should have(1).items
       end
     end
 
