@@ -147,11 +147,11 @@ describe CloudApp::Service do
       subject {
         VCR.use_cassette('Service/update_drop_bookmark_url') {
           drop = service.bookmark(url).first
-          service.update(drop.href, options).first
+          service.update(drop.href, options)#.first
         }
       }
 
-      its(:bookmark_url) { should eq(new_url) }
+      it { should be_successful }
     end
 
     context 'updating file' do
@@ -166,9 +166,7 @@ describe CloudApp::Service do
         }
       }
 
-      it 'should not be a bookmark' do
-        subject.first.bookmark_url.should be_nil
-      end
+      it { should be_successful }
     end
   end
 
