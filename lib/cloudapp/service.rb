@@ -90,6 +90,10 @@ module CloudApp
       update href, trash: true
     end
 
+    def recover_drop(href)
+      update href, trash: false
+    end
+
     def delete_drop(href)
       delete(href) do |response|
         return SimpleResponse.new(response)

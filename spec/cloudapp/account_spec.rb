@@ -68,6 +68,13 @@ describe CloudApp::Account do
     end
   end
 
+  describe '#recover_drop' do
+    it 'delegates to the service' do
+      service.should_receive(:recover_drop).with(args)
+      CloudApp::Account.new.recover_drop(args)
+    end
+  end
+
   describe '#delete_drop' do
     it 'delegates to the service' do
       service.should_receive(:delete_drop).with(args)

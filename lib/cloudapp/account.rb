@@ -37,7 +37,7 @@ require 'forwardable'
 #   # Trash a drop:
 #   account.trash_drop 42
 #
-#   # TODO: Recover a drop from the trash:
+#   # Recover a drop from the trash:
 #   account.recover_drop 42
 #
 #   # Delete a drop:
@@ -46,14 +46,11 @@ require 'forwardable'
 #   # TODO: Newest 5 drops
 #   account.drops limit: 5
 #
-#   # TODO: Permanently delete a list of drops:
-#   account.delete [ 1, 2, 3 ]
-#
 module CloudApp
   class Account
     extend Forwardable
     def_delegators :service, :drops, :drop_at, :bookmark, :upload, :update,
-                   :trash_drop, :delete_drop#, :restore_drop
+                   :trash_drop, :recover_drop, :delete_drop
 
     class << self
       attr_writer :service_source

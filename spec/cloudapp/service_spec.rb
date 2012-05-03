@@ -313,20 +313,20 @@ describe CloudApp::Service do
     subject {
       VCR.use_cassette('Service/recover_drop') {
         drop = service.bookmark('http://getcloudapp.com').first
+        service.trash_drop   drop.href
         service.recover_drop drop.href
       }
     }
 
-    # it { should be_a(CloudApp::DropCollection) }
+    it { should be_a(CloudApp::DropCollection) }
 
-    # it 'returns the recovered drop' do
-    #   subject.should have(1).item
-    # end
+    it 'returns the recovered drop' do
+      subject.should have(1).item
+    end
 
-    it 'recovers the drop'
-    # it 'recovers the drop' do
-    #   subject.first.trash.should eq(false)
-    # end
+    it 'recovers the drop' do
+      subject.first.trash.should eq(false)
+    end
   end
 
   describe '#delete_drop' do
