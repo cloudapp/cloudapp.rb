@@ -3,26 +3,30 @@ require 'date'
 
 require 'cloudapp/presenters/drop_presenter'
 
-class FakeDrop
-  attr_accessor :name, :private, :created, :views, :href,
-                :share_url, :embed_url, :download_url
-  alias_method :private?, :private
+class CloudApp::DropPresenter
+  class FakeDrop
+    attr_accessor :name, :private, :created, :views, :href,
+                  :share_url, :embed_url, :download_url
+    alias_method :private?, :private
 
-  def initialize(options = {})
-    @name         = options.fetch :name,         'Drop'
-    @private      = options.fetch :private,      true
-    @created      = options.fetch :created,      DateTime.new(2012, 4, 1)
-    @views        = options.fetch :views,        0
-    @href         = options.fetch :href,         'http://href'
-    @share_url    = options.fetch :share_url,    'http://share'
-    @embed_url    = options.fetch :embed_url,    'http://embed'
-    @download_url = options.fetch :download_url, 'http://download'
+    def initialize(options = {})
+      @name         = options.fetch :name,         'Drop'
+      @private      = options.fetch :private,      true
+      @created      = options.fetch :created,      DateTime.new(2012, 4, 1)
+      @views        = options.fetch :views,        0
+      @href         = options.fetch :href,         'http://href'
+      @share_url    = options.fetch :share_url,    'http://share'
+      @embed_url    = options.fetch :embed_url,    'http://embed'
+      @download_url = options.fetch :download_url, 'http://download'
+    end
   end
 end
 
 describe CloudApp::DropPresenter do
+  let(:fake_drop_class) { CloudApp::DropPresenter::FakeDrop }
+
   describe '#present' do
-    let(:drop) { FakeDrop.new }
+    let(:drop) { fake_drop_class.new }
     subject    { CloudApp::DropPresenter.new(drop).present }
 
     it 'prints the drop' do

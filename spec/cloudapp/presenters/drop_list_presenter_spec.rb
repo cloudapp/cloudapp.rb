@@ -3,18 +3,23 @@ require 'stringio'
 
 require 'cloudapp/presenters/drop_list_presenter'
 
-class FakeDrop
-  attr_accessor :name, :views, :href
-  def initialize(options = {})
-    @name  = options.fetch :name, 'Drop'
-    @views = options.fetch :views, 0
-    @href  = options.fetch :href, 'http://href'
+class CloudApp::DropListPresenter
+  class FakeDrop
+    attr_accessor :name, :views, :href
+    def initialize(options = {})
+      @name  = options.fetch :name, 'Drop'
+      @views = options.fetch :views, 0
+      @href  = options.fetch :href, 'http://href'
+    end
   end
 end
 
 describe CloudApp::DropListPresenter do
+  let(:fake_drop_class) { CloudApp::DropListPresenter::FakeDrop }
+
   describe '#present' do
-    let(:drops) {[ FakeDrop.new(name: 'one'), FakeDrop.new(name: 'two') ]}
+    let(:drops) {[ fake_drop_class.new(name: 'one'),
+                   fake_drop_class.new(name: 'two') ]}
     subject     { CloudApp::DropListPresenter.new(drops).present }
 
     it 'prints the drops' do
@@ -28,8 +33,8 @@ LIST
     end
 
     context 'unequal drop name lengths' do
-      let(:drops) {[ FakeDrop.new(name: 'very long drop name'),
-                     FakeDrop.new(name: 'short') ]}
+      let(:drops) {[ fake_drop_class.new(name: 'very long drop name'),
+                     fake_drop_class.new(name: 'short') ]}
 
       it 'adjusts column widths' do
         expected = <<-LIST.chomp
