@@ -7,7 +7,7 @@
 \fBcloudapp\fR \- All the pleasures of CloudApp now at your terminal
 .
 .SH "SYNOPSIS"
-\fBcloudapp\fR [\fIglobal\fR] \fBlist\fR
+\fBcloudapp\fR [\fIglobal\fR] \fBlist\fR [\fIoptions\fR]
 .
 .br
 \fBcloudapp\fR [\fIglobal\fR] \fBdetails\fR \fIhref\fR [\fIhref\fR\.\.\.]
@@ -25,7 +25,7 @@
 \fBcloudapp\fR [\fIglobal\fR] \fBtrash\fR \fIhref\fR [\fIhref\fR\.\.\.]
 .
 .br
-\fBcloudapp\fR [\fIglobal\fR] \fBrestore\fR \fIhref\fR [\fIhref\fR\.\.\.]
+\fBcloudapp\fR [\fIglobal\fR] \fBrecover\fR \fIhref\fR [\fIhref\fR\.\.\.]
 .
 .br
 \fBcloudapp\fR [\fIglobal\fR] \fBdelete\fR \fIhref\fR [\fIhref\fR\.\.\.]
@@ -51,19 +51,19 @@ Create a new bookmark to each \fIurl\fR and print the share links\.
 .
 .TP
 \fBdelete\fR \fIhref\fR [\fIhref\fR\.\.\.]
-Permanently delete each drop at \fIhref\fR\.
+Delete each drop at \fIhref\fR immediately and bypass the trash\.
 .
 .TP
 \fBdetails\fR \fIhref\fR [\fIhref\fR\.\.\.]
 View the details of each drop at \fIhref\fR\.
 .
 .TP
-\fBlist\fR [\fB\-\-count\fR=\fIcount\fR] [\fB\-\-filter\fR=\fIactive,trash,all\fR]
+\fBlist\fR, \fBls\fR [\fB\-\-count\fR=\fIcount\fR] [\fB\-\-filter\fR=\fIactive,trash,all\fR]
 List the newest \fIcount\fR of \fIfilter\fR drops\. The default is to list \fB20 active\fR drops\.
 .
 .TP
-\fBrestore\fR \fIhref\fR [\fIhref\fR\.\.\.]
-Restore each drop at \fIhref\fR from the trash\.
+\fBrecover\fR \fIhref\fR [\fIhref\fR\.\.\.]
+Recover each drop at \fIhref\fR from the trash\.
 .
 .TP
 \fBtrash\fR \fIhref\fR [\fIhref\fR\.\.\.]
@@ -334,6 +334,20 @@ Trash a drop:
 
 $ cloudapp trash http://api\.getcloudapp\.com/drops/12345
 Trashing http://api\.getcloudapp\.dev/drops/12345\.\.\. done
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Recovering a drop:
+.
+.IP "" 4
+.
+.nf
+
+$ cloudapp recover http://api\.getcloudapp\.com/drops/12345
+Recovering http://api\.getcloudapp\.dev/drops/12345\.\.\. http://cl\.ly/1y0j\.\.\.
 .
 .fi
 .
