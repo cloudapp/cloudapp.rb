@@ -20,7 +20,7 @@ module CloudApp
     def share_url()     link_for_relation('canonical') end
     def thumbnail_url() link_for_relation('icon')      end
     def embed_url()     link_for_relation('embed')     end
-    def download_url()  link_for_relation('download')     end
+    def download_url()  link_for_relation('download')  end
 
   protected
 
