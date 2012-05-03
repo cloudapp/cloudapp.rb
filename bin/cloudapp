@@ -98,17 +98,6 @@ def add_common_drop_flags(c)
 end
 
 
-# def create_drop_action_on_command(c)
-#   c.action do |global_options, options, args|
-#     require_credentials
-#     format  = format_from_options global_options
-#     private = privacy_from_options options
-
-#     yield format, private, options, args
-#   end
-# end
-
-
 include GLI
 
 program_desc 'All the pleasures of CloudApp now at your terminal'
@@ -232,27 +221,24 @@ command :trash do |c|
   end
 end
 
-# desc 'Recover a drop from the trash'
-# arg_name 'href [href...]'
-# command :recover do |c|
-#   c.action do |global_options, options, args|
-#     require_credentials
-#     format   = format_from_options global_options
-#     drop_ids = args.map &:to_i
-#     term     = drop_ids.size == 1 ? 'drop' : 'drops'
-#     waiting  = "Restoring #{ term } #{ drop_ids.join(', ') }..."
+desc 'Recover a drop from the trash'
+arg_name 'href [href...]'
+command :recover do |c|
+  add_action_requiring_credentials_to(c) do |options, hrefs|
+    hrefs.each do |href|
+      print "Recovering #{ href }... "
+      drop = account.recover_drop href
 
-#     CloudApp::OldDropPresenter.print(on:      $stdout,
-#                                   waiting: waiting,
-#                                   format:  format) do
+      if drop.successful?
+        puts drop.first.share_url
+      else
+        print_bad_token
+      end
+    end
+  end
+end
 
-#       account.recover_drop drop_ids
-#       { pretty: 'done', csv: nil }
-#     end
-#   end
-# end
-
-desc 'Delete a drop bypassing the trash'
+desc 'Delete a drop immediately and bypass the trash'
 arg_name 'href [href...]'
 command :delete do |c|
   add_action_requiring_credentials_to(c) do |options, hrefs|
