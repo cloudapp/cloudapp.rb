@@ -7,6 +7,7 @@ describe CloudApp::Service do
   let(:token) { 'abc123' }
 
   describe '#drops' do
+    let(:limit)   { 3 }
     let(:service) { CloudApp::Service.using_token token }
     subject { VCR.use_cassette('Service/list_drops') { service.drops }}
 
@@ -30,7 +31,6 @@ describe CloudApp::Service do
     end
 
     context 'with limit' do
-      let(:limit) { 3 }
       subject {
         VCR.use_cassette('Service/list_drops_with_limit') {
           service.drops limit: limit
@@ -43,30 +43,23 @@ describe CloudApp::Service do
     end
 
     context 'with href' do
-      let(:href) { 'http://api.getcloudapp.com/drops?page=3&per_page=20' }
       subject {
+        VCR.use_cassette('Service/list_drops_with_limit') {
+          @href = service.drops(limit: limit).link('next')
+        }
         VCR.use_cassette('Service/list_drops_with_href') {
-          service.drops href: href
+          service.drops href: @href
         }
       }
 
       it 'returns the resource at the given href' do
-        subject.link('self').should eq(href)
+        subject.link('self').should eq(@href)
       end
     end
 
     context 'with an empty href' do
-      let(:href) { nil }
       subject {
-        VCR.use_cassette('Service/list_drops_with_filter') {
-          service.drops filter: 'trash'
-        }
-        VCR.use_cassette('Service/list_drops_with_href') {
-          service.drops href: 'http://api.getcloudapp.com/drops?page=3&per_page=20'
-        }
-        VCR.use_cassette('Service/list_drops') {
-          service.drops href: nil
-        }
+        VCR.use_cassette('Service/list_drops') { service.drops(href: nil) }
       }
 
       it 'has 20 drops' do
@@ -75,28 +68,32 @@ describe CloudApp::Service do
     end
 
     context 'with filter and href' do
-      let(:href) { 'http://api.getcloudapp.com/drops?page=3&per_page=20' }
       subject {
+        VCR.use_cassette('Service/list_drops_with_limit') {
+          @href = service.drops(limit: limit).link('next')
+        }
         VCR.use_cassette('Service/list_drops_with_href') {
-          service.drops href: href, filter: 'trash'
+          service.drops href: @href, filter: 'trash'
         }
       }
 
       it 'ignores filter' do
-        subject.should have(1).items
+        subject.should have(limit).items
       end
     end
 
     context 'with limit and href' do
-      let(:href) { 'http://api.getcloudapp.com/drops?page=3&per_page=20' }
       subject {
+        VCR.use_cassette('Service/list_drops_with_limit') {
+          @href = service.drops(limit: limit).link('next')
+        }
         VCR.use_cassette('Service/list_drops_with_href') {
-          service.drops href: href, limit: 1
+          service.drops href: @href, limit: 1
         }
       }
 
       it 'ignores limit' do
-        subject.should have(1).items
+        subject.should have(limit).items
       end
     end
 
@@ -116,8 +113,12 @@ describe CloudApp::Service do
 
   describe '#drop_at' do
     let(:service) { CloudApp::Service.using_token token }
-    let(:href)    { '/drops/17533090' }
-    subject { VCR.use_cassette('Service/view_drop') { service.drop_at(href) }}
+    subject {
+      VCR.use_cassette('Service/list_drops') {
+        @href = service.drops.first.href
+      }
+      VCR.use_cassette('Service/view_drop') { service.drop_at(@href) }
+    }
 
     it { should be_a(CloudApp::DropCollection) }
 
@@ -159,7 +160,7 @@ describe CloudApp::Service do
       subject {
         VCR.use_cassette('Service/update_drop_bookmark_url') {
           drop = service.bookmark(url).first
-          service.update(drop.href, options)#.first
+          service.update drop.href, options
         }
       }
 
@@ -186,9 +187,7 @@ describe CloudApp::Service do
     let(:service) { CloudApp::Service.using_token token }
     let(:url)     { 'http://getcloudapp.com' }
     subject {
-      VCR.use_cassette('Service/create_bookmark') {
-        service.bookmark url
-      }
+      VCR.use_cassette('Service/create_bookmark') { service.bookmark(url) }
     }
 
     it { should be_successful }
@@ -230,9 +229,7 @@ describe CloudApp::Service do
       Pathname('../../support/files/favicon.ico').expand_path(__FILE__)
     }
     subject {
-      VCR.use_cassette('Service/upload_file') {
-        service.upload path
-      }
+      VCR.use_cassette('Service/upload_file') { service.upload(path) }
     }
 
     it { should be_successful }
