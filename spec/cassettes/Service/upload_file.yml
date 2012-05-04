@@ -30,18 +30,18 @@ http_interactions:
       Server:
       - thin 1.3.1 codename Triple Espresso
       X-Runtime:
-      - '0.011085'
+      - '0.005027'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '199'
       Connection:
       - keep-alive
     body:
       encoding: US-ASCII
       string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/","links":[{"rel":"account","href":"http://api.getcloudapp.com/account"},{"rel":"drops","href":"http://api.getcloudapp.com/drops"}]}}'
     http_version: 
-  recorded_at: Wed, 25 Apr 2012 15:38:05 GMT
+  recorded_at: Fri, 04 May 2012 18:24:43 GMT
 - request:
     method: get
     uri: http://api.getcloudapp.com/drops
@@ -68,11 +68,11 @@ http_interactions:
       Content-Type:
       - application/vnd.collection+json; charset=utf-8
       Etag:
-      - ! '"51c3fa3e6af149f16dffee1193152af2"'
+      - ! '"0d89337cc6dca5e6da5901ee636e770d"'
       Server:
       - thin 1.3.1 codename Triple Espresso
       X-Runtime:
-      - '0.074303'
+      - '0.065176'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
@@ -81,33 +81,29 @@ http_interactions:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/drops","items":[{"href":"http://api.getcloudapp.com/drops/17533090","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/G2aO"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/G2aO"},{"rel":"embed","href":"http://cl.ly/G2aO/favicon.ico"},{"rel":"download","href":"http://cl.ly/G2aO/download/favicon.ico"}],"data":[{"name":"id","value":17533090},{"name":"name","value":"New
-        Drop Name"},{"name":"private","value":false},{"name":"bookmark_url","value":null},{"name":"views","value":1}]},{"href":"http://api.getcloudapp.com/drops/13949886","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/322M3q1t261o30012s32"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/322M3q1t261o30012s32"},{"rel":"embed","href":"http://cl.ly/322M3q1t261o30012s32/Epic%20Sax%20Guy%20NES%20Remix.mp3"},{"rel":"download","href":"http://cl.ly/322M3q1t261o30012s32/download/Epic%20Sax%20Guy%20NES%20Remix.mp3"}],"data":[{"name":"id","value":13949886},{"name":"name","value":"Epic
-        Sax Guy NES Remix.mp3"},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949869","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/0s1o3A46290S1s331G28"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/0s1o3A46290S1s331G28"},{"rel":"embed","href":"http://cl.ly/0s1o3A46290S1s331G28/2011-05-03-cloudapp-1.5-released.md"},{"rel":"download","href":"http://cl.ly/0s1o3A46290S1s331G28/download/2011-05-03-cloudapp-1.5-released.md"}],"data":[{"name":"id","value":13949869},{"name":"name","value":"2011-05-03-cloudapp-1.5-released.md"},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"views","value":5}]},{"href":"http://api.getcloudapp.com/drops/13949858","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/1x200A0m3v101d1n2O1u"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/1x200A0m3v101d1n2O1u"},{"rel":"embed","href":"http://cl.ly/1x200A0m3v101d1n2O1u/Cover.jpeg"},{"rel":"download","href":"http://cl.ly/1x200A0m3v101d1n2O1u/download/Cover.jpeg"}],"data":[{"name":"id","value":13949858},{"name":"name","value":"Cover.jpeg"},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"views","value":23}]},{"href":"http://api.getcloudapp.com/drops/13949855","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/3U3d3w3r0G0T1T1M0d2T"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/3U3d3w3r0G0T1T1M0d2T"},{"rel":"embed","href":"http://cl.ly/3U3d3w3r0G0T1T1M0d2T/Chapter%201.md"},{"rel":"download","href":"http://cl.ly/3U3d3w3r0G0T1T1M0d2T/download/Chapter%201.md"}],"data":[{"name":"id","value":13949855},{"name":"name","value":"Chapter
-        1.md"},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"views","value":8}]},{"href":"http://api.getcloudapp.com/drops/13949577","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/2O2J1h3t0H0v1I1u0t0P"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/2O2J1h3t0H0v1I1u0t0P"}],"data":[{"name":"id","value":13949577},{"name":"name","value":"Renamed
-        Drop"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":3}]},{"href":"http://api.getcloudapp.com/drops/13949576","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/2t062C1h393d2L452U2Z"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/2t062C1h393d2L452U2Z"}],"data":[{"name":"id","value":13949576},{"name":"name","value":"Link
-        39"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949575","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/1S131o2v2J3z2r0A0Q0W"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/1S131o2v2J3z2r0A0Q0W"}],"data":[{"name":"id","value":13949575},{"name":"name","value":"Link
-        38"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949574","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/423a3W361X1l1i2w0q30"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/423a3W361X1l1i2w0q30"}],"data":[{"name":"id","value":13949574},{"name":"name","value":"Link
-        37"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949573","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/3m3u2b1y461a2M3i0a0o"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/3m3u2b1y461a2M3i0a0o"}],"data":[{"name":"id","value":13949573},{"name":"name","value":"Link
-        36"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949572","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/1Q1G170D1B2c2X3R0C2M"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/1Q1G170D1B2c2X3R0C2M"}],"data":[{"name":"id","value":13949572},{"name":"name","value":"Link
-        35"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949571","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/3s153f2u3m1L471T390C"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/3s153f2u3m1L471T390C"}],"data":[{"name":"id","value":13949571},{"name":"name","value":"Link
-        34"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949570","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/1W2f000i091B2128303J"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/1W2f000i091B2128303J"}],"data":[{"name":"id","value":13949570},{"name":"name","value":"Link
-        33"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949568","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/333d0V1B403M0d2f2o09"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/333d0V1B403M0d2f2o09"}],"data":[{"name":"id","value":13949568},{"name":"name","value":"Link
-        32"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949567","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/260m2h3T0O2P272k2F3h"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/260m2h3T0O2P272k2F3h"}],"data":[{"name":"id","value":13949567},{"name":"name","value":"Link
-        31"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949566","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/411H1g1a3y2T2B3U322x"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/411H1g1a3y2T2B3U322x"}],"data":[{"name":"id","value":13949566},{"name":"name","value":"Link
-        30"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949565","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/3B1V3H0c0c3s3O2u1Q0c"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/3B1V3H0c0c3s3O2u1Q0c"}],"data":[{"name":"id","value":13949565},{"name":"name","value":"Link
-        29"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949564","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/1w2e1K3j0T14193P2y1j"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/1w2e1K3j0T14193P2y1j"}],"data":[{"name":"id","value":13949564},{"name":"name","value":"Link
-        28"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949563","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/071h0U3a270D0z3P2D3E"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/071h0U3a270D0z3P2D3E"}],"data":[{"name":"id","value":13949563},{"name":"name","value":"Link
-        27"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]},{"href":"http://api.getcloudapp.com/drops/13949562","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/0s0M350K1c0B0s3E070U"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/0s0M350K1c0B0s3E070U"}],"data":[{"name":"id","value":13949562},{"name":"name","value":"Link
-        26"},{"name":"private","value":true},{"name":"bookmark_url","value":"http://getcloudapp.com"},{"name":"views","value":0}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"links":[{"rel":"next","href":"/drops?page=2&per_page=20"}]}}'
+      string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/drops","items":[{"href":"http://api.getcloudapp.com/drops/17988558","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/GLvg"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/GLvg"}],"data":[{"name":"id","value":17988558},{"name":"name","value":null},{"name":"private","value":false},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-05-04T18:24:02Z"}]},{"href":"http://api.getcloudapp.com/drops/17988546","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/3S3l0V1u2l032D110z01"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/3S3l0V1u2l032D110z01"}],"data":[{"name":"id","value":17988546},{"name":"name","value":"New
+        Bookmark"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-05-04T18:23:41Z"}]},{"href":"http://api.getcloudapp.com/drops/17988524","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/3j0a1S2v0y3t2F2K2i3O"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/3j0a1S2v0y3t2F2K2i3O"}],"data":[{"name":"id","value":17988524},{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-05-04T18:23:12Z"}]},{"href":"http://api.getcloudapp.com/drops/17988497","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/2E1b0z0n450f2r2R102z"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/2E1b0z0n450f2r2R102z"},{"rel":"embed","href":"http://cl.ly/2E1b0z0n450f2r2R102z/favicon.ico"},{"rel":"download","href":"http://cl.ly/2E1b0z0n450f2r2R102z/download/favicon.ico"}],"data":[{"name":"id","value":17988497},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-05-04T18:22:39Z"}]},{"href":"http://api.getcloudapp.com/drops/17988471","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/3Y0O2P3D0X2n2F2g3r2a"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/3Y0O2P3D0X2n2F2g3r2a"}],"data":[{"name":"id","value":17988471},{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-05-04T18:21:59Z"}]},{"href":"http://api.getcloudapp.com/drops/17988453","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/GNUC"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/GNUC"}],"data":[{"name":"id","value":17988453},{"name":"name","value":"New
+        Drop Name"},{"name":"private","value":false},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-05-04T18:21:28Z"}]},{"href":"http://api.getcloudapp.com/drops/17691061","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/2a2W3y1d1N3i3G022j2n"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/2a2W3y1d1N3i3G022j2n"},{"rel":"embed","href":"http://cl.ly/2a2W3y1d1N3i3G022j2n/favicon.ico"},{"rel":"download","href":"http://cl.ly/2a2W3y1d1N3i3G022j2n/download/favicon.ico"}],"data":[{"name":"id","value":17691061},{"name":"name","value":"The
+        Late, Great Douglas Adams"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":7},{"name":"created","value":"2012-04-25T20:41:29Z"}]},{"href":"http://api.getcloudapp.com/drops/13949886","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/322M3q1t261o30012s32"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/322M3q1t261o30012s32"},{"rel":"embed","href":"http://cl.ly/322M3q1t261o30012s32/Epic%20Sax%20Guy%20NES%20Remix.mp3"},{"rel":"download","href":"http://cl.ly/322M3q1t261o30012s32/download/Epic%20Sax%20Guy%20NES%20Remix.mp3"}],"data":[{"name":"id","value":13949886},{"name":"name","value":"Epic
+        Sax Guy NES Remix.mp3"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":2},{"name":"created","value":"2012-01-12T20:45:24Z"}]},{"href":"http://api.getcloudapp.com/drops/13949869","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/0s1o3A46290S1s331G28"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/0s1o3A46290S1s331G28"},{"rel":"embed","href":"http://cl.ly/0s1o3A46290S1s331G28/2011-05-03-cloudapp-1.5-released.md"},{"rel":"download","href":"http://cl.ly/0s1o3A46290S1s331G28/download/2011-05-03-cloudapp-1.5-released.md"}],"data":[{"name":"id","value":13949869},{"name":"name","value":"2011-05-03-cloudapp-1.5-released.md"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":6},{"name":"created","value":"2012-01-12T20:45:05Z"}]},{"href":"http://api.getcloudapp.com/drops/13949858","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/1x200A0m3v101d1n2O1u"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/1x200A0m3v101d1n2O1u"},{"rel":"embed","href":"http://cl.ly/1x200A0m3v101d1n2O1u/Cover.jpeg"},{"rel":"download","href":"http://cl.ly/1x200A0m3v101d1n2O1u/download/Cover.jpeg"}],"data":[{"name":"id","value":13949858},{"name":"name","value":"Cover.jpeg"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":25},{"name":"created","value":"2012-01-12T20:44:58Z"}]},{"href":"http://api.getcloudapp.com/drops/13949855","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/3U3d3w3r0G0T1T1M0d2T"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/3U3d3w3r0G0T1T1M0d2T"},{"rel":"embed","href":"http://cl.ly/3U3d3w3r0G0T1T1M0d2T/Chapter%201.md"},{"rel":"download","href":"http://cl.ly/3U3d3w3r0G0T1T1M0d2T/download/Chapter%201.md"}],"data":[{"name":"id","value":13949855},{"name":"name","value":"Chapter
+        1.md"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":8},{"name":"created","value":"2012-01-12T20:44:54Z"}]},{"href":"http://api.getcloudapp.com/drops/13949577","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/2O2J1h3t0H0v1I1u0t0P"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/2O2J1h3t0H0v1I1u0t0P"}],"data":[{"name":"id","value":13949577},{"name":"name","value":"Renamed
+        Drop"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":3},{"name":"created","value":"2012-01-12T20:39:04Z"}]},{"href":"http://api.getcloudapp.com/drops/13949576","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/2t062C1h393d2L452U2Z"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/2t062C1h393d2L452U2Z"}],"data":[{"name":"id","value":13949576},{"name":"name","value":"Link
+        39"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-01-12T20:39:04Z"}]},{"href":"http://api.getcloudapp.com/drops/13949575","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/1S131o2v2J3z2r0A0Q0W"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/1S131o2v2J3z2r0A0Q0W"}],"data":[{"name":"id","value":13949575},{"name":"name","value":"Link
+        38"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-01-12T20:39:04Z"}]},{"href":"http://api.getcloudapp.com/drops/13949574","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/423a3W361X1l1i2w0q30"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/423a3W361X1l1i2w0q30"}],"data":[{"name":"id","value":13949574},{"name":"name","value":"Link
+        37"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-01-12T20:39:04Z"}]},{"href":"http://api.getcloudapp.com/drops/13949573","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/3m3u2b1y461a2M3i0a0o"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/3m3u2b1y461a2M3i0a0o"}],"data":[{"name":"id","value":13949573},{"name":"name","value":"Link
+        36"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-01-12T20:39:04Z"}]},{"href":"http://api.getcloudapp.com/drops/13949572","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/1Q1G170D1B2c2X3R0C2M"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/1Q1G170D1B2c2X3R0C2M"}],"data":[{"name":"id","value":13949572},{"name":"name","value":"Link
+        35"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-01-12T20:39:04Z"}]},{"href":"http://api.getcloudapp.com/drops/13949571","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/3s153f2u3m1L471T390C"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/3s153f2u3m1L471T390C"}],"data":[{"name":"id","value":13949571},{"name":"name","value":"Link
+        34"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-01-12T20:39:04Z"}]},{"href":"http://api.getcloudapp.com/drops/13949570","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/1W2f000i091B2128303J"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/1W2f000i091B2128303J"}],"data":[{"name":"id","value":13949570},{"name":"name","value":"Link
+        33"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-01-12T20:39:04Z"}]},{"href":"http://api.getcloudapp.com/drops/13949568","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/333d0V1B403M0d2f2o09"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/333d0V1B403M0d2f2o09"}],"data":[{"name":"id","value":13949568},{"name":"name","value":"Link
+        32"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-01-12T20:39:04Z"}]}],"queries":[{"href":"http://api.getcloudapp.com/drops","rel":"drops-filter","data":[{"name":"filter","value":"active"},{"name":"limit","value":20}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"links":[{"rel":"drops-stream","href":"http://api.getcloudapp.com/drops/stream"},{"rel":"next","href":"http://api.getcloudapp.com/drops?page=2&per_page=20"}]}}'
     http_version: 
-  recorded_at: Wed, 25 Apr 2012 15:38:06 GMT
+  recorded_at: Fri, 04 May 2012 18:24:43 GMT
 - request:
     method: post
     uri: http://api.getcloudapp.com/drops
     body:
       encoding: UTF-8
-      string: ! '{"name":null,"private":true,"bookmark_url":null,"file_size":1150}'
+      string: ! '{"name":null,"private":true,"trash":false,"bookmark_url":null,"file_size":1150}'
     headers:
       Content-Type:
       - application/json
@@ -130,10 +126,10 @@ http_interactions:
       Server:
       - thin 1.3.1 codename Triple Espresso
       Set-Cookie:
-      - _engine_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRiIlZThkNmY1MzRjOGIwYzc2ZDg5YTQwYzUyMDNmNzFlOGQ%3D--3543ecc23cbd9ec42d0532eef29993923d9eceef;
+      - _engine_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRiIlYTExMDI4MWRlNWU4NTI4YzE2NTMxYzFlMzdjYTA1MWU%3D--2c657aa7142ad726498c10290d29baa98caec1e3;
         path=/; HttpOnly
       X-Runtime:
-      - '0.048215'
+      - '0.116928'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
@@ -142,9 +138,9 @@ http_interactions:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: ! '{"collection":{"version":"1.0","href":"http://f.cl.ly","items":[{"href":"http://api.getcloudapp.com/drops/17677755","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/0R381v3D3d1k0F223D0D"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/0R381v3D3d1k0F223D0D"}],"data":[{"name":"id","value":17677755},{"name":"name","value":null},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"views","value":0}]}],"template":{"data":[{"name":"AWSAccessKeyId","value":"AKIAIDPUZISHSBEOFS6Q"},{"name":"key","value":"items/1z2J0L3M3s3C1Q1W3p12/${filename}"},{"name":"policy","value":"eyJleHBpcmF0aW9uIjoiMjAxMi0wNC0yNVQxNjozODowNloiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJmLmNsLmx5In0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCJpdGVtcy8xejJKMEwzTTNzM0MxUTFXM3AxMi8iXSx7ImFjbCI6InB1YmxpYy1yZWFkIn0seyJzdWNjZXNzX2FjdGlvbl9yZWRpcmVjdCI6Imh0dHA6Ly9hcGkuZ2V0Y2xvdWRhcHAuY29tL2Ryb3BzLzE3Njc3NzU1L3MzIn0sWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsMCwyNjIxNDQwMF1dfQ=="},{"name":"signature","value":"JBYJK/Rx/+M7kSXxaSel1pfaAYU="},{"name":"acl","value":"public-read"},{"name":"success_action_redirect","value":"http://api.getcloudapp.com/drops/17677755/s3"},{"name":"file","value":null}]}}}'
+      string: ! '{"collection":{"version":"1.0","href":"http://f.cl.ly","items":[{"href":"http://api.getcloudapp.com/drops/17988578","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/0C3A1R3s181L0d0a0H1U"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/0C3A1R3s181L0d0a0H1U"}],"data":[{"name":"id","value":17988578},{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-05-04T18:24:44Z"}]}],"queries":[{"href":"http://f.cl.ly","rel":"drops-filter","data":[{"name":"filter","value":"active"},{"name":"limit","value":20}]}],"template":{"data":[{"name":"AWSAccessKeyId","value":"AKIAIDPUZISHSBEOFS6Q"},{"name":"key","value":"items/0d25113l221w2a3O2A19/${filename}"},{"name":"policy","value":"eyJleHBpcmF0aW9uIjoiMjAxMi0wNS0wNFQxOToyNDo0NFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJmLmNsLmx5In0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCJpdGVtcy8wZDI1MTEzbDIyMXcyYTNPMkExOS8iXSx7ImFjbCI6InB1YmxpYy1yZWFkIn0seyJzdWNjZXNzX2FjdGlvbl9yZWRpcmVjdCI6Imh0dHA6Ly9hcGkuZ2V0Y2xvdWRhcHAuY29tL2Ryb3BzLzE3OTg4NTc4L3MzP3Rva2VuPWFiYzEyMyJ9LFsiY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMjYyMTQ0MDBdXX0="},{"name":"signature","value":"P4gEDe/SaKnKyVcjIfsQYcWbrwY="},{"name":"acl","value":"public-read"},{"name":"success_action_redirect","value":"http://api.getcloudapp.com/drops/17988578/s3?token=abc123"},{"name":"file","value":null}]},"links":[{"rel":"drops-stream","href":"http://f.cl.ly/stream"}]}}'
     http_version: 
-  recorded_at: Wed, 25 Apr 2012 15:38:06 GMT
+  recorded_at: Fri, 04 May 2012 18:24:44 GMT
 - request:
     method: post
     uri: http://f.cl.ly/
@@ -155,60 +151,61 @@ http_interactions:
         c2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9IkFXU0FjY2Vzc0tleUlkIg0KDQpB
         S0lBSURQVVpJU0hTQkVPRlM2UQ0KLS0tLS0tLS0tLS0tLVJ1YnlNdWx0aXBh
         cnRQb3N0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9
-        ImtleSINCg0KaXRlbXMvMXoySjBMM00zczNDMVExVzNwMTIvJHtmaWxlbmFt
+        ImtleSINCg0KaXRlbXMvMGQyNTExM2wyMjF3MmEzTzJBMTkvJHtmaWxlbmFt
         ZX0NCi0tLS0tLS0tLS0tLS1SdWJ5TXVsdGlwYXJ0UG9zdA0KQ29udGVudC1E
         aXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJwb2xpY3kiDQoNCmV5Smxl
-        SEJwY21GMGFXOXVJam9pTWpBeE1pMHdOQzB5TlZReE5qb3pPRG93TmxvaUxD
+        SEJwY21GMGFXOXVJam9pTWpBeE1pMHdOUzB3TkZReE9Ub3lORG8wTkZvaUxD
         SmpiMjVrYVhScGIyNXpJanBiZXlKaWRXTnJaWFFpT2lKbUxtTnNMbXg1SW4w
-        c1d5SnpkR0Z5ZEhNdGQybDBhQ0lzSWlSclpYa2lMQ0pwZEdWdGN5OHhlakpL
-        TUV3elRUTnpNME14VVRGWE0zQXhNaThpWFN4N0ltRmpiQ0k2SW5CMVlteHBZ
+        c1d5SnpkR0Z5ZEhNdGQybDBhQ0lzSWlSclpYa2lMQ0pwZEdWdGN5OHdaREkx
+        TVRFemJESXlNWGN5WVROUE1rRXhPUzhpWFN4N0ltRmpiQ0k2SW5CMVlteHBZ
         eTF5WldGa0luMHNleUp6ZFdOalpYTnpYMkZqZEdsdmJsOXlaV1JwY21WamRD
         STZJbWgwZEhBNkx5OWhjR2t1WjJWMFkyeHZkV1JoY0hBdVkyOXRMMlJ5YjNC
-        ekx6RTNOamMzTnpVMUwzTXpJbjBzV3lKamIyNTBaVzUwTFd4bGJtZDBhQzF5
-        WVc1blpTSXNNQ3d5TmpJeE5EUXdNRjFkZlE9PQ0KLS0tLS0tLS0tLS0tLVJ1
-        YnlNdWx0aXBhcnRQb3N0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRh
-        dGE7IG5hbWU9InNpZ25hdHVyZSINCg0KSkJZSksvUngvK003a1NYeGFTZWwx
-        cGZhQVlVPQ0KLS0tLS0tLS0tLS0tLVJ1YnlNdWx0aXBhcnRQb3N0DQpDb250
-        ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9ImFjbCINCg0KcHVi
-        bGljLXJlYWQNCi0tLS0tLS0tLS0tLS1SdWJ5TXVsdGlwYXJ0UG9zdA0KQ29u
-        dGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJzdWNjZXNzX2Fj
-        dGlvbl9yZWRpcmVjdCINCg0KaHR0cDovL2FwaS5nZXRjbG91ZGFwcC5jb20v
-        ZHJvcHMvMTc2Nzc3NTUvczMNCi0tLS0tLS0tLS0tLS1SdWJ5TXVsdGlwYXJ0
-        UG9zdA0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJm
-        aWxlIjsgZmlsZW5hbWU9ImZhdmljb24uaWNvIg0KQ29udGVudC1MZW5ndGg6
-        IDExNTANCkNvbnRlbnQtVHlwZTogaW1hZ2UvcG5nDQpDb250ZW50LVRyYW5z
-        ZmVyLUVuY29kaW5nOiBiaW5hcnkNCg0KAAABAAEAEBAAAAEAIABoBAAAFgAA
-        ACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAACAcAAAgHAAAAAAAAAAAAACFMhFB
-        hTIR0IUyEeaFMhHmhTIR5oUyEeaFMhHmhTIR5oUyEeaFMhHmhTIR5oUyEeaF
-        MhHmhTIR5oUyEdCFMhFBhzUTzpxHHfekTSD/pE0g/6RNIP+kTSD/pE0g/6RN
-        IP+kTSD/pE0g/6RNIP+kTSD/pE0g/6RNIP+cRx33hzUTzog4FuamUSP/plEj
-        /6ZRI/+mUSP/plEj/6ZRI/+mUSP/plEj/6ZRI/+mUSP/plEj/6ZRI/+mUSP/
-        plEj/4g4FuaKOxrmqVYo/6dVJ/+FQB3/bzMW/2swFf9rMBX/azAV/2swFf9r
-        MBX/azAV/3Q1GP+KQx//qFUo/6lWKP+KOxrmjD8d5qtbLP+HRyT/s4dv/9+7
-        pf/oxbD/6MWw/+jFsP/oxbD/6MWw/+jFsP/WsJr/qXtj/4lHIv+rWyz/jD8d
-        5o5CIeavYTL/vpV//+rLuP/qy7j/6su4/+rLuP/qy7j/6su4/+rLuP/qy7j/
-        6su4/+rLuP+ziXH/rF8x/45CIeaQRiXmsmc3/+jLu//t0sL/7dLC/+3Swv/t
-        0sL/7dLC/+3Swv/t0sL/7dLC/+3Swv/t0sL/7NDA/7NrPf+QRiXmkkoo5rRt
-        PP/eu6X/8NrN//Dazf/w2s3/8NrN//Dazf/w2s3/8NrN//Dazf/w2s3/8NrN
-        /+3Vx/+1cD//kkoo5pVOLOa4c0L/vXxO/+G/qP/04tj/9OLY//Ti2P/04tj/
-        9OLY//Ti2P/04tj/9OLY//Ti2P/XrZH/uHNC/5VOLOaXUjDmu3lH/7t5R/+7
-        eUf/vX1M//Pl3P/36uL/9+ri//fq4v/36uL/9+ri/+/bzv/YsJL/vHpJ/7t5
-        R/+XUjDmmVY05r5/Tf++f03/vn9N/75/Tf/kybX/+vLs//ry7P/68uz/+vLs
-        /+fOu/++f03/vn9N/75/Tf++f03/mVY05ptZN+bBhVH/wYVR/8GFUf/BhVH/
-        xY1d/+fPuv/69O7/+fHq/+XLtf/Eiln/wYVR/8GFUf/BhVH/wYVR/5tZN+ad
-        XTrmxIlX/8SJVv/EiVb/xIlW/8SJVv/EiVb/xIlW/8SJVv/EiVb/xIlW/8SJ
-        Vv/EiVb/xIlW/8SJV/+dXTrmnmA95sqVY//Gj1r/xo5Z/8aOWf/Gjln/xo5Z
-        /8aOWf/Gjln/xo5Z/8aOWf/Gjln/xo5Z/8aPWv/KlWP/nmA95qBiQNDGmXX2
-        06h//9Kme//Spnv/0qZ7/9Kme//Spnv/0qZ7/9Kme//Spnv/0qZ7/9Kme//T
-        qH//xpl19qBiQNChZUI5oWVCtaFlQuahZULmoWVC5qFlQuahZULmoWVC5qFl
-        QuahZULmoWVC5qFlQuahZULmoWVC5qFlQrWhZUI5AAAAAAAA8L8AAAAAAAAA
-        AAAACQoAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAD//wAA//8AAAMF
-        AAAAAA0KLS0tLS0tLS0tLS0tLVJ1YnlNdWx0aXBhcnRQb3N0LS0NCg0K
+        ekx6RTNPVGc0TlRjNEwzTXpQM1J2YTJWdVBXRmlZekV5TXlKOUxGc2lZMjl1
+        ZEdWdWRDMXNaVzVuZEdndGNtRnVaMlVpTERBc01qWXlNVFEwTURCZFhYMD0N
+        Ci0tLS0tLS0tLS0tLS1SdWJ5TXVsdGlwYXJ0UG9zdA0KQ29udGVudC1EaXNw
+        b3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJzaWduYXR1cmUiDQoNClA0Z0VE
+        ZS9TYUtuS3lWY2pJZnNRWWNXYnJ3WT0NCi0tLS0tLS0tLS0tLS1SdWJ5TXVs
+        dGlwYXJ0UG9zdA0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBu
+        YW1lPSJhY2wiDQoNCnB1YmxpYy1yZWFkDQotLS0tLS0tLS0tLS0tUnVieU11
+        bHRpcGFydFBvc3QNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsg
+        bmFtZT0ic3VjY2Vzc19hY3Rpb25fcmVkaXJlY3QiDQoNCmh0dHA6Ly9hcGku
+        Z2V0Y2xvdWRhcHAuY29tL2Ryb3BzLzE3OTg4NTc4L3MzP3Rva2VuPWFiYzEy
+        Mw0KLS0tLS0tLS0tLS0tLVJ1YnlNdWx0aXBhcnRQb3N0DQpDb250ZW50LURp
+        c3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9ImZpbGUiOyBmaWxlbmFtZT0i
+        ZmF2aWNvbi5pY28iDQpDb250ZW50LUxlbmd0aDogMTE1MA0KQ29udGVudC1U
+        eXBlOiBpbWFnZS9wbmcNCkNvbnRlbnQtVHJhbnNmZXItRW5jb2Rpbmc6IGJp
+        bmFyeQ0KDQoAAAEAAQAQEAAAAQAgAGgEAAAWAAAAKAAAABAAAAAgAAAAAQAg
+        AAAAAAAAAAAAIBwAACAcAAAAAAAAAAAAAIUyEUGFMhHQhTIR5oUyEeaFMhHm
+        hTIR5oUyEeaFMhHmhTIR5oUyEeaFMhHmhTIR5oUyEeaFMhHmhTIR0IUyEUGH
+        NRPOnEcd96RNIP+kTSD/pE0g/6RNIP+kTSD/pE0g/6RNIP+kTSD/pE0g/6RN
+        IP+kTSD/pE0g/5xHHfeHNRPOiDgW5qZRI/+mUSP/plEj/6ZRI/+mUSP/plEj
+        /6ZRI/+mUSP/plEj/6ZRI/+mUSP/plEj/6ZRI/+mUSP/iDgW5oo7GuapVij/
+        p1Un/4VAHf9vMxb/azAV/2swFf9rMBX/azAV/2swFf9rMBX/dDUY/4pDH/+o
+        VSj/qVYo/4o7GuaMPx3mq1ss/4dHJP+zh2//37ul/+jFsP/oxbD/6MWw/+jF
+        sP/oxbD/6MWw/9awmv+pe2P/iUci/6tbLP+MPx3mjkIh5q9hMv++lX//6su4
+        /+rLuP/qy7j/6su4/+rLuP/qy7j/6su4/+rLuP/qy7j/6su4/7OJcf+sXzH/
+        jkIh5pBGJeayZzf/6Mu7/+3Swv/t0sL/7dLC/+3Swv/t0sL/7dLC/+3Swv/t
+        0sL/7dLC/+3Swv/s0MD/s2s9/5BGJeaSSijmtG08/967pf/w2s3/8NrN//Da
+        zf/w2s3/8NrN//Dazf/w2s3/8NrN//Dazf/w2s3/7dXH/7VwP/+SSijmlU4s
+        5rhzQv+9fE7/4b+o//Ti2P/04tj/9OLY//Ti2P/04tj/9OLY//Ti2P/04tj/
+        9OLY/9etkf+4c0L/lU4s5pdSMOa7eUf/u3lH/7t5R/+9fUz/8+Xc//fq4v/3
+        6uL/9+ri//fq4v/36uL/79vO/9iwkv+8ekn/u3lH/5dSMOaZVjTmvn9N/75/
+        Tf++f03/vn9N/+TJtf/68uz/+vLs//ry7P/68uz/5867/75/Tf++f03/vn9N
+        /75/Tf+ZVjTmm1k35sGFUf/BhVH/wYVR/8GFUf/FjV3/58+6//r07v/58er/
+        5cu1/8SKWf/BhVH/wYVR/8GFUf/BhVH/m1k35p1dOubEiVf/xIlW/8SJVv/E
+        iVb/xIlW/8SJVv/EiVb/xIlW/8SJVv/EiVb/xIlW/8SJVv/EiVb/xIlX/51d
+        OuaeYD3mypVj/8aPWv/Gjln/xo5Z/8aOWf/Gjln/xo5Z/8aOWf/Gjln/xo5Z
+        /8aOWf/Gjln/xo9a/8qVY/+eYD3moGJA0MaZdfbTqH//0qZ7/9Kme//Spnv/
+        0qZ7/9Kme//Spnv/0qZ7/9Kme//Spnv/0qZ7/9Oof//GmXX2oGJA0KFlQjmh
+        ZUK1oWVC5qFlQuahZULmoWVC5qFlQuahZULmoWVC5qFlQuahZULmoWVC5qFl
+        QuahZULmoWVCtaFlQjkAAAAAAADwvwAAAAAAAAAAAAAJCgAAAAAAAAAAAAAA
+        AAAAAAAAAAABAAAAAAAAAAAAAP//AAD//wAAAwUAAAAADQotLS0tLS0tLS0t
+        LS0tUnVieU11bHRpcGFydFBvc3QtLQ0KDQo=
     headers:
       Content-Type:
       - multipart/form-data;boundary=-----------RubyMultipartPost
       Content-Length:
-      - '2382'
+      - '2411'
   response:
     status:
       code: 303
@@ -217,23 +214,23 @@ http_interactions:
     headers:
       !binary "WC1BbXotSWQtMg==":
       - !binary |-
-        WmVRUHdHVUhFVnQ4NHBNN0VJNXZRQmhwd1FxYkkvdHk3Y1pjS2U3NGVEKzZW
-        K2I3eWRuM1Vucy9NNk5rOUIraA==
+        SEJsNm9RNlFZYzc0SE9KcXZKNEYyeWlvMk5GdWxCVGhJQThYdElES3l6emI5
+        cjZIY2FDTU5uZHQxYXd1QTFKLw==
       !binary "WC1BbXotUmVxdWVzdC1JZA==":
       - !binary |-
-        N0MyRTcxODFBRDExOEVCRA==
+        QUEyNzZBQzhGREQ5QTk3MA==
       !binary "RGF0ZQ==":
       - !binary |-
-        V2VkLCAyNSBBcHIgMjAxMiAxNTozODowNyBHTVQ=
+        RnJpLCAwNCBNYXkgMjAxMiAxODoyNDo0NSBHTVQ=
       !binary "RXRhZw==":
       - !binary |-
         IjU2N2QyZDQ5ZDJkMzBlMmRiOTU2ZDY4MGE0ZDAzZjI1Ig==
       !binary "TG9jYXRpb24=":
       - !binary |-
-        aHR0cDovL2FwaS5nZXRjbG91ZGFwcC5jb20vZHJvcHMvMTc2Nzc3NTUvczM/
-        YnVja2V0PWYuY2wubHkma2V5PWl0ZW1zJTJGMXoySjBMM00zczNDMVExVzNw
-        MTIlMkZmYXZpY29uLmljbyZldGFnPSUyMjU2N2QyZDQ5ZDJkMzBlMmRiOTU2
-        ZDY4MGE0ZDAzZjI1JTIy
+        aHR0cDovL2FwaS5nZXRjbG91ZGFwcC5jb20vZHJvcHMvMTc5ODg1NzgvczM/
+        dG9rZW49YWJjMTIzJmJ1Y2tldD1mLmNsLmx5JmtleT1pdGVtcyUyRjBkMjUx
+        MTNsMjIxdzJhM08yQTE5JTJGZmF2aWNvbi5pY28mZXRhZz0lMjI1NjdkMmQ0
+        OWQyZDMwZTJkYjk1NmQ2ODBhNGQwM2YyNSUyMg==
       !binary "Q29udGVudC1MZW5ndGg=":
       - !binary |-
         MA==
@@ -244,10 +241,10 @@ http_interactions:
       encoding: ASCII-8BIT
       string: !binary ""
     http_version: 
-  recorded_at: Wed, 25 Apr 2012 15:38:06 GMT
+  recorded_at: Fri, 04 May 2012 18:24:44 GMT
 - request:
     method: get
-    uri: http://api.getcloudapp.com/drops/17677755/s3?bucket=f.cl.ly&etag=%22567d2d49d2d30e2db956d680a4d03f25%22&key=items/1z2J0L3M3s3C1Q1W3p12/favicon.ico
+    uri: http://api.getcloudapp.com/drops/17988578/s3?bucket=f.cl.ly&etag=%22567d2d49d2d30e2db956d680a4d03f25%22&key=items/0d25113l221w2a3O2A19/favicon.ico&token=abc123
     body:
       encoding: US-ASCII
       string: ''
@@ -271,11 +268,11 @@ http_interactions:
       Content-Type:
       - application/vnd.collection+json; charset=utf-8
       Etag:
-      - ! '"fee852d580dd4da22849a7800708d539"'
+      - ! '"aa1d6d21084f63f5d392c437c9c8b006"'
       Server:
       - thin 1.3.1 codename Triple Espresso
       X-Runtime:
-      - '0.115558'
+      - '0.135202'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
@@ -284,7 +281,7 @@ http_interactions:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/drops","items":[{"href":"http://api.getcloudapp.com/drops/17677755","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/0R381v3D3d1k0F223D0D"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/0R381v3D3d1k0F223D0D"},{"rel":"embed","href":"http://cl.ly/0R381v3D3d1k0F223D0D/favicon.ico"},{"rel":"download","href":"http://cl.ly/0R381v3D3d1k0F223D0D/download/favicon.ico"}],"data":[{"name":"id","value":17677755},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"views","value":0}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]}}}'
+      string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/drops","items":[{"href":"http://api.getcloudapp.com/drops/17988578","links":[{"rel":"root","href":"http://api.getcloudapp.com/"},{"rel":"collection","href":"http://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/0C3A1R3s181L0d0a0H1U"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/0C3A1R3s181L0d0a0H1U"},{"rel":"embed","href":"http://cl.ly/0C3A1R3s181L0d0a0H1U/favicon.ico"},{"rel":"download","href":"http://cl.ly/0C3A1R3s181L0d0a0H1U/download/favicon.ico"}],"data":[{"name":"id","value":17988578},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-05-04T18:24:44Z"}]}],"queries":[{"href":"http://api.getcloudapp.com/drops","rel":"drops-filter","data":[{"name":"filter","value":"active"},{"name":"limit","value":20}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"links":[{"rel":"drops-stream","href":"http://api.getcloudapp.com/drops/stream"}]}}'
     http_version: 
-  recorded_at: Wed, 25 Apr 2012 15:38:07 GMT
+  recorded_at: Fri, 04 May 2012 18:24:44 GMT
 recorded_with: VCR 2.0.0

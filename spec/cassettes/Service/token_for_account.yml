@@ -28,7 +28,7 @@ http_interactions:
       Www-Authenticate:
       - Token realm="CloudApp"
       X-Runtime:
-      - '0.003738'
+      - '0.004739'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
@@ -39,7 +39,7 @@ http_interactions:
       encoding: US-ASCII
       string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/account/token","template":{"data":[{"name":"email","value":null},{"name":"password","value":null}]}}}'
     http_version: 
-  recorded_at: Wed, 25 Apr 2012 15:40:40 GMT
+  recorded_at: Fri, 04 May 2012 18:26:42 GMT
 - request:
     method: post
     uri: http://api.getcloudapp.com/account/token
@@ -66,21 +66,21 @@ http_interactions:
       Server:
       - thin 1.3.1 codename Triple Espresso
       Set-Cookie:
-      - _engine_session=BAh7CEkiFXVzZXJfY3JlZGVudGlhbHMGOgZFRkkiAYBjYmQ4NTVkMGEyOWEyZGI0MmI5ZTU3MDdiMTQ4N2I1YWQ4MzgxMzk2MWFlOTJkMGFjZWM4MWUzODc1YzcxNGI0OGNiODFjODM5ZmFjZTk4YzM3MjlhYjc0YjQxNjZjODRkMjNkN2JlNGU4Zjc4MDM1MDAwOWQ0MTRjM2UzZDllNgY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkDp4EBSSIPc2Vzc2lvbl9pZAY7AEYiJTRlOTg4OGFmMDMxZjg2ZTNjYTkyZDM4ZGM1OGI4MTFj--eafe4757877539527f84b0cc7bad3e6e41e4d997;
+      - _engine_session=BAh7CEkiFXVzZXJfY3JlZGVudGlhbHMGOgZFRkkiAYBjYmQ4NTVkMGEyOWEyZGI0MmI5ZTU3MDdiMTQ4N2I1YWQ4MzgxMzk2MWFlOTJkMGFjZWM4MWUzODc1YzcxNGI0OGNiODFjODM5ZmFjZTk4YzM3MjlhYjc0YjQxNjZjODRkMjNkN2JlNGU4Zjc4MDM1MDAwOWQ0MTRjM2UzZDllNgY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkDp4EBSSIPc2Vzc2lvbl9pZAY7AEYiJTk4MzlhYWU2NWE5OGQ5YmM5NDQ0MTI1NjhkM2I4MDli--e4592ebcef497df2f58f5cbf996941a4f4bac6c6;
         path=/; HttpOnly
       - user_credentials=cbd855d0a29a2db42b9e5707b1487b5ad83813961ae92d0acec81e3875c714b48cb81c839face98c3729ab74b4166c84d23d7be4e8f780350009d414c3e3d9e6%3A%3A98727;
-        path=/; expires=Wed, 25-Jul-2012 15:40:40 GMT
+        path=/; expires=Sat, 04-Aug-2012 18:26:42 GMT
       X-Runtime:
-      - '0.037375'
+      - '0.019707'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Content-Length:
-      - '223'
+      - '249'
       Connection:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: ! '{"collection":{"version":"1.0","href":"/account/token","links":[{"rel":"root","href":"http://api.getcloudapp.com/"}],"items":[{"href":"http://api.getcloudapp.com/account/token","data":[{"name":"token","value":"abc123"}]}]}}'
+      string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/account/token","links":[{"rel":"root","href":"http://api.getcloudapp.com/"}],"items":[{"href":"http://api.getcloudapp.com/account/token","data":[{"name":"token","value":"abc123"}]}]}}'
     http_version: 
-  recorded_at: Wed, 25 Apr 2012 15:40:40 GMT
+  recorded_at: Fri, 04 May 2012 18:26:42 GMT
 recorded_with: VCR 2.0.0

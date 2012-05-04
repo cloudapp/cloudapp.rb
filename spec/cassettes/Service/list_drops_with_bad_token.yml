@@ -30,16 +30,16 @@ http_interactions:
       Www-Authenticate:
       - Token realm="CloudApp"
       X-Runtime:
-      - '0.882829'
+      - '0.019830'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '167'
       Connection:
       - keep-alive
     body:
       encoding: US-ASCII
       string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/account/token","template":{"data":[{"name":"email","value":null},{"name":"password","value":null}]}}}'
     http_version: 
-  recorded_at: Sat, 21 Apr 2012 18:25:05 GMT
+  recorded_at: Fri, 04 May 2012 18:18:21 GMT
 recorded_with: VCR 2.0.0
