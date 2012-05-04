@@ -18,9 +18,9 @@ module CloudApp
       end
 
       def items(item_source = default_item_source)
-        collection.fetch('items').map do |item|
+        collection.fetch('items').map {|item|
           item_source.call(item)
-        end
+        }
       end
 
       # # Ultimately this API would be nice.
@@ -33,6 +33,15 @@ module CloudApp
         template_source.call collection.fetch('template')
       end
 
+      def queries(query_source = default_query_source)
+        return unless collection.has_key?('queries')
+        collection.fetch('queries').map {|query| query_source.call(query) }
+      end
+
+      def query(rel, query_source = default_query_source)
+        Array(queries(query_source)).find {|query| query.rel == rel }
+      end
+
     protected
 
       def default_item_source
@@ -40,6 +49,10 @@ module CloudApp
       end
 
       def default_template_source
+        CloudApp::CollectionJson::Template.public_method(:new)
+      end
+
+      def default_query_source
         CloudApp::CollectionJson::Template.public_method(:new)
       end
 

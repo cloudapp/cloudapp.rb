@@ -40,13 +40,8 @@ module CloudApp
     end
 
     def drops(options = {})
-      href   = options.fetch :href, '/'
-      params = {}
-      unless options.has_key?(:href)
-        params[:filter]   = options[:filter] if options.has_key?(:filter)
-        params[:per_page] = options[:limit]  if options.has_key?(:limit)
-      end
-
+      href   = options[:href] || :root
+      params = options.has_key?(:href) ? {} : options
       DropCollection.new drops_at(href, params)
     end
 
@@ -72,7 +67,7 @@ module CloudApp
 
     def bookmark(url, options = {})
       attributes = fetch_drop_attributes options.merge(url: url)
-      collection = drops_at('/')
+      collection = drops_at :root
       data       = collection.template.fill(attributes)
 
       post(collection.href, {}, data) do |response|
@@ -82,7 +77,7 @@ module CloudApp
 
     def upload(path, options = {})
       attributes = fetch_drop_attributes options.merge(path: path)
-      collection = drops_at('/')
+      collection = drops_at :root
       data       = collection.template.fill(attributes)
 
       post(collection.href, {}, data) do |collection|
@@ -106,17 +101,32 @@ module CloudApp
 
   private
 
-    # TODO: Only pass `params` to `drops` href.
     def drops_at(href, params = {})
-      get(href, params) do |response|
-        return :unauthorized if response.__response__.status == 401
+      params = params.each_with_object({}) {|(key, value), params|
+        params[key.to_s] = value
+      }
 
-        drops_link = response.link('drops') { nil }
-        if drops_link
-          return drops_at(drops_link.href, params)
+      if href == :root
+        get('/') do |response|
+          return :unauthorized if response.__response__.status == 401
+          href = response.link('drops').href
+        end
+      end
+
+      get(href) do |response|
+        return :unauthorized if response.__response__.status == 401
+        if not params.empty?
+          drops_query = response.query('drops-filter')
+          href        = drops_query.href
+          params      = drops_query.fill(params)
         else
           return response
         end
+      end
+
+      get(href, params) do |response|
+        return :unauthorized if response.__response__.status == 401
+        return response
       end
     end
 
@@ -139,9 +149,9 @@ module CloudApp
         name:      'name',
         private:   'private',
         trash:     'trash'
-      }.each_with_object({}) do |(key, name), attributes|
+      }.each_with_object({}) {|(key, name), attributes|
         attributes[name] = options.fetch(key) if options.has_key?(key)
-      end
+      }
     end
 
     def upload_file(path, collection)
@@ -150,12 +160,12 @@ module CloudApp
       file_io = Faraday::UploadIO.new file, 'image/png'
       fields  = collection.template.fill('file' => file_io)
 
-      conn = Faraday.new(url: uri.site) do |builder|
+      conn = Faraday.new(url: uri.site) {|builder|
         builder.request  :multipart
         builder.request  :url_encoded
         builder.response :logger, logger
         builder.adapter  :typhoeus
-      end
+      }
 
       conn.post(uri.request_uri, fields).on_complete do |env|
         location = Addressable::URI.parse env[:response_headers]['Location']
