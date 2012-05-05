@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.getcloudapp.com/
+    uri: https://api.getcloudapp.com/
     body:
       encoding: US-ASCII
       string: ''
@@ -10,36 +10,46 @@ http_interactions:
       Accept:
       - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
         text/plain
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 401
-      message: Unauthorized
+      message: !binary |-
+        VW5hdXRob3JpemVk
     headers:
-      Cache-Control:
-      - no-cache
-      Content-Type:
-      - application/vnd.collection+json; charset=utf-8
-      Server:
-      - thin 1.3.1 codename Triple Espresso
-      Www-Authenticate:
-      - Token realm="CloudApp"
-      X-Runtime:
-      - '0.004739'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vdm5kLmNvbGxlY3Rpb24ranNvbjsgY2hhcnNldD11dGYt
+        OA==
+      !binary "U2VydmVy":
+      - !binary |-
+        dGhpbiAxLjMuMSBjb2RlbmFtZSBUcmlwbGUgRXNwcmVzc28=
+      !binary "V3d3LUF1dGhlbnRpY2F0ZQ==":
+      - !binary |-
+        VG9rZW4gcmVhbG09IkNsb3VkQXBwIg==
+      !binary "WC1SdW50aW1l":
+      - !binary |-
+        MC4wMDI4MjQ=
+      !binary "WC1VYS1Db21wYXRpYmxl":
+      - !binary |-
+        SUU9RWRnZSxjaHJvbWU9MQ==
+      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
+      - !binary |-
+        Y2h1bmtlZA==
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        a2VlcC1hbGl2ZQ==
     body:
-      encoding: US-ASCII
-      string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/account/token","template":{"data":[{"name":"email","value":null},{"name":"password","value":null}]}}}'
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJjb2xsZWN0aW9uIjp7InZlcnNpb24iOiIxLjAiLCJocmVmIjoiaHR0cDov
+        L2FwaS5nZXRjbG91ZGFwcC5jb20vYWNjb3VudC90b2tlbiIsInRlbXBsYXRl
+        Ijp7ImRhdGEiOlt7Im5hbWUiOiJlbWFpbCIsInZhbHVlIjpudWxsfSx7Im5h
+        bWUiOiJwYXNzd29yZCIsInZhbHVlIjpudWxsfV19fX0=
     http_version: 
-  recorded_at: Fri, 04 May 2012 18:26:42 GMT
+  recorded_at: Sat, 05 May 2012 02:18:12 GMT
 - request:
     method: post
     uri: http://api.getcloudapp.com/account/token
@@ -52,35 +62,60 @@ http_interactions:
       Accept:
       - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
         text/plain
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 201
-      message: Created
+      message: !binary |-
+        Q3JlYXRlZA==
     headers:
-      Cache-Control:
-      - no-cache
-      Content-Type:
-      - application/vnd.collection+json; charset=utf-8
-      Server:
-      - thin 1.3.1 codename Triple Espresso
-      Set-Cookie:
-      - _engine_session=BAh7CEkiFXVzZXJfY3JlZGVudGlhbHMGOgZFRkkiAYBjYmQ4NTVkMGEyOWEyZGI0MmI5ZTU3MDdiMTQ4N2I1YWQ4MzgxMzk2MWFlOTJkMGFjZWM4MWUzODc1YzcxNGI0OGNiODFjODM5ZmFjZTk4YzM3MjlhYjc0YjQxNjZjODRkMjNkN2JlNGU4Zjc4MDM1MDAwOWQ0MTRjM2UzZDllNgY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkDp4EBSSIPc2Vzc2lvbl9pZAY7AEYiJTk4MzlhYWU2NWE5OGQ5YmM5NDQ0MTI1NjhkM2I4MDli--e4592ebcef497df2f58f5cbf996941a4f4bac6c6;
-        path=/; HttpOnly
-      - user_credentials=cbd855d0a29a2db42b9e5707b1487b5ad83813961ae92d0acec81e3875c714b48cb81c839face98c3729ab74b4166c84d23d7be4e8f780350009d414c3e3d9e6%3A%3A98727;
-        path=/; expires=Sat, 04-Aug-2012 18:26:42 GMT
-      X-Runtime:
-      - '0.019707'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '249'
-      Connection:
-      - keep-alive
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vdm5kLmNvbGxlY3Rpb24ranNvbjsgY2hhcnNldD11dGYt
+        OA==
+      !binary "U2VydmVy":
+      - !binary |-
+        dGhpbiAxLjMuMSBjb2RlbmFtZSBUcmlwbGUgRXNwcmVzc28=
+      !binary "U2V0LUNvb2tpZQ==":
+      - !binary |-
+        X2VuZ2luZV9zZXNzaW9uPUJBaDdDRWtpRlhWelpYSmZZM0psWkdWdWRHbGhi
+        SE1HT2daRlJra2lBWUJqWW1RNE5UVmtNR0V5T1dFeVpHSTBNbUk1WlRVM01E
+        ZGlNVFE0TjJJMVlXUTRNemd4TXprMk1XRmxPVEprTUdGalpXTTRNV1V6T0Rj
+        MVl6Y3hOR0kwT0dOaU9ERmpPRE01Wm1GalpUazRZek0zTWpsaFlqYzBZalF4
+        Tmpaak9EUmtNak5rTjJKbE5HVTRaamM0TURNMU1EQXdPV1EwTVRSak0yVXpa
+        RGxsTmdZN0FGUkpJaGgxYzJWeVgyTnlaV1JsYm5ScFlXeHpYMmxrQmpzQVJt
+        a0RwNEVCU1NJUGMyVnpjMmx2Ymw5cFpBWTdBRVlpSlRJeE9XWTBORFkxWkdF
+        M1l6TmpNMlEyTm1KalpEbGxZelZsWkdVell6UmotLTlhZDJkOGE0NTljYjAz
+        NmIxMjE2MTBhMGIyM2JkZDJlMGJjZjc2OTE7IHBhdGg9LzsgSHR0cE9ubHk=
+      - !binary |-
+        dXNlcl9jcmVkZW50aWFscz1jYmQ4NTVkMGEyOWEyZGI0MmI5ZTU3MDdiMTQ4
+        N2I1YWQ4MzgxMzk2MWFlOTJkMGFjZWM4MWUzODc1YzcxNGI0OGNiODFjODM5
+        ZmFjZTk4YzM3MjlhYjc0YjQxNjZjODRkMjNkN2JlNGU4Zjc4MDM1MDAwOWQ0
+        MTRjM2UzZDllNiUzQSUzQTk4NzI3OyBwYXRoPS87IGV4cGlyZXM9U3VuLCAw
+        NS1BdWctMjAxMiAwMjoxODoxMiBHTVQ=
+      !binary "WC1SdW50aW1l":
+      - !binary |-
+        MC4xMjgyMDk=
+      !binary "WC1VYS1Db21wYXRpYmxl":
+      - !binary |-
+        SUU9RWRnZSxjaHJvbWU9MQ==
+      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
+      - !binary |-
+        Y2h1bmtlZA==
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        a2VlcC1hbGl2ZQ==
     body:
-      encoding: US-ASCII
-      string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/account/token","links":[{"rel":"root","href":"http://api.getcloudapp.com/"}],"items":[{"href":"http://api.getcloudapp.com/account/token","data":[{"name":"token","value":"abc123"}]}]}}'
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJjb2xsZWN0aW9uIjp7InZlcnNpb24iOiIxLjAiLCJocmVmIjoiaHR0cDov
+        L2FwaS5nZXRjbG91ZGFwcC5jb20vYWNjb3VudC90b2tlbiIsImxpbmtzIjpb
+        eyJyZWwiOiJyb290IiwiaHJlZiI6Imh0dHA6Ly9hcGkuZ2V0Y2xvdWRhcHAu
+        Y29tLyJ9XSwiaXRlbXMiOlt7ImhyZWYiOiJodHRwOi8vYXBpLmdldGNsb3Vk
+        YXBwLmNvbS9hY2NvdW50L3Rva2VuIiwiZGF0YSI6W3sibmFtZSI6InRva2Vu
+        IiwidmFsdWUiOiJhYmMxMjMifV19XX19
     http_version: 
-  recorded_at: Fri, 04 May 2012 18:26:42 GMT
+  recorded_at: Sat, 05 May 2012 02:18:12 GMT
 recorded_with: VCR 2.0.0

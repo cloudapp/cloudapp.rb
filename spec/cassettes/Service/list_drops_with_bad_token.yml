@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.getcloudapp.com/
+    uri: https://api.getcloudapp.com/
     body:
       encoding: US-ASCII
       string: ''
@@ -12,34 +12,44 @@ http_interactions:
       Accept:
       - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
         text/plain
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 401
-      message: Unauthorized
+      message: !binary |-
+        VW5hdXRob3JpemVk
     headers:
-      Cache-Control:
-      - no-cache
-      Content-Type:
-      - application/vnd.collection+json; charset=utf-8
-      Server:
-      - thin 1.3.1 codename Triple Espresso
-      Www-Authenticate:
-      - Token realm="CloudApp"
-      X-Runtime:
-      - '0.019830'
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
-      Content-Length:
-      - '167'
-      Connection:
-      - keep-alive
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vdm5kLmNvbGxlY3Rpb24ranNvbjsgY2hhcnNldD11dGYt
+        OA==
+      !binary "U2VydmVy":
+      - !binary |-
+        dGhpbiAxLjMuMSBjb2RlbmFtZSBUcmlwbGUgRXNwcmVzc28=
+      !binary "V3d3LUF1dGhlbnRpY2F0ZQ==":
+      - !binary |-
+        VG9rZW4gcmVhbG09IkNsb3VkQXBwIg==
+      !binary "WC1SdW50aW1l":
+      - !binary |-
+        MC4wMDY4OTg=
+      !binary "WC1VYS1Db21wYXRpYmxl":
+      - !binary |-
+        SUU9RWRnZSxjaHJvbWU9MQ==
+      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
+      - !binary |-
+        Y2h1bmtlZA==
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        a2VlcC1hbGl2ZQ==
     body:
-      encoding: US-ASCII
-      string: ! '{"collection":{"version":"1.0","href":"http://api.getcloudapp.com/account/token","template":{"data":[{"name":"email","value":null},{"name":"password","value":null}]}}}'
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJjb2xsZWN0aW9uIjp7InZlcnNpb24iOiIxLjAiLCJocmVmIjoiaHR0cDov
+        L2FwaS5nZXRjbG91ZGFwcC5jb20vYWNjb3VudC90b2tlbiIsInRlbXBsYXRl
+        Ijp7ImRhdGEiOlt7Im5hbWUiOiJlbWFpbCIsInZhbHVlIjpudWxsfSx7Im5h
+        bWUiOiJwYXNzd29yZCIsInZhbHVlIjpudWxsfV19fX0=
     http_version: 
-  recorded_at: Fri, 04 May 2012 18:18:21 GMT
+  recorded_at: Sat, 05 May 2012 02:15:18 GMT
 recorded_with: VCR 2.0.0

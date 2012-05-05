@@ -6,7 +6,7 @@ require 'cloudapp/drop_collection'
 module CloudApp
   class Service
     Leadlight.build_service(self) do
-      url 'http://api.getcloudapp.com'
+      url 'https://api.getcloudapp.com'
 
       type_mapping 'application/vnd.collection+json',
                    CollectionJson::Representation,
@@ -18,6 +18,10 @@ module CloudApp
           add_link link.href, link.rel
         end
       end
+    end
+
+    Leadlight.build_connection_common do |builder|
+      builder.adapter :typhoeus
     end
 
     def initialize(*args)
