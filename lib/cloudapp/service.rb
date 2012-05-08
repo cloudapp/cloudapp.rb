@@ -165,8 +165,10 @@ module CloudApp
       fields  = collection.template.fill('file' => file_io)
 
       conn = Faraday.new(url: uri.site) {|builder|
-        builder.request  :multipart
-        builder.request  :url_encoded
+        if collection.template.enctype == Faraday::Request::Multipart.mime_type
+          builder.request :multipart
+        end
+
         builder.response :logger, logger
         builder.adapter  :typhoeus
       }

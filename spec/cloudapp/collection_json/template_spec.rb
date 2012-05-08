@@ -7,13 +7,22 @@ describe CloudApp::CollectionJson::Template do
   let(:template_data) {{ 'data' => [] }}
   subject { CloudApp::CollectionJson::Template.new template_data }
 
-  its(:rel) { should be_nil }
+  its(:rel)     { should be_nil }
+  its(:enctype) { should be_nil }
+
 
   context 'with a rel' do
     let(:rel) { stub :rel }
     before do template_data['rel'] = rel end
 
     its(:rel) { should eq(rel) }
+  end
+
+  context 'with an encoding type' do
+    let(:enctype) { stub :enctype }
+    before do template_data['enctype'] = enctype end
+
+    its(:enctype) { should eq(enctype) }
   end
 
   describe '#fill' do
