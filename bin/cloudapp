@@ -44,7 +44,7 @@ def require_credentials
 
   email        = HighLine.new.ask('Email: ')
   password     = HighLine.new.ask('Password: ') {|q| q.echo = false }
-  config.token = CloudApp::Token.for_account(email, password).value
+  config.token = CloudApp::Token.for_account email, password
 end
 
 def print_bad_token

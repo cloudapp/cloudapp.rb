@@ -3,16 +3,26 @@ require 'helper'
 require 'cloudapp/collection_json/representation'
 
 describe CloudApp::CollectionJson::Representation do
-  let(:href)     { stub }
-  let(:response) {{
+  let(:response)       { stub :response, status: status }
+  let(:status)         { 200 }
+  let(:representation) {{
     'collection' => {
       'href'  => href,
       'items' => []
     }
   }}
-  subject { CloudApp::CollectionJson::Representation.new response }
+  let(:href) { stub }
+  subject { CloudApp::CollectionJson::Representation.new(representation) }
 
   its(:href) { should eq(href) }
+
+  describe '#authorized?' do
+    it { pending 'Conversion from Class to Module' }
+  end
+
+  describe '#unauthorized?' do
+    it { pending 'Conversion from Class to Module' }
+  end
 
   describe '#collection_links' do
     its(:collection_links) { should be_empty }
@@ -22,7 +32,7 @@ describe CloudApp::CollectionJson::Representation do
         { 'rel' => 'next', 'href' => '/next' },
         { 'rel' => 'prev', 'href' => '/prev' }
       ]}
-      before do response['collection']['links'] = links end
+      before do representation['collection']['links'] = links end
 
       its(:collection_links) { should have(2).items }
 
@@ -50,7 +60,7 @@ describe CloudApp::CollectionJson::Representation do
           items[1]
         end
       }}
-      before do response['collection']['items'] = item_data end
+      before do representation['collection']['items'] = item_data end
 
       it 'should have items' do
         subject.items(item_source).should eq(items)
@@ -67,7 +77,7 @@ describe CloudApp::CollectionJson::Representation do
       let(:template)        { stub :template }
       let(:template_data)   { stub :template_data }
       let(:template_source) { ->(item) { template if item == template_data }}
-      before do response['collection']['template'] = template_data end
+      before do representation['collection']['template'] = template_data end
 
       it 'finds the template' do
         subject.template(template_source).should eq(template)
@@ -84,7 +94,7 @@ describe CloudApp::CollectionJson::Representation do
       let(:queries)      {[ stub(:query1),      stub(:query2) ]}
       let(:query_data)   {[ stub(:query_data1), stub(:query_data2) ]}
       let(:query_source) { ->(query) { queries.at(query_data.index(query)) }}
-      before do response['collection']['queries'] = query_data end
+      before do representation['collection']['queries'] = query_data end
 
       it 'should have queries' do
         subject.queries(query_source).should eq(queries)
@@ -102,7 +112,7 @@ describe CloudApp::CollectionJson::Representation do
                             stub(:query2, rel: 'two') ]}
       let(:query_data)   {[ stub(:query_data1), stub(:query_data2) ]}
       let(:query_source) { ->(query) { queries.at(query_data.index(query)) }}
-      before do response['collection']['queries'] = query_data end
+      before do representation['collection']['queries'] = query_data end
 
       it 'finds the query by rel' do
         subject.query('one', query_source).should eq(queries.first)

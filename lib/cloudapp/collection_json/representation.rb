@@ -4,8 +4,12 @@ require 'ostruct'
 module CloudApp
   module CollectionJson
     class Representation < SimpleDelegator
-      def initialize(representation)
-        super
+      def authorized?
+        not unauthorized?
+      end
+
+      def unauthorized?
+        __response__.status == 401
       end
 
       def href

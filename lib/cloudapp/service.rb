@@ -40,7 +40,13 @@ module CloudApp
     end
 
     def token_for_account(email, password)
-      SimpleResponse.new request_token(email, password)
+      authenticate_response = root
+      data = authenticate_response.template.
+               fill('email' => email, 'password' => password)
+
+      post(authenticate_response.href, {}, data) do |response|
+        return response
+      end
     end
 
     def drops(options = {})
@@ -131,17 +137,6 @@ module CloudApp
       get(href, params) do |response|
         return :unauthorized if response.__response__.status == 401
         return response
-      end
-    end
-
-    def request_token(email, password)
-      authenticate_response = root
-      data = authenticate_response.template.
-               fill('email' => email, 'password' => password)
-
-      post(authenticate_response.href, {}, data) do |response|
-        return :unauthorized if response.__response__.status == 401
-        return response.items.first.data['token']
       end
     end
 

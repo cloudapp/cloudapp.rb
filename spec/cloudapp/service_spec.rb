@@ -277,11 +277,14 @@ describe CloudApp::Service do
       }
     }
 
-    it { should     be_successful }
-    it { should_not be_unauthorized }
+    it { should be_authorized }
 
-    it 'returns the token from the given account' do
-      subject.value.should eql(token)
+    it 'returns a single item' do
+      subject.should have(1).item
+    end
+
+    it 'returns the token' do
+      subject.items.first.data.should eq('token' => token)
     end
 
     context 'with bad credentials' do
@@ -292,8 +295,7 @@ describe CloudApp::Service do
         }
       }
 
-      it { should     be_unauthorized }
-      it { should_not be_successful }
+      it { should be_unauthorized }
     end
   end
 

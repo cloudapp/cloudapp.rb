@@ -7,19 +7,26 @@ describe CloudApp::Token do
   before do CloudApp::Token.service_source = service_source end
 
   describe '.for_account' do
-    let(:service)  { stub :service, token_for_account: token }
-    let(:token)    { 'token' }
-    let(:email)    { 'arthur@dent.com' }
-    let(:password) { 'towel' }
+    let(:email)          { 'arthur@dent.com' }
+    let(:password)       { 'towel' }
+    let(:service)        { stub :service, token_for_account: representation }
+    let(:representation) { stub :representation, unauthorized?: unauthorized,
+                                                 items: [ item ]}
+    let(:unauthorized)   { false }
+    let(:item)           { stub :item, data: { 'token' => token }}
+    let(:token)          { 'token' }
     subject { CloudApp::Token.for_account(email, password) }
+
+    it { should eq(token) }
 
     it 'queries the drop service' do
       service.should_receive(:token_for_account).with(email, password)
       subject
     end
 
-    it 'returns the token' do
-      subject.should eq(token)
+    context 'with bad credentials' do
+      let(:unauthorized) { true }
+      it { should be_nil }
     end
   end
 end
