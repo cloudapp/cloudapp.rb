@@ -27,10 +27,25 @@ module CloudApp
         }
       end
 
-      # # Ultimately this API would be nice.
-      # root.template(email: email, password: password).
-      #   post do |response|
-      #     return response
+      # Ultimately this API would be nice:
+      #
+      #   root.template(email: email, password: password).
+      #     post do |response|
+      #       return response
+      #     end
+      #
+      # The Command Pattern could be nice as well. Template#[] may be a better
+      # solution than faux methods.
+      #
+      #   root.create do |template|
+      #     template.email = email
+      #     template.password = password
+      #   end
+      #
+      # Updates also use the template.
+      #
+      #   root.items.first.update do |template|
+      #     template.name.reverse!
       #   end
       def template(template_source = default_template_source)
         return unless collection.has_key?('template')
