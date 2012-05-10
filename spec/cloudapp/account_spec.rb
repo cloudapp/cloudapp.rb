@@ -1,8 +1,5 @@
 require 'helper'
 
-stub_module :CloudApp
-stub_class 'CloudApp::DropCollection'
-
 require 'cloudapp/account'
 
 describe CloudApp::Account do
@@ -10,7 +7,16 @@ describe CloudApp::Account do
   let(:token)   { 'token' }
   let(:service) { stub :service, :token= => nil }
   let(:service_source) { -> { service }}
-  before do CloudApp::Account.service_source = service_source end
+  before do
+    stub_class 'CloudApp::DropCollection'
+    CloudApp::Account.service_source = service_source
+  end
+
+  after do
+    if CloudApp::DropCollection.ancestors.include? Stubbed
+      CloudApp.send :remove_const, :DropCollection
+    end
+  end
 
   describe '.using_token' do
     it 'constructs and returns a new Account' do
@@ -43,16 +49,23 @@ describe CloudApp::Account do
 
   describe '#drop_at' do
     let(:drop) { stub :drop }
+    let(:drop_collection) { stub :drop_collection }
     subject { CloudApp::Account.new(token).drop_at(args) }
-    before do service.stub(drop_at: drop) end
+    before do
+      CloudApp::DropCollection.stub new: drop_collection
+      service.stub(drop_at: drop)
+    end
+
+    it { should eq(drop_collection) }
 
     it 'delegates to the drop service' do
       service.should_receive(:drop_at).with(args)
       subject
     end
 
-    it 'returns the drop' do
-      subject.should eq(drop)
+    it 'creates a new drop collection' do
+      CloudApp::DropCollection.should_receive(:new).with(drop)
+      subject
     end
   end
 

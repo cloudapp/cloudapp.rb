@@ -118,8 +118,6 @@ describe CloudApp::Service do
       VCR.use_cassette('Service/view_drop') { service.drop_at(@href) }
     }
 
-    it { should be_a(CloudApp::DropCollection) }
-
     it 'returns a drop' do
       subject.should have(1).item
     end
@@ -162,7 +160,9 @@ describe CloudApp::Service do
         }
       }
 
-      it { should be_successful }
+      it 'returns the new drop' do
+        subject.should have(1).item
+      end
     end
 
     context 'updating file' do
@@ -177,7 +177,9 @@ describe CloudApp::Service do
         }
       }
 
-      it { should be_successful }
+      it 'returns the new drop' do
+        subject.should have(1).item
+      end
     end
   end
 
@@ -188,8 +190,11 @@ describe CloudApp::Service do
       VCR.use_cassette('Service/create_bookmark') { service.bookmark(url) }
     }
 
-    it { should be_successful }
     it { should be_a(CloudApp::DropCollection) }
+
+    it 'returns the new drop' do
+      subject.should have(1).item
+    end
 
     context 'with a name' do
       let(:name) { 'New Bookmark' }
@@ -198,8 +203,6 @@ describe CloudApp::Service do
           service.bookmark url, name: name
         }
       }
-
-      it { should be_successful }
 
       it 'has the given name' do
         subject.first.name.should eq(name)
@@ -212,8 +215,6 @@ describe CloudApp::Service do
           service.bookmark url, private: false
         }
       }
-
-      it { should be_successful }
 
       it 'is public' do
         subject.first.private.should be_false
@@ -230,8 +231,11 @@ describe CloudApp::Service do
       VCR.use_cassette('Service/upload_file') { service.upload(path) }
     }
 
-    it { should be_successful }
     it { should be_a(CloudApp::DropCollection) }
+
+    it 'returns the new drop' do
+      subject.should have(1).item
+    end
 
     context 'with a name' do
       let(:name) { 'New File' }
@@ -240,8 +244,6 @@ describe CloudApp::Service do
           service.upload path, name: name
         }
       }
-
-      it { should be_successful }
 
       it 'has the given name' do
         subject.first.name.should eq(name)
@@ -254,8 +256,6 @@ describe CloudApp::Service do
           service.upload path, private: false
         }
       }
-
-      it { should be_successful }
 
       it 'is public' do
         subject.first.private.should be_false

@@ -48,7 +48,7 @@ require 'forwardable'
 module CloudApp
   class Account
     extend Forwardable
-    def_delegators :service, :drop_at, :bookmark, :upload, :update,
+    def_delegators :service, :bookmark, :upload, :update,
                    :trash_drop, :recover_drop, :delete_drop
 
     class << self
@@ -73,6 +73,10 @@ module CloudApp
 
     def drops(*args)
       DropCollection.new service.drops(*args)
+    end
+
+    def drop_at(*args)
+      DropCollection.new service.drop_at(*args)
     end
 
   protected

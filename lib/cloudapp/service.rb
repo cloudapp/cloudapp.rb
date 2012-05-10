@@ -48,7 +48,7 @@ module CloudApp
     end
 
     def drop_at(href)
-      DropCollection.new drops_at(href)
+      drops_at href
     end
 
     def update(href, options = {})

@@ -1,32 +1,21 @@
 require 'delegate'
+require 'forwardable'
 
 module CloudApp
   class DropCollection < SimpleDelegator
-    def initialize(response, drop_class = Drop)
-      @response   = response
-      @drop_class = drop_class
+    extend Forwardable
+    def_delegators :@representation, :authorized?, :unauthorized?
+
+    def initialize(representation, drop_class = Drop)
+      @representation = representation
+      @drop_class     = drop_class
       super drops
     end
 
-    def link(name)
-      fallback = -> {}
-      link = @response.link name, &fallback
-      link and link.href.to_s
-    end
-
-    def successful?
-      not unauthorized?
-    end
-
-    def unauthorized?
-      @response == :unauthorized
-    end
-
-  private
+  protected
 
     def drops
-      return [] if unauthorized?
-      @drops ||= @response.items.map {|drop| @drop_class.new(drop) }
+      @drops ||= @representation.items.map {|drop| @drop_class.new(drop) }
     end
   end
 end
