@@ -1,5 +1,8 @@
 require 'helper'
 
+stub_module :CloudApp
+stub_class 'CloudApp::DropCollection'
+
 require 'cloudapp/account'
 
 describe CloudApp::Account do
@@ -17,17 +20,24 @@ describe CloudApp::Account do
   end
 
   describe '#drops' do
-    let(:drops) {[ stub(:drop) ]}
+    let(:drops)           {[ stub(:drop) ]}
+    let(:drop_collection) { stub :drop_collection }
     subject { CloudApp::Account.new(token).drops(args) }
-    before do service.stub(drops: drops) end
+    before do
+      CloudApp::DropCollection.stub new: drop_collection
+      service.stub(drops: drops)
+    end
+
+    it { should eq(drop_collection) }
 
     it 'delegates to the drop service' do
       service.should_receive(:drops).with(args)
       subject
     end
 
-    it 'returns the drops' do
-      subject.should eq(drops)
+    it 'creates a new drop collection' do
+      CloudApp::DropCollection.should_receive(:new).with(drops)
+      subject
     end
   end
 

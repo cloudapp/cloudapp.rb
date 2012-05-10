@@ -11,8 +11,6 @@ describe CloudApp::Service do
     let(:service) { CloudApp::Service.using_token token }
     subject { VCR.use_cassette('Service/list_drops') { service.drops }}
 
-    it { should be_a(CloudApp::DropCollection) }
-
     it 'has 20 drops' do
       subject.should have(20).items
     end
@@ -45,7 +43,7 @@ describe CloudApp::Service do
     context 'with href' do
       subject {
         VCR.use_cassette('Service/list_drops_with_limit') {
-          @href = service.drops(limit: limit).link('next')
+          @href = service.drops(limit: limit).link('next').href
         }
         VCR.use_cassette('Service/list_drops_with_href') {
           service.drops href: @href
@@ -53,7 +51,7 @@ describe CloudApp::Service do
       }
 
       it 'returns the resource at the given href' do
-        subject.link('self').should eq(@href)
+        subject.link('self').href.should eq(@href)
       end
     end
 
@@ -70,7 +68,7 @@ describe CloudApp::Service do
     context 'with filter and href' do
       subject {
         VCR.use_cassette('Service/list_drops_with_limit') {
-          @href = service.drops(limit: limit).link('next')
+          @href = service.drops(limit: limit).link('next').href
         }
         VCR.use_cassette('Service/list_drops_with_href') {
           service.drops href: @href, filter: 'trash'
@@ -85,7 +83,7 @@ describe CloudApp::Service do
     context 'with limit and href' do
       subject {
         VCR.use_cassette('Service/list_drops_with_limit') {
-          @href = service.drops(limit: limit).link('next')
+          @href = service.drops(limit: limit).link('next').href
         }
         VCR.use_cassette('Service/list_drops_with_href') {
           service.drops href: @href, limit: 1
@@ -115,7 +113,7 @@ describe CloudApp::Service do
     let(:service) { CloudApp::Service.using_token token }
     subject {
       VCR.use_cassette('Service/list_drops') {
-        @href = service.drops.first.href
+        @href = service.drops.items.first.href
       }
       VCR.use_cassette('Service/view_drop') { service.drop_at(@href) }
     }

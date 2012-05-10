@@ -43,7 +43,8 @@ module CloudApp
     def drops(options = {})
       href   = options[:href] || :root
       params = options.has_key?(:href) ? {} : options
-      DropCollection.new drops_at(href, params)
+
+      drops_at href, params
     end
 
     def drop_at(href)
@@ -109,13 +110,13 @@ module CloudApp
 
       if href == :root
         get('/') do |response|
-          return :unauthorized if response.__response__.status == 401
+          return response if response.__response__.status == 401
           href = response.link('drops').href
         end
       end
 
       get(href) do |response|
-        return :unauthorized if response.__response__.status == 401
+        return response if response.__response__.status == 401
         if not params.empty?
           drops_query = response.query('drops-filter')
           href        = drops_query.href
@@ -126,7 +127,7 @@ module CloudApp
       end
 
       get(href, params) do |response|
-        return :unauthorized if response.__response__.status == 401
+        return response if response.__response__.status == 401
         return response
       end
     end

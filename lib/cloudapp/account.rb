@@ -48,19 +48,19 @@ require 'forwardable'
 module CloudApp
   class Account
     extend Forwardable
-    def_delegators :service, :drops, :drop_at, :bookmark, :upload, :update,
+    def_delegators :service, :drop_at, :bookmark, :upload, :update,
                    :trash_drop, :recover_drop, :delete_drop
 
     class << self
       attr_writer :service_source
+    end
 
-      def service_source
-        @service_source ||= CloudApp::Service.public_method(:new)
-      end
+    def self.service_source
+      @service_source ||= CloudApp::Service.public_method(:new)
+    end
 
-      def service
-        service_source.call
-      end
+    def self.service
+      service_source.call
     end
 
     def initialize(token = nil)
@@ -69,6 +69,10 @@ module CloudApp
 
     def self.using_token(token)
       CloudApp::Account.new token
+    end
+
+    def drops(*args)
+      DropCollection.new service.drops(*args)
     end
 
   protected
