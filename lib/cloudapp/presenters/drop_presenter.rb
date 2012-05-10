@@ -2,6 +2,10 @@ require 'delegate'
 
 module CloudApp
   class DropPresenter < SimpleDelegator
+    def initialize(drops)
+      super drops.first
+    end
+
     def present
       pretty
     end

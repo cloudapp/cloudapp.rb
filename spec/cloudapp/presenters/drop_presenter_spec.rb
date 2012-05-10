@@ -26,7 +26,7 @@ describe CloudApp::DropPresenter do
   let(:fake_drop_class) { CloudApp::DropPresenter::FakeDrop }
 
   describe '#present' do
-    let(:drop) { fake_drop_class.new }
+    let(:drop) {[ fake_drop_class.new ]}
     subject    { CloudApp::DropPresenter.new(drop).present }
 
     it 'prints the drop' do
