@@ -1,4 +1,6 @@
 require 'forwardable'
+require 'cloudapp/drop'
+require 'cloudapp/drop_collection'
 
 # Usage:
 #
