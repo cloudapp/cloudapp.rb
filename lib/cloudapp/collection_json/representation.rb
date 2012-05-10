@@ -3,14 +3,6 @@ require 'ostruct'
 module CloudApp
   module CollectionJson
     module Representation
-      def authorized?
-        not unauthorized?
-      end
-
-      def unauthorized?
-        __response__.status == 401
-      end
-
       def href
         collection.fetch('href')
       end

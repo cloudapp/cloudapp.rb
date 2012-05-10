@@ -105,9 +105,7 @@ describe CloudApp::Service do
         }
       }
 
-      it 'is unauthorized' do
-        subject.should be_unauthorized
-      end
+      it { should be_unauthorized }
     end
   end
 
@@ -283,9 +281,7 @@ describe CloudApp::Service do
       }
     }
 
-    # it { should be_a(CloudApp::CollectionJson::Representation) }
-
-    it { should be_authorized }
+    it { should be_a(CloudApp::CollectionJson::Representation) }
 
     it 'returns a single item' do
       subject.should have(1).item
@@ -357,8 +353,6 @@ describe CloudApp::Service do
       }
     }
 
-    # it { should be_a(CloudApp::CollectionJson::Representation) }
-
-    it { should be_successful }
+    it { should be_authorized }
   end
 end

@@ -20,24 +20,6 @@ describe CloudApp::CollectionJson::Representation do
 
   its(:href) { should eq(href) }
 
-  describe '#authorized?' do
-    it { should be_authorized }
-
-    context 'unauthorized status' do
-      let(:status) { 401 }
-      it { should_not be_authorized }
-    end
-  end
-
-  describe '#unauthorized?' do
-    it { should_not be_unauthorized }
-
-    context 'unauthorized status' do
-      let(:status) { 401 }
-      it { should be_unauthorized }
-    end
-  end
-
   describe '#collection_links' do
     its(:collection_links) { should be_empty }
 

@@ -1,4 +1,5 @@
 require 'leadlight'
+require 'cloudapp/authorized_representation'
 require 'cloudapp/collection_json'
 require 'cloudapp/collection_json/tint'
 
@@ -7,6 +8,7 @@ module CloudApp
     Leadlight.build_service(self) do
       url 'https://api.getcloudapp.com'
       tints << CollectionJson::Tint
+      tints << AuthorizedRepresentation::Tint
     end
 
     Leadlight.build_connection_common do |builder|
@@ -95,7 +97,7 @@ module CloudApp
 
     def delete_drop(href)
       delete(href) do |response|
-        return SimpleResponse.new(response)
+        return response
       end
     end
 
@@ -163,20 +165,6 @@ module CloudApp
         get(location) do |upload_response|
           return upload_response
         end
-      end
-    end
-
-    class SimpleResponse < SimpleDelegator
-      def value
-        __getobj__
-      end
-
-      def successful?
-        not unauthorized?
-      end
-
-      def unauthorized?
-        self == :unauthorized
       end
     end
   end
