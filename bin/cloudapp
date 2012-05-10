@@ -128,7 +128,7 @@ command [:list, :ls] do |c|
     filter = options[:filter]
     drops  = account.drops filter: filter, limit: count
 
-    if drops.successful?
+    if drops.authorized?
       puts CloudApp::DropListPresenter.new(drops).present
     else
       print_bad_token
@@ -144,8 +144,8 @@ command :details do |c|
 
     hrefs.each do |href|
       drop = account.drop_at href
-      if drop.successful?
-        puts CloudApp::DropPresenter.new(drop.first).present
+      if drop.authorized?
+        puts CloudApp::DropPresenter.new(drop).present
       else
         print_bad_token
       end
@@ -212,7 +212,7 @@ command :trash do |c|
       print "Trashing #{ href }... "
       drop = account.trash_drop href
 
-      if drop.successful?
+      if drop.authorized?
         puts 'done'
       else
         print_bad_token
@@ -229,7 +229,7 @@ command :recover do |c|
       print "Recovering #{ href }... "
       drop = account.recover_drop href
 
-      if drop.successful?
+      if drop.authorized?
         puts drop.first.share_url
       else
         print_bad_token
@@ -247,7 +247,7 @@ command :delete do |c|
         print "Deleting #{ href }... "
         drop = account.delete_drop href
 
-        if drop.successful?
+        if drop.authorized?
           puts 'done'
         else
           print_bad_token
