@@ -12,16 +12,30 @@ describe CloudApp::CollectionJson::Representation do
     }
   }}
   let(:href) { stub }
-  subject { CloudApp::CollectionJson::Representation.new(representation) }
+  subject    { representation }
+  before do
+    representation.extend CloudApp::CollectionJson::Representation
+    representation.stub __response__: response
+  end
 
   its(:href) { should eq(href) }
 
   describe '#authorized?' do
-    it { pending 'Conversion from Class to Module' }
+    it { should be_authorized }
+
+    context 'unauthorized status' do
+      let(:status) { 401 }
+      it { should_not be_authorized }
+    end
   end
 
   describe '#unauthorized?' do
-    it { pending 'Conversion from Class to Module' }
+    it { should_not be_unauthorized }
+
+    context 'unauthorized status' do
+      let(:status) { 401 }
+      it { should be_unauthorized }
+    end
   end
 
   describe '#collection_links' do

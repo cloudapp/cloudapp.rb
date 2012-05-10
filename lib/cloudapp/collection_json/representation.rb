@@ -1,9 +1,8 @@
-require 'delegate'
 require 'ostruct'
 
 module CloudApp
   module CollectionJson
-    class Representation < SimpleDelegator
+    module Representation
       def authorized?
         not unauthorized?
       end

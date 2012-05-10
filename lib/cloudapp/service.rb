@@ -8,12 +8,9 @@ module CloudApp
     Leadlight.build_service(self) do
       url 'https://api.getcloudapp.com'
 
-      type_mapping 'application/vnd.collection+json',
-                   CollectionJson::Representation,
-                   CollectionJson::Type
-
-      tint 'collection+json' do
+      tint 'collection+json', status: [ :success, 401 ] do
         match_content_type 'application/vnd.collection+json'
+        extend CollectionJson::Representation
         collection_links.each do |link|
           add_link link.href, link.rel
         end
