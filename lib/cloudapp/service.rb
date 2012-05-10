@@ -1,5 +1,6 @@
 require 'leadlight'
 require 'cloudapp/collection_json'
+require 'cloudapp/collection_json/tint'
 require 'cloudapp/drop'
 require 'cloudapp/drop_collection'
 
@@ -7,14 +8,7 @@ module CloudApp
   class Service
     Leadlight.build_service(self) do
       url 'https://api.getcloudapp.com'
-
-      tint 'collection+json', status: [ :success, 401 ] do
-        match_content_type 'application/vnd.collection+json'
-        extend CollectionJson::Representation
-        collection_links.each do |link|
-          add_link link.href, link.rel
-        end
-      end
+      tints << CollectionJson::Tint
     end
 
     Leadlight.build_connection_common do |builder|
