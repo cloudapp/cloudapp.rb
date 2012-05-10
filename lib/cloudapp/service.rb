@@ -1,8 +1,6 @@
 require 'leadlight'
 require 'cloudapp/collection_json'
 require 'cloudapp/collection_json/tint'
-require 'cloudapp/drop'
-require 'cloudapp/drop_collection'
 
 module CloudApp
   class Service
@@ -53,14 +51,14 @@ module CloudApp
 
     def update(href, options = {})
       collection = drops_at href
-      drop       = DropCollection.new(collection).first
+      drop       = collection.items.first
       path       = options.fetch :path, nil
       attributes = drop.data.merge fetch_drop_attributes(options)
       data       = collection.template.fill attributes
 
       put(drop.href, {}, data) do |collection|
         if not path
-          return DropCollection.new(collection)
+          return collection
         else
           return upload_file(path, collection)
         end
@@ -73,7 +71,7 @@ module CloudApp
       data       = collection.template.fill(attributes)
 
       post(collection.href, {}, data) do |response|
-        return DropCollection.new(response)
+        return response
       end
     end
 
@@ -163,7 +161,7 @@ module CloudApp
       conn.post(uri.request_uri, fields).on_complete do |env|
         location = Addressable::URI.parse env[:response_headers]['Location']
         get(location) do |upload_response|
-          return DropCollection.new(upload_response)
+          return upload_response
         end
       end
     end

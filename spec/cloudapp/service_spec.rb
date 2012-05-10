@@ -11,6 +11,8 @@ describe CloudApp::Service do
     let(:service) { CloudApp::Service.using_token token }
     subject { VCR.use_cassette('Service/list_drops') { service.drops }}
 
+    it { should be_a(CloudApp::CollectionJson::Representation) }
+
     it 'has 20 drops' do
       subject.should have(20).items
     end
@@ -118,6 +120,8 @@ describe CloudApp::Service do
       VCR.use_cassette('Service/view_drop') { service.drop_at(@href) }
     }
 
+    it { should be_a(CloudApp::CollectionJson::Representation) }
+
     it 'returns a drop' do
       subject.should have(1).item
     end
@@ -131,23 +135,23 @@ describe CloudApp::Service do
     let(:private) { false }
     subject {
       VCR.use_cassette('Service/rename_drop') {
-        drop = service.bookmark(url).first
+        drop = service.bookmark(url).items.first
         service.update drop.href, options
       }
     }
 
-    it { should be_a(CloudApp::DropCollection) }
+    it { should be_a(CloudApp::CollectionJson::Representation) }
 
     it 'returns the updated drop' do
       subject.should have(1).item
     end
 
     it 'updates the name' do
-      subject.first.name.should eq(name)
+      subject.items.first.data['name'].should eq(name)
     end
 
     it 'updates the privacy' do
-      subject.first.private.should eq(private)
+      subject.items.first.data['private'].should eq(private)
     end
 
     context 'updating bookmark link' do
@@ -155,10 +159,12 @@ describe CloudApp::Service do
       let(:new_url) { 'http://example.org' }
       subject {
         VCR.use_cassette('Service/update_drop_bookmark_url') {
-          drop = service.bookmark(url).first
+          drop = service.bookmark(url).items.first
           service.update drop.href, options
         }
       }
+
+      it { should be_a(CloudApp::CollectionJson::Representation) }
 
       it 'returns the new drop' do
         subject.should have(1).item
@@ -172,10 +178,12 @@ describe CloudApp::Service do
       }
       subject {
         VCR.use_cassette('Service/update_file') {
-          drop = service.bookmark(url).first
+          drop = service.bookmark(url).items.first
           service.update drop.href, options
         }
       }
+
+      it { should be_a(CloudApp::CollectionJson::Representation) }
 
       it 'returns the new drop' do
         subject.should have(1).item
@@ -190,7 +198,7 @@ describe CloudApp::Service do
       VCR.use_cassette('Service/create_bookmark') { service.bookmark(url) }
     }
 
-    it { should be_a(CloudApp::DropCollection) }
+    it { should be_a(CloudApp::CollectionJson::Representation) }
 
     it 'returns the new drop' do
       subject.should have(1).item
@@ -205,7 +213,7 @@ describe CloudApp::Service do
       }
 
       it 'has the given name' do
-        subject.first.name.should eq(name)
+        subject.items.first.data['name'].should eq(name)
       end
     end
 
@@ -217,7 +225,7 @@ describe CloudApp::Service do
       }
 
       it 'is public' do
-        subject.first.private.should be_false
+        subject.items.first.data['private'].should eq(false)
       end
     end
   end
@@ -231,7 +239,7 @@ describe CloudApp::Service do
       VCR.use_cassette('Service/upload_file') { service.upload(path) }
     }
 
-    it { should be_a(CloudApp::DropCollection) }
+    it { should be_a(CloudApp::CollectionJson::Representation) }
 
     it 'returns the new drop' do
       subject.should have(1).item
@@ -246,7 +254,7 @@ describe CloudApp::Service do
       }
 
       it 'has the given name' do
-        subject.first.name.should eq(name)
+        subject.items.first.data['name'].should eq(name)
       end
     end
 
@@ -258,7 +266,7 @@ describe CloudApp::Service do
       }
 
       it 'is public' do
-        subject.first.private.should be_false
+        subject.items.first.data['private'].should eq(false)
       end
     end
 
@@ -274,6 +282,8 @@ describe CloudApp::Service do
         CloudApp::Service.new.token_for_account email, password
       }
     }
+
+    # it { should be_a(CloudApp::CollectionJson::Representation) }
 
     it { should be_authorized }
 
@@ -301,19 +311,19 @@ describe CloudApp::Service do
     let(:service) { CloudApp::Service.using_token token }
     subject {
       VCR.use_cassette('Service/trash_drop') {
-        drop = service.bookmark('http://getcloudapp.com').first
+        drop = service.bookmark('http://getcloudapp.com').items.first
         service.trash_drop drop.href
       }
     }
 
-    it { should be_a(CloudApp::DropCollection) }
+    it { should be_a(CloudApp::CollectionJson::Representation) }
 
     it 'returns the trashed drop' do
       subject.should have(1).item
     end
 
     it 'trashes the drop' do
-      subject.first.trash.should eq(true)
+      subject.items.first.data['trash'].should eq(true)
     end
   end
 
@@ -321,20 +331,20 @@ describe CloudApp::Service do
     let(:service) { CloudApp::Service.using_token token }
     subject {
       VCR.use_cassette('Service/recover_drop') {
-        drop = service.bookmark('http://getcloudapp.com').first
+        drop = service.bookmark('http://getcloudapp.com').items.first
         service.trash_drop   drop.href
         service.recover_drop drop.href
       }
     }
 
-    it { should be_a(CloudApp::DropCollection) }
+    it { should be_a(CloudApp::CollectionJson::Representation) }
 
     it 'returns the recovered drop' do
       subject.should have(1).item
     end
 
     it 'recovers the drop' do
-      subject.first.trash.should eq(false)
+      subject.items.first.data['trash'].should eq(false)
     end
   end
 
@@ -342,10 +352,12 @@ describe CloudApp::Service do
     let(:service) { CloudApp::Service.using_token token }
     subject {
       VCR.use_cassette('Service/delete_drop') {
-        drop = service.bookmark('http://getcloudapp.com').first
+        drop = service.bookmark('http://getcloudapp.com').items.first
         service.delete_drop drop.href
       }
     }
+
+    # it { should be_a(CloudApp::CollectionJson::Representation) }
 
     it { should be_successful }
   end
