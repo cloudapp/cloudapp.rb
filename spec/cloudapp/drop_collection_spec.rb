@@ -4,9 +4,9 @@ require 'ostruct'
 require 'cloudapp/drop_collection'
 
 describe CloudApp::DropCollection do
-  let(:items)      {[ stub(:item1), stub(:item2) ]}
-  let(:representation)   { stub :representation, items: items }
-  let(:drop_class) { stub(:drop_class, new: nil) }
+  let(:representation) { stub :representation, items: items }
+  let(:items)          {[ stub(:item1), stub(:item2) ]}
+  let(:drop_class)     { stub(:drop_class, new: nil) }
   subject { CloudApp::DropCollection.new representation, drop_class }
 
   describe '#authorized?' do
