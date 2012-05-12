@@ -15,7 +15,7 @@ module CloudApp
       builder.adapter :typhoeus
     end
 
-    def initialize(*args)
+    def initialize
       super
       logger.level = Logger::WARN
     end
