@@ -15,6 +15,7 @@ describe CloudApp::Account do
   end
 
   after do
+    CloudApp::Account.service_source = nil
     if CloudApp::DropCollection.ancestors.include? Stubbed
       CloudApp.send :remove_const, :DropCollection
     end

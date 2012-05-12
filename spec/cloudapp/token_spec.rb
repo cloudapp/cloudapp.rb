@@ -5,6 +5,7 @@ require 'cloudapp/token'
 describe CloudApp::Token do
   let(:service_source) { -> { service }}
   before do CloudApp::Token.service_source = service_source end
+  after  do CloudApp::Token.service_source = nil end
 
   describe '.for_account' do
     let(:email)          { 'arthur@dent.com' }
