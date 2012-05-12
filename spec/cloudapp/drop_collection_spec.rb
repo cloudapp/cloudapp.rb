@@ -27,6 +27,22 @@ describe CloudApp::DropCollection do
     end
   end
 
+  describe '#link' do
+    it 'delegates to representation' do
+      args = stub :args
+      representation.should_receive(:link).with(args)
+      subject.link(args)
+    end
+  end
+
+  describe '#links' do
+    it 'delegates to representation' do
+      args = stub :args
+      representation.should_receive(:links).with(args)
+      subject.links(args)
+    end
+  end
+
   it 'is a collection of drops' do
     subject.size.should eq(2)
   end
