@@ -3,5 +3,5 @@ require 'cloudapp/service'
 require 'cloudapp/token'
 
 module CloudApp
-  VERSION = '1.1.0'
+  VERSION = '2.0.0.beta.1'
 end
