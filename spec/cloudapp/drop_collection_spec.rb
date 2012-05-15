@@ -4,7 +4,9 @@ require 'ostruct'
 require 'cloudapp/drop_collection'
 
 describe CloudApp::DropCollection do
-  let(:representation) { stub :representation, items: items }
+  let(:representation) { stub :representation, unauthorized?: unauthorized,
+                                               items: items }
+  let(:unauthorized)   { nil }
   let(:items)          {[ stub(:item1), stub(:item2) ]}
   let(:drop_class)     { stub(:drop_class, new: nil) }
   subject { CloudApp::DropCollection.new representation, drop_class }
@@ -20,7 +22,6 @@ describe CloudApp::DropCollection do
 
   describe '#unauthorized?' do
     let(:unauthorized) { stub :unauthorized }
-    before do representation.stub(unauthorized?: unauthorized) end
 
     it 'delegates to representation' do
       subject.unauthorized?.should eq(unauthorized)
@@ -52,5 +53,11 @@ describe CloudApp::DropCollection do
       drop_class.should_receive(:new).with(drop)
     end
     subject
+  end
+
+  context 'unauthorized' do
+    let(:unauthorized) { stub :unauthorized }
+
+    it { should be_empty }
   end
 end

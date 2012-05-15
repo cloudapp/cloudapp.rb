@@ -15,6 +15,7 @@ module CloudApp
   protected
 
     def drops
+      return [] if unauthorized?
       @drops ||= @representation.items.map {|drop| @drop_class.new(drop) }
     end
   end
