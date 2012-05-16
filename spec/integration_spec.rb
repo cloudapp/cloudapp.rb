@@ -87,9 +87,9 @@ describe CloudApp, :integration do
     next_page.should have(1).item
 
     # TODO: Uncomment when pagination with filter is fixed.
-    # next_page = all_drops(href: next_page.link('next').href)
-    # next_page.should have(1).item
-    # next_page.link('next').should be_nil
+    next_page = all_drops(href: next_page.link('next').href)
+    next_page.should have(1).item
+    next_page.link('next') { nil }.should be_nil
 
     delete_drop bookmark
     delete_drop file
