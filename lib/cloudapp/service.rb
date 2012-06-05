@@ -1,4 +1,5 @@
 require 'leadlight'
+require 'typhoeus'
 require 'cloudapp/authorized_representation'
 require 'cloudapp/collection_json'
 require 'cloudapp/collection_json/tint'
