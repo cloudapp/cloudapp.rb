@@ -48,8 +48,12 @@ require 'rspec/core/rake_task'
 
 desc "Run all specs"
 task RSpec::Core::RakeTask.new('spec')
-
 task :default => "spec"
+
+desc 'Run non-integration specs'
+RSpec::Core::RakeTask.new('spec:unit') do |t|
+  t.rspec_opts = "--tag ~integration"
+end
 
 #############################################################################
 #
