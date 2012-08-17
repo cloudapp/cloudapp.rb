@@ -1,5 +1,5 @@
 require 'helper'
-require 'support/vcr_rspec'
+require 'support/vcr'
 
 require 'cloudapp'
 
