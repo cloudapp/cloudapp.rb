@@ -1,0 +1,127 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.getcloudapp.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+  response:
+    status:
+      code: 401
+      message: !binary |-
+        VW5hdXRob3JpemVk
+    headers:
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vdm5kLmNvbGxlY3Rpb24ranNvbjsgY2hhcnNldD11dGYt
+        OA==
+      !binary "U2VydmVy":
+      - !binary |-
+        dGhpbiAxLjQuMSBjb2RlbmFtZSBDaHJvbWVv
+      !binary "V3d3LUF1dGhlbnRpY2F0ZQ==":
+      - !binary |-
+        VG9rZW4gcmVhbG09IkNsb3VkQXBwIg==
+      !binary "WC1SdW50aW1l":
+      - !binary |-
+        MC4wMDQyNDM=
+      !binary "WC1VYS1Db21wYXRpYmxl":
+      - !binary |-
+        SUU9RWRnZSxjaHJvbWU9MQ==
+      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
+      - !binary |-
+        Y2h1bmtlZA==
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        a2VlcC1hbGl2ZQ==
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJjb2xsZWN0aW9uIjp7InZlcnNpb24iOiIxLjAiLCJocmVmIjoiaHR0cHM6
+        Ly9hcGkuZ2V0Y2xvdWRhcHAuY29tL2FjY291bnQvdG9rZW4iLCJsaW5rcyI6
+        W3sicmVsIjoicm9vdCIsImhyZWYiOiJodHRwczovL2FwaS5nZXRjbG91ZGFw
+        cC5jb20vIn1dLCJ0ZW1wbGF0ZSI6eyJkYXRhIjpbeyJuYW1lIjoiZW1haWwi
+        LCJ2YWx1ZSI6bnVsbH0seyJuYW1lIjoicGFzc3dvcmQiLCJ2YWx1ZSI6bnVs
+        bH1dfX19
+    http_version: 
+  recorded_at: Fri, 17 Aug 2012 18:12:01 GMT
+- request:
+    method: post
+    uri: https://api.getcloudapp.com/account/token
+    body:
+      encoding: UTF-8
+      string: ! '{"email":"arthur@dent.com","password":"towel"}'
+    headers:
+      !binary "Q29udGVudC1UeXBl":
+      - application/json
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+  response:
+    status:
+      code: 201
+      message: !binary |-
+        Q3JlYXRlZA==
+    headers:
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bWF4LWFnZT0wLCBwcml2YXRlLCBtdXN0LXJldmFsaWRhdGU=
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vdm5kLmNvbGxlY3Rpb24ranNvbjsgY2hhcnNldD11dGYt
+        OA==
+      !binary "RXRhZw==":
+      - !binary |-
+        IjQ0MzhhM2Y0ZjcwM2EwMWMyNTFiN2VjYzFmZWFiNzcyIg==
+      !binary "U2VydmVy":
+      - !binary |-
+        dGhpbiAxLjQuMSBjb2RlbmFtZSBDaHJvbWVv
+      !binary "U2V0LUNvb2tpZQ==":
+      - !binary |-
+        X2VuZ2luZV9zZXNzaW9uPUJBaDdDRWtpRlhWelpYSmZZM0psWkdWdWRHbGhi
+        SE1HT2daRlJra2lBWUJoT0dVd05EQmtNRFkzWVdKa01URXlaR00xTlRKaE9U
+        bGtNall5Tm1VMU56VTBZMkZtWmpjM01ERXpaVGMwWkRVNU5URmpNVEkyTTJR
+        eFlURXlNR1F4TlRoalpqSTNaRGd6Tm1WbU4yUXlNbUV3WmpRek4yUmxNamcz
+        TkdFM09XUXdNV000TldWaU9XRm1ZVFZtTXpRMVpHRmpaalF5WkRBeE5qbGtN
+        VFk0TXdZN0FGUkpJaGgxYzJWeVgyTnlaV1JsYm5ScFlXeHpYMmxrQmpzQVJt
+        a0RwNEVCU1NJUGMyVnpjMmx2Ymw5cFpBWTdBRVpKSWlVd00yUTFaR0ZpTWpr
+        Mk1tVXdaR000Tm1ZMk9UWTRNMlk0WXpCbFlqRm1aQVk3QUZRJTNELS04Nzk0
+        NDAzZDdhNzMwNDRiY2QzMjEyZmViZjIxOWY1MGJkYWU5OGIxOyBwYXRoPS87
+        IEh0dHBPbmx5
+      - !binary |-
+        dXNlcl9jcmVkZW50aWFscz1hOGUwNDBkMDY3YWJkMTEyZGM1NTJhOTlkMjYy
+        NmU1NzU0Y2FmZjc3MDEzZTc0ZDU5NTFjMTI2M2QxYTEyMGQxNThjZjI3ZDgz
+        NmVmN2QyMmEwZjQzN2RlMjg3NGE3OWQwMWM4NWViOWFmYTVmMzQ1ZGFjZjQy
+        ZDAxNjlkMTY4MyUzQSUzQTk4NzI3OyBwYXRoPS87IGV4cGlyZXM9U2F0LCAx
+        Ny1Ob3YtMjAxMiAxODoxMjowMiBHTVQ=
+      !binary "WC1SdW50aW1l":
+      - !binary |-
+        MC4wMDk2ODE=
+      !binary "WC1VYS1Db21wYXRpYmxl":
+      - !binary |-
+        SUU9RWRnZSxjaHJvbWU9MQ==
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        MjUy
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        a2VlcC1hbGl2ZQ==
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJjb2xsZWN0aW9uIjp7InZlcnNpb24iOiIxLjAiLCJocmVmIjoiaHR0cHM6
+        Ly9hcGkuZ2V0Y2xvdWRhcHAuY29tL2FjY291bnQvdG9rZW4iLCJsaW5rcyI6
+        W3sicmVsIjoicm9vdCIsImhyZWYiOiJodHRwczovL2FwaS5nZXRjbG91ZGFw
+        cC5jb20vIn1dLCJpdGVtcyI6W3siaHJlZiI6Imh0dHBzOi8vYXBpLmdldGNs
+        b3VkYXBwLmNvbS9hY2NvdW50L3Rva2VuIiwiZGF0YSI6W3sibmFtZSI6InRv
+        a2VuIiwidmFsdWUiOiJhYmMxMjMifV19XX19
+    http_version: 
+  recorded_at: Fri, 17 Aug 2012 18:12:02 GMT
+recorded_with: VCR 2.0.0
