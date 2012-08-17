@@ -119,7 +119,7 @@ module CloudApp
       get(href) do |response|
         return response if response.__response__.status == 401
         if not params.empty?
-          drops_query = response.query('drops-filter')
+          drops_query = response.query('drops-list')
           href        = drops_query.href
           params      = drops_query.fill(params)
         else
