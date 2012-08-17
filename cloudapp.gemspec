@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   ## the sub! line in the Rakefile
   s.name              = 'cloudapp'
   s.version           = '2.0.0.beta.1'
-  s.date              = '2012-05-14'
+  s.date              = '2012-08-17'
   s.rubyforge_project = 'cloudapp'
 
   ## Make sure your summary is short. The description may be as long
@@ -75,62 +75,43 @@ Gem::Specification.new do |s|
     lib/cloudapp/collection_json/tint.rb
     lib/cloudapp/drop.rb
     lib/cloudapp/drop_collection.rb
-    lib/cloudapp/drop_content.rb
-    lib/cloudapp/presenters/drop_list_presenter.rb
-    lib/cloudapp/presenters/drop_presenter.rb
     lib/cloudapp/service.rb
     lib/cloudapp/token.rb
     man/cloudapp.1
     man/cloudapp.1.html
     man/cloudapp.1.ronn
-    spec/cassettes/DropContent/download.yml
-    spec/cassettes/OldService/create_bookmark.yml
-    spec/cassettes/OldService/create_bookmark_with_bad_credentials.yml
-    spec/cassettes/OldService/create_bookmark_with_name.yml
-    spec/cassettes/OldService/create_private_bookmark.yml
-    spec/cassettes/OldService/create_public_bookmark.yml
-    spec/cassettes/OldService/drop.yml
-    spec/cassettes/OldService/list_drops.yml
-    spec/cassettes/OldService/list_drops_with_bad_credentials.yml
-    spec/cassettes/OldService/list_drops_with_href.yml
-    spec/cassettes/OldService/list_drops_with_limit.yml
-    spec/cassettes/OldService/list_trash.yml
-    spec/cassettes/OldService/list_trash_with_bad_credentials.yml
-    spec/cassettes/OldService/list_trash_with_limit.yml
-    spec/cassettes/OldService/token_for_account.yml
-    spec/cassettes/OldService/token_for_account_with_bad_credentials.yml
-    spec/cassettes/OldService/upload_file.yml
-    spec/cassettes/OldService/upload_public_file.yml
-    spec/cassettes/Service/create_bookmark.yml
-    spec/cassettes/Service/create_bookmark_with_name.yml
-    spec/cassettes/Service/create_bookmark_with_privacy.yml
-    spec/cassettes/Service/delete_drop.yml
-    spec/cassettes/Service/list_drops.yml
-    spec/cassettes/Service/list_drops_with_bad_token.yml
-    spec/cassettes/Service/list_drops_with_filter.yml
-    spec/cassettes/Service/list_drops_with_href.yml
-    spec/cassettes/Service/list_drops_with_limit.yml
-    spec/cassettes/Service/recover_drop.yml
-    spec/cassettes/Service/rename_drop.yml
-    spec/cassettes/Service/token_for_account.yml
-    spec/cassettes/Service/token_for_account_with_bad_credentials.yml
-    spec/cassettes/Service/trash_drop.yml
-    spec/cassettes/Service/update_drop_bookmark_url.yml
-    spec/cassettes/Service/update_file.yml
-    spec/cassettes/Service/upload_file.yml
-    spec/cassettes/Service/upload_file_with_name.yml
-    spec/cassettes/Service/upload_file_with_privacy.yml
-    spec/cassettes/Service/view_drop.yml
+    spec/cassettes/create_bookmark.yml
+    spec/cassettes/create_bookmark_with_name.yml
+    spec/cassettes/create_bookmark_with_privacy.yml
+    spec/cassettes/delete_drop.yml
+    spec/cassettes/list_drops.yml
+    spec/cassettes/list_drops_with_bad_token.yml
+    spec/cassettes/list_drops_with_filter.yml
+    spec/cassettes/list_drops_with_href.yml
+    spec/cassettes/list_drops_with_href_and_filter.yml
+    spec/cassettes/list_drops_with_href_and_limit.yml
+    spec/cassettes/list_drops_with_limit.yml
+    spec/cassettes/list_drops_with_nil_href.yml
+    spec/cassettes/purge_drops.yml
+    spec/cassettes/recover_drop.yml
+    spec/cassettes/rename_drop.yml
+    spec/cassettes/setup_drops.yml
+    spec/cassettes/token_for_account.yml
+    spec/cassettes/token_for_account_with_bad_credentials.yml
+    spec/cassettes/trash_drop.yml
+    spec/cassettes/update_drop_bookmark_url.yml
+    spec/cassettes/update_file.yml
+    spec/cassettes/upload_file.yml
+    spec/cassettes/upload_file_with_name.yml
+    spec/cassettes/upload_file_with_privacy.yml
+    spec/cassettes/view_drop.yml
     spec/cloudapp/account_spec.rb
     spec/cloudapp/authorized_representation_spec.rb
     spec/cloudapp/collection_json/item_spec.rb
     spec/cloudapp/collection_json/representation_spec.rb
     spec/cloudapp/collection_json/template_spec.rb
     spec/cloudapp/drop_collection_spec.rb
-    spec/cloudapp/drop_content_spec.rb
     spec/cloudapp/drop_spec.rb
-    spec/cloudapp/presenters/drop_list_presenter_spec.rb
-    spec/cloudapp/presenters/drop_presenter_spec.rb
     spec/cloudapp/service_spec.rb
     spec/cloudapp/token_spec.rb
     spec/helper.rb
@@ -138,7 +119,6 @@ Gem::Specification.new do |s|
     spec/support/files/favicon.ico
     spec/support/stub_class_or_module.rb
     spec/support/vcr.rb
-    spec/support/vcr_rspec.rb
   ]
   # = MANIFEST =
 
