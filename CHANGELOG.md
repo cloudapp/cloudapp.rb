@@ -4,6 +4,13 @@ Below is a complete listing of changes for each revision of `cloudapp`.
 
 ## Unreleased
 
+ - Use new [hypermedia CloudApp API][api].
+ - Extract CLI into [cloudapp-cli gem][cli].
+ - Much refactoring
+
+[api]: http://developer.getcloudapp.com/api-v2/
+[cli]: https://github.com/cloudapp/cloudapp-cli
+
 ## 1.1.0
 
  - Add `download` command
