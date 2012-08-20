@@ -10,10 +10,10 @@ module CloudApp
       url 'https://api.getcloudapp.com'
       tints << CollectionJson::Tint
       tints << AuthorizedRepresentation::Tint
-    end
 
-    Leadlight.build_connection_common do |builder|
-      builder.adapter :typhoeus
+      build_connection do |c|
+        c.adapter :typhoeus
+      end
     end
 
     def initialize
@@ -36,7 +36,7 @@ module CloudApp
       data = authenticate_response.template.
                fill('email' => email, 'password' => password)
 
-      post(authenticate_response.href, {}, data) do |response|
+      post(authenticate_response.href, data) do |response|
         return response
       end
     end
@@ -59,7 +59,7 @@ module CloudApp
       attributes = drop.data.merge fetch_drop_attributes(options)
       data       = collection.template.fill attributes
 
-      put(drop.href, {}, data) do |collection|
+      put(drop.href, data) do |collection|
         if not path
           return collection
         else
@@ -73,7 +73,7 @@ module CloudApp
       collection = drops_at :root
       data       = collection.template.fill(attributes)
 
-      post(collection.href, {}, data) do |response|
+      post(collection.href, data) do |response|
         return response
       end
     end
@@ -83,7 +83,7 @@ module CloudApp
       collection = drops_at :root
       data       = collection.template.fill(attributes)
 
-      post(collection.href, {}, data) do |collection|
+      post(collection.href, data) do |collection|
         return upload_file(path, collection)
       end
     end
@@ -120,14 +120,14 @@ module CloudApp
         return response if response.__response__.status == 401
         if not params.empty?
           drops_query = response.query('drops-list')
-          href        = drops_query.href
-          params      = drops_query.fill(params)
+          href        = Addressable::URI.parse drops_query.href
+          href.query_values = drops_query.fill params
         else
           return response
         end
       end
 
-      get(href, params) do |response|
+      get(href) do |response|
         return response if response.__response__.status == 401
         return response
       end
