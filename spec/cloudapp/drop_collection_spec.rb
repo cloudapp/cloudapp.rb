@@ -6,9 +6,10 @@ require 'cloudapp/drop_collection'
 describe CloudApp::DropCollection do
   let(:representation) { stub :representation, unauthorized?: false,
                                                items:         items }
+  let(:service)        { stub :service }
   let(:items)          {[ stub(:item1), stub(:item2) ]}
   let(:drop_class)     { stub(:drop_class, new: :drop) }
-  subject { CloudApp::DropCollection.new representation, drop_class }
+  subject { CloudApp::DropCollection.new representation, service, drop_class }
 
   describe 'collection' do
     it 'is a collection of drops' do
@@ -17,7 +18,8 @@ describe CloudApp::DropCollection do
 
     it 'decodes each drop' do
       items.each do |drop|
-        drop_class.should_receive(:new).with(drop)
+        drop_class.should_receive(:new).once.
+          with(drop, kind_of(CloudApp::DropCollection))
       end
       subject
     end
@@ -47,7 +49,9 @@ describe CloudApp::DropCollection do
                                  items:         []
     }
     subject {
-      CloudApp::DropCollection.new(representation, drop_class).follow('yes')
+      CloudApp::DropCollection.
+        new(representation, service, drop_class).
+        follow('yes')
     }
 
     before do
@@ -88,6 +92,32 @@ describe CloudApp::DropCollection do
       end
     end
   end
+
+  describe '#trash' do
+    it 'trashes the given drop' do
+      href = stub :href
+      service.should_receive(:trash_drop).once.with(href)
+      subject.trash stub(:drop, href: href)
+    end
+  end
+
+  describe '#recover' do
+    it 'recovers the given drop' do
+      href = stub :href
+      service.should_receive(:recover_drop).once.with(href)
+      subject.recover stub(:drop, href: href)
+    end
+  end
+
+  describe '#delete' do
+    it 'deletes the given drop' do
+      href = stub :href
+      service.should_receive(:delete_drop).once.with(href)
+      subject.delete stub(:drop, href: href)
+    end
+  end
+
+  describe '#delete'
 
   context 'unauthorized' do
     before do representation.stub(unauthorized?: true) end

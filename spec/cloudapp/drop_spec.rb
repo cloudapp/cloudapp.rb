@@ -7,8 +7,10 @@ describe CloudApp::Drop do
   let(:href)  { stub :href }
   let(:links) { [] }
   let(:data)  { {} }
+  let(:collection) { stub :collection }
   subject {
-    CloudApp::Drop.new stub(:drop, href: href, links: links, data: data)
+    CloudApp::Drop.new stub(:drop, href: href, links: links, data: data),
+                       collection
   }
 
   its(:href) { should eq(href) }
@@ -114,6 +116,27 @@ describe CloudApp::Drop do
     context 'without an download link' do
       let(:links) {[ stub(:canonical, rel: 'canonical', href: '/canonical') ]}
       its(:download_url) { should be_nil }
+    end
+  end
+
+  describe '#trash' do
+    it 'trashes itself' do
+      collection.should_receive(:trash).once.with(subject)
+      subject.trash
+    end
+  end
+
+  describe '#recover' do
+    it 'recovers itself' do
+      collection.should_receive(:recover).once.with(subject)
+      subject.recover
+    end
+  end
+
+  describe '#delete' do
+    it 'deletes itself' do
+      collection.should_receive(:delete).once.with(subject)
+      subject.delete
     end
   end
 end

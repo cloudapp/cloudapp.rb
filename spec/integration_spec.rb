@@ -6,95 +6,63 @@ require 'cloudapp'
 describe CloudApp, :integration do
   let(:path) { Pathname('../support/files/favicon.ico').expand_path(__FILE__) }
 
-  def all_drops(options = {})
-    options = { filter: 'all' }.merge(options)
-    @account.drops(options)
-  end
-
-  def active_drops
-    @account.drops(filter: 'active')
-  end
-
-  def trashed_drops
-    @account.drops(filter: 'trash')
-  end
-
-  def create_bookmark(url, options = {})
-    @account.bookmark(url, options).first
-  end
-
-  def create_upload(path, options = {})
-    @account.upload(path, options).first
-  end
-
-  def drop_details(drop)
-    @account.drop_at(drop.href).first
-  end
-
-  def recover_drop(drop)
-    @account.recover_drop(drop.href).first
-  end
-
-  def trash_drop(drop)
-    @account.trash_drop(drop.href).first
-  end
-
-  def delete_drop(drop)
-    @account.delete_drop(drop.href)
-  end
-
-
   it 'integrates with the API' do
-    token = CloudApp::Token.for_account 'arthur@dent.com', 'towel'
-    token.should_not be_nil
+    token = CloudApp::Service.token_for_account 'arthur@dent.com', 'towel'
+    token.should =~ /\w+/
 
-    @account = CloudApp::Account.using_token token
-    drops    = all_drops
-    unless all_drops.empty?
-      drops.each do |drop| delete_drop(drop) end
-    end
+    service = CloudApp::Service.using_token token
+    service.drops(filter: 'all').each(&:delete)
+    service.drops(filter: 'all').should be_empty
 
-    all_drops.should be_empty
+    bookmark    = service.bookmark('http://getcloudapp.com', name: 'CloudApp').first
+    file        = service.upload(path).first
+    public_drop = service.bookmark('http://getcloudapp.com', private: false).first
 
-    bookmark    = create_bookmark 'http://getcloudapp.com', name: 'CloudApp'
-    file        = create_upload   path
-    public_drop = create_bookmark 'http://getcloudapp.com', private: false
+    service.drops(filter: 'all').should have(3).items
 
-    all_drops.should have(3).items
-
-    bookmark_details = drop_details bookmark
+    bookmark_details = service.drop(bookmark.href).first
     bookmark_details.name   .should eq('CloudApp')
     bookmark_details.private.should eq(true)
 
-    drop_details(file).name.should eq('favicon.ico')
-    drop_details(public_drop).private.should eq(false)
+    file_details = service.drop(file.href).first
+    file_details.name   .should eq('favicon.ico')
+    file_details.private.should eq(true)
 
-    trash_drop bookmark
-    trash_drop file
-    all_drops    .should have(3).items
-    active_drops .should have(1).items
-    trashed_drops.should have(2).items
+    public_drop_details = service.drop(public_drop.href).first
+    public_drop_details.name   .should eq('http://getcloudapp.com')
+    public_drop_details.private.should eq(false)
 
-    recover_drop bookmark
-    all_drops    .should have(3).items
-    active_drops .should have(2).items
-    trashed_drops.should have(1).items
+    bookmark.trash
+    file    .trash
+    service.drops(filter: 'all')   .should have(3).items
+    service.drops(filter: 'active').should have(1).item
+    service.drops(filter: 'trash') .should have(2).items
 
-    limited = all_drops(limit: 1)
-    limited.should have(1).item
+    bookmark.recover
+    service.drops(filter: 'all')   .should have(3).items
+    service.drops(filter: 'active').should have(2).item
+    service.drops(filter: 'trash') .should have(1).items
 
-    next_page = all_drops(href: limited.link('next').href)
-    next_page.should have(1).item
+    page1 = service.drops(filter: 'all', limit: 1)
+    page1.should have(1).item
 
-    # TODO: Uncomment when pagination with filter is fixed.
-    next_page = all_drops(href: next_page.link('next').href)
-    next_page.should have(1).item
-    next_page.link('next') { nil }.should be_nil
+    page2 = page1.follow 'next'
+    page2.should have(1).item
 
-    delete_drop bookmark
-    delete_drop file
-    delete_drop public_drop
+    page3 = page2.follow 'next'
+    page3.should have(1).item
+    page3.has_link?('next').should eq(false)
 
-    all_drops.should have(0).items
+    page2 = page3.follow 'previous'
+    page2.should have(1).item
+
+    page1 = page2.follow 'previous'
+    page1.should have(1).item
+    page1.has_link?('previous').should eq(false)
+
+    bookmark   .delete
+    file       .delete
+    public_drop.delete
+    service.drops(filter: 'all').should be_empty
   end
 end

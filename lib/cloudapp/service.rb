@@ -3,6 +3,8 @@ require 'typhoeus'
 require 'cloudapp/authorized_representation'
 require 'cloudapp/collection_json'
 require 'cloudapp/collection_json/tint'
+require 'cloudapp/drop'
+require 'cloudapp/drop_collection'
 
 module CloudApp
   class Service
@@ -18,6 +20,7 @@ module CloudApp
 
     def initialize
       super
+      # logger.level = Logger::INFO
       logger.level = Logger::WARN
     end
 
@@ -31,7 +34,14 @@ module CloudApp
       end
     end
 
-    def token_for_account(email, password)
+    def self.token_for_account(email, password)
+      representation = new.account_token email, password
+      return if representation.unauthorized?
+
+      representation.items.first.data['token']
+    end
+
+    def account_token(email, password)
       authenticate_response = root
       data = authenticate_response.template.
                fill('email' => email, 'password' => password)
@@ -41,15 +51,27 @@ module CloudApp
       end
     end
 
-    def drops(options = {})
-      href   = options[:href] || :root
-      params = options.has_key?(:href) ? {} : options
+    def drops(params = {})
+      params = params.each_with_object({}) {|(key, value), params|
+        params[key.to_s] = value
+      }
 
-      drops_at href, params
+      get('/') do |response|
+        return DropCollection.new(response, self) if response.unauthorized?
+
+        drops = response.link('drops').follow
+        return DropCollection.new(drops, self) if params.empty?
+
+        drops_query       = drops.query 'drops-list'
+        href              = Addressable::URI.parse drops_query.href
+        href.query_values = drops_query.fill params
+
+        get(href) do |response| return DropCollection.new(response, self) end
+      end
     end
 
-    def drop_at(href)
-      drops_at href
+    def drop(href)
+      DropCollection.new drops_at(href), self
     end
 
     def update(href, options = {})
@@ -74,7 +96,7 @@ module CloudApp
       data       = collection.template.fill(attributes)
 
       post(collection.href, data) do |response|
-        return response
+        return DropCollection.new response, self
       end
     end
 
@@ -84,7 +106,7 @@ module CloudApp
       data       = collection.template.fill(attributes)
 
       post(collection.href, data) do |collection|
-        return upload_file(path, collection)
+        return DropCollection.new upload_file(path, collection), self
       end
     end
 
