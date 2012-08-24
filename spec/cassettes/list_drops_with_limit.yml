@@ -12,46 +12,36 @@ http_interactions:
       Accept:
       - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
         text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 200
-      message: !binary |-
-        T0s=
+      message: OK
     headers:
-      !binary "Q2FjaGUtQ29udHJvbA==":
-      - !binary |-
-        bWF4LWFnZT0wLCBwcml2YXRlLCBtdXN0LXJldmFsaWRhdGU=
-      !binary "Q29udGVudC1UeXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vdm5kLmNvbGxlY3Rpb24ranNvbjsgY2hhcnNldD11dGYt
-        OA==
-      !binary "RXRhZw==":
-      - !binary |-
-        IjQ0ZThlMDAzZTBmMWI1ZTM4ZjdjYTkxNmZmNDQ5N2Q3Ig==
-      !binary "U2VydmVy":
-      - !binary |-
-        dGhpbiAxLjQuMSBjb2RlbmFtZSBDaHJvbWVv
-      !binary "WC1SdW50aW1l":
-      - !binary |-
-        MC4wMDU5NDM=
-      !binary "WC1VYS1Db21wYXRpYmxl":
-      - !binary |-
-        SUU9RWRnZSxjaHJvbWU9MQ==
-      !binary "Q29udGVudC1MZW5ndGg=":
-      - !binary |-
-        MTM5
-      !binary "Q29ubmVjdGlvbg==":
-      - !binary |-
-        a2VlcC1hbGl2ZQ==
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"44e8e003e0f1b5e38f7ca916ff4497d7"'
+      Server:
+      - thin 1.4.1 codename Chromeo
+      X-Runtime:
+      - '0.008682'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJjb2xsZWN0aW9uIjp7InZlcnNpb24iOiIxLjAiLCJocmVmIjoiaHR0cHM6
-        Ly9hcGkuZ2V0Y2xvdWRhcHAuY29tLyIsImxpbmtzIjpbeyJyZWwiOiJkcm9w
-        cyIsImhyZWYiOiJodHRwczovL2FwaS5nZXRjbG91ZGFwcC5jb20vZHJvcHMi
-        fV19fQ==
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/","links":[{"rel":"drops","href":"https://api.getcloudapp.com/drops"}]}}'
     http_version: 
-  recorded_at: Fri, 17 Aug 2012 18:11:41 GMT
+  recorded_at: Fri, 24 Aug 2012 20:43:31 GMT
 - request:
     method: get
     uri: https://api.getcloudapp.com/drops
@@ -64,78 +54,36 @@ http_interactions:
       Accept:
       - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
         text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 200
-      message: !binary |-
-        T0s=
+      message: OK
     headers:
-      !binary "Q2FjaGUtQ29udHJvbA==":
-      - !binary |-
-        bWF4LWFnZT0wLCBwcml2YXRlLCBtdXN0LXJldmFsaWRhdGU=
-      !binary "Q29udGVudC1UeXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vdm5kLmNvbGxlY3Rpb24ranNvbjsgY2hhcnNldD11dGYt
-        OA==
-      !binary "RXRhZw==":
-      - !binary |-
-        IjUyMDZmODkzNzljMmI2MjJkYWY4OTI2OWZjMzgzMmI1Ig==
-      !binary "U2VydmVy":
-      - !binary |-
-        dGhpbiAxLjQuMSBjb2RlbmFtZSBDaHJvbWVv
-      !binary "WC1SdW50aW1l":
-      - !binary |-
-        MC4wMTgyNDY=
-      !binary "WC1VYS1Db21wYXRpYmxl":
-      - !binary |-
-        SUU9RWRnZSxjaHJvbWU9MQ==
-      !binary "Q29udGVudC1MZW5ndGg=":
-      - !binary |-
-        MTYxMw==
-      !binary "Q29ubmVjdGlvbg==":
-      - !binary |-
-        a2VlcC1hbGl2ZQ==
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"47b61ccba7fbae8a22e1be29f6eb50b8"'
+      Server:
+      - thin 1.4.1 codename Chromeo
+      X-Runtime:
+      - '0.031609'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJjb2xsZWN0aW9uIjp7InZlcnNpb24iOiIxLjAiLCJocmVmIjoiaHR0cHM6
-        Ly9hcGkuZ2V0Y2xvdWRhcHAuY29tL2Ryb3BzIiwibGlua3MiOlt7InJlbCI6
-        ImRyb3BzLXN0cmVhbSIsImhyZWYiOiJodHRwczovL2FwaS5nZXRjbG91ZGFw
-        cC5jb20vZHJvcHMvc3RyZWFtIn1dLCJxdWVyaWVzIjpbeyJocmVmIjoiaHR0
-        cHM6Ly9hcGkuZ2V0Y2xvdWRhcHAuY29tL2Ryb3BzIiwicmVsIjoiZHJvcHMt
-        bGlzdCIsImRhdGEiOlt7Im5hbWUiOiJmaWx0ZXIiLCJ2YWx1ZSI6ImFjdGl2
-        ZSJ9LHsibmFtZSI6ImxpbWl0IiwidmFsdWUiOjIwfV19XSwidGVtcGxhdGUi
-        OnsiZGF0YSI6W3sibmFtZSI6Im5hbWUiLCJ2YWx1ZSI6bnVsbH0seyJuYW1l
-        IjoicHJpdmF0ZSIsInZhbHVlIjp0cnVlfSx7Im5hbWUiOiJ0cmFzaCIsInZh
-        bHVlIjpmYWxzZX0seyJuYW1lIjoiYm9va21hcmtfdXJsIiwidmFsdWUiOm51
-        bGx9LHsibmFtZSI6ImZpbGVfc2l6ZSIsInZhbHVlIjpudWxsfV19LCJpdGVt
-        cyI6W3siaHJlZiI6Imh0dHBzOi8vYXBpLmdldGNsb3VkYXBwLmNvbS9kcm9w
-        cy8yMTE4NTg5MCIsImxpbmtzIjpbeyJyZWwiOiJjb2xsZWN0aW9uIiwiaHJl
-        ZiI6Imh0dHBzOi8vYXBpLmdldGNsb3VkYXBwLmNvbS9kcm9wcyJ9LHsicmVs
-        IjoiY2Fub25pY2FsIiwiaHJlZiI6Imh0dHA6Ly9jbC5seS9JcDg1In0seyJy
-        ZWwiOiJpY29uIiwiaHJlZiI6Imh0dHBzOi8vZDl5YWMxMzZ1MDQ4ei5jbG91
-        ZGZyb250Lm5ldC9pbWFnZXMvdGh1bWJuYWlscy9ib29rbWFyay5wbmcifV0s
-        ImRhdGEiOlt7Im5hbWUiOiJpZCIsInZhbHVlIjoyMTE4NTg5MH0seyJuYW1l
-        IjoibmFtZSIsInZhbHVlIjoiaHR0cDovL2NsLmx5In0seyJuYW1lIjoicHJp
-        dmF0ZSIsInZhbHVlIjpmYWxzZX0seyJuYW1lIjoidHJhc2giLCJ2YWx1ZSI6
-        ZmFsc2V9LHsibmFtZSI6InZpZXdzIiwidmFsdWUiOjB9LHsibmFtZSI6ImNy
-        ZWF0ZWQiLCJ2YWx1ZSI6IjIwMTItMDgtMTdUMTg6MTE6MzlaIn1dfSx7Imhy
-        ZWYiOiJodHRwczovL2FwaS5nZXRjbG91ZGFwcC5jb20vZHJvcHMvMjExODU4
-        ODkiLCJsaW5rcyI6W3sicmVsIjoiY29sbGVjdGlvbiIsImhyZWYiOiJodHRw
-        czovL2FwaS5nZXRjbG91ZGFwcC5jb20vZHJvcHMifSx7InJlbCI6ImNhbm9u
-        aWNhbCIsImhyZWYiOiJodHRwOi8vY2wubHkvaW1hZ2UvMWEwVjNhMmowQjI4
-        In0seyJyZWwiOiJpY29uIiwiaHJlZiI6Imh0dHBzOi8vdGh1bWJzLmdldGNs
-        b3VkYXBwLmNvbS8xYTBWM2EyajBCMjgifSx7InJlbCI6ImVtYmVkIiwiaHJl
-        ZiI6Imh0dHA6Ly9jbC5seS9pbWFnZS8xYTBWM2EyajBCMjgvZmF2aWNvbi5p
-        Y28ifSx7InJlbCI6ImRvd25sb2FkIiwiaHJlZiI6Imh0dHA6Ly9jbC5seS9p
-        bWFnZS8xYTBWM2EyajBCMjgvZG93bmxvYWQvZmF2aWNvbi5pY28ifV0sImRh
-        dGEiOlt7Im5hbWUiOiJpZCIsInZhbHVlIjoyMTE4NTg4OX0seyJuYW1lIjoi
-        bmFtZSIsInZhbHVlIjoiZmF2aWNvbi5pY28ifSx7Im5hbWUiOiJwcml2YXRl
-        IiwidmFsdWUiOnRydWV9LHsibmFtZSI6InRyYXNoIiwidmFsdWUiOmZhbHNl
-        fSx7Im5hbWUiOiJ2aWV3cyIsInZhbHVlIjowfSx7Im5hbWUiOiJjcmVhdGVk
-        IiwidmFsdWUiOiIyMDEyLTA4LTE3VDE4OjExOjM5WiJ9XX1dfX0=
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/drops","links":[{"rel":"drops-stream","href":"https://api.getcloudapp.com/drops/stream"}],"queries":[{"href":"https://api.getcloudapp.com/drops","rel":"drops-list","data":[{"name":"filter","value":"active"},{"name":"limit","value":20}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"items":[{"href":"https://api.getcloudapp.com/drops/21399180","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/IzhX"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21399180},{"name":"name","value":"http://cl.ly"},{"name":"private","value":false},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-08-24T20:43:24Z"}]},{"href":"https://api.getcloudapp.com/drops/21399179","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/image/2D0r2k0z2u2E"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/2D0r2k0z2u2E"},{"rel":"embed","href":"http://cl.ly/image/2D0r2k0z2u2E/favicon.ico"},{"rel":"download","href":"http://cl.ly/image/2D0r2k0z2u2E/download/favicon.ico"}],"data":[{"name":"id","value":21399179},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-08-24T20:43:22Z"}]}]}}'
     http_version: 
-  recorded_at: Fri, 17 Aug 2012 18:11:41 GMT
+  recorded_at: Fri, 24 Aug 2012 20:43:31 GMT
 - request:
     method: get
     uri: https://api.getcloudapp.com/drops?filter=active&limit=1
@@ -148,64 +96,34 @@ http_interactions:
       Accept:
       - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
         text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 200
-      message: !binary |-
-        T0s=
+      message: OK
     headers:
-      !binary "Q2FjaGUtQ29udHJvbA==":
-      - !binary |-
-        bWF4LWFnZT0wLCBwcml2YXRlLCBtdXN0LXJldmFsaWRhdGU=
-      !binary "Q29udGVudC1UeXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vdm5kLmNvbGxlY3Rpb24ranNvbjsgY2hhcnNldD11dGYt
-        OA==
-      !binary "RXRhZw==":
-      - !binary |-
-        ImI0OGVhZjg2MWExZTY2MGIwZjY2YjBiY2NlMDUzOTBiIg==
-      !binary "U2VydmVy":
-      - !binary |-
-        dGhpbiAxLjQuMSBjb2RlbmFtZSBDaHJvbWVv
-      !binary "WC1SdW50aW1l":
-      - !binary |-
-        MC4wMjExMzg=
-      !binary "WC1VYS1Db21wYXRpYmxl":
-      - !binary |-
-        SUU9RWRnZSxjaHJvbWU9MQ==
-      !binary "Q29udGVudC1MZW5ndGg=":
-      - !binary |-
-        MTA3OA==
-      !binary "Q29ubmVjdGlvbg==":
-      - !binary |-
-        a2VlcC1hbGl2ZQ==
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"8c18a5e716b4ca5c471ea8245e3e9a95"'
+      Server:
+      - thin 1.4.1 codename Chromeo
+      X-Runtime:
+      - '0.013622'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJjb2xsZWN0aW9uIjp7InZlcnNpb24iOiIxLjAiLCJocmVmIjoiaHR0cHM6
-        Ly9hcGkuZ2V0Y2xvdWRhcHAuY29tL2Ryb3BzIiwibGlua3MiOlt7InJlbCI6
-        ImRyb3BzLXN0cmVhbSIsImhyZWYiOiJodHRwczovL2FwaS5nZXRjbG91ZGFw
-        cC5jb20vZHJvcHMvc3RyZWFtIn0seyJyZWwiOiJuZXh0IiwiaHJlZiI6Imh0
-        dHBzOi8vYXBpLmdldGNsb3VkYXBwLmNvbS9kcm9wcz9maWx0ZXI9YWN0aXZl
-        JnBhZ2U9MiZwZXJfcGFnZT0xIn1dLCJxdWVyaWVzIjpbeyJocmVmIjoiaHR0
-        cHM6Ly9hcGkuZ2V0Y2xvdWRhcHAuY29tL2Ryb3BzIiwicmVsIjoiZHJvcHMt
-        bGlzdCIsImRhdGEiOlt7Im5hbWUiOiJmaWx0ZXIiLCJ2YWx1ZSI6ImFjdGl2
-        ZSJ9LHsibmFtZSI6ImxpbWl0IiwidmFsdWUiOjIwfV19XSwidGVtcGxhdGUi
-        OnsiZGF0YSI6W3sibmFtZSI6Im5hbWUiLCJ2YWx1ZSI6bnVsbH0seyJuYW1l
-        IjoicHJpdmF0ZSIsInZhbHVlIjp0cnVlfSx7Im5hbWUiOiJ0cmFzaCIsInZh
-        bHVlIjpmYWxzZX0seyJuYW1lIjoiYm9va21hcmtfdXJsIiwidmFsdWUiOm51
-        bGx9LHsibmFtZSI6ImZpbGVfc2l6ZSIsInZhbHVlIjpudWxsfV19LCJpdGVt
-        cyI6W3siaHJlZiI6Imh0dHBzOi8vYXBpLmdldGNsb3VkYXBwLmNvbS9kcm9w
-        cy8yMTE4NTg5MCIsImxpbmtzIjpbeyJyZWwiOiJjb2xsZWN0aW9uIiwiaHJl
-        ZiI6Imh0dHBzOi8vYXBpLmdldGNsb3VkYXBwLmNvbS9kcm9wcyJ9LHsicmVs
-        IjoiY2Fub25pY2FsIiwiaHJlZiI6Imh0dHA6Ly9jbC5seS9JcDg1In0seyJy
-        ZWwiOiJpY29uIiwiaHJlZiI6Imh0dHBzOi8vZDl5YWMxMzZ1MDQ4ei5jbG91
-        ZGZyb250Lm5ldC9pbWFnZXMvdGh1bWJuYWlscy9ib29rbWFyay5wbmcifV0s
-        ImRhdGEiOlt7Im5hbWUiOiJpZCIsInZhbHVlIjoyMTE4NTg5MH0seyJuYW1l
-        IjoibmFtZSIsInZhbHVlIjoiaHR0cDovL2NsLmx5In0seyJuYW1lIjoicHJp
-        dmF0ZSIsInZhbHVlIjpmYWxzZX0seyJuYW1lIjoidHJhc2giLCJ2YWx1ZSI6
-        ZmFsc2V9LHsibmFtZSI6InZpZXdzIiwidmFsdWUiOjB9LHsibmFtZSI6ImNy
-        ZWF0ZWQiLCJ2YWx1ZSI6IjIwMTItMDgtMTdUMTg6MTE6MzlaIn1dfV19fQ==
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/drops","links":[{"rel":"drops-stream","href":"https://api.getcloudapp.com/drops/stream"},{"rel":"next","href":"https://api.getcloudapp.com/drops?filter=active&page=2&per_page=1"}],"queries":[{"href":"https://api.getcloudapp.com/drops","rel":"drops-list","data":[{"name":"filter","value":"active"},{"name":"limit","value":20}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"items":[{"href":"https://api.getcloudapp.com/drops/21399180","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/IzhX"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21399180},{"name":"name","value":"http://cl.ly"},{"name":"private","value":false},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-08-24T20:43:24Z"}]}]}}'
     http_version: 
-  recorded_at: Fri, 17 Aug 2012 18:11:41 GMT
-recorded_with: VCR 2.0.0
+  recorded_at: Fri, 24 Aug 2012 20:43:31 GMT
+recorded_with: VCR 2.0.1

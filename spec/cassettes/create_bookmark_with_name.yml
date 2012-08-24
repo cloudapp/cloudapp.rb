@@ -12,46 +12,36 @@ http_interactions:
       Accept:
       - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
         text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 200
-      message: !binary |-
-        T0s=
+      message: OK
     headers:
-      !binary "Q2FjaGUtQ29udHJvbA==":
-      - !binary |-
-        bWF4LWFnZT0wLCBwcml2YXRlLCBtdXN0LXJldmFsaWRhdGU=
-      !binary "Q29udGVudC1UeXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vdm5kLmNvbGxlY3Rpb24ranNvbjsgY2hhcnNldD11dGYt
-        OA==
-      !binary "RXRhZw==":
-      - !binary |-
-        IjQ0ZThlMDAzZTBmMWI1ZTM4ZjdjYTkxNmZmNDQ5N2Q3Ig==
-      !binary "U2VydmVy":
-      - !binary |-
-        dGhpbiAxLjQuMSBjb2RlbmFtZSBDaHJvbWVv
-      !binary "WC1SdW50aW1l":
-      - !binary |-
-        MC4wMjYyODE=
-      !binary "WC1VYS1Db21wYXRpYmxl":
-      - !binary |-
-        SUU9RWRnZSxjaHJvbWU9MQ==
-      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
-      - !binary |-
-        Y2h1bmtlZA==
-      !binary "Q29ubmVjdGlvbg==":
-      - !binary |-
-        a2VlcC1hbGl2ZQ==
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"44e8e003e0f1b5e38f7ca916ff4497d7"'
+      Server:
+      - thin 1.4.1 codename Chromeo
+      X-Runtime:
+      - '0.006436'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJjb2xsZWN0aW9uIjp7InZlcnNpb24iOiIxLjAiLCJocmVmIjoiaHR0cHM6
-        Ly9hcGkuZ2V0Y2xvdWRhcHAuY29tLyIsImxpbmtzIjpbeyJyZWwiOiJkcm9w
-        cyIsImhyZWYiOiJodHRwczovL2FwaS5nZXRjbG91ZGFwcC5jb20vZHJvcHMi
-        fV19fQ==
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/","links":[{"rel":"drops","href":"https://api.getcloudapp.com/drops"}]}}'
     http_version: 
-  recorded_at: Fri, 17 Aug 2012 18:11:48 GMT
+  recorded_at: Fri, 24 Aug 2012 20:43:34 GMT
 - request:
     method: get
     uri: https://api.getcloudapp.com/drops
@@ -64,126 +54,36 @@ http_interactions:
       Accept:
       - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
         text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 200
-      message: !binary |-
-        T0s=
+      message: OK
     headers:
-      !binary "Q2FjaGUtQ29udHJvbA==":
-      - !binary |-
-        bWF4LWFnZT0wLCBwcml2YXRlLCBtdXN0LXJldmFsaWRhdGU=
-      !binary "Q29udGVudC1UeXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vdm5kLmNvbGxlY3Rpb24ranNvbjsgY2hhcnNldD11dGYt
-        OA==
-      !binary "RXRhZw==":
-      - !binary |-
-        ImRmOWZmNDhiZTI5NDNlNTUxYjJhMGQ5N2NhM2IxMGM2Ig==
-      !binary "U2VydmVy":
-      - !binary |-
-        dGhpbiAxLjQuMSBjb2RlbmFtZSBDaHJvbWVv
-      !binary "WC1SdW50aW1l":
-      - !binary |-
-        MC4wNTYwNjc=
-      !binary "WC1VYS1Db21wYXRpYmxl":
-      - !binary |-
-        SUU9RWRnZSxjaHJvbWU9MQ==
-      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
-      - !binary |-
-        Y2h1bmtlZA==
-      !binary "Q29ubmVjdGlvbg==":
-      - !binary |-
-        a2VlcC1hbGl2ZQ==
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"013cffe728bc872f1a0431fb19d65003"'
+      Server:
+      - thin 1.4.1 codename Chromeo
+      X-Runtime:
+      - '0.074716'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJjb2xsZWN0aW9uIjp7InZlcnNpb24iOiIxLjAiLCJocmVmIjoiaHR0cHM6
-        Ly9hcGkuZ2V0Y2xvdWRhcHAuY29tL2Ryb3BzIiwibGlua3MiOlt7InJlbCI6
-        ImRyb3BzLXN0cmVhbSIsImhyZWYiOiJodHRwczovL2FwaS5nZXRjbG91ZGFw
-        cC5jb20vZHJvcHMvc3RyZWFtIn1dLCJxdWVyaWVzIjpbeyJocmVmIjoiaHR0
-        cHM6Ly9hcGkuZ2V0Y2xvdWRhcHAuY29tL2Ryb3BzIiwicmVsIjoiZHJvcHMt
-        bGlzdCIsImRhdGEiOlt7Im5hbWUiOiJmaWx0ZXIiLCJ2YWx1ZSI6ImFjdGl2
-        ZSJ9LHsibmFtZSI6ImxpbWl0IiwidmFsdWUiOjIwfV19XSwidGVtcGxhdGUi
-        OnsiZGF0YSI6W3sibmFtZSI6Im5hbWUiLCJ2YWx1ZSI6bnVsbH0seyJuYW1l
-        IjoicHJpdmF0ZSIsInZhbHVlIjp0cnVlfSx7Im5hbWUiOiJ0cmFzaCIsInZh
-        bHVlIjpmYWxzZX0seyJuYW1lIjoiYm9va21hcmtfdXJsIiwidmFsdWUiOm51
-        bGx9LHsibmFtZSI6ImZpbGVfc2l6ZSIsInZhbHVlIjpudWxsfV19LCJpdGVt
-        cyI6W3siaHJlZiI6Imh0dHBzOi8vYXBpLmdldGNsb3VkYXBwLmNvbS9kcm9w
-        cy8yMTE4NTg5OSIsImxpbmtzIjpbeyJyZWwiOiJjb2xsZWN0aW9uIiwiaHJl
-        ZiI6Imh0dHBzOi8vYXBpLmdldGNsb3VkYXBwLmNvbS9kcm9wcyJ9LHsicmVs
-        IjoiY2Fub25pY2FsIiwiaHJlZiI6Imh0dHA6Ly9jbC5seS8wTjB3MUMxZjFi
-        MjMifSx7InJlbCI6Imljb24iLCJocmVmIjoiaHR0cHM6Ly9kOXlhYzEzNnUw
-        NDh6LmNsb3VkZnJvbnQubmV0L2ltYWdlcy90aHVtYm5haWxzL2Jvb2ttYXJr
-        LnBuZyJ9XSwiZGF0YSI6W3sibmFtZSI6ImlkIiwidmFsdWUiOjIxMTg1ODk5
-        fSx7Im5hbWUiOiJuYW1lIiwidmFsdWUiOiJodHRwOi8vZ2V0Y2xvdWRhcHAu
-        Y29tIn0seyJuYW1lIjoicHJpdmF0ZSIsInZhbHVlIjp0cnVlfSx7Im5hbWUi
-        OiJ0cmFzaCIsInZhbHVlIjpmYWxzZX0seyJuYW1lIjoidmlld3MiLCJ2YWx1
-        ZSI6MH0seyJuYW1lIjoiY3JlYXRlZCIsInZhbHVlIjoiMjAxMi0wOC0xN1Qx
-        ODoxMTo0OFoifV19LHsiaHJlZiI6Imh0dHBzOi8vYXBpLmdldGNsb3VkYXBw
-        LmNvbS9kcm9wcy8yMTE4NTg5NyIsImxpbmtzIjpbeyJyZWwiOiJjb2xsZWN0
-        aW9uIiwiaHJlZiI6Imh0dHBzOi8vYXBpLmdldGNsb3VkYXBwLmNvbS9kcm9w
-        cyJ9LHsicmVsIjoiY2Fub25pY2FsIiwiaHJlZiI6Imh0dHA6Ly9jbC5seS9p
-        bWFnZS8ydTNYM28yajFpMlAifSx7InJlbCI6Imljb24iLCJocmVmIjoiaHR0
-        cHM6Ly90aHVtYnMuZ2V0Y2xvdWRhcHAuY29tLzJ1M1gzbzJqMWkyUCJ9LHsi
-        cmVsIjoiZW1iZWQiLCJocmVmIjoiaHR0cDovL2NsLmx5L2ltYWdlLzJ1M1gz
-        bzJqMWkyUC9mYXZpY29uLmljbyJ9LHsicmVsIjoiZG93bmxvYWQiLCJocmVm
-        IjoiaHR0cDovL2NsLmx5L2ltYWdlLzJ1M1gzbzJqMWkyUC9kb3dubG9hZC9m
-        YXZpY29uLmljbyJ9XSwiZGF0YSI6W3sibmFtZSI6ImlkIiwidmFsdWUiOjIx
-        MTg1ODk3fSx7Im5hbWUiOiJuYW1lIiwidmFsdWUiOiJodHRwOi8vZ2V0Y2xv
-        dWRhcHAuY29tIn0seyJuYW1lIjoicHJpdmF0ZSIsInZhbHVlIjp0cnVlfSx7
-        Im5hbWUiOiJ0cmFzaCIsInZhbHVlIjpmYWxzZX0seyJuYW1lIjoidmlld3Mi
-        LCJ2YWx1ZSI6MH0seyJuYW1lIjoiY3JlYXRlZCIsInZhbHVlIjoiMjAxMi0w
-        OC0xN1QxODoxMTo0N1oifV19LHsiaHJlZiI6Imh0dHBzOi8vYXBpLmdldGNs
-        b3VkYXBwLmNvbS9kcm9wcy8yMTE4NTg5NiIsImxpbmtzIjpbeyJyZWwiOiJj
-        b2xsZWN0aW9uIiwiaHJlZiI6Imh0dHBzOi8vYXBpLmdldGNsb3VkYXBwLmNv
-        bS9kcm9wcyJ9LHsicmVsIjoiY2Fub25pY2FsIiwiaHJlZiI6Imh0dHA6Ly9j
-        bC5seS8yZzFTMXkzZzNiMk8ifSx7InJlbCI6Imljb24iLCJocmVmIjoiaHR0
-        cHM6Ly9kOXlhYzEzNnUwNDh6LmNsb3VkZnJvbnQubmV0L2ltYWdlcy90aHVt
-        Ym5haWxzL2Jvb2ttYXJrLnBuZyJ9XSwiZGF0YSI6W3sibmFtZSI6ImlkIiwi
-        dmFsdWUiOjIxMTg1ODk2fSx7Im5hbWUiOiJuYW1lIiwidmFsdWUiOiJodHRw
-        Oi8vZ2V0Y2xvdWRhcHAuY29tIn0seyJuYW1lIjoicHJpdmF0ZSIsInZhbHVl
-        Ijp0cnVlfSx7Im5hbWUiOiJ0cmFzaCIsInZhbHVlIjpmYWxzZX0seyJuYW1l
-        Ijoidmlld3MiLCJ2YWx1ZSI6MH0seyJuYW1lIjoiY3JlYXRlZCIsInZhbHVl
-        IjoiMjAxMi0wOC0xN1QxODoxMTo0NVoifV19LHsiaHJlZiI6Imh0dHBzOi8v
-        YXBpLmdldGNsb3VkYXBwLmNvbS9kcm9wcy8yMTE4NTg5NSIsImxpbmtzIjpb
-        eyJyZWwiOiJjb2xsZWN0aW9uIiwiaHJlZiI6Imh0dHBzOi8vYXBpLmdldGNs
-        b3VkYXBwLmNvbS9kcm9wcyJ9LHsicmVsIjoiY2Fub25pY2FsIiwiaHJlZiI6
-        Imh0dHA6Ly9jbC5seS9JcGZjIn0seyJyZWwiOiJpY29uIiwiaHJlZiI6Imh0
-        dHBzOi8vZDl5YWMxMzZ1MDQ4ei5jbG91ZGZyb250Lm5ldC9pbWFnZXMvdGh1
-        bWJuYWlscy9ib29rbWFyay5wbmcifV0sImRhdGEiOlt7Im5hbWUiOiJpZCIs
-        InZhbHVlIjoyMTE4NTg5NX0seyJuYW1lIjoibmFtZSIsInZhbHVlIjoiTmV3
-        IERyb3AgTmFtZSJ9LHsibmFtZSI6InByaXZhdGUiLCJ2YWx1ZSI6ZmFsc2V9
-        LHsibmFtZSI6InRyYXNoIiwidmFsdWUiOmZhbHNlfSx7Im5hbWUiOiJ2aWV3
-        cyIsInZhbHVlIjowfSx7Im5hbWUiOiJjcmVhdGVkIiwidmFsdWUiOiIyMDEy
-        LTA4LTE3VDE4OjExOjQ0WiJ9XX0seyJocmVmIjoiaHR0cHM6Ly9hcGkuZ2V0
-        Y2xvdWRhcHAuY29tL2Ryb3BzLzIxMTg1ODkwIiwibGlua3MiOlt7InJlbCI6
-        ImNvbGxlY3Rpb24iLCJocmVmIjoiaHR0cHM6Ly9hcGkuZ2V0Y2xvdWRhcHAu
-        Y29tL2Ryb3BzIn0seyJyZWwiOiJjYW5vbmljYWwiLCJocmVmIjoiaHR0cDov
-        L2NsLmx5L0lwODUifSx7InJlbCI6Imljb24iLCJocmVmIjoiaHR0cHM6Ly9k
-        OXlhYzEzNnUwNDh6LmNsb3VkZnJvbnQubmV0L2ltYWdlcy90aHVtYm5haWxz
-        L2Jvb2ttYXJrLnBuZyJ9XSwiZGF0YSI6W3sibmFtZSI6ImlkIiwidmFsdWUi
-        OjIxMTg1ODkwfSx7Im5hbWUiOiJuYW1lIiwidmFsdWUiOiJodHRwOi8vY2wu
-        bHkifSx7Im5hbWUiOiJwcml2YXRlIiwidmFsdWUiOmZhbHNlfSx7Im5hbWUi
-        OiJ0cmFzaCIsInZhbHVlIjpmYWxzZX0seyJuYW1lIjoidmlld3MiLCJ2YWx1
-        ZSI6MH0seyJuYW1lIjoiY3JlYXRlZCIsInZhbHVlIjoiMjAxMi0wOC0xN1Qx
-        ODoxMTozOVoifV19LHsiaHJlZiI6Imh0dHBzOi8vYXBpLmdldGNsb3VkYXBw
-        LmNvbS9kcm9wcy8yMTE4NTg4OSIsImxpbmtzIjpbeyJyZWwiOiJjb2xsZWN0
-        aW9uIiwiaHJlZiI6Imh0dHBzOi8vYXBpLmdldGNsb3VkYXBwLmNvbS9kcm9w
-        cyJ9LHsicmVsIjoiY2Fub25pY2FsIiwiaHJlZiI6Imh0dHA6Ly9jbC5seS9p
-        bWFnZS8xYTBWM2EyajBCMjgifSx7InJlbCI6Imljb24iLCJocmVmIjoiaHR0
-        cHM6Ly90aHVtYnMuZ2V0Y2xvdWRhcHAuY29tLzFhMFYzYTJqMEIyOCJ9LHsi
-        cmVsIjoiZW1iZWQiLCJocmVmIjoiaHR0cDovL2NsLmx5L2ltYWdlLzFhMFYz
-        YTJqMEIyOC9mYXZpY29uLmljbyJ9LHsicmVsIjoiZG93bmxvYWQiLCJocmVm
-        IjoiaHR0cDovL2NsLmx5L2ltYWdlLzFhMFYzYTJqMEIyOC9kb3dubG9hZC9m
-        YXZpY29uLmljbyJ9XSwiZGF0YSI6W3sibmFtZSI6ImlkIiwidmFsdWUiOjIx
-        MTg1ODg5fSx7Im5hbWUiOiJuYW1lIiwidmFsdWUiOiJmYXZpY29uLmljbyJ9
-        LHsibmFtZSI6InByaXZhdGUiLCJ2YWx1ZSI6dHJ1ZX0seyJuYW1lIjoidHJh
-        c2giLCJ2YWx1ZSI6ZmFsc2V9LHsibmFtZSI6InZpZXdzIiwidmFsdWUiOjB9
-        LHsibmFtZSI6ImNyZWF0ZWQiLCJ2YWx1ZSI6IjIwMTItMDgtMTdUMTg6MTE6
-        MzlaIn1dfV19fQ==
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/drops","links":[{"rel":"drops-stream","href":"https://api.getcloudapp.com/drops/stream"}],"queries":[{"href":"https://api.getcloudapp.com/drops","rel":"drops-list","data":[{"name":"filter","value":"active"},{"name":"limit","value":20}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"items":[{"href":"https://api.getcloudapp.com/drops/21399186","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/182Y3i0P0h03"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21399186},{"name":"name","value":"http://getcloudapp.com"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-08-24T20:43:34Z"}]},{"href":"https://api.getcloudapp.com/drops/21399180","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/IzhX"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21399180},{"name":"name","value":"http://cl.ly"},{"name":"private","value":false},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-08-24T20:43:24Z"}]},{"href":"https://api.getcloudapp.com/drops/21399179","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/image/2D0r2k0z2u2E"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/2D0r2k0z2u2E"},{"rel":"embed","href":"http://cl.ly/image/2D0r2k0z2u2E/favicon.ico"},{"rel":"download","href":"http://cl.ly/image/2D0r2k0z2u2E/download/favicon.ico"}],"data":[{"name":"id","value":21399179},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-08-24T20:43:22Z"}]}]}}'
     http_version: 
-  recorded_at: Fri, 17 Aug 2012 18:11:48 GMT
+  recorded_at: Fri, 24 Aug 2012 20:43:34 GMT
 - request:
     method: post
     uri: https://api.getcloudapp.com/drops
@@ -193,74 +93,41 @@ http_interactions:
     headers:
       Authorization:
       - Token token="abc123"
-      !binary "Q29udGVudC1UeXBl":
+      Content-Type:
       - application/json
       Accept:
       - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
         text/plain
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 201
-      message: !binary |-
-        Q3JlYXRlZA==
+      message: Created
     headers:
-      !binary "Q2FjaGUtQ29udHJvbA==":
-      - !binary |-
-        bWF4LWFnZT0wLCBwcml2YXRlLCBtdXN0LXJldmFsaWRhdGU=
-      !binary "Q29udGVudC1UeXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vdm5kLmNvbGxlY3Rpb24ranNvbjsgY2hhcnNldD11dGYt
-        OA==
-      !binary "RXRhZw==":
-      - !binary |-
-        IjFjMTU3YTkxMThiNzA1NTRmMjJkN2NkMzYwY2Q5ODg2Ig==
-      !binary "U2VydmVy":
-      - !binary |-
-        dGhpbiAxLjQuMSBjb2RlbmFtZSBDaHJvbWVv
-      !binary "U2V0LUNvb2tpZQ==":
-      - !binary |-
-        X2VuZ2luZV9zZXNzaW9uPUJBaDdCa2tpRDNObGMzTnBiMjVmYVdRR09nWkZS
-        a2tpSldGaE5HUXlabVZsTmpjMk5ERm1NamMxWkRkbU1Ua3dZMlJqWldKaVlq
-        QXlCanNBVkElM0QlM0QtLTMzZTZiYWFiMzUxYTZiZjFjMmI4MDVmMjg0NWVl
-        NjJhNjkwOTNiMzc7IHBhdGg9LzsgSHR0cE9ubHk=
-      !binary "WC1SdW50aW1l":
-      - !binary |-
-        MC4wNDM4OTM=
-      !binary "WC1VYS1Db21wYXRpYmxl":
-      - !binary |-
-        SUU9RWRnZSxjaHJvbWU9MQ==
-      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
-      - !binary |-
-        Y2h1bmtlZA==
-      !binary "Q29ubmVjdGlvbg==":
-      - !binary |-
-        a2VlcC1hbGl2ZQ==
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"03fee90f046ef45f7c19b37c7649c38e"'
+      Server:
+      - thin 1.4.1 codename Chromeo
+      Set-Cookie:
+      - _engine_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJTI5NjZmNzVmYzExMTUxMjY5NmRhMjllOTEwOTJmNTg1BjsAVA%3D%3D--4d0253ce889e80c7204d51737d1b75c2eb5edfaf;
+        path=/; HttpOnly
+      X-Runtime:
+      - '0.095421'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJjb2xsZWN0aW9uIjp7InZlcnNpb24iOiIxLjAiLCJocmVmIjoiaHR0cHM6
-        Ly9hcGkuZ2V0Y2xvdWRhcHAuY29tL2Ryb3BzIiwibGlua3MiOlt7InJlbCI6
-        ImRyb3BzLXN0cmVhbSIsImhyZWYiOiJodHRwczovL2FwaS5nZXRjbG91ZGFw
-        cC5jb20vZHJvcHMvc3RyZWFtIn1dLCJxdWVyaWVzIjpbeyJocmVmIjoiaHR0
-        cHM6Ly9hcGkuZ2V0Y2xvdWRhcHAuY29tL2Ryb3BzIiwicmVsIjoiZHJvcHMt
-        bGlzdCIsImRhdGEiOlt7Im5hbWUiOiJmaWx0ZXIiLCJ2YWx1ZSI6ImFjdGl2
-        ZSJ9LHsibmFtZSI6ImxpbWl0IiwidmFsdWUiOjIwfV19XSwidGVtcGxhdGUi
-        OnsiZGF0YSI6W3sibmFtZSI6Im5hbWUiLCJ2YWx1ZSI6bnVsbH0seyJuYW1l
-        IjoicHJpdmF0ZSIsInZhbHVlIjp0cnVlfSx7Im5hbWUiOiJ0cmFzaCIsInZh
-        bHVlIjpmYWxzZX0seyJuYW1lIjoiYm9va21hcmtfdXJsIiwidmFsdWUiOm51
-        bGx9LHsibmFtZSI6ImZpbGVfc2l6ZSIsInZhbHVlIjpudWxsfV19LCJpdGVt
-        cyI6W3siaHJlZiI6Imh0dHBzOi8vYXBpLmdldGNsb3VkYXBwLmNvbS9kcm9w
-        cy8yMTE4NTkwMSIsImxpbmtzIjpbeyJyZWwiOiJjb2xsZWN0aW9uIiwiaHJl
-        ZiI6Imh0dHBzOi8vYXBpLmdldGNsb3VkYXBwLmNvbS9kcm9wcyJ9LHsicmVs
-        IjoiY2Fub25pY2FsIiwiaHJlZiI6Imh0dHA6Ly9jbC5seS8wTzBLMkwwODI0
-        MHYifSx7InJlbCI6Imljb24iLCJocmVmIjoiaHR0cHM6Ly9kOXlhYzEzNnUw
-        NDh6LmNsb3VkZnJvbnQubmV0L2ltYWdlcy90aHVtYm5haWxzL2Jvb2ttYXJr
-        LnBuZyJ9XSwiZGF0YSI6W3sibmFtZSI6ImlkIiwidmFsdWUiOjIxMTg1OTAx
-        fSx7Im5hbWUiOiJuYW1lIiwidmFsdWUiOiJOZXcgQm9va21hcmsifSx7Im5h
-        bWUiOiJwcml2YXRlIiwidmFsdWUiOnRydWV9LHsibmFtZSI6InRyYXNoIiwi
-        dmFsdWUiOmZhbHNlfSx7Im5hbWUiOiJ2aWV3cyIsInZhbHVlIjowfSx7Im5h
-        bWUiOiJjcmVhdGVkIiwidmFsdWUiOiIyMDEyLTA4LTE3VDE4OjExOjQ4WiJ9
-        XX1dfX0=
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/drops","links":[{"rel":"drops-stream","href":"https://api.getcloudapp.com/drops/stream"}],"queries":[{"href":"https://api.getcloudapp.com/drops","rel":"drops-list","data":[{"name":"filter","value":"active"},{"name":"limit","value":20}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"items":[{"href":"https://api.getcloudapp.com/drops/21399188","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/030W2b2b3g3i"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21399188},{"name":"name","value":"New
+        Bookmark"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-08-24T20:43:35Z"}]}]}}'
     http_version: 
-  recorded_at: Fri, 17 Aug 2012 18:11:48 GMT
-recorded_with: VCR 2.0.0
+  recorded_at: Fri, 24 Aug 2012 20:43:35 GMT
+recorded_with: VCR 2.0.1

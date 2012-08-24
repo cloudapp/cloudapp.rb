@@ -5,10 +5,11 @@ module CloudApp
   class Drop < OpenStruct
     attr_accessor :href, :data
 
-    def initialize(collection_item)
-      @href  = collection_item.href
-      @links = collection_item.links
-      @data  = collection_item.data
+    def initialize(collection_item, collection)
+      @href       = collection_item.href
+      @links      = collection_item.links
+      @data       = collection_item.data
+      @collection = collection
       super @data
     end
 
@@ -21,6 +22,10 @@ module CloudApp
     def thumbnail_url() link_for_relation('icon')      end
     def embed_url()     link_for_relation('embed')     end
     def download_url()  link_for_relation('download')  end
+
+    def trash()   @collection.trash(self)   end
+    def recover() @collection.recover(self) end
+    def delete()  @collection.delete(self)  end
 
   protected
 
