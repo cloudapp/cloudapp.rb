@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   ## If your rubyforge_project name is different, then edit it and comment out
   ## the sub! line in the Rakefile
   s.name              = 'cloudapp'
-  s.version           = '2.0.0.beta.3'
-  s.date              = '2012-08-21'
+  s.version           = '2.0.0.beta.4'
+  s.date              = '2012-08-25'
   s.rubyforge_project = 'cloudapp'
 
   ## Make sure your summary is short. The description may be as long
@@ -66,7 +66,6 @@ Gem::Specification.new do |s|
     Rakefile
     cloudapp.gemspec
     lib/cloudapp.rb
-    lib/cloudapp/account.rb
     lib/cloudapp/authorized_representation.rb
     lib/cloudapp/collection_json.rb
     lib/cloudapp/collection_json/item.rb
@@ -76,33 +75,22 @@ Gem::Specification.new do |s|
     lib/cloudapp/drop.rb
     lib/cloudapp/drop_collection.rb
     lib/cloudapp/service.rb
-    lib/cloudapp/token.rb
+    spec/cassettes/account_token.yml
     spec/cassettes/create_bookmark.yml
     spec/cassettes/create_bookmark_with_name.yml
     spec/cassettes/create_bookmark_with_privacy.yml
-    spec/cassettes/delete_drop.yml
     spec/cassettes/list_drops.yml
     spec/cassettes/list_drops_with_bad_token.yml
     spec/cassettes/list_drops_with_filter.yml
-    spec/cassettes/list_drops_with_href.yml
-    spec/cassettes/list_drops_with_href_and_filter.yml
-    spec/cassettes/list_drops_with_href_and_limit.yml
     spec/cassettes/list_drops_with_limit.yml
-    spec/cassettes/list_drops_with_nil_href.yml
     spec/cassettes/purge_drops.yml
-    spec/cassettes/recover_drop.yml
-    spec/cassettes/rename_drop.yml
     spec/cassettes/setup_drops.yml
     spec/cassettes/token_for_account.yml
     spec/cassettes/token_for_account_with_bad_credentials.yml
-    spec/cassettes/trash_drop.yml
-    spec/cassettes/update_drop_bookmark_url.yml
-    spec/cassettes/update_file.yml
     spec/cassettes/upload_file.yml
     spec/cassettes/upload_file_with_name.yml
     spec/cassettes/upload_file_with_privacy.yml
     spec/cassettes/view_drop.yml
-    spec/cloudapp/account_spec.rb
     spec/cloudapp/authorized_representation_spec.rb
     spec/cloudapp/collection_json/item_spec.rb
     spec/cloudapp/collection_json/representation_spec.rb
@@ -110,7 +98,6 @@ Gem::Specification.new do |s|
     spec/cloudapp/drop_collection_spec.rb
     spec/cloudapp/drop_spec.rb
     spec/cloudapp/service_spec.rb
-    spec/cloudapp/token_spec.rb
     spec/helper.rb
     spec/integration_spec.rb
     spec/support/files/favicon.ico
