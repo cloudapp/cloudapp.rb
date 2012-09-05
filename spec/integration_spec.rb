@@ -60,6 +60,10 @@ describe CloudApp, :integration do
     page1.should have(1).item
     page1.has_link?('previous').should eq(false)
 
+    page1 = page3.follow 'first'
+    page1.should have(1).item
+    page1.has_link?('previous').should eq(false)
+
     bookmark   .delete
     file       .delete
     public_drop.delete
