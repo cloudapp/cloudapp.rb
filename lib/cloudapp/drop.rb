@@ -16,7 +16,8 @@ module CloudApp
     def name()     super || share_url   end
     def private?() private == true      end
     def public?() !private?             end
-    def created() DateTime.parse(super) end
+    def trashed?() data['trash']        end
+    def created()  DateTime.parse(super) end
 
     def share_url()     link_for_relation('canonical') end
     def thumbnail_url() link_for_relation('icon')      end

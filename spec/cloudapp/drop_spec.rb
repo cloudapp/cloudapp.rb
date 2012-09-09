@@ -63,6 +63,18 @@ describe CloudApp::Drop do
     end
   end
 
+  describe '#trashed?' do
+    describe 'an active drop' do
+      let(:data) {{ 'trash' => false }}
+      it { should_not be_trashed }
+    end
+
+    describe 'a trashed drop' do
+      let(:data) {{ 'trash' => true }}
+      it { should be_trashed }
+    end
+  end
+
   describe '#created' do
     let(:data) {{ created: '2012-04-01T00:00:00Z' }}
     it 'parses date' do
