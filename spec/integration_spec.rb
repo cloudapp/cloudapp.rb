@@ -22,15 +22,15 @@ describe CloudApp, :integration do
 
     bookmark_details = service.drop(bookmark.href).first
     bookmark_details.name   .should eq('CloudApp')
-    bookmark_details.private.should eq(true)
+    bookmark_details.should be_private
 
     file_details = service.drop(file.href).first
     file_details.name   .should eq('favicon.ico')
-    file_details.private.should eq(true)
+    file_details.should be_private
 
     public_drop_details = service.drop(public_drop.href).first
     public_drop_details.name   .should eq('http://getcloudapp.com')
-    public_drop_details.private.should eq(false)
+    public_drop_details.should be_public
 
     file = file.toggle_privacy.first
     file.should be_public
@@ -56,18 +56,18 @@ describe CloudApp, :integration do
 
     page3 = page2.follow 'next'
     page3.should have(1).item
-    page3.has_link?('next').should eq(false)
+    page3.should_not have_link('next')
 
     page2 = page3.follow 'previous'
     page2.should have(1).item
 
     page1 = page2.follow 'previous'
     page1.should have(1).item
-    page1.has_link?('previous').should eq(false)
+    page1.should_not have_link('previous')
 
     page1 = page3.follow 'first'
     page1.should have(1).item
-    page1.has_link?('previous').should eq(false)
+    page1.should_not have_link('previous')
 
     bookmark   .delete
     file       .delete
