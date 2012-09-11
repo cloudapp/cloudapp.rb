@@ -63,6 +63,11 @@ describe CloudApp::DropCollection do
     it { subject.should be_a(CloudApp::DropCollection) }
     its(:representation) { should eq(link_representation) }
     its(:drop_class)     { should eq(drop_class) }
+
+    it 'passes along service' do
+      service.should_receive(:trash_drop)
+      subject.trash stub.as_null_object
+    end
   end
 
   describe '#has_link?' do

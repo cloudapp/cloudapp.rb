@@ -16,7 +16,7 @@ module CloudApp
     end
 
     def follow(relation)
-      DropCollection.new representation.link(relation).follow, nil, drop_class
+      DropCollection.new representation.link(relation).follow, @service, drop_class
     end
 
     def has_link?(relation)
