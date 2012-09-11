@@ -79,14 +79,21 @@ Gem::Specification.new do |s|
     spec/cassettes/create_bookmark.yml
     spec/cassettes/create_bookmark_with_name.yml
     spec/cassettes/create_bookmark_with_privacy.yml
+    spec/cassettes/delete_drop.yml
     spec/cassettes/list_drops.yml
     spec/cassettes/list_drops_with_bad_token.yml
     spec/cassettes/list_drops_with_filter.yml
     spec/cassettes/list_drops_with_limit.yml
+    spec/cassettes/privatize_drop.yml
+    spec/cassettes/publicize_drop.yml
     spec/cassettes/purge_drops.yml
-    spec/cassettes/setup_drops.yml
+    spec/cassettes/recover_drop.yml
+    spec/cassettes/rename_drop.yml
     spec/cassettes/token_for_account.yml
     spec/cassettes/token_for_account_with_bad_credentials.yml
+    spec/cassettes/trash_drop.yml
+    spec/cassettes/update_drop_bookmark_url.yml
+    spec/cassettes/update_file.yml
     spec/cassettes/upload_file.yml
     spec/cassettes/upload_file_with_name.yml
     spec/cassettes/upload_file_with_privacy.yml

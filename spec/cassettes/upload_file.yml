@@ -30,7 +30,7 @@ http_interactions:
       Server:
       - thin 1.4.1 codename Chromeo
       X-Runtime:
-      - '0.007682'
+      - '0.004532'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
@@ -41,7 +41,7 @@ http_interactions:
       encoding: US-ASCII
       string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/","links":[{"rel":"drops","href":"https://api.getcloudapp.com/drops"}]}}'
     http_version: 
-  recorded_at: Fri, 24 Aug 2012 20:43:36 GMT
+  recorded_at: Tue, 11 Sep 2012 15:46:55 GMT
 - request:
     method: get
     uri: https://api.getcloudapp.com/drops
@@ -68,11 +68,11 @@ http_interactions:
       Content-Type:
       - application/vnd.collection+json; charset=utf-8
       Etag:
-      - ! '"b5fe4581c479e629fefc4f82a93a4e89"'
+      - ! '"1bec96635244b85b3ed924ffde849fe9"'
       Server:
       - thin 1.4.1 codename Chromeo
       X-Runtime:
-      - '0.100865'
+      - '0.038586'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
@@ -81,10 +81,10 @@ http_interactions:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/drops","links":[{"rel":"drops-stream","href":"https://api.getcloudapp.com/drops/stream"}],"queries":[{"href":"https://api.getcloudapp.com/drops","rel":"drops-list","data":[{"name":"filter","value":"active"},{"name":"limit","value":20}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"items":[{"href":"https://api.getcloudapp.com/drops/21399189","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/IylG"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21399189},{"name":"name","value":"http://getcloudapp.com"},{"name":"private","value":false},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-08-24T20:43:36Z"}]},{"href":"https://api.getcloudapp.com/drops/21399188","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/030W2b2b3g3i"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21399188},{"name":"name","value":"New
-        Bookmark"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-08-24T20:43:35Z"}]},{"href":"https://api.getcloudapp.com/drops/21399186","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/182Y3i0P0h03"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21399186},{"name":"name","value":"http://getcloudapp.com"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-08-24T20:43:34Z"}]},{"href":"https://api.getcloudapp.com/drops/21399180","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/IzhX"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21399180},{"name":"name","value":"http://cl.ly"},{"name":"private","value":false},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-08-24T20:43:24Z"}]},{"href":"https://api.getcloudapp.com/drops/21399179","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/image/2D0r2k0z2u2E"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/2D0r2k0z2u2E"},{"rel":"embed","href":"http://cl.ly/image/2D0r2k0z2u2E/favicon.ico"},{"rel":"download","href":"http://cl.ly/image/2D0r2k0z2u2E/download/favicon.ico"}],"data":[{"name":"id","value":21399179},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-08-24T20:43:22Z"}]}]}}'
+      string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/drops","links":[{"rel":"drops-stream","href":"https://api.getcloudapp.com/drops/stream"}],"queries":[{"href":"https://api.getcloudapp.com/drops","rel":"drops-list","data":[{"name":"filter","value":"active"},{"name":"limit","value":20}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"items":[{"href":"https://api.getcloudapp.com/drops/21907686","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/JNXA"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21907686},{"name":"name","value":"http://getcloudapp.com"},{"name":"private","value":false},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:46:56Z"}]},{"href":"https://api.getcloudapp.com/drops/21907685","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/2k1L0G2U2z0I"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21907685},{"name":"name","value":"New
+        Bookmark"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:46:55Z"}]},{"href":"https://api.getcloudapp.com/drops/21907683","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/0e0E2w0w0T0U"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21907683},{"name":"name","value":"http://getcloudapp.com"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:46:54Z"}]},{"href":"https://api.getcloudapp.com/drops/21907682","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/2x3S331L1a3o"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21907682},{"name":"name","value":"http://cl.ly"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:46:52Z"}]},{"href":"https://api.getcloudapp.com/drops/21907679","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/1G282W04401a"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21907679},{"name":"name","value":"http://cl.ly"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:46:47Z"}]},{"href":"https://api.getcloudapp.com/drops/21907678","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/image/1u232n412l14"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/1u232n412l14"},{"rel":"embed","href":"http://cl.ly/image/1u232n412l14/favicon.ico"},{"rel":"download","href":"http://cl.ly/image/1u232n412l14/download/favicon.ico"}],"data":[{"name":"id","value":21907678},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:46:45Z"}]}]}}'
     http_version: 
-  recorded_at: Fri, 24 Aug 2012 20:43:36 GMT
+  recorded_at: Tue, 11 Sep 2012 15:46:56 GMT
 - request:
     method: post
     uri: https://api.getcloudapp.com/drops
@@ -111,14 +111,14 @@ http_interactions:
       Content-Type:
       - application/vnd.collection+json; charset=utf-8
       Etag:
-      - ! '"cd78cc532e6a7554f3e589a07b64b885"'
+      - ! '"a431d33cbfca0aa9948d9ea9ace18da0"'
       Server:
       - thin 1.4.1 codename Chromeo
       Set-Cookie:
-      - _engine_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJTlkYTIxMDQzYmQxMWRiYWViZTllZGZhNDE2MjcxY2E1BjsAVA%3D%3D--514bb2f7cc98e753ebf235fdb3d4efab434d2926;
+      - _engine_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJWFhNDI0ZTE3NTYzNWFlYmJhMDhjNGVhMjc4ODcxNzNkBjsAVA%3D%3D--99fb625e98ec3ac6c602f0124c697c62a13a5807;
         path=/; HttpOnly
       X-Runtime:
-      - '0.112767'
+      - '0.072511'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
@@ -127,9 +127,9 @@ http_interactions:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: ! '{"collection":{"version":"1.0","href":"http://f.cl.ly","template":{"enctype":"multipart/form-data","data":[{"name":"AWSAccessKeyId","value":"AKIAIDPUZISHSBEOFS6Q"},{"name":"key","value":"items/0M3O0K2S3W3G2M0Z2P3q/${filename}"},{"name":"policy","value":"eyJleHBpcmF0aW9uIjoiMjAxMi0wOC0yNFQyMTo0MzozN1oiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJmLmNsLmx5In0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCJpdGVtcy8wTTNPMEsyUzNXM0cyTTBaMlAzcS8iXSx7ImFjbCI6InB1YmxpYy1yZWFkIn0seyJzdWNjZXNzX2FjdGlvbl9yZWRpcmVjdCI6Imh0dHBzOi8vYXBpLmdldGNsb3VkYXBwLmNvbS9kcm9wcy8yMTM5OTE5MC9zMz90b2tlbj1hYmMxMjMifSxbImNvbnRlbnQtbGVuZ3RoLXJhbmdlIiwwLDI2MjE0NDAwXV19"},{"name":"signature","value":"21nix4jgEuwkEXfGnOPqP0bb/ac="},{"name":"acl","value":"public-read"},{"name":"success_action_redirect","value":"https://api.getcloudapp.com/drops/21399190/s3?token=abc123"},{"name":"file","value":null}]},"items":[{"href":"https://api.getcloudapp.com/drops/21399190","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/0e1T2Q2c2C2Q"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/unknown.png"}],"data":[{"name":"id","value":21399190},{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-08-24T20:43:37Z"}]}]}}'
+      string: ! '{"collection":{"version":"1.0","href":"http://f.cl.ly","template":{"enctype":"multipart/form-data","data":[{"name":"AWSAccessKeyId","value":"AKIAIDPUZISHSBEOFS6Q"},{"name":"key","value":"items/2W1Q2n3C3k200t2X251y/${filename}"},{"name":"policy","value":"eyJleHBpcmF0aW9uIjoiMjAxMi0wOS0xMVQxNjo0Njo1OFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJmLmNsLmx5In0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCJpdGVtcy8yVzFRMm4zQzNrMjAwdDJYMjUxeS8iXSx7ImFjbCI6InB1YmxpYy1yZWFkIn0seyJzdWNjZXNzX2FjdGlvbl9yZWRpcmVjdCI6Imh0dHBzOi8vYXBpLmdldGNsb3VkYXBwLmNvbS9kcm9wcy8yMTkwNzY4OC9zMz90b2tlbj1hYmMxMjMifSxbImNvbnRlbnQtbGVuZ3RoLXJhbmdlIiwwLDI2MjE0NDAwXV19"},{"name":"signature","value":"M51RRoEMkay3o5hcFvS8Bu4r300="},{"name":"acl","value":"public-read"},{"name":"success_action_redirect","value":"https://api.getcloudapp.com/drops/21907688/s3?token=abc123"},{"name":"file","value":null}]},"items":[{"href":"https://api.getcloudapp.com/drops/21907688","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/0o2S0W1n2L30"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/unknown.png"}],"data":[{"name":"id","value":21907688},{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:46:57Z"}]}]}}'
     http_version: 
-  recorded_at: Fri, 24 Aug 2012 20:43:37 GMT
+  recorded_at: Tue, 11 Sep 2012 15:46:56 GMT
 - request:
     method: post
     uri: http://f.cl.ly/
@@ -140,25 +140,25 @@ http_interactions:
         c2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9IkFXU0FjY2Vzc0tleUlkIg0KDQpB
         S0lBSURQVVpJU0hTQkVPRlM2UQ0KLS0tLS0tLS0tLS0tLVJ1YnlNdWx0aXBh
         cnRQb3N0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9
-        ImtleSINCg0KaXRlbXMvME0zTzBLMlMzVzNHMk0wWjJQM3EvJHtmaWxlbmFt
+        ImtleSINCg0KaXRlbXMvMlcxUTJuM0MzazIwMHQyWDI1MXkvJHtmaWxlbmFt
         ZX0NCi0tLS0tLS0tLS0tLS1SdWJ5TXVsdGlwYXJ0UG9zdA0KQ29udGVudC1E
         aXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJwb2xpY3kiDQoNCmV5Smxl
-        SEJwY21GMGFXOXVJam9pTWpBeE1pMHdPQzB5TkZReU1UbzBNem96TjFvaUxD
+        SEJwY21GMGFXOXVJam9pTWpBeE1pMHdPUzB4TVZReE5qbzBOam8xT0ZvaUxD
         SmpiMjVrYVhScGIyNXpJanBiZXlKaWRXTnJaWFFpT2lKbUxtTnNMbXg1SW4w
-        c1d5SnpkR0Z5ZEhNdGQybDBhQ0lzSWlSclpYa2lMQ0pwZEdWdGN5OHdUVE5Q
-        TUVzeVV6TlhNMGN5VFRCYU1sQXpjUzhpWFN4N0ltRmpiQ0k2SW5CMVlteHBZ
+        c1d5SnpkR0Z5ZEhNdGQybDBhQ0lzSWlSclpYa2lMQ0pwZEdWdGN5OHlWekZS
+        TW00elF6TnJNakF3ZERKWU1qVXhlUzhpWFN4N0ltRmpiQ0k2SW5CMVlteHBZ
         eTF5WldGa0luMHNleUp6ZFdOalpYTnpYMkZqZEdsdmJsOXlaV1JwY21WamRD
         STZJbWgwZEhCek9pOHZZWEJwTG1kbGRHTnNiM1ZrWVhCd0xtTnZiUzlrY205
-        d2N5OHlNVE01T1RFNU1DOXpNejkwYjJ0bGJqMWhZbU14TWpNaWZTeGJJbU52
+        d2N5OHlNVGt3TnpZNE9DOXpNejkwYjJ0bGJqMWhZbU14TWpNaWZTeGJJbU52
         Ym5SbGJuUXRiR1Z1WjNSb0xYSmhibWRsSWl3d0xESTJNakUwTkRBd1hWMTkN
         Ci0tLS0tLS0tLS0tLS1SdWJ5TXVsdGlwYXJ0UG9zdA0KQ29udGVudC1EaXNw
-        b3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJzaWduYXR1cmUiDQoNCjIxbml4
-        NGpnRXV3a0VYZkduT1BxUDBiYi9hYz0NCi0tLS0tLS0tLS0tLS1SdWJ5TXVs
+        b3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJzaWduYXR1cmUiDQoNCk01MVJS
+        b0VNa2F5M281aGNGdlM4QnU0cjMwMD0NCi0tLS0tLS0tLS0tLS1SdWJ5TXVs
         dGlwYXJ0UG9zdA0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBu
         YW1lPSJhY2wiDQoNCnB1YmxpYy1yZWFkDQotLS0tLS0tLS0tLS0tUnVieU11
         bHRpcGFydFBvc3QNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsg
         bmFtZT0ic3VjY2Vzc19hY3Rpb25fcmVkaXJlY3QiDQoNCmh0dHBzOi8vYXBp
-        LmdldGNsb3VkYXBwLmNvbS9kcm9wcy8yMTM5OTE5MC9zMz90b2tlbj1hYmMx
+        LmdldGNsb3VkYXBwLmNvbS9kcm9wcy8yMTkwNzY4OC9zMz90b2tlbj1hYmMx
         MjMNCi0tLS0tLS0tLS0tLS1SdWJ5TXVsdGlwYXJ0UG9zdA0KQ29udGVudC1E
         aXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9
         ImZhdmljb24uaWNvIg0KQ29udGVudC1MZW5ndGg6IDExNTANCkNvbnRlbnQt
@@ -203,22 +203,22 @@ http_interactions:
     headers:
       !binary "WC1BbXotSWQtMg==":
       - !binary |-
-        SGU4Uy80aVA1Ny9UdVQrSmxXNFh4VjBGWjlHT3lBMi9lbS9teTNFU3F3YSsw
-        NVMrb0svK3NsUGNmU0ErMjVzYQ==
+        UVhBQndvR2M0ZFE4ZHBNTVMvWGtVbDU2Z2JCaGlTRnZGZ0FHYkkwR3phOTRQ
+        NDJTazRMaDc0YTNVT0l1d281UA==
       !binary "WC1BbXotUmVxdWVzdC1JZA==":
       - !binary |-
-        QUJFRTFBMjYzNTlGMkY3NQ==
+        NDE5MjBDMkNGQzc3RjkwNg==
       !binary "RGF0ZQ==":
       - !binary |-
-        RnJpLCAyNCBBdWcgMjAxMiAyMDo0MzozOCBHTVQ=
+        VHVlLCAxMSBTZXAgMjAxMiAxNTo0Njo1OSBHTVQ=
       !binary "RXRhZw==":
       - !binary |-
         IjU2N2QyZDQ5ZDJkMzBlMmRiOTU2ZDY4MGE0ZDAzZjI1Ig==
       !binary "TG9jYXRpb24=":
       - !binary |-
-        aHR0cHM6Ly9hcGkuZ2V0Y2xvdWRhcHAuY29tL2Ryb3BzLzIxMzk5MTkwL3Mz
-        P3Rva2VuPWFiYzEyMyZidWNrZXQ9Zi5jbC5seSZrZXk9aXRlbXMlMkYwTTNP
-        MEsyUzNXM0cyTTBaMlAzcSUyRmZhdmljb24uaWNvJmV0YWc9JTIyNTY3ZDJk
+        aHR0cHM6Ly9hcGkuZ2V0Y2xvdWRhcHAuY29tL2Ryb3BzLzIxOTA3Njg4L3Mz
+        P3Rva2VuPWFiYzEyMyZidWNrZXQ9Zi5jbC5seSZrZXk9aXRlbXMlMkYyVzFR
+        Mm4zQzNrMjAwdDJYMjUxeSUyRmZhdmljb24uaWNvJmV0YWc9JTIyNTY3ZDJk
         NDlkMmQzMGUyZGI5NTZkNjgwYTRkMDNmMjUlMjI=
       !binary "Q29udGVudC1MZW5ndGg=":
       - !binary |-
@@ -230,10 +230,10 @@ http_interactions:
       encoding: ASCII-8BIT
       string: !binary ""
     http_version: 
-  recorded_at: Fri, 24 Aug 2012 20:43:37 GMT
+  recorded_at: Tue, 11 Sep 2012 15:46:56 GMT
 - request:
     method: get
-    uri: https://api.getcloudapp.com/drops/21399190/s3?bucket=f.cl.ly&etag=%22567d2d49d2d30e2db956d680a4d03f25%22&key=items/0M3O0K2S3W3G2M0Z2P3q/favicon.ico&token=abc123
+    uri: https://api.getcloudapp.com/drops/21907688/s3?bucket=f.cl.ly&etag=%22567d2d49d2d30e2db956d680a4d03f25%22&key=items/2W1Q2n3C3k200t2X251y/favicon.ico&token=abc123
     body:
       encoding: US-ASCII
       string: ''
@@ -257,11 +257,11 @@ http_interactions:
       Content-Type:
       - application/vnd.collection+json; charset=utf-8
       Etag:
-      - ! '"86623a7af8b5244cbebd661573f4d9cf"'
+      - ! '"fc5a5129e04a16e0cfc7cafd20b09615"'
       Server:
       - thin 1.4.1 codename Chromeo
       X-Runtime:
-      - '0.095087'
+      - '0.096092'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Content-Length:
@@ -270,7 +270,7 @@ http_interactions:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/drops","links":[{"rel":"drops-stream","href":"https://api.getcloudapp.com/drops/stream"}],"queries":[{"href":"https://api.getcloudapp.com/drops","rel":"drops-list","data":[{"name":"filter","value":"active"},{"name":"limit","value":20}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"items":[{"href":"https://api.getcloudapp.com/drops/21399190","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/image/0e1T2Q2c2C2Q"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/0e1T2Q2c2C2Q"},{"rel":"embed","href":"http://cl.ly/image/0e1T2Q2c2C2Q/favicon.ico"},{"rel":"download","href":"http://cl.ly/image/0e1T2Q2c2C2Q/download/favicon.ico"}],"data":[{"name":"id","value":21399190},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-08-24T20:43:37Z"}]}]}}'
+      string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/drops","links":[{"rel":"drops-stream","href":"https://api.getcloudapp.com/drops/stream"}],"queries":[{"href":"https://api.getcloudapp.com/drops","rel":"drops-list","data":[{"name":"filter","value":"active"},{"name":"limit","value":20}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"items":[{"href":"https://api.getcloudapp.com/drops/21907688","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/image/0o2S0W1n2L30"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/0o2S0W1n2L30"},{"rel":"embed","href":"http://cl.ly/image/0o2S0W1n2L30/favicon.ico"},{"rel":"download","href":"http://cl.ly/image/0o2S0W1n2L30/download/favicon.ico"}],"data":[{"name":"id","value":21907688},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:46:57Z"}]}]}}'
     http_version: 
-  recorded_at: Fri, 24 Aug 2012 20:43:37 GMT
+  recorded_at: Tue, 11 Sep 2012 15:46:57 GMT
 recorded_with: VCR 2.0.1

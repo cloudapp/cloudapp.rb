@@ -76,25 +76,20 @@ describe CloudApp::Service do
   end
 
   describe '#drops' do
-    subject { VCR.use_cassette('list_drops') { service.drops }}
-    before do
-      VCR.use_cassette('setup_drops') do
+    subject {
+      VCR.use_cassette('list_drops') {
         service.upload favicon
-        service.bookmark 'http://cl.ly', private: false
-        drop = service.bookmark('http://getcloudapp.com', name: 'CloudApp').first
-        service.trash_drop drop.href
-      end
-    end
+        service.bookmark 'http://cl.ly'
+        service.drops
+      }
+    }
 
     it { should be_a(CloudApp::DropCollection) }
-
-    it 'has 2 drops' do
-      subject.should have(2).items
-    end
 
     context 'with filter' do
       subject {
         VCR.use_cassette('list_drops_with_filter') {
+          service.bookmark('http://cl.ly').first.trash
           service.drops filter: 'trash'
         }
       }
@@ -102,7 +97,7 @@ describe CloudApp::Service do
       it { should be_a(CloudApp::DropCollection) }
 
       it 'returns the filtered drops' do
-        subject.should have(1).items
+        subject.first.should be_trashed
       end
     end
 
@@ -114,10 +109,7 @@ describe CloudApp::Service do
       }
 
       it { should be_a(CloudApp::DropCollection) }
-
-      it 'limits drops' do
-        subject.should have(1).items
-      end
+      it { should have(1).item }
     end
 
     context 'with a bad token' do
@@ -135,17 +127,14 @@ describe CloudApp::Service do
 
   describe '#drop' do
     subject {
-      VCR.use_cassette('list_drops') {
-        @href = service.drops.first.href
+      VCR.use_cassette('view_drop') {
+        drop = service.bookmark('http://cl.ly').first
+        service.drop drop.href
       }
-      VCR.use_cassette('view_drop') { service.drop(@href) }
     }
 
     it { should be_a(CloudApp::DropCollection) }
-
-    it 'returns a drop' do
-      subject.should have(1).item
-    end
+    it { should have(1).item }
   end
 
   describe '#bookmark' do
@@ -155,34 +144,25 @@ describe CloudApp::Service do
     }
 
     it { should be_a(CloudApp::DropCollection) }
-
-    it 'returns the new drop' do
-      subject.should have(1).item
-    end
+    it { should have(1).item }
 
     context 'with a name' do
       let(:name) { 'New Bookmark' }
       subject {
         VCR.use_cassette('create_bookmark_with_name') {
-          service.bookmark url, name: name
+          service.bookmark(url, name: name).first
         }
       }
-
-      it 'has the given name' do
-        subject.first.data['name'].should eq(name)
-      end
+      its(:name) { should eq(name) }
     end
 
     context 'with a privacy' do
       subject {
         VCR.use_cassette('create_bookmark_with_privacy') {
-          service.bookmark url, private: false
+          service.bookmark(url, private: false).first
         }
       }
-
-      it 'is public' do
-        subject.first.data['private'].should eq(false)
-      end
+      it { should_not be_private }
     end
   end
 
@@ -192,144 +172,150 @@ describe CloudApp::Service do
     }
 
     it { should be_a(CloudApp::DropCollection) }
-
-    it 'returns the new drop' do
-      subject.should have(1).item
-    end
+    it { should have(1).item }
 
     context 'with a name' do
       let(:name) { 'New File' }
       subject {
         VCR.use_cassette('upload_file_with_name') {
-          service.upload favicon, name: name
+          service.upload(favicon, name: name).first
         }
       }
-
-      it 'has the given name' do
-        subject.first.data['name'].should eq(name)
-      end
+      its(:name) { should eq(name) }
     end
 
     context 'with a privacy' do
       subject {
         VCR.use_cassette('upload_file_with_privacy') {
-          service.upload favicon, private: false
+          service.upload(favicon, private: false).first
         }
       }
-
-      it 'is public' do
-        subject.first.data['private'].should eq(false)
-      end
+      it { should_not be_private }
     end
 
     describe 'too large file'
   end
 
+  describe '#update' do
+    let(:url)  { 'http://getcloudapp.com' }
+    let(:name) { 'New Drop Name' }
+    subject {
+      VCR.use_cassette('rename_drop') {
+        drop = service.bookmark(url).first
+        service.update drop.href, name: name, private: false
+      }
+    }
 
-  # describe '#update' do
-  #   let(:url)     { 'http://getcloudapp.com' }
-  #   let(:name)    { 'New Drop Name' }
-  #   let(:private) { false }
-  #   subject {
-  #     VCR.use_cassette('rename_drop') {
-  #       drop = service.bookmark(url).items.first
-  #       service.update drop.href, name: name, private: private
-  #     }
-  #   }
+    it { should be_a(CloudApp::DropCollection) }
+    it { should have(1).item }
 
-  #   it { should be_a(CloudApp::CollectionJson::Representation) }
+    it 'updates the name' do
+      subject.first.name.should eq(name)
+    end
 
-  #   it 'returns the updated drop' do
-  #     subject.should have(1).item
-  #   end
+    it 'updates the privacy' do
+      subject.first.should_not be_private
+    end
 
-  #   it 'updates the name' do
-  #     subject.items.first.data['name'].should eq(name)
-  #   end
+    context 'updating bookmark link' do
+      subject {
+        VCR.use_cassette('update_drop_bookmark_url') {
+          drop = service.bookmark(url).first
+          service.update drop.href, url: 'http://example.org'
+        }
+      }
 
-  #   it 'updates the privacy' do
-  #     subject.items.first.data['private'].should eq(private)
-  #   end
+      it { should be_a(CloudApp::DropCollection) }
+      it { should have(1).item }
+    end
 
-  #   context 'updating bookmark link' do
-  #     subject {
-  #       VCR.use_cassette('update_drop_bookmark_url') {
-  #         drop = service.bookmark(url).items.first
-  #         service.update drop.href, url: 'http://example.org'
-  #       }
-  #     }
+    context 'updating file' do
+      let(:options) {{ path: favicon }}
+      subject {
+        VCR.use_cassette('update_file') {
+          drop = service.bookmark(url).first
+          service.update drop.href, options
+        }
+      }
 
-  #     it { should be_a(CloudApp::CollectionJson::Representation) }
+      it { should be_a(CloudApp::DropCollection) }
+      it { should have(1).item }
+    end
+  end
 
-  #     it 'returns the new drop' do
-  #       subject.should have(1).item
-  #     end
-  #   end
+  describe '#privatize_drop' do
+    subject {
+      VCR.use_cassette('privatize_drop') {
+        drop = service.bookmark('http://getcloudapp.com', private: false).first
+        service.privatize_drop drop.href
+      }
+    }
 
-  #   context 'updating file' do
-  #     let(:options) {{ path: favicon }}
-  #     subject {
-  #       VCR.use_cassette('update_file') {
-  #         drop = service.bookmark(url).items.first
-  #         service.update drop.href, options
-  #       }
-  #     }
+    it { should be_a(CloudApp::DropCollection) }
+    it { should have(1).item }
 
-  #     it { should be_a(CloudApp::CollectionJson::Representation) }
+    it 'privatizes the drop' do
+      subject.first.should be_private
+    end
+  end
 
-  #     it 'returns the new drop' do
-  #       subject.should have(1).item
-  #     end
-  #   end
-  # end
+  describe '#publicize_drop' do
+    subject {
+      VCR.use_cassette('publicize_drop') {
+        drop = service.bookmark('http://getcloudapp.com').first
+        service.publicize_drop drop.href
+      }
+    }
 
-  # describe '#trash_drop' do
-  #   subject {
-  #     VCR.use_cassette('trash_drop') {
-  #       drop = service.bookmark('http://getcloudapp.com').items.first
-  #       service.trash_drop drop.href
-  #     }
-  #   }
+    it { should be_a(CloudApp::DropCollection) }
+    it { should have(1).item }
 
-  #   it { should be_a(CloudApp::CollectionJson::Representation) }
+    it 'publicizes the drop' do
+      subject.first.should_not be_private
+    end
+  end
 
-  #   it 'returns the trashed drop' do
-  #     subject.should have(1).item
-  #   end
+  describe '#trash_drop' do
+    subject {
+      VCR.use_cassette('trash_drop') {
+        drop = service.bookmark('http://getcloudapp.com').first
+        service.trash_drop drop.href
+      }
+    }
 
-  #   it 'trashes the drop' do
-  #     subject.items.first.data['trash'].should eq(true)
-  #   end
-  # end
+    it { should be_a(CloudApp::DropCollection) }
+    it { should have(1).item }
 
-  # describe '#recover_drop' do
-  #   subject {
-  #     VCR.use_cassette('recover_drop') {
-  #       drop = service.bookmark('http://getcloudapp.com').items.first
-  #       service.trash_drop   drop.href
-  #       service.recover_drop drop.href
-  #     }
-  #   }
+    it 'trashes the drop' do
+      subject.first.should be_trashed
+    end
+  end
 
-  #   it { should be_a(CloudApp::CollectionJson::Representation) }
+  describe '#recover_drop' do
+    subject {
+      VCR.use_cassette('recover_drop') {
+        drop = service.bookmark('http://getcloudapp.com').first
+        service.trash_drop   drop.href
+        service.recover_drop drop.href
+      }
+    }
 
-  #   it 'returns the recovered drop' do
-  #     subject.should have(1).item
-  #   end
+    it { should be_a(CloudApp::DropCollection) }
+    it { should have(1).item }
 
-  #   it 'recovers the drop' do
-  #     subject.items.first.data['trash'].should eq(false)
-  #   end
-  # end
+    it 'recovers the drop' do
+      subject.first.should_not be_trashed
+    end
+  end
 
-  # describe '#delete_drop' do
-  #   subject {
-  #     VCR.use_cassette('delete_drop') {
-  #       drop = service.bookmark('http://getcloudapp.com').items.first
-  #       service.delete_drop drop.href
-  #     }
-  #   }
+  describe '#delete_drop' do
+    it 'deletes the drop' do
+      VCR.use_cassette('delete_drop') {
+        @drop = service.bookmark('http://getcloudapp.com').first
+        service.delete_drop @drop.href
 
-  #   it { should be_authorized }
-  # end
+        -> { service.drop @drop.href }.should raise_error(ArgumentError)
+      }
+    end
+  end
 end

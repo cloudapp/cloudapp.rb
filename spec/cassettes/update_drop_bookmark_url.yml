@@ -1,0 +1,222 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.getcloudapp.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Token token="abc123"
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"44e8e003e0f1b5e38f7ca916ff4497d7"'
+      Server:
+      - thin 1.4.1 codename Chromeo
+      X-Runtime:
+      - '0.005514'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '139'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/","links":[{"rel":"drops","href":"https://api.getcloudapp.com/drops"}]}}'
+    http_version: 
+  recorded_at: Tue, 11 Sep 2012 15:47:02 GMT
+- request:
+    method: get
+    uri: https://api.getcloudapp.com/drops
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Token token="abc123"
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"4ca5601819d68b75d520afb923f4c1c6"'
+      Server:
+      - thin 1.4.1 codename Chromeo
+      X-Runtime:
+      - '0.034237'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/drops","links":[{"rel":"drops-stream","href":"https://api.getcloudapp.com/drops/stream"}],"queries":[{"href":"https://api.getcloudapp.com/drops","rel":"drops-list","data":[{"name":"filter","value":"active"},{"name":"limit","value":20}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"items":[{"href":"https://api.getcloudapp.com/drops/21907693","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/JNym"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21907693},{"name":"name","value":"New
+        Drop Name"},{"name":"private","value":false},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:47:02Z"}]},{"href":"https://api.getcloudapp.com/drops/21907691","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/JNxB"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/JNxB"},{"rel":"embed","href":"http://cl.ly/JNxB/favicon.ico"},{"rel":"download","href":"http://cl.ly/JNxB/download/favicon.ico"}],"data":[{"name":"id","value":21907691},{"name":"name","value":"favicon.ico"},{"name":"private","value":false},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:47:01Z"}]},{"href":"https://api.getcloudapp.com/drops/21907690","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/image/1o3e271l1G0n"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/1o3e271l1G0n"},{"rel":"embed","href":"http://cl.ly/image/1o3e271l1G0n/favicon.ico"},{"rel":"download","href":"http://cl.ly/image/1o3e271l1G0n/download/favicon.ico"}],"data":[{"name":"id","value":21907690},{"name":"name","value":"New
+        File"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:46:59Z"}]},{"href":"https://api.getcloudapp.com/drops/21907688","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/image/0o2S0W1n2L30"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/0o2S0W1n2L30"},{"rel":"embed","href":"http://cl.ly/image/0o2S0W1n2L30/favicon.ico"},{"rel":"download","href":"http://cl.ly/image/0o2S0W1n2L30/download/favicon.ico"}],"data":[{"name":"id","value":21907688},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:46:57Z"}]},{"href":"https://api.getcloudapp.com/drops/21907686","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/JNXA"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21907686},{"name":"name","value":"http://getcloudapp.com"},{"name":"private","value":false},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:46:56Z"}]},{"href":"https://api.getcloudapp.com/drops/21907685","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/2k1L0G2U2z0I"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21907685},{"name":"name","value":"New
+        Bookmark"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:46:55Z"}]},{"href":"https://api.getcloudapp.com/drops/21907683","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/0e0E2w0w0T0U"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21907683},{"name":"name","value":"http://getcloudapp.com"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:46:54Z"}]},{"href":"https://api.getcloudapp.com/drops/21907682","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/2x3S331L1a3o"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21907682},{"name":"name","value":"http://cl.ly"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:46:52Z"}]},{"href":"https://api.getcloudapp.com/drops/21907679","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/1G282W04401a"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21907679},{"name":"name","value":"http://cl.ly"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:46:47Z"}]},{"href":"https://api.getcloudapp.com/drops/21907678","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/image/1u232n412l14"},{"rel":"icon","href":"https://thumbs.getcloudapp.com/1u232n412l14"},{"rel":"embed","href":"http://cl.ly/image/1u232n412l14/favicon.ico"},{"rel":"download","href":"http://cl.ly/image/1u232n412l14/download/favicon.ico"}],"data":[{"name":"id","value":21907678},{"name":"name","value":"favicon.ico"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:46:45Z"}]}]}}'
+    http_version: 
+  recorded_at: Tue, 11 Sep 2012 15:47:02 GMT
+- request:
+    method: post
+    uri: https://api.getcloudapp.com/drops
+    body:
+      encoding: UTF-8
+      string: ! '{"name":null,"private":true,"trash":false,"bookmark_url":"http://getcloudapp.com","file_size":null}'
+    headers:
+      Authorization:
+      - Token token="abc123"
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"3ed6c0db48dc6a36f241d9921791a2db"'
+      Server:
+      - thin 1.4.1 codename Chromeo
+      Set-Cookie:
+      - _engine_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJTJhNzgwYmQwOTYwYjc4YjY4YmM4MjA2MTBmNGIzZjY1BjsAVA%3D%3D--aaf9df835ae57e6fbfe9c6a8d1e0709199079110;
+        path=/; HttpOnly
+      X-Runtime:
+      - '0.067213'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/drops","links":[{"rel":"drops-stream","href":"https://api.getcloudapp.com/drops/stream"}],"queries":[{"href":"https://api.getcloudapp.com/drops","rel":"drops-list","data":[{"name":"filter","value":"active"},{"name":"limit","value":20}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"items":[{"href":"https://api.getcloudapp.com/drops/21907694","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/02073a0O3m0F"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21907694},{"name":"name","value":"http://getcloudapp.com"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:47:04Z"}]}]}}'
+    http_version: 
+  recorded_at: Tue, 11 Sep 2012 15:47:03 GMT
+- request:
+    method: get
+    uri: https://api.getcloudapp.com/drops/21907694
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Token token="abc123"
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"3ed6c0db48dc6a36f241d9921791a2db"'
+      Server:
+      - thin 1.4.1 codename Chromeo
+      X-Runtime:
+      - '0.013793'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/drops","links":[{"rel":"drops-stream","href":"https://api.getcloudapp.com/drops/stream"}],"queries":[{"href":"https://api.getcloudapp.com/drops","rel":"drops-list","data":[{"name":"filter","value":"active"},{"name":"limit","value":20}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"items":[{"href":"https://api.getcloudapp.com/drops/21907694","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/02073a0O3m0F"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21907694},{"name":"name","value":"http://getcloudapp.com"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:47:04Z"}]}]}}'
+    http_version: 
+  recorded_at: Tue, 11 Sep 2012 15:47:03 GMT
+- request:
+    method: put
+    uri: https://api.getcloudapp.com/drops/21907694
+    body:
+      encoding: UTF-8
+      string: ! '{"name":"http://getcloudapp.com","private":true,"trash":false,"bookmark_url":"http://example.org","file_size":null}'
+    headers:
+      Authorization:
+      - Token token="abc123"
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.collection+json; charset=utf-8
+      Etag:
+      - ! '"3ed6c0db48dc6a36f241d9921791a2db"'
+      Server:
+      - thin 1.4.1 codename Chromeo
+      Set-Cookie:
+      - _engine_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJWIwMmE3OTJjNDcxMzI0OGQyMTFhOWIwMTI1YzkyNWZjBjsAVA%3D%3D--5e288de35e2bd8d289a3cc36f157bcced54db04b;
+        path=/; HttpOnly
+      X-Runtime:
+      - '0.065467'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/drops","links":[{"rel":"drops-stream","href":"https://api.getcloudapp.com/drops/stream"}],"queries":[{"href":"https://api.getcloudapp.com/drops","rel":"drops-list","data":[{"name":"filter","value":"active"},{"name":"limit","value":20}]}],"template":{"data":[{"name":"name","value":null},{"name":"private","value":true},{"name":"trash","value":false},{"name":"bookmark_url","value":null},{"name":"file_size","value":null}]},"items":[{"href":"https://api.getcloudapp.com/drops/21907694","links":[{"rel":"collection","href":"https://api.getcloudapp.com/drops"},{"rel":"canonical","href":"http://cl.ly/02073a0O3m0F"},{"rel":"icon","href":"https://d9yac136u048z.cloudfront.net/images/thumbnails/bookmark.png"}],"data":[{"name":"id","value":21907694},{"name":"name","value":"http://getcloudapp.com"},{"name":"private","value":true},{"name":"trash","value":false},{"name":"views","value":0},{"name":"created","value":"2012-09-11T15:47:04Z"}]}]}}'
+    http_version: 
+  recorded_at: Tue, 11 Sep 2012 15:47:03 GMT
+recorded_with: VCR 2.0.1

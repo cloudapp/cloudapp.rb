@@ -28,18 +28,18 @@ http_interactions:
       Www-Authenticate:
       - Token realm="CloudApp"
       X-Runtime:
-      - '0.003172'
+      - '0.024863'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length:
-      - '231'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
       encoding: US-ASCII
       string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/account/token","links":[{"rel":"root","href":"https://api.getcloudapp.com/"}],"template":{"data":[{"name":"email","value":null},{"name":"password","value":null}]}}}'
     http_version: 
-  recorded_at: Fri, 24 Aug 2012 20:43:21 GMT
+  recorded_at: Tue, 11 Sep 2012 15:46:43 GMT
 - request:
     method: post
     uri: https://api.getcloudapp.com/account/token
@@ -68,12 +68,12 @@ http_interactions:
       Server:
       - thin 1.4.1 codename Chromeo
       Set-Cookie:
-      - _engine_session=BAh7CEkiFXVzZXJfY3JlZGVudGlhbHMGOgZFRkkiAYBhOGUwNDBkMDY3YWJkMTEyZGM1NTJhOTlkMjYyNmU1NzU0Y2FmZjc3MDEzZTc0ZDU5NTFjMTI2M2QxYTEyMGQxNThjZjI3ZDgzNmVmN2QyMmEwZjQzN2RlMjg3NGE3OWQwMWM4NWViOWFmYTVmMzQ1ZGFjZjQyZDAxNjlkMTY4MwY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkDp4EBSSIPc2Vzc2lvbl9pZAY7AEZJIiVjM2VhMzliN2MzZDMzMjEyYWZiOGU2ZWQzNTM5MTIxZAY7AFQ%3D--3c536cf8834d3f78bbb164613a405dc6b4c4bf66;
+      - _engine_session=BAh7CEkiFXVzZXJfY3JlZGVudGlhbHMGOgZFRkkiAYBhOGUwNDBkMDY3YWJkMTEyZGM1NTJhOTlkMjYyNmU1NzU0Y2FmZjc3MDEzZTc0ZDU5NTFjMTI2M2QxYTEyMGQxNThjZjI3ZDgzNmVmN2QyMmEwZjQzN2RlMjg3NGE3OWQwMWM4NWViOWFmYTVmMzQ1ZGFjZjQyZDAxNjlkMTY4MwY7AFRJIhh1c2VyX2NyZWRlbnRpYWxzX2lkBjsARmkDp4EBSSIPc2Vzc2lvbl9pZAY7AEZJIiVkMWNjNjJlNTcyNzE0YjYwODFhMjIwMGUyZTRiMzk4MgY7AFQ%3D--ea8789606501f7f43eef6667e1af82ebb52322eb;
         path=/; HttpOnly
       - user_credentials=a8e040d067abd112dc552a99d2626e5754caff77013e74d5951c1263d1a120d158cf27d836ef7d22a0f437de2874a79d01c85eb9afa5f345dacf42d0169d1683%3A%3A98727;
-        path=/; expires=Sat, 24-Nov-2012 20:43:21 GMT
+        path=/; expires=Tue, 11-Dec-2012 15:46:44 GMT
       X-Runtime:
-      - '0.015032'
+      - '0.007753'
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Transfer-Encoding:
@@ -84,5 +84,5 @@ http_interactions:
       encoding: US-ASCII
       string: ! '{"collection":{"version":"1.0","href":"https://api.getcloudapp.com/account/token","links":[{"rel":"root","href":"https://api.getcloudapp.com/"}],"items":[{"href":"https://api.getcloudapp.com/account/token","data":[{"name":"token","value":"abc123"}]}]}}'
     http_version: 
-  recorded_at: Fri, 24 Aug 2012 20:43:21 GMT
+  recorded_at: Tue, 11 Sep 2012 15:46:43 GMT
 recorded_with: VCR 2.0.1
