@@ -4,7 +4,7 @@ require 'forwardable'
 module CloudApp
   class DropCollection < SimpleDelegator
     extend Forwardable
-    def_delegators :representation, :authorized?, :unauthorized?#, :link, :links
+    def_delegators :representation, :authorized?, :unauthorized?
 
     attr_reader :representation, :drop_class
 
