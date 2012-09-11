@@ -24,6 +24,9 @@ module CloudApp
     def embed_url()     link_for_relation('embed')     end
     def download_url()  link_for_relation('download')  end
 
+    def publicize() @collection.publicize(self) end
+    def privatize() @collection.privatize(self) end
+
     def trash()   @collection.trash(self)   end
     def recover() @collection.recover(self) end
     def delete()  @collection.delete(self)  end

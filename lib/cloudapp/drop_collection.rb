@@ -23,9 +23,11 @@ module CloudApp
       !representation.link(relation) { nil }.nil?
     end
 
-    def trash(drop)   @service.trash_drop drop.href   end
-    def recover(drop) @service.recover_drop drop.href end
-    def delete(drop)  @service.delete_drop drop.href  end
+    def privatize(drop) @service.privatize_drop drop.href end
+    def publicize(drop) @service.publicize_drop drop.href end
+    def trash(drop)     @service.trash_drop drop.href     end
+    def recover(drop)   @service.recover_drop drop.href   end
+    def delete(drop)    @service.delete_drop drop.href    end
 
   protected
 

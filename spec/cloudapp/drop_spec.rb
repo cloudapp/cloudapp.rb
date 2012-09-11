@@ -131,6 +131,20 @@ describe CloudApp::Drop do
     end
   end
 
+  describe '#privatize' do
+    it 'privatizes itself' do
+      collection.should_receive(:privatize).once.with(subject)
+      subject.privatize
+    end
+  end
+
+  describe '#publicize' do
+    it 'publicizes itself' do
+      collection.should_receive(:publicize).once.with(subject)
+      subject.publicize
+    end
+  end
+
   describe '#trash' do
     it 'trashes itself' do
       collection.should_receive(:trash).once.with(subject)

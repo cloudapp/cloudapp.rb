@@ -83,9 +83,9 @@ module CloudApp
 
       put(drop.href, data) do |collection|
         if not path
-          return collection
+          return DropCollection.new collection, self
         else
-          return upload_file(path, collection)
+          return DropCollection.new upload_file(path, collection), self
         end
       end
     end
@@ -108,6 +108,14 @@ module CloudApp
       post(collection.href, data) do |collection|
         return DropCollection.new upload_file(path, collection), self
       end
+    end
+
+    def privatize_drop(href)
+      update href, private: true
+    end
+
+    def publicize_drop(href)
+      update href, private: false
     end
 
     def trash_drop(href)

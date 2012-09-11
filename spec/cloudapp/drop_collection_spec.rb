@@ -93,6 +93,22 @@ describe CloudApp::DropCollection do
     end
   end
 
+  describe '#privatize' do
+    it 'privatizes the given drop' do
+      href = stub :href
+      service.should_receive(:privatize_drop).once.with(href)
+      subject.privatize stub(:drop, href: href)
+    end
+  end
+
+  describe '#publicize' do
+    it 'publicizes the given drop' do
+      href = stub :href
+      service.should_receive(:publicize_drop).once.with(href)
+      subject.publicize stub(:drop, href: href)
+    end
+  end
+
   describe '#trash' do
     it 'trashes the given drop' do
       href = stub :href
