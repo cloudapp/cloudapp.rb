@@ -26,6 +26,9 @@ module CloudApp
 
     def publicize() @collection.publicize(self) end
     def privatize() @collection.privatize(self) end
+    def toggle_privacy
+      public? ? privatize : publicize
+    end
 
     def trash()   @collection.trash(self)   end
     def recover() @collection.recover(self) end

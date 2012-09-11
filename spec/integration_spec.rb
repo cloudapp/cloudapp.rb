@@ -32,10 +32,10 @@ describe CloudApp, :integration do
     public_drop_details.name   .should eq('http://getcloudapp.com')
     public_drop_details.private.should eq(false)
 
-    file.publicize
-    service.drop(file.href).first.private.should eq(false)
-    file.privatize
-    service.drop(file.href).first.private.should eq(true)
+    file = file.toggle_privacy.first
+    file.should be_public
+    file = file.toggle_privacy.first
+    file.should be_private
 
     bookmark.trash
     file    .trash

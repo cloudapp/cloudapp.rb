@@ -145,6 +145,24 @@ describe CloudApp::Drop do
     end
   end
 
+  describe '#toggle_privacy' do
+    context 'a private drop' do
+      let(:data) {{ 'private' => true }}
+      it 'publicizes itself' do
+        collection.should_receive(:publicize).once.with(subject)
+        subject.toggle_privacy
+      end
+    end
+
+    context 'a public drop' do
+      let(:data) {{ 'private' => false }}
+      it 'privatizes itself' do
+        collection.should_receive(:privatize).once.with(subject)
+        subject.toggle_privacy
+      end
+    end
+  end
+
   describe '#trash' do
     it 'trashes itself' do
       collection.should_receive(:trash).once.with(subject)
