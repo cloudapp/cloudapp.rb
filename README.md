@@ -7,13 +7,14 @@ Experience all the pleasures of sharing with [CloudApp][] from your terminal.
 
 ## Requirements
 
-`cloudapp-cli` requires Ruby 1.9.2 or greater.
+`cloudapp-cli` requires Ruby 1.9.2 or greater. Windows is not yet supported. If
+you're willing to lend a hand, we'd love to officially support it.
 
 
 ## Getting Started
 
 ``` bash
-$ gem install cloudapp-cli
+$ gem install cloudapp-cli --pre
 $ cloudapp upload screenshot.png
 $ cloudapp bookmark http://getcloudapp.com
 ```
