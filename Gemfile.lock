@@ -3,6 +3,7 @@ PATH
   specs:
     cloudapp-cli (1.0.0.beta.6)
       cloudapp (~> 2.0.0.beta.4)
+      netrc (~> 0.7.7)
 
 GEM
   remote: http://rubygems.org/
@@ -29,6 +30,7 @@ GEM
     mime-types (1.19)
     multi_json (1.0.4)
     multipart-post (1.1.5)
+    netrc (0.7.7)
     rake (0.9.2.2)
     typhoeus (0.3.3)
       mime-types

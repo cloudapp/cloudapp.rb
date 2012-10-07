@@ -44,6 +44,7 @@ Gem::Specification.new do |s|
   ## List your runtime dependencies here. Runtime dependencies are those
   ## that are needed for an end user to actually USE your code.
   s.add_dependency 'cloudapp', '~> 2.0.0.beta.4'
+  s.add_dependency 'netrc',    '~> 0.7.7'
 
   ## List your development dependencies here. Development dependencies are
   ## those that are only needed during development
@@ -59,6 +60,7 @@ Gem::Specification.new do |s|
     MIT-LICENSE
     README.md
     Rakefile
+    bin/cloudapp
     cloudapp-cli.gemspec
     lib/cloudapp/cli.rb
   ]
