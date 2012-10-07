@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   ## If your rubyforge_project name is different, then edit it and comment out
   ## the sub! line in the Rakefile
   s.name              = 'cloudapp-cli'
-  s.version           = '1.0.0.beta.6'
+  s.version           = '1.0.0.beta.7'
   s.date              = '2012-10-06'
   s.rubyforge_project = 'cloudapp-cli'
 
