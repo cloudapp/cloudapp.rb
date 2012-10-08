@@ -12,10 +12,10 @@ Gem::Specification.new do |s|
   ## Leave these as is they will be modified for you by the rake gemspec task.
   ## If your rubyforge_project name is different, then edit it and comment out
   ## the sub! line in the Rakefile
-  s.name              = 'cloudapp-cli'
-  s.version           = '1.0.0.beta.7'
-  s.date              = '2012-10-06'
-  s.rubyforge_project = 'cloudapp-cli'
+  s.name              = 'cloudapp'
+  s.version           = '2.0.0.beta.5'
+  s.date              = '2012-10-08'
+  s.rubyforge_project = 'cloudapp'
 
   ## Make sure your summary is short. The description may be as long
   ## as you like.
@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   ## a custom homepage, consider using your GitHub URL or the like.
   s.authors  = ["Larry Marburger"]
   s.email    = 'larry@marburger.cc'
-  s.homepage = 'https://github.com/cloudapp/cli'
+  s.homepage = 'https://github.com/cloudapp/cloudapp'
 
   ## This gets added to the $LOAD_PATH so that 'lib/NAME.rb' can be required as
   ## require 'NAME.rb' or'/lib/NAME/file.rb' can be as require 'NAME/file.rb'
@@ -43,8 +43,8 @@ Gem::Specification.new do |s|
 
   ## List your runtime dependencies here. Runtime dependencies are those
   ## that are needed for an end user to actually USE your code.
-  s.add_dependency 'cloudapp', '~> 2.0.0.beta.4'
-  s.add_dependency 'netrc',    '~> 0.7.7'
+  s.add_dependency 'cloudapp-service', '~> 1.0.0.beta.1'
+  s.add_dependency 'netrc', '~> 0.7.7'
 
   ## List your development dependencies here. Development dependencies are
   ## those that are only needed during development
@@ -61,8 +61,8 @@ Gem::Specification.new do |s|
     README.md
     Rakefile
     bin/cloudapp
-    cloudapp-cli.gemspec
-    lib/cloudapp/cli.rb
+    cloudapp.gemspec
+    lib/cloudapp.rb
   ]
   # = MANIFEST =
 
