@@ -1,6 +1,6 @@
 require 'helper'
 
-require 'cloudapp/authorized_representation'
+require 'cloudapp/service/authorized_representation'
 
 describe CloudApp::AuthorizedRepresentation do
   let(:representation) { stub :representation, __response__: response }

@@ -1,13 +1,15 @@
 require 'leadlight'
 require 'typhoeus'
-require 'cloudapp/authorized_representation'
 require 'cloudapp/collection_json'
 require 'cloudapp/collection_json/tint'
-require 'cloudapp/drop'
-require 'cloudapp/drop_collection'
+require 'cloudapp/service/authorized_representation'
+require 'cloudapp/service/drop'
+require 'cloudapp/service/drop_collection'
 
 module CloudApp
   class Service
+    VERSION = '1.0.0.beta.1'
+
     Leadlight.build_service(self) do
       url 'https://api.getcloudapp.com'
       tints << CollectionJson::Tint

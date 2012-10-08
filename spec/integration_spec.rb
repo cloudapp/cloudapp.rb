@@ -1,7 +1,7 @@
 require 'helper'
 require 'support/vcr'
 
-require 'cloudapp'
+require 'cloudapp/service'
 
 describe CloudApp, :integration do
   let(:path) { Pathname('../support/files/favicon.ico').expand_path(__FILE__) }

@@ -12,29 +12,26 @@ Gem::Specification.new do |s|
   ## Leave these as is they will be modified for you by the rake gemspec task.
   ## If your rubyforge_project name is different, then edit it and comment out
   ## the sub! line in the Rakefile
-  s.name              = 'cloudapp'
-  s.version           = '2.0.0.beta.4'
-  s.date              = '2012-08-25'
-  s.rubyforge_project = 'cloudapp'
+  s.name              = 'cloudapp-service'
+  s.version           = '1.0.0.beta.1'
+  s.date              = '2012-10-08'
+  s.rubyforge_project = 'cloudapp-service'
 
   ## Make sure your summary is short. The description may be as long
   ## as you like.
-  s.summary     = "CloudApp CLI"
-  s.description = "Experience all the pleasures of sharing with CloudApp now in your terminal."
+  s.summary     = "CloudApp API Client"
+  s.description = "CloudApp API Client"
 
   ## List the primary authors. If there are a bunch of authors, it's probably
   ## better to set the email to an email list or something. If you don't have
   ## a custom homepage, consider using your GitHub URL or the like.
   s.authors  = ["Larry Marburger"]
   s.email    = 'larry@marburger.cc'
-  s.homepage = 'https://github.com/cloudapp/cloudapp'
+  s.homepage = 'https://github.com/cloudapp/cloudapp.rb'
 
   ## This gets added to the $LOAD_PATH so that 'lib/NAME.rb' can be required as
   ## require 'NAME.rb' or'/lib/NAME/file.rb' can be as require 'NAME/file.rb'
   s.require_paths = %w[lib]
-
-  ## If your gem includes any executables, list them here.
-  # s.executables = ["cloudapp"]
 
   ## Specify any RDoc options here. You'll want to add your README and
   ## LICENSE files to the extra_rdoc_files list.
@@ -64,17 +61,16 @@ Gem::Specification.new do |s|
     MIT-LICENSE
     README.md
     Rakefile
-    cloudapp.gemspec
-    lib/cloudapp.rb
-    lib/cloudapp/authorized_representation.rb
+    cloudapp-service.gemspec
     lib/cloudapp/collection_json.rb
     lib/cloudapp/collection_json/item.rb
     lib/cloudapp/collection_json/representation.rb
     lib/cloudapp/collection_json/template.rb
     lib/cloudapp/collection_json/tint.rb
-    lib/cloudapp/drop.rb
-    lib/cloudapp/drop_collection.rb
     lib/cloudapp/service.rb
+    lib/cloudapp/service/authorized_representation.rb
+    lib/cloudapp/service/drop.rb
+    lib/cloudapp/service/drop_collection.rb
     spec/cassettes/account_token.yml
     spec/cassettes/create_bookmark.yml
     spec/cassettes/create_bookmark_with_name.yml

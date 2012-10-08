@@ -12,8 +12,12 @@ def name
   @name ||= Dir['*.gemspec'].first.split('.').first
 end
 
+def primary_file
+  name.tr('-', '/')
+end
+
 def version
-  line = File.read("lib/#{name}.rb")[/^\s*VERSION\s*=\s*.*/]
+  line = File.read("lib/#{primary_file}.rb")[/^\s*VERSION\s*=\s*.*/]
   line.match(/.*VERSION\s*=\s*['"](.*)['"]/)[1]
 end
 
@@ -126,9 +130,15 @@ end
 
 desc "Validate #{gemspec_file}"
 task :validate do
-  libfiles = Dir['lib/*'] - ["lib/#{name}.rb", "lib/#{name}"]
+  service_files = ['lib/cloudapp',
+                   "lib/#{primary_file}",
+                   "lib/#{primary_file}.rb"]
+  collection_json_files = ['lib/cloudapp/collection_json',
+                           'lib/cloudapp/collection_json.rb']
+  libfiles = Dir['lib/*'] + Dir['lib/cloudapp/*'] -
+    service_files - collection_json_files
   unless libfiles.empty?
-    puts "Directory `lib` should only contain a `#{name}.rb` file and `#{name}` dir."
+    puts "Directory `lib` should only contain a `#{primary_file}.rb` file and `#{primary_file}` dir."
     exit!
   end
   unless Dir['VERSION*'].empty?

@@ -1,6 +1,6 @@
 require 'helper'
 
-require 'cloudapp/drop'
+require 'cloudapp/service/drop'
 stub_class :DropContent
 
 describe CloudApp::Drop do

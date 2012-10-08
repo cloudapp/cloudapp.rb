@@ -1,7 +1,7 @@
 require 'helper'
 require 'ostruct'
 
-require 'cloudapp/drop_collection'
+require 'cloudapp/service/drop_collection'
 
 describe CloudApp::DropCollection do
   let(:representation) { stub :representation, unauthorized?: false,
