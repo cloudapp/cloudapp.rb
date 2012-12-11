@@ -1,0 +1,56 @@
+cloudapp(1) -- all the pleasures of cloudapp in a cli
+=====================================================
+
+## SYNOPSIS
+
+`cloudapp bookmark` [`--direct`] <url><br>
+`cloudapp upload`   [`--direct`] <file>
+
+## DESCRIPTION
+
+Upload a file or share a bookmark with CloudApp. The drop's share link will be
+printed to standard output. Account credentials are stored in `~/.netrc`.
+
+## OPTIONS
+
+  - `-d`, `--direct`:
+    Print the drop's direct link after creation. The direct link is suitable for
+    use in places that expect a link to a file content like an HTML IMG tag.
+
+## EXIT STATUS
+
+cloudapp may return one of several error codes if it encouters problems.
+
+ - `0` Success
+ - `1` File exceeds the limits of the account's plan
+ - `9` Something horrible has happened
+
+## FILES
+
+  - `$HOME/.netrc`:
+    Store account authentication token
+
+## EXAMPLE
+
+Upload a file:
+
+    $ cloudapp upload screenshot.png
+    http://cl.ly/abc123
+
+Copy the drop's share link to the clipboard on OS X:
+
+    $ cloudapp upload screenshot.png | pbcopy
+
+Bookmark a URL:
+
+    $ cloudapp bookmark http://getcloudapp.com
+    http://cl.ly/abc123
+
+Print the drop's direct link:
+
+    $ cloudapp upload --direct screenshot.png
+    http://cl.ly/abc123/screenshot.png
+
+## SEE ALSO
+
+`ftp`(1)

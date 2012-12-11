@@ -1,23 +1,30 @@
 PATH
   remote: .
   specs:
-    cloudapp-cli (1.0.0.beta.7)
-      cloudapp (~> 2.0.0.beta.4)
+    cloudapp (2.0.0.beta.5)
+      cloudapp-service (~> 1.0.0.beta.1)
       netrc (~> 0.7.7)
 
 GEM
   remote: http://rubygems.org/
   specs:
+    RedCloth (4.2.9)
+    activesupport (2.3.14)
     addressable (2.2.8)
-    cloudapp (2.0.0.beta.4)
+    cloudapp-service (1.0.0.beta.1)
       leadlight (~> 0.0.7)
       typhoeus (~> 0.3.3)
     fail-fast (1.0.0)
+      hoe (>= 1.8.0)
+      newgem (>= 1.1.0)
     faraday (0.8.1)
       multipart-post (~> 1.1)
     fattr (2.2.1)
+    hoe (3.3.1)
+      rake (>= 0.8, < 11.0)
     hookr (1.1.1)
       fail-fast (= 1.0.0)
+    hpricot (0.8.6)
     leadlight (0.0.7)
       addressable (~> 2.2.0)
       faraday (= 0.8.1)
@@ -27,11 +34,28 @@ GEM
       mime-types
       multi_json (~> 1.0.4)
     link_header (0.0.5)
+      hoe (>= 2.3.2)
+      newgem (>= 1.5.1)
     mime-types (1.19)
     multi_json (1.0.4)
     multipart-post (1.1.5)
+    mustache (0.99.4)
     netrc (0.7.7)
+    newgem (1.5.3)
+      RedCloth (>= 4.1.1)
+      activesupport (~> 2.3.4)
+      hoe (>= 2.4.0)
+      rubigen (>= 1.5.3)
+      syntax (>= 1.0.0)
     rake (0.9.2.2)
+    rdiscount (1.6.8)
+    ronn (0.7.3)
+      hpricot (>= 0.8.2)
+      mustache (>= 0.7.0)
+      rdiscount (>= 1.5.8)
+    rubigen (1.5.8)
+      activesupport (>= 2.3.5, < 3.2.0)
+    syntax (1.0.0)
     typhoeus (0.3.3)
       mime-types
 
@@ -39,5 +63,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  cloudapp-cli!
+  cloudapp!
   rake
+  ronn
