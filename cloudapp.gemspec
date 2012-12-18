@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   ## the sub! line in the Rakefile
   s.name              = 'cloudapp'
   s.version           = '2.0.0.beta.5'
-  s.date              = '2012-10-08'
+  s.date              = '2012-12-17'
   s.rubyforge_project = 'cloudapp'
 
   ## Make sure your summary is short. The description may be as long
@@ -65,6 +65,13 @@ Gem::Specification.new do |s|
     bin/cloudapp
     cloudapp.gemspec
     lib/cloudapp.rb
+    lib/cloudapp/authorized.rb
+    lib/cloudapp/collection_json.rb
+    lib/cloudapp/credentials.rb
+    lib/cloudapp/service.rb
+    man/cloudapp.1
+    man/cloudapp.1.html
+    man/cloudapp.1.ronn
   ]
   # = MANIFEST =
 
