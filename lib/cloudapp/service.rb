@@ -6,7 +6,7 @@ require 'uri'
 module CloudApp
   class Service
     Leadlight.build_service self do
-      url 'http://api.getcloudapp.com'
+      url 'https://api.getcloudapp.com'
       tints << CloudApp::CollectionJson::Tint
       tints << CloudApp::Authorized::Tint
 

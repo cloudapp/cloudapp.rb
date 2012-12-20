@@ -1,10 +1,19 @@
 #!/usr/bin/env ruby
 
 require 'cloudapp/credentials'
+require 'cloudapp/cli/prompt'
 require 'cloudapp/service'
 
 def service
-  CloudApp::Service.using_token Credentials.token
+  CloudApp::Service.using_token token
+end
+
+def token
+  Credentials.token
+end
+
+def valid_token?
+  !token.nil? and service.root.authorized?
 end
 
 def error error
@@ -23,8 +32,10 @@ def validate_file file
 end
 
 
-while service.root.unauthorized?
-  Credentials.new.ask_for_and_save_credentials
+while not valid_token?
+  credentials = CloudApp::CLI::Prompt.new.ask_for_credentials
+  token = CloudApp::Service.token_for_account *credentials
+  Credentials.save_token token
 end
 
 link = ARGV.delete('--direct') || ARGV.delete('-d') ? :embed : :canonical
