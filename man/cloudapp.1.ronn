@@ -15,7 +15,7 @@ printed to standard output. Account credentials are stored in `~/.netrc`.
 
   - `-d`, `--direct`:
     Print the drop's direct link after creation. The direct link is suitable for
-    use in places that expect a link to a file content like an HTML IMG tag.
+    use in places that expect a link to a file like an HTML IMG tag.
 
 ## EXIT STATUS
 

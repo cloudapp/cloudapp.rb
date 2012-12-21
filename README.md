@@ -33,14 +33,20 @@ $ gem man cloudapp
 
 ## Commands
 
-### cloudapp upload
+### cloudapp upload `<file>`
+
+Upload `<file>` and print its link to standard out. Use the `--direct` flag to
+print the file's direct link which is suitable for use in places that expect a
+link to a file like an HTML IMG tag.
 
 ``` bash
 $ cloudapp upload screenshot.png
 http://cl.ly/abc123
 ```
 
-### cloudapp bookmark
+### cloudapp bookmark `<url>`
+
+Bookmark `<url>` and print its link to standard out.
 
 ``` bash
 $ cloudapp bookmark http://getcloudapp.com
