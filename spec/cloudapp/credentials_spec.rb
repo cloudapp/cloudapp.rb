@@ -25,7 +25,7 @@ describe Credentials do
   end
 
   describe '.save_token' do
-    let(:netrc) { stub :netrc }
+    let(:netrc) { stub :netrc, :[]= => nil }
 
     it 'saves the token' do
       netrc.should_receive(:save).once.ordered
