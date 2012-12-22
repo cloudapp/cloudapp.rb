@@ -26,9 +26,14 @@ def validate_url url
   error "#{ url } doesn't look like a valid URL" unless url =~ URI.regexp
 end
 
-def validate_file file
+def valid_file? file
   error "File doesn't exist" if file.is_a? Errno::ENOENT
   error 'File missing'       if file.nil? or file == STDIN
+  not file.closed?
+end
+
+def next_file
+  ARGF.file rescue $!
 end
 
 
@@ -43,13 +48,15 @@ link = ARGV.delete('--direct') || ARGV.delete('-d') ? :embed : :canonical
 case ARGV.shift
 when 'bookmark'
   link = :canonical  # No such thing as an embed link for a bookmark.
-  url  = ARGV.shift
+  url  = validate_url ARGV.shift
   validate_url url
   puts service.bookmark(url).link(link)
 when 'upload'
-  file = ARGF.file rescue $!
-  validate_file file
-  puts service.upload(file).link(link)
+  while file = next_file
+    break unless valid_file? file
+    puts service.upload(file).link(link)
+    ARGF.skip
+  end
 else
   puts <<EOS
 Usage:
