@@ -7,7 +7,7 @@ Experience all the pleasures of sharing with [CloudApp][] from your terminal.
 
 ## Requirements
 
-`cloudapp` requires Ruby 1.9.2 or greater. Windows is not yet supported. If
+`cloudapp` requires Ruby 1.9.3 or greater. Windows is not yet supported. If
 you're willing to lend a hand, we'd love to officially support it.
 
 

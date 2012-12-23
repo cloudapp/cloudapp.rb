@@ -11,6 +11,8 @@ cloudapp(1) -- all the pleasures of cloudapp in a cli
 Upload a file or share a bookmark with CloudApp. The drop's share link will be
 printed to standard output. Account credentials are stored in `~/.netrc`.
 
+**cloudapp** requires ruby 1.9.3 or greater.
+
 ## OPTIONS
 
   - `-d`, `--direct`:
