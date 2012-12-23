@@ -42,6 +42,11 @@ link to a file like an HTML IMG tag.
 ``` bash
 $ cloudapp upload screenshot.png
 http://cl.ly/abc123
+
+$ cloudapp upload *.png
+http://cl.ly/abc123
+http://cl.ly/def456
+http://cl.ly/ghi789
 ```
 
 ### cloudapp bookmark `<url>`
@@ -51,6 +56,11 @@ Bookmark `<url>` and print its link to standard out.
 ``` bash
 $ cloudapp bookmark http://getcloudapp.com
 http://cl.ly/abc123
+
+$ cloudapp bookmark http://getcloudapp.com http://google.com http://bing.com
+http://cl.ly/abc123
+http://cl.ly/def456
+http://cl.ly/ghi789
 ```
 
 ## Wish List
@@ -58,8 +68,6 @@ http://cl.ly/abc123
 A few simple commands to allow scripting and input from other Unix programs
 would be ideal.
 
- - Share several files: `cloudapp upload *.png`
- - Bookmark several links: `cloudapp bookmark http://douglasadams.com http://zombo.com`
  - Handle bookmarks from STDIN: `pbpaste | cloudapp bookmark`
  - Download a drop: `cloudapp download http://cl.ly/abc123`
  - Encrypt and share a file: `cloudapp upload --encrypt launch_codes.txt`

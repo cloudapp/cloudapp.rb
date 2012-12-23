@@ -7,10 +7,10 @@
 \fBcloudapp\fR \- all the pleasures of cloudapp in a cli
 .
 .SH "SYNOPSIS"
-\fBcloudapp bookmark\fR [\fB\-\-direct\fR] \fIurl\fR
+\fBcloudapp bookmark\fR [\fB\-\-direct\fR] \fIurl\fR [\fIurl\fR\.\.\.]
 .
 .br
-\fBcloudapp upload\fR [\fB\-\-direct\fR] \fIfile\fR
+\fBcloudapp upload\fR [\fB\-\-direct\fR] \fIfile\fR [\fIfile\fR\.\.\.]
 .
 .SH "DESCRIPTION"
 Upload a file or share a bookmark with CloudApp\. The drop\'s share link will be printed to standard output\. Account credentials are stored in \fB~/\.netrc\fR\.
@@ -50,6 +50,22 @@ Upload a file:
 
 $ cloudapp upload screenshot\.png
 http://cl\.ly/abc123
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Upload several files:
+.
+.IP "" 4
+.
+.nf
+
+$ cloudapp upload *\.png
+http://cl\.ly/abc123
+http://cl\.ly/def456
+http://cl\.ly/ghi789
 .
 .fi
 .

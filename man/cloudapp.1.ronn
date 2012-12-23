@@ -3,8 +3,8 @@ cloudapp(1) -- all the pleasures of cloudapp in a cli
 
 ## SYNOPSIS
 
-`cloudapp bookmark` [`--direct`] <url><br>
-`cloudapp upload`   [`--direct`] <file>
+`cloudapp bookmark` [`--direct`] <url> [<url>...]<br>
+`cloudapp upload`   [`--direct`] <file> [<file>...]
 
 ## DESCRIPTION
 
@@ -36,6 +36,13 @@ Upload a file:
 
     $ cloudapp upload screenshot.png
     http://cl.ly/abc123
+
+Upload several files:
+
+    $ cloudapp upload *.png
+    http://cl.ly/abc123
+    http://cl.ly/def456
+    http://cl.ly/ghi789
 
 Copy the drop's share link to the clipboard on OS X:
 

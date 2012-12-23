@@ -82,8 +82,8 @@
 
 <h2 id="SYNOPSIS">SYNOPSIS</h2>
 
-<p><code>cloudapp bookmark</code> [<code>--direct</code>] <var>url</var><br />
-<code>cloudapp upload</code>   [<code>--direct</code>] <var>file</var></p>
+<p><code>cloudapp bookmark</code> [<code>--direct</code>] <var>url</var> [<var>url</var>...]<br />
+<code>cloudapp upload</code>   [<code>--direct</code>] <var>file</var> [<var>file</var>...]</p>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
@@ -122,6 +122,14 @@ use in places that expect a link to a file like an HTML IMG tag.</dd>
 
 <pre><code>$ cloudapp upload screenshot.png
 http://cl.ly/abc123
+</code></pre>
+
+<p>Upload several files:</p>
+
+<pre><code>$ cloudapp upload *.png
+http://cl.ly/abc123
+http://cl.ly/def456
+http://cl.ly/ghi789
 </code></pre>
 
 <p>Copy the drop's share link to the clipboard on OS X:</p>
