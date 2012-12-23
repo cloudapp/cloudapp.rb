@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cloudapp (2.0.0.beta.7)
+    cloudapp (2.0.0.beta.8)
       leadlight (~> 0.0.7)
       mime-types (~> 1.19)
       netrc (~> 0.7.7)
