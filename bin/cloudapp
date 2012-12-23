@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'cloudapp'
 require 'cloudapp/credentials'
 require 'cloudapp/cli/prompt'
 require 'cloudapp/service'
@@ -37,12 +38,19 @@ def next_file
   ARGF.file rescue $!
 end
 
+def print_version
+  puts CloudApp::VERSION
+  exit
+end
+
 
 while not valid_token?
   credentials = CloudApp::CLI::Prompt.new.ask_for_credentials
   token = CloudApp::Service.token_for_account *credentials
   Credentials.save_token token
 end
+
+print_version if ARGV.delete('--version') || ARGV.delete('-v')
 
 link = ARGV.delete('--direct') || ARGV.delete('-d') ? :embed : :canonical
 
