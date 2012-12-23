@@ -1,6 +1,7 @@
 require 'leadlight'
 require 'cloudapp/authorized'
 require 'cloudapp/collection_json'
+require 'mime/types'
 require 'uri'
 
 module CloudApp
@@ -70,7 +71,7 @@ module CloudApp
 
     def upload_file(path, template)
       file     = File.open path
-      file_io  = Faraday::UploadIO.new file, 'image/png'  # TODO: Use correct mime type
+      file_io  = Faraday::UploadIO.new file, mime_type_for(path)
       template = template.fill('file', file_io)
       uri      = Addressable::URI.parse template.href
 
@@ -86,6 +87,11 @@ module CloudApp
           return upload_response.item
         end
       end
+    end
+
+    def mime_type_for path
+      MIME::Types.type_for(File.basename(path)).first ||
+        'application/octet-stream'
     end
   end
 end

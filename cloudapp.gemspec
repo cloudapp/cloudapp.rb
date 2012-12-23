@@ -43,9 +43,10 @@ Gem::Specification.new do |s|
 
   ## List your runtime dependencies here. Runtime dependencies are those
   ## that are needed for an end user to actually USE your code.
-  s.add_dependency 'netrc',     '~> 0.7.7'
-  s.add_dependency 'leadlight', '~> 0.0.7'
-  s.add_dependency 'typhoeus',  '~> 0.3.3'
+  s.add_dependency 'netrc',      '~> 0.7.7'
+  s.add_dependency 'leadlight',  '~> 0.0.7'
+  s.add_dependency 'mime-types', '~> 1.19'
+  s.add_dependency 'typhoeus',   '~> 0.3.3'
 
   ## List your development dependencies here. Development dependencies are
   ## those that are only needed during development
