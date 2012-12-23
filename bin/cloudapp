@@ -18,7 +18,7 @@ end
 
 def error error
   puts "ERROR: #{error}"
-  exit 1
+  exit 9
 end
 
 def valid_url? url
