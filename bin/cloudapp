@@ -21,9 +21,10 @@ def error error
   exit 1
 end
 
-def validate_url url
+def valid_url? url
   error 'URL missing' if url.nil?
   error "#{ url } doesn't look like a valid URL" unless url =~ URI.regexp
+  true
 end
 
 def valid_file? file
@@ -48,9 +49,10 @@ link = ARGV.delete('--direct') || ARGV.delete('-d') ? :embed : :canonical
 case ARGV.shift
 when 'bookmark'
   link = :canonical  # No such thing as an embed link for a bookmark.
-  url  = validate_url ARGV.shift
-  validate_url url
-  puts service.bookmark(url).link(link)
+  while url = ARGV.shift
+    break unless valid_url? url
+    puts service.bookmark(url).link(link)
+  end
 when 'upload'
   while file = next_file
     break unless valid_file? file
