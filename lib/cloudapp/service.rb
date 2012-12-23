@@ -6,6 +6,8 @@ require 'uri'
 
 module CloudApp
   class Service
+    USER_AGENT = "cloudapp-gem/#{CloudApp::VERSION} (#{RUBY_PLATFORM}) ruby/#{RUBY_VERSION}"
+
     Leadlight.build_service self do
       url 'https://api.getcloudapp.com'
       tints << CloudApp::CollectionJson::Tint
@@ -13,6 +15,7 @@ module CloudApp
 
       build_connection do |c|
         c.adapter :typhoeus
+        c.headers[:user_agent] = CloudApp::Service::USER_AGENT
       end
     end
 
