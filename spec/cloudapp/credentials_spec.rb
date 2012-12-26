@@ -1,3 +1,4 @@
+require 'helper'
 require 'cloudapp/credentials'
 
 describe Credentials do

@@ -1,3 +1,4 @@
+require 'helper'
 require 'cloudapp/collection_json/collection'
 
 describe CloudApp::CollectionJson::Collection do

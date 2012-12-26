@@ -1,3 +1,4 @@
+require 'helper'
 require 'cloudapp/authorized'
 
 describe CloudApp::Authorized::Representation do
