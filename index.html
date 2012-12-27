@@ -90,6 +90,8 @@
 <p>Upload a file or share a bookmark with CloudApp. The drop's share link will be
 printed to standard output. Account credentials are stored in <code>~/.netrc</code>.</p>
 
+<p><strong>cloudapp</strong> requires ruby 1.9.3 or greater.</p>
+
 <h2 id="OPTIONS">OPTIONS</h2>
 
 <dl>
@@ -122,6 +124,14 @@ use in places that expect a link to a file like an HTML IMG tag.</dd>
 
 <pre><code>$ cloudapp upload screenshot.png
 http://cl.ly/abc123
+</code></pre>
+
+<p>Upload several files:</p>
+
+<pre><code>$ cloudapp upload *.png
+http://cl.ly/abc123
+http://cl.ly/def456
+http://cl.ly/ghi789
 </code></pre>
 
 <p>Copy the drop's share link to the clipboard on OS X:</p>
