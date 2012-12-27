@@ -1,0 +1,6 @@
+#!/bin/sh
+
+git co gh-pages &&
+  git show master:man/cloudapp.1.html > index.html &&
+  git commit -am "Update docs" &&
+  git co master
