@@ -54,6 +54,7 @@ module CloudApp
       template = drops_template.template.
                    fill('bookmark_url', url)
       post template.href, template.data do |representation|
+        # TODO: Test unauthorized
         return representation.item
       end
     end
@@ -62,12 +63,16 @@ module CloudApp
       template = drops_template.template.
                    fill('file_size', FileTest.size(path))
       post template.href, template.data do |representation|
+        # TODO: Test unauthorized
+        # TODO: Test too large files
+        # TODO: Test uploading after free plan exhausted
         return upload_file(path, representation.template)
       end
     end
 
     def drops_template
       root.link('drops-template').get do |representation|
+        # TODO: Test unauthorized
         return representation
       end
     end
