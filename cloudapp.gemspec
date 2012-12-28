@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   ## If your rubyforge_project name is different, then edit it and comment out
   ## the sub! line in the Rakefile
   s.name              = 'cloudapp'
-  s.version           = '2.0.0.beta.8'
-  s.date              = '2012-12-23'
+  s.version           = '2.0.0.beta.9'
+  s.date              = '2012-12-28'
   s.rubyforge_project = 'cloudapp'
 
   ## Make sure your summary is short. The description may be as long
@@ -78,11 +78,13 @@ Gem::Specification.new do |s|
     man/cloudapp.1
     man/cloudapp.1.html
     man/cloudapp.1.ronn
+    script/docs
     spec/cloudapp/authorized_spec.rb
     spec/cloudapp/collection_json/collection_spec.rb
     spec/cloudapp/collection_json/item_spec.rb
     spec/cloudapp/collection_json/template_spec.rb
     spec/cloudapp/credentials_spec.rb
+    spec/helper.rb
   ]
   # = MANIFEST =
 
