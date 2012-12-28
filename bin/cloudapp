@@ -11,8 +11,8 @@ def service
 end
 
 def token_for_account credentials
-  CloudApp::Service.token_for_account(*credentials,
-                                      &method(:service_error_handler))
+  CloudApp::Service
+    .token_for_account(*credentials, &method(:service_error_handler))
 end
 
 def service_error_handler representation
