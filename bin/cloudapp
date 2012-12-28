@@ -58,13 +58,13 @@ def print_version
 end
 
 
+print_version if ARGV.delete('--version') || ARGV.delete('-v')
+
 while not valid_token?
   credentials = CloudApp::CLI::Prompt.new.ask_for_credentials
   token = token_for_account credentials
   Credentials.save_token token
 end
-
-print_version if ARGV.delete('--version') || ARGV.delete('-v')
 
 link = ARGV.delete('--direct') || ARGV.delete('-d') ? :embed : :canonical
 
