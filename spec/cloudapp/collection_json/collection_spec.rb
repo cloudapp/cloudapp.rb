@@ -67,4 +67,19 @@ describe CloudApp::CollectionJson::Collection do
     its(:href) { should eq 'http://href.com' }
     its(:data) { should eq 'first_name' => '', 'last_name' => '' }
   end
+
+  describe '#error' do
+    let(:data) {{
+      'collection' => {
+        'error' => { 'message' => 'error!' }}}}
+    subject { collection.error }
+
+    it { should be_an CloudApp::CollectionJson::Item }
+    its(:message) { should eq 'error!' }
+
+    context 'with no error' do
+      let(:data) {{ 'collection' => {} }}
+      it { should be_nil }
+    end
+  end
 end

@@ -16,6 +16,11 @@ module CloudApp
       def template
         Template.new(fetch('template'), href)
       end
+
+      def error
+        return unless has_key? 'error'
+        Item.new(fetch('error'))
+      end
     end
   end
 end

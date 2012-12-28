@@ -14,6 +14,11 @@ describe CloudApp::CollectionJson::Item do
     its(:rel)  { should eq 'relation' }
   end
 
+  describe '#message' do
+    let(:data)    {{ 'message' => 'error!' }}
+    its(:message) { should eq 'error!' }
+  end
+
   describe '#links' do
     subject { described_class.new(data).links }
     let(:data)  {{ 'links' => [

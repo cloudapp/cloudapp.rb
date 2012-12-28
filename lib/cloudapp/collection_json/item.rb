@@ -3,8 +3,9 @@ require 'delegate'
 module CloudApp
   module CollectionJson
     class Item < SimpleDelegator
-      def href() fetch('href') end
-      def rel()  fetch('rel')  end
+      def href()    fetch('href')    end
+      def rel()     fetch('rel')     end
+      def message() fetch('message') end
 
       def links
         fetch('links', []).map {|link| Item.new(link) }
