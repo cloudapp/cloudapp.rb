@@ -4,7 +4,7 @@ require 'cloudapp/collection_json/template'
 
 module CloudApp
   module CollectionJson
-    Tint = Leadlight::Tint.new 'collection+json', status: [ :success, 401 ] do
+    Tint = Leadlight::Tint.new 'collection+json', status: :any do
       match_content_type 'application/vnd.collection+json'
       extend CloudApp::CollectionJson::Representation
     end

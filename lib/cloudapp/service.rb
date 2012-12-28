@@ -64,8 +64,8 @@ module CloudApp
                    fill('file_size', FileTest.size(path))
       post template.href, template.data do |representation|
         # TODO: Test unauthorized
-        # TODO: Test too large files
         # TODO: Test uploading after free plan exhausted
+        return unless representation.__response__.success?
         return upload_file(path, representation.template)
       end
     end

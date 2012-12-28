@@ -73,12 +73,14 @@ when 'bookmark'
   link = :canonical  # No such thing as an embed link for a bookmark.
   while url = ARGV.shift
     break unless valid_url? url
-    puts service.bookmark(url).link(link)
+    bookmark = service.bookmark(url)
+    puts bookmark.link(link)
   end
 when 'upload'
   while file = next_file
     break unless valid_file? file
-    puts service.upload(file).link(link)
+    upload = service.upload(file)
+    puts upload.link(link) if upload
     ARGF.skip
   end
 else
