@@ -34,8 +34,10 @@ module CloudApp
       connection.token_auth token
     end
 
-    def self.token_for_account email, password
-      new.token_for_account(email, password)
+    def self.token_for_account email, password, &error_handler
+      service = new
+      service.on_error &error_handler if error_handler
+      service.token_for_account(email, password)
     end
 
     def token_for_account email, password

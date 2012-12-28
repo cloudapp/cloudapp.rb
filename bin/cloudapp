@@ -6,7 +6,21 @@ require 'cloudapp/cli/prompt'
 require 'cloudapp/service'
 
 def service
-  CloudApp::Service.using_token token
+  CloudApp::Service.using_token(token)
+    .on_error(&method(:service_error_handler))
+end
+
+def token_for_account credentials
+  CloudApp::Service.token_for_account(*credentials,
+                                      &method(:service_error_handler))
+end
+
+def service_error_handler representation
+  if representation.collection.error
+    puts
+    puts "! #{representation.collection.error.message}"
+    puts
+  end
 end
 
 def token
@@ -46,7 +60,7 @@ end
 
 while not valid_token?
   credentials = CloudApp::CLI::Prompt.new.ask_for_credentials
-  token = CloudApp::Service.token_for_account *credentials
+  token = token_for_account credentials
   Credentials.save_token token
 end
 
