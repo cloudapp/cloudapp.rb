@@ -33,7 +33,7 @@ end
 
 def error error
   puts "ERROR: #{error}"
-  exit 9
+  exit 1
 end
 
 def valid_url? url
@@ -74,13 +74,15 @@ when 'bookmark'
   while url = ARGV.shift
     break unless valid_url? url
     bookmark = service.bookmark(url)
+    exit 1 unless bookmark
     puts bookmark.link(link)
   end
 when 'upload'
   while file = next_file
     break unless valid_file? file
     upload = service.upload(file)
-    puts upload.link(link) if upload
+    exit 1 unless upload
+    puts upload.link(link)
     ARGF.skip
   end
 else
