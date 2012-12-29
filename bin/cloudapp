@@ -4,6 +4,7 @@ require 'cloudapp'
 require 'cloudapp/credentials'
 require 'cloudapp/cli/prompt'
 require 'cloudapp/service'
+require 'clipboard'
 
 def service
   CloudApp::Service.using_token(token)
@@ -57,8 +58,12 @@ def next_file
 end
 
 def print_version
-  puts CloudApp::VERSION
+  $stdout.puts CloudApp::VERSION
   exit
+end
+
+def copy content
+  Clipboard.copy content
 end
 
 
@@ -71,6 +76,7 @@ while not valid_token?
 end
 
 link = ARGV.delete('--direct') || ARGV.delete('-d') ? :embed : :canonical
+copy = ARGV.delete('--no-copy').nil?
 
 case ARGV.shift
 when 'bookmark'
@@ -79,14 +85,20 @@ when 'bookmark'
     break unless valid_url? url
     bookmark = service.bookmark(url)
     exit 1 unless bookmark
-    puts bookmark.link(link)
+
+    url = bookmark.link(link)
+    copy url if copy
+    $stdout.puts url
   end
 when 'upload'
   while file = next_file
     break unless valid_file? file
     upload = service.upload(file)
     exit 1 unless upload
-    puts upload.link(link)
+
+    url = upload.link(link)
+    copy url if copy
+    $stdout.puts url
     ARGF.skip
   end
 else

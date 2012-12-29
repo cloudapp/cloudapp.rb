@@ -20,7 +20,7 @@ credentials are stored in `~/.netrc` as defined by `ftp`(1).
     Print the drop's direct link after creation. The direct link is suitable for
     use in places that expect a link to a file like an HTML IMG tag.
 
-  - `-c`, `--no-copy`:
+  - `--no-copy`:
     Don't copy the new drop's link to the system clipboard.
 
 ## EXAMPLE
