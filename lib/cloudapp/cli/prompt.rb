@@ -4,10 +4,10 @@ module CloudApp
   module CLI
     class Prompt
       def ask_for_credentials
-        puts "Sign into CloudApp."
-        print "Email: "
+        $stderr.puts "Sign into CloudApp."
+        $stderr.print "Email: "
         email = ask
-        print "Password (typing will be hidden): "
+        $stderr.print "Password (typing will be hidden): "
         password = ask_for_password
         [ email, password ]
       end
@@ -16,7 +16,7 @@ module CloudApp
       def ask_for_password
         echo_off
         password = ask
-        puts
+        $stderr.puts
         echo_on
         return password
       end

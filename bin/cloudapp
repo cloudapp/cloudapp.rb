@@ -17,10 +17,19 @@ end
 
 def service_error_handler representation
   if representation.collection.error
-    puts
-    puts "! #{representation.collection.error.message}"
-    puts
+    print_error representation.collection.error.message
   end
+end
+
+def print_error message
+  $stderr.puts
+  $stderr.puts "! #{message}"
+  $stderr.puts
+end
+
+def error message
+  print_error message
+  exit 1
 end
 
 def token
@@ -29,11 +38,6 @@ end
 
 def valid_token?
   !token.nil? and service.root.authorized?
-end
-
-def error error
-  puts "ERROR: #{error}"
-  exit 1
 end
 
 def valid_url? url
@@ -86,7 +90,7 @@ when 'upload'
     ARGF.skip
   end
 else
-  puts <<EOS
+  $stderr.puts <<EOS
 Usage:
     cloudapp bookmark http://getcloudapp.com
     cloudapp upload screenshot.png
