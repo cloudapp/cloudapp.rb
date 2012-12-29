@@ -7,13 +7,13 @@
 \fBcloudapp\fR \- all the pleasures of cloudapp in a cli
 .
 .SH "SYNOPSIS"
-\fBcloudapp bookmark\fR [\fB\-\-direct\fR] \fIurl\fR [\fIurl\fR\.\.\.]
+\fBcloudapp bookmark\fR [\fB\-\-direct\fR] [\fB\-\-no\-copy\fR] \fIurl\fR [\fIurl\fR\.\.\.]
 .
 .br
-\fBcloudapp upload\fR [\fB\-\-direct\fR] \fIfile\fR [\fIfile\fR\.\.\.]
+\fBcloudapp upload\fR [\fB\-\-direct\fR] [\fB\-\-no\-copy\fR] \fIfile\fR [\fIfile\fR\.\.\.]
 .
 .SH "DESCRIPTION"
-Upload a file or share a bookmark with CloudApp\. The drop\'s share link will be printed to standard output\. Account credentials are stored in \fB~/\.netrc\fR\.
+Upload a file or share a bookmark with CloudApp\. The drop\'s share link will be printed to standard output and copied to the system clipboard\. Account credentials are stored in \fB~/\.netrc\fR as defined by \fBftp\fR(1)\.
 .
 .P
 \fBcloudapp\fR requires ruby 1\.9\.3 or greater\.
@@ -24,22 +24,9 @@ Upload a file or share a bookmark with CloudApp\. The drop\'s share link will be
 \fB\-d\fR, \fB\-\-direct\fR
 Print the drop\'s direct link after creation\. The direct link is suitable for use in places that expect a link to a file like an HTML IMG tag\.
 .
-.SH "EXIT STATUS"
-cloudapp may return one of several error codes if it encouters problems\.
-.
-.IP "\(bu" 4
-\fB0\fR Success
-.
-.IP "\(bu" 4
-\fB1\fR Some horrible, unexpected thing has happened
-.
-.IP "" 0
-.
-.SH "FILES"
-.
 .TP
-\fB$HOME/\.netrc\fR
-Store account authentication token
+\fB\-c\fR, \fB\-\-no\-copy\fR
+Don\'t copy the new drop\'s link to the system clipboard\.
 .
 .SH "EXAMPLE"
 Upload a file:
@@ -111,6 +98,4 @@ http://cl\.ly/abc123/screenshot\.png
 .fi
 .
 .IP "" 0
-.
-.SH "SEE ALSO"
-\fBftp\fR(1)
+
