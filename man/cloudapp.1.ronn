@@ -37,16 +37,17 @@ Upload several files:
     http://cl.ly/def456
     http://cl.ly/ghi789
 
-Copy the drop's share link to the clipboard on OS X:
-
-    $ cloudapp upload screenshot.png | pbcopy
-
 Bookmark a URL:
 
     $ cloudapp bookmark http://getcloudapp.com
     http://cl.ly/abc123
 
-Print the drop's direct link:
+Copy the drop's direct link:
 
     $ cloudapp upload --direct screenshot.png
     http://cl.ly/abc123/screenshot.png
+
+Print but don't copy the drop's link:
+
+    $ cloudapp upload --no-copy screenshot.png
+    http://cl.ly/abc123

@@ -25,7 +25,7 @@ Upload a file or share a bookmark with CloudApp\. The drop\'s share link will be
 Print the drop\'s direct link after creation\. The direct link is suitable for use in places that expect a link to a file like an HTML IMG tag\.
 .
 .TP
-\fB\-c\fR, \fB\-\-no\-copy\fR
+\fB\-\-no\-copy\fR
 Don\'t copy the new drop\'s link to the system clipboard\.
 .
 .SH "EXAMPLE"
@@ -59,19 +59,6 @@ http://cl\.ly/ghi789
 .IP "" 0
 .
 .P
-Copy the drop\'s share link to the clipboard on OS X:
-.
-.IP "" 4
-.
-.nf
-
-$ cloudapp upload screenshot\.png | pbcopy
-.
-.fi
-.
-.IP "" 0
-.
-.P
 Bookmark a URL:
 .
 .IP "" 4
@@ -86,7 +73,7 @@ http://cl\.ly/abc123
 .IP "" 0
 .
 .P
-Print the drop\'s direct link:
+Copy the drop\'s direct link:
 .
 .IP "" 4
 .
@@ -94,6 +81,20 @@ Print the drop\'s direct link:
 
 $ cloudapp upload \-\-direct screenshot\.png
 http://cl\.ly/abc123/screenshot\.png
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Print but don\'t copy the drop\'s link:
+.
+.IP "" 4
+.
+.nf
+
+$ cloudapp upload \-\-no\-copy screenshot\.png
+http://cl\.ly/abc123
 .
 .fi
 .

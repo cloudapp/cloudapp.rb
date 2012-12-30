@@ -95,7 +95,7 @@ credentials are stored in <code>~/.netrc</code> as defined by <code>ftp</code>(1
 <dl>
 <dt><code>-d</code>, <code>--direct</code></dt><dd><p>Print the drop's direct link after creation. The direct link is suitable for
 use in places that expect a link to a file like an HTML IMG tag.</p></dd>
-<dt><code>-c</code>, <code>--no-copy</code></dt><dd><p>Don't copy the new drop's link to the system clipboard.</p></dd>
+<dt><code>--no-copy</code></dt><dd><p>Don't copy the new drop's link to the system clipboard.</p></dd>
 </dl>
 
 
@@ -115,21 +115,22 @@ http://cl.ly/def456
 http://cl.ly/ghi789
 </code></pre>
 
-<p>Copy the drop's share link to the clipboard on OS X:</p>
-
-<pre><code>$ cloudapp upload screenshot.png | pbcopy
-</code></pre>
-
 <p>Bookmark a URL:</p>
 
 <pre><code>$ cloudapp bookmark http://getcloudapp.com
 http://cl.ly/abc123
 </code></pre>
 
-<p>Print the drop's direct link:</p>
+<p>Copy the drop's direct link:</p>
 
 <pre><code>$ cloudapp upload --direct screenshot.png
 http://cl.ly/abc123/screenshot.png
+</code></pre>
+
+<p>Print but don't copy the drop's link:</p>
+
+<pre><code>$ cloudapp upload --no-copy screenshot.png
+http://cl.ly/abc123
 </code></pre>
 
 
