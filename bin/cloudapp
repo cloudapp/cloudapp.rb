@@ -28,6 +28,11 @@ def print_error message
   $stderr.puts
 end
 
+def print_link link
+  $stdout.puts link
+  $stderr.puts link unless $stdout.tty?
+end
+
 def error message
   print_error message
   exit 1
@@ -67,35 +72,37 @@ while not valid_token?
   Credentials.save_token token
 end
 
-link = ARGV.delete('--direct') || ARGV.delete('-d') ? :embed : :canonical
-copy = ARGV.delete('--no-copy').nil?
+link_type = ARGV.delete('--direct') || ARGV.delete('-d') ? :embed : :canonical
+copy      = ARGV.delete('--no-copy').nil?
 
 case ARGV.shift
 when 'bookmark'
   error 'Missing URL' if ARGV.empty?
 
-  link = :canonical  # No such thing as an embed link for a bookmark.
+  link_type = :canonical  # No such thing as an embed link for a bookmark.
   while url = ARGV.shift
+    $stderr.print "Bookmarking #{url}... "
     validate_url url
     bookmark = service.bookmark(url)
     exit 1 unless bookmark
 
-    url = bookmark.link(link)
-    copy url if copy
-    $stdout.puts url
+    link = bookmark.link(link_type)
+    copy link if copy
+    print_link link
   end
 
 when 'upload'
   error 'Missing file' if ARGV.empty?
 
   while path = ARGV.shift
+    $stderr.print "Uploading #{File.basename(path)}... "
     validate_file path
     upload = service.upload(path)
     exit 1 unless upload
 
-    url = upload.link(link)
-    copy url if copy
-    $stdout.puts url
+    link = upload.link(link_type)
+    copy link if copy
+    print_link link
   end
 
 else
