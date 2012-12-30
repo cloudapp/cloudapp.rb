@@ -63,10 +63,7 @@
     <a href="#SYNOPSIS">SYNOPSIS</a>
     <a href="#DESCRIPTION">DESCRIPTION</a>
     <a href="#OPTIONS">OPTIONS</a>
-    <a href="#EXIT-STATUS">EXIT STATUS</a>
-    <a href="#FILES">FILES</a>
     <a href="#EXAMPLE">EXAMPLE</a>
-    <a href="#SEE-ALSO">SEE ALSO</a>
   </div>
 
   <ol class='man-decor man-head man head'>
@@ -82,38 +79,23 @@
 
 <h2 id="SYNOPSIS">SYNOPSIS</h2>
 
-<p><code>cloudapp bookmark</code> [<code>--direct</code>] <var>url</var> [<var>url</var>...]<br />
-<code>cloudapp upload</code>   [<code>--direct</code>] <var>file</var> [<var>file</var>...]</p>
+<p><code>cloudapp bookmark</code> [<code>--direct</code>] [<code>--no-copy</code>] <var>url</var> [<var>url</var>...]<br />
+<code>cloudapp upload</code>   [<code>--direct</code>] [<code>--no-copy</code>] <var>file</var> [<var>file</var>...]</p>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
 <p>Upload a file or share a bookmark with CloudApp. The drop's share link will be
-printed to standard output. Account credentials are stored in <code>~/.netrc</code>.</p>
+printed to standard output and copied to the system clipboard. Account
+credentials are stored in <code>~/.netrc</code> as defined by <code>ftp</code>(1).</p>
 
 <p><strong>cloudapp</strong> requires ruby 1.9.3 or greater.</p>
 
 <h2 id="OPTIONS">OPTIONS</h2>
 
 <dl>
-<dt><code>-d</code>, <code>--direct</code></dt><dd>Print the drop's direct link after creation. The direct link is suitable for
-use in places that expect a link to a file like an HTML IMG tag.</dd>
-</dl>
-
-
-<h2 id="EXIT-STATUS">EXIT STATUS</h2>
-
-<p>cloudapp may return one of several error codes if it encouters problems.</p>
-
-<ul>
-<li><code>0</code> Success</li>
-<li><code>1</code> Some horrible, unexpected thing has happened</li>
-</ul>
-
-
-<h2 id="FILES">FILES</h2>
-
-<dl>
-<dt><code>$HOME/.netrc</code></dt><dd>Store account authentication token</dd>
+<dt><code>-d</code>, <code>--direct</code></dt><dd><p>Print the drop's direct link after creation. The direct link is suitable for
+use in places that expect a link to a file like an HTML IMG tag.</p></dd>
+<dt><code>--no-copy</code></dt><dd><p>Don't copy the new drop's link to the system clipboard.</p></dd>
 </dl>
 
 
@@ -133,26 +115,23 @@ http://cl.ly/def456
 http://cl.ly/ghi789
 </code></pre>
 
-<p>Copy the drop's share link to the clipboard on OS X:</p>
-
-<pre><code>$ cloudapp upload screenshot.png | pbcopy
-</code></pre>
-
 <p>Bookmark a URL:</p>
 
 <pre><code>$ cloudapp bookmark http://getcloudapp.com
 http://cl.ly/abc123
 </code></pre>
 
-<p>Print the drop's direct link:</p>
+<p>Copy the drop's direct link:</p>
 
 <pre><code>$ cloudapp upload --direct screenshot.png
 http://cl.ly/abc123/screenshot.png
 </code></pre>
 
-<h2 id="SEE-ALSO">SEE ALSO</h2>
+<p>Print but don't copy the drop's link:</p>
 
-<p><code>ftp</code>(1)</p>
+<pre><code>$ cloudapp upload --no-copy screenshot.png
+http://cl.ly/abc123
+</code></pre>
 
 
   <ol class='man-decor man-foot man foot'>
