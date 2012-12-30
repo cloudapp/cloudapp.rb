@@ -3,6 +3,7 @@
 module CloudApp
   module CLI
     class Prompt
+
       def ask_for_credentials
         $stderr.puts "Sign into CloudApp."
         $stderr.print "Email: "
@@ -21,8 +22,13 @@ module CloudApp
         return password
       end
 
-      def echo_on()  with_tty { system "stty echo" }  end
-      def echo_off() with_tty { system "stty -echo" } end
+      # This part gratuitously copied from hub.
+      #   https://github.com/defunkt/hub/blob/master/lib/hub/github_api.rb#L399-L400
+      NULL = defined?(File::NULL) ? File::NULL :
+               File.exist?('/dev/null') ? '/dev/null' : 'NUL'
+
+      def echo_on()  with_tty { system "stty echo 2>#{NULL}"  } end
+      def echo_off() with_tty { system "stty -echo 2>#{NULL}" } end
       def with_tty(&block)
         return unless $stdin.isatty
         yield
