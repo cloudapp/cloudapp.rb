@@ -41,22 +41,6 @@ def valid_token?
   !token.nil? and service.root.authorized?
 end
 
-def valid_url? url
-  error 'URL missing' if url.nil?
-  error "#{ url } doesn't look like a valid URL" unless url =~ URI.regexp
-  true
-end
-
-def valid_file? file
-  error "File doesn't exist" if file.is_a? Errno::ENOENT
-  error 'File missing'       if file.nil? or file == STDIN
-  not file.closed?
-end
-
-def next_file
-  ARGF.file rescue $!
-end
-
 def print_version
   $stdout.puts CloudApp::VERSION
   exit
@@ -64,6 +48,14 @@ end
 
 def copy content
   Clipboard.copy content
+end
+
+def validate_url url
+  error "#{url} doesn't look like a valid URL" unless url =~ URI.regexp
+end
+
+def validate_file path
+  error "#{path.inspect} doesn't exist" unless File.exists? path
 end
 
 
@@ -80,9 +72,11 @@ copy = ARGV.delete('--no-copy').nil?
 
 case ARGV.shift
 when 'bookmark'
+  error 'Missing URL' if ARGV.empty?
+
   link = :canonical  # No such thing as an embed link for a bookmark.
   while url = ARGV.shift
-    break unless valid_url? url
+    validate_url url
     bookmark = service.bookmark(url)
     exit 1 unless bookmark
 
@@ -90,17 +84,20 @@ when 'bookmark'
     copy url if copy
     $stdout.puts url
   end
+
 when 'upload'
-  while file = next_file
-    break unless valid_file? file
-    upload = service.upload(file)
+  error 'Missing file' if ARGV.empty?
+
+  while path = ARGV.shift
+    validate_file path
+    upload = service.upload(path)
     exit 1 unless upload
 
     url = upload.link(link)
     copy url if copy
     $stdout.puts url
-    ARGF.skip
   end
+
 else
   $stderr.puts <<EOS
 Usage:
