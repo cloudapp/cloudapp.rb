@@ -26,7 +26,7 @@ Print the drop\'s direct link after creation\. The direct link is suitable for u
 .
 .TP
 \fB\-h\fR, \fB\-\-help\fR
-Display the version of cloudapp\.
+Print a help message describing cloudapp\'s usage\.
 .
 .TP
 \fB\-\-[no\-]copy\fR
@@ -44,7 +44,7 @@ Upload a file:
 .nf
 
 $ cloudapp upload screenshot\.png
-http://cl\.ly/abc123
+Uploading screenshot\.png\.\.\. http://cl\.ly/image/3U2U2f3B1O0x
 .
 .fi
 .
@@ -58,9 +58,9 @@ Upload several files:
 .nf
 
 $ cloudapp upload *\.png
-http://cl\.ly/abc123
-http://cl\.ly/def456
-http://cl\.ly/ghi789
+Uploading screenshot\-1\.png\.\.\. http://cl\.ly/image/1E1F1k3Q3919
+Uploading screenshot\-2\.png\.\.\. http://cl\.ly/image/3P1s3p0c3545
+Uploading screenshot\-3\.png\.\.\. http://cl\.ly/image/0E3k0h353X0w
 .
 .fi
 .
@@ -74,7 +74,7 @@ Bookmark a URL:
 .nf
 
 $ cloudapp bookmark http://getcloudapp\.com
-http://cl\.ly/abc123
+Bookmarking http://getcloudapp\.com\.\.\. http://cl\.ly/352T3Z2G0G2S
 .
 .fi
 .
@@ -88,7 +88,7 @@ Copy the drop\'s direct link:
 .nf
 
 $ cloudapp upload \-\-direct screenshot\.png
-http://cl\.ly/abc123/screenshot\.png
+Uploading screenshot\.png\.\.\. http://cl\.ly/image/3U2U2f3B1O0x/screenshot\.png
 .
 .fi
 .
@@ -102,7 +102,7 @@ Print but don\'t copy the drop\'s link:
 .nf
 
 $ cloudapp upload \-\-no\-copy screenshot\.png
-http://cl\.ly/abc123
+Uploading screenshot\.png\.\.\. http://cl\.ly/image/3U2U2f3B1O0x
 .
 .fi
 .
