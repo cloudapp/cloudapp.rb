@@ -71,21 +71,16 @@ Usage:
 EOS
 end
 
+def copy content
+  Clipboard.copy content
+end
+
 def invalid_command
   print_help $stderr
   exit 1
 end
 
-def copy content
-  Clipboard.copy content
-end
-
-
-options = CloudApp::CLI::Options.parse ARGV
-case options.action
-when :help    then print_help
-when :version then print_version
-when :bookmark
+def bookmark options
   error 'Missing URL to bookmark.' if options.arguments.empty?
   authenticate
   options.arguments.each do |arg|
@@ -95,8 +90,9 @@ when :bookmark
     exit 1 unless bookmark
     fetch_link bookmark, options.link_type, options.copy_link?
   end
+end
 
-when :upload
+def upload options
   error 'Missing file to upload.' if options.arguments.empty?
   authenticate
   options.arguments.each do |arg|
@@ -106,6 +102,14 @@ when :upload
     exit 1 unless upload
     fetch_link upload, options.link_type, options.copy_link?
   end
+end
 
-else invalid_command
+
+options = CloudApp::CLI::Options.parse ARGV
+case options.action
+when :help     then print_help
+when :version  then print_version
+when :bookmark then bookmark options
+when :upload   then upload options
+else                invalid_command
 end
