@@ -7,10 +7,10 @@
 \fBcloudapp\fR \- all the pleasures of cloudapp in a cli
 .
 .SH "SYNOPSIS"
-\fBcloudapp bookmark\fR [\fB\-\-direct\fR] [\fB\-\-no\-copy\fR] \fIurl\fR [\fIurl\fR\.\.\.]
+\fBcloudapp bookmark\fR [\fB\-\-direct\fR] [\fB\-\-[no\-]copy\fR] \fIurl\fR [\fIurl\fR\.\.\.]
 .
 .br
-\fBcloudapp upload\fR [\fB\-\-direct\fR] [\fB\-\-no\-copy\fR] \fIfile\fR [\fIfile\fR\.\.\.]
+\fBcloudapp upload\fR [\fB\-\-direct\fR] [\fB\-\-[no\-]copy\fR] \fIfile\fR [\fIfile\fR\.\.\.]
 .
 .SH "DESCRIPTION"
 Upload a file or share a bookmark with CloudApp\. The drop\'s share link will be printed to standard output and copied to the system clipboard\. Account credentials are stored in \fB~/\.netrc\fR as defined by \fBftp\fR(1)\.
@@ -25,8 +25,16 @@ Upload a file or share a bookmark with CloudApp\. The drop\'s share link will be
 Print the drop\'s direct link after creation\. The direct link is suitable for use in places that expect a link to a file like an HTML IMG tag\.
 .
 .TP
-\fB\-\-no\-copy\fR
-Don\'t copy the new drop\'s link to the system clipboard\.
+\fB\-h\fR, \fB\-\-help\fR
+Display the version of cloudapp\.
+.
+.TP
+\fB\-\-[no\-]copy\fR
+Copy the new drop\'s link to the system clipboard\. The default option is copy\.
+.
+.TP
+\fB\-\-version\fR
+Display the version of cloudapp\.
 .
 .SH "EXAMPLE"
 Upload a file:

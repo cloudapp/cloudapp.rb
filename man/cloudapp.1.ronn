@@ -3,8 +3,8 @@ cloudapp(1) -- all the pleasures of cloudapp in a cli
 
 ## SYNOPSIS
 
-`cloudapp bookmark` [`--direct`] [`--no-copy`] <url> [<url>...]<br>
-`cloudapp upload`   [`--direct`] [`--no-copy`] <file> [<file>...]
+`cloudapp bookmark` [`--direct`] [`--[no-]copy`] <url> [<url>...]<br>
+`cloudapp upload`   [`--direct`] [`--[no-]copy`] <file> [<file>...]
 
 ## DESCRIPTION
 
@@ -20,8 +20,15 @@ credentials are stored in `~/.netrc` as defined by `ftp`(1).
     Print the drop's direct link after creation. The direct link is suitable for
     use in places that expect a link to a file like an HTML IMG tag.
 
-  - `--no-copy`:
-    Don't copy the new drop's link to the system clipboard.
+  - `-h`, `--help`:
+    Print a help message describing cloudapp's usage.
+
+  - `--[no-]copy`:
+    Copy the new drop's link to the system clipboard. The default option is
+    copy.
+
+  - `--version`:
+    Display the version of cloudapp.
 
 ## EXAMPLE
 

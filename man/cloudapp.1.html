@@ -79,8 +79,8 @@
 
 <h2 id="SYNOPSIS">SYNOPSIS</h2>
 
-<p><code>cloudapp bookmark</code> [<code>--direct</code>] [<code>--no-copy</code>] <var>url</var> [<var>url</var>...]<br />
-<code>cloudapp upload</code>   [<code>--direct</code>] [<code>--no-copy</code>] <var>file</var> [<var>file</var>...]</p>
+<p><code>cloudapp bookmark</code> [<code>--direct</code>] [<code>--[no-]copy</code>] <var>url</var> [<var>url</var>...]<br />
+<code>cloudapp upload</code>   [<code>--direct</code>] [<code>--[no-]copy</code>] <var>file</var> [<var>file</var>...]</p>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
@@ -95,7 +95,10 @@ credentials are stored in <code>~/.netrc</code> as defined by <code>ftp</code>(1
 <dl>
 <dt><code>-d</code>, <code>--direct</code></dt><dd><p>Print the drop's direct link after creation. The direct link is suitable for
 use in places that expect a link to a file like an HTML IMG tag.</p></dd>
-<dt><code>--no-copy</code></dt><dd><p>Don't copy the new drop's link to the system clipboard.</p></dd>
+<dt><code>-h</code>, <code>--help</code></dt><dd><p>Display the version of cloudapp.</p></dd>
+<dt><code>--[no-]copy</code></dt><dd><p>Copy the new drop's link to the system clipboard. The default option is
+copy.</p></dd>
+<dt><code>--version</code></dt><dd><p>Display the version of cloudapp.</p></dd>
 </dl>
 
 
