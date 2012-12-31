@@ -3,7 +3,6 @@
 module CloudApp
   module CLI
     class Prompt
-
       def ask_for_credentials
         $stderr.puts "Sign into CloudApp."
         $stderr.print "Email: "
