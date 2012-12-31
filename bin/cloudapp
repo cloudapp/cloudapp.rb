@@ -2,6 +2,7 @@
 
 require 'cloudapp'
 require 'cloudapp/credentials'
+require 'cloudapp/cli/options'
 require 'cloudapp/cli/prompt'
 require 'cloudapp/service'
 require 'clipboard'
@@ -22,22 +23,6 @@ def service_error_handler representation
   end
 end
 
-def print_error message
-  $stderr.puts
-  $stderr.puts "! #{message}"
-  $stderr.puts
-end
-
-def print_link link
-  $stdout.puts link
-  $stderr.puts link unless $stdout.tty?
-end
-
-def error message
-  print_error message
-  exit 1
-end
-
 def token
   Credentials.token
 end
@@ -46,69 +31,81 @@ def valid_token?
   !token.nil? and service.root.authorized?
 end
 
+def authenticate
+  while not valid_token?
+    credentials = CloudApp::CLI::Prompt.new.ask_for_credentials
+    token = token_for_account credentials
+    Credentials.save_token token
+  end
+end
+
+def fetch_link drop, link_type, copy_link
+  link = drop.link(link_type)
+  copy link if copy_link
+  $stdout.puts link
+  $stderr.puts link unless $stdout.tty?
+end
+
+
+def print_error message
+  $stderr.puts
+  $stderr.puts "! #{message}"
+  $stderr.puts
+end
+
+def error message
+  print_error message
+  exit 1
+end
+
 def print_version
   $stdout.puts CloudApp::VERSION
   exit
+end
+
+def print_help io = $stdout
+  io.puts <<EOS
+Usage:
+    cloudapp bookmark http://getcloudapp.com
+    cloudapp upload screenshot.png
+EOS
+end
+
+def invalid_command
+  print_help $stderr
+  exit 1
 end
 
 def copy content
   Clipboard.copy content
 end
 
-def validate_url url
-  error "#{url} doesn't look like a valid URL" unless url =~ URI.regexp
-end
 
-def validate_file path
-  error "#{path.inspect} doesn't exist" unless File.exists? path
-end
-
-
-print_version if ARGV.delete('--version') || ARGV.delete('-v')
-
-while not valid_token?
-  credentials = CloudApp::CLI::Prompt.new.ask_for_credentials
-  token = token_for_account credentials
-  Credentials.save_token token
-end
-
-link_type = ARGV.delete('--direct') || ARGV.delete('-d') ? :embed : :canonical
-copy      = ARGV.delete('--no-copy').nil?
-
-case ARGV.shift
-when 'bookmark'
-  error 'Missing URL' if ARGV.empty?
-
-  link_type = :canonical  # No such thing as an embed link for a bookmark.
-  while url = ARGV.shift
-    $stderr.print "Bookmarking #{url}... "
-    validate_url url
-    bookmark = service.bookmark(url)
+options = CloudApp::CLI::Options.parse ARGV
+case options.action
+when :help    then print_help
+when :version then print_version
+when :bookmark
+  error 'Missing URL to bookmark.' if options.arguments.empty?
+  authenticate
+  options.arguments.each do |arg|
+    $stderr.print "Bookmarking #{arg}... "
+    error "#{arg} doesn't look like a valid URL" unless arg =~ URI.regexp
+    bookmark = service.bookmark(arg)
     exit 1 unless bookmark
-
-    link = bookmark.link(link_type)
-    copy link if copy
-    print_link link
+    fetch_link bookmark, options.link_type, options.copy_link?
   end
 
-when 'upload'
-  error 'Missing file' if ARGV.empty?
-
-  while path = ARGV.shift
-    $stderr.print "Uploading #{File.basename(path)}... "
-    validate_file path
-    upload = service.upload(path)
+when :upload
+  error 'Missing file to upload.' if options.arguments.empty?
+  authenticate
+  options.arguments.each do |arg|
+    $stderr.print "Uploading #{File.basename(arg)}... "
+    error "#{arg.inspect} doesn't exist" unless File.exists? arg
+    upload = service.upload(arg)
     exit 1 unless upload
-
-    link = upload.link(link_type)
-    copy link if copy
-    print_link link
+    fetch_link upload, options.link_type, options.copy_link?
   end
 
-else
-  $stderr.puts <<EOS
-Usage:
-    cloudapp bookmark http://getcloudapp.com
-    cloudapp upload screenshot.png
-EOS
+else invalid_command
 end
