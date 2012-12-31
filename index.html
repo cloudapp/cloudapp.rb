@@ -95,7 +95,7 @@ credentials are stored in <code>~/.netrc</code> as defined by <code>ftp</code>(1
 <dl>
 <dt><code>-d</code>, <code>--direct</code></dt><dd><p>Print the drop's direct link after creation. The direct link is suitable for
 use in places that expect a link to a file like an HTML IMG tag.</p></dd>
-<dt><code>-h</code>, <code>--help</code></dt><dd><p>Display the version of cloudapp.</p></dd>
+<dt><code>-h</code>, <code>--help</code></dt><dd><p>Print a help message describing cloudapp's usage.</p></dd>
 <dt><code>--[no-]copy</code></dt><dd><p>Copy the new drop's link to the system clipboard. The default option is
 copy.</p></dd>
 <dt><code>--version</code></dt><dd><p>Display the version of cloudapp.</p></dd>
@@ -107,33 +107,33 @@ copy.</p></dd>
 <p>Upload a file:</p>
 
 <pre><code>$ cloudapp upload screenshot.png
-http://cl.ly/abc123
+Uploading screenshot.png... http://cl.ly/image/3U2U2f3B1O0x
 </code></pre>
 
 <p>Upload several files:</p>
 
 <pre><code>$ cloudapp upload *.png
-http://cl.ly/abc123
-http://cl.ly/def456
-http://cl.ly/ghi789
+Uploading screenshot-1.png... http://cl.ly/image/1E1F1k3Q3919
+Uploading screenshot-2.png... http://cl.ly/image/3P1s3p0c3545
+Uploading screenshot-3.png... http://cl.ly/image/0E3k0h353X0w
 </code></pre>
 
 <p>Bookmark a URL:</p>
 
 <pre><code>$ cloudapp bookmark http://getcloudapp.com
-http://cl.ly/abc123
+Bookmarking http://getcloudapp.com... http://cl.ly/352T3Z2G0G2S
 </code></pre>
 
 <p>Copy the drop's direct link:</p>
 
 <pre><code>$ cloudapp upload --direct screenshot.png
-http://cl.ly/abc123/screenshot.png
+Uploading screenshot.png... http://cl.ly/image/3U2U2f3B1O0x/screenshot.png
 </code></pre>
 
 <p>Print but don't copy the drop's link:</p>
 
 <pre><code>$ cloudapp upload --no-copy screenshot.png
-http://cl.ly/abc123
+Uploading screenshot.png... http://cl.ly/image/3U2U2f3B1O0x
 </code></pre>
 
 
