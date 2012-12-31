@@ -65,9 +65,12 @@ end
 
 def print_help io = $stdout
   io.puts <<EOS
+cloudapp, version #{CloudApp::VERSION}
+
 Usage:
-    cloudapp bookmark http://getcloudapp.com
-    cloudapp upload screenshot.png
+    cloudapp bookmark [--direct] [--[no-]copy] <url> [<url>...]
+    cloudapp upload   [--direct] [--[no-]copy] <file> [<file>...]
+
 EOS
 end
 
