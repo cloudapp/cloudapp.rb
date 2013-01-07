@@ -60,11 +60,11 @@ module CloudApp
     end
 
     def upload path
-      template = drops_template.template.
-                   fill('file_size', FileTest.size(path))
+      template = drops_template.template
+                   .fill('file_size', FileTest.size(path))
+                   .fill('name',      File.basename(path))
       post template.href, template.data do |representation|
         # TODO: Test unauthorized
-        # TODO: Test uploading after free plan exhausted
         return unless representation.__response__.success?
         return upload_file(path, representation.template)
       end
