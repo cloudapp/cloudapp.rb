@@ -7,6 +7,11 @@ require 'cloudapp/cli/prompt'
 require 'cloudapp/service'
 require 'clipboard'
 
+trap('SIGINT') do
+  puts
+  exit
+end
+
 def service
   CloudApp::Service.using_token(token)
     .on_error(&method(:service_error_handler))
