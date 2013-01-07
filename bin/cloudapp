@@ -54,13 +54,18 @@ end
 
 def print_error message
   $stderr.puts
-  $stderr.puts "! #{message}"
+  $stderr.puts
+  $stderr.puts "! #{wrap(message, 78, '  ')}"
   $stderr.puts
 end
 
 def error message
   print_error message
   exit 1
+end
+
+def wrap message, width, padding
+  message.gsub(/(.{1,#{width}})(\s+|$)/, "\\1\n#{padding}").strip
 end
 
 def print_version
