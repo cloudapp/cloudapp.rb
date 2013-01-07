@@ -14,9 +14,24 @@ describe CloudApp::CollectionJson::Item do
     its(:rel)  { should eq 'relation' }
   end
 
+  describe '#code' do
+    let(:data) {{ 'code' => 'ID10T' }}
+    its(:code) { should eq 'ID10T' }
+
+    context 'without a code' do
+      let(:data) { {} }
+      its(:code) { should be_nil }
+    end
+  end
+
   describe '#message' do
     let(:data)    {{ 'message' => 'error!' }}
     its(:message) { should eq 'error!' }
+
+    context 'without a message' do
+      let(:data)    { {} }
+      its(:message) { should be_nil }
+    end
   end
 
   describe '#links' do
