@@ -19,7 +19,12 @@ end
 
 def service_error_handler representation
   if representation.collection.error
-    print_error representation.collection.error.message
+    message = representation.collection.error.message
+    if representation.collection.error.code == 'upgrade'
+      message << ' '
+      message << representation.link('upgrade').href
+    end
+    print_error message
   end
 end
 
