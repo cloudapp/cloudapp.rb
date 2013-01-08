@@ -17,9 +17,9 @@ def service
     .on_error(&method(:service_error_handler))
 end
 
-def token_for_account credentials
+def token_for_account email, password
   CloudApp::Service
-    .token_for_account(*credentials, &method(:service_error_handler))
+    .token_for_account(email, password, &method(:service_error_handler))
 end
 
 def service_error_handler representation
@@ -43,9 +43,9 @@ end
 
 def authenticate
   while not valid_token?
-    credentials = CloudApp::CLI::Prompt.new.ask_for_credentials
-    token = token_for_account credentials
-    Credentials.save_token token
+    email, password = CloudApp::CLI::Prompt.new.ask_for_credentials
+    token = token_for_account email, password
+    Credentials.save email, token
   end
 end
 

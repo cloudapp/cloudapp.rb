@@ -4,18 +4,20 @@ require 'cloudapp/credentials'
 describe Credentials do
   describe '.token' do
     let(:netrc) { stub :netrc, :[] => %w( arthur@dent.com towel ) }
-    subject { Credentials.token(netrc) }
+    let(:label) { stub :label }
+    subject { Credentials.token(netrc, label) }
     it { should eq 'towel' }
   end
 
   describe '#token' do
     let(:netrc) { stub :netrc, :[] => %w( arthur@dent.com towel ) }
-    subject { Credentials.new(netrc).token }
+    let(:label) { stub :label }
+    subject { Credentials.new(netrc, label).token }
 
     it { should eq 'towel' }
 
     it 'fetches token from netrc' do
-      netrc.should_receive(:[]).with('api.getcloudapp.com').once
+      netrc.should_receive(:[]).with(label).once
       subject
     end
 
@@ -25,38 +27,54 @@ describe Credentials do
     end
   end
 
-  describe '.save_token' do
+  describe '.save' do
     let(:netrc) { stub :netrc, :[]= => nil }
+    let(:label) { stub :label }
 
     it 'saves the token' do
       netrc.should_receive(:save).once.ordered
-      Credentials.save_token 'new token', netrc
+      Credentials.save 'login', 'new token', netrc, label
     end
   end
 
-  describe '#save_token' do
+  describe '#save' do
     let(:netrc) { stub :netrc }
-    subject { Credentials.new(netrc) }
+    let(:label) { stub :label }
+    let(:login) { stub :login }
+    subject { Credentials.new(netrc, label) }
 
     it 'saves the token' do
-      credentials = [ 'api@getcloudapp.com', 'new token' ]
-      netrc.should_receive(:[]=).with('api.getcloudapp.com', credentials)
+      credentials = [ 'arthur@dent.com', 'new token' ]
+      netrc.should_receive(:[]=).with(label, credentials)
         .once.ordered
       netrc.should_receive(:save).once.ordered
-      subject.save_token 'new token'
+      subject.save *credentials
+    end
+
+    it 'ignores a nil login' do
+      netrc.should_not_receive(:[]=)
+      netrc.should_not_receive(:save)
+      subject.save nil, 'new token'
+    end
+
+    it 'ignores an empty login' do
+      netrc.should_not_receive(:[]=)
+      netrc.should_not_receive(:save)
+      subject.save '', 'new token'
+      subject.save ' ', 'new token'
     end
 
     it 'ignores a nil token' do
       netrc.should_not_receive(:[]=)
       netrc.should_not_receive(:save)
-      subject.save_token nil
+      subject.save login, nil
     end
 
     it 'ignores an empty token' do
       netrc.should_not_receive(:[]=)
       netrc.should_not_receive(:save)
-      subject.save_token ''
-      subject.save_token ' '
+      subject.save login, ''
+      subject.save login, ' '
     end
   end
 end
