@@ -1,6 +1,7 @@
 # CloudApp CLI
 
-Experience all the pleasures of sharing with [CloudApp][] from your terminal.
+Experience all the pleasures of sharing with [CloudApp][] now in your Ruby code
+and terminal.
 
 [cloudapp]: http://getcloudapp.com
 
