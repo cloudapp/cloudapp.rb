@@ -9,41 +9,30 @@ module CloudApp
         options[:copy_link] = true unless args.delete('--no-copy')
         options[:help]      = args.delete('--help') || args.delete('-h')
         options[:version]   = args.delete('--version')
-        options[:action]    = args.shift unless args.empty?
         options[:arguments] = args unless args.empty?
 
         Options.new options
       end
 
-      attr_accessor :arguments
+      attr_reader :arguments
       def initialize options
         @copy_link = options.fetch :copy_link, false
         @direct    = options.fetch :direct,    false
         @help      = options.fetch :help,      false
         @version   = options.fetch :version,   false
-        @action    = options.fetch :action,    nil
         @arguments = options.fetch :arguments, []
       end
 
-      def copy_link?
-        @copy_link
-      end
-
-      def link_type
-        @direct && action != :bookmark ? :embed : :canonical
-      end
+      def copy_link?()   @copy_link end
+      def direct_link?() @direct    end
 
       def action
-        if @help or @action == 'help'
+        if @help or @arguments.first == 'help'
           :help
         elsif @version
           :version
-        elsif @action == 'bookmark'
-          :bookmark
-        elsif @action == 'upload'
-          :upload
         else
-          :invalid
+          :share
         end
       end
     end

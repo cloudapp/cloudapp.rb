@@ -29,7 +29,7 @@ def service_error_handler representation
       message << ' '
       message << representation.link('upgrade').href
     end
-    print_error message
+    service_error message
   end
 end
 
@@ -49,18 +49,23 @@ def authenticate
   end
 end
 
-def fetch_link drop, link_type, copy_link
-  link = drop.link(link_type)
-  copy link if copy_link
+def fetch_link drop, options
+  link_rel = options.direct_link? ? :embed : :canonical
+  link     = drop.link(link_rel) || drop.link(:canonical)
+  copy link if options.copy_link?
   $stdout.puts link
   $stderr.puts link unless $stdout.tty?
 end
 
 
 def print_error message
-  $stderr.puts
-  $stderr.puts
   $stderr.puts "! #{wrap(message, 78, '  ')}"
+end
+
+def service_error message
+  $stderr.puts
+  $stderr.puts
+  print_error message
   $stderr.puts
 end
 
@@ -83,8 +88,7 @@ def print_help io = $stdout
 cloudapp, version #{CloudApp::VERSION}
 
 Usage:
-    cloudapp bookmark [--direct] [--[no-]copy] <url> [<url>...]
-    cloudapp upload   [--direct] [--[no-]copy] <file> [<file>...]
+    cloudapp [--direct] [--[no-]copy] <file_or_url> [<file_or_url>...]
 
 EOS
 end
@@ -98,36 +102,34 @@ def invalid_command
   exit 1
 end
 
-def bookmark options
-  error 'Missing URL to bookmark.' if options.arguments.empty?
-  authenticate
-  options.arguments.each do |arg|
-    $stderr.print "Bookmarking #{arg}... "
-    error "#{arg} doesn't look like a valid URL" unless arg =~ URI.regexp
-    bookmark = service.bookmark(arg)
-    exit 1 unless bookmark
-    fetch_link bookmark, options.link_type, options.copy_link?
-  end
+def file_names options, input = $stdin
+  stdin_file_names = input.tty? ? [] : input.each_line.map(&:chomp)
+  stdin_file_names + options.arguments
 end
 
-def upload options
-  error 'Missing file to upload.' if options.arguments.empty?
+def share file_names, options
+  invalid_command if file_names.empty?
   authenticate
-  options.arguments.each do |arg|
-    $stderr.print "Uploading #{File.basename(arg)}... "
-    error "#{arg.inspect} doesn't exist" unless File.exists? arg
-    upload = service.upload(arg)
-    exit 1 unless upload
-    fetch_link upload, options.link_type, options.copy_link?
+
+  file_names.each do |arg|
+    if File.exists? arg
+      $stderr.print "Uploading #{File.basename(arg)}... "
+      drop = service.upload(arg)
+    elsif arg =~ URI.regexp
+      $stderr.print "Bookmarking #{arg}... "
+      drop = service.bookmark(arg)
+    else
+      error "#{arg.inspect} isn't a file that exists or a valid URL."
+    end
+
+    exit 1 unless drop
+    fetch_link drop, options
   end
 end
-
 
 options = CloudApp::CLI::Options.parse ARGV
 case options.action
-when :help     then print_help
-when :version  then print_version
-when :bookmark then bookmark options
-when :upload   then upload options
-else                invalid_command
+when :help    then print_help
+when :version then print_version
+when :share   then share file_names(options), options
 end
