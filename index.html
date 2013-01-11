@@ -79,8 +79,7 @@
 
 <h2 id="SYNOPSIS">SYNOPSIS</h2>
 
-<p><code>cloudapp bookmark</code> [<code>--direct</code>] [<code>--[no-]copy</code>] <var>url</var> [<var>url</var>...]<br />
-<code>cloudapp upload</code>   [<code>--direct</code>] [<code>--[no-]copy</code>] <var>file</var> [<var>file</var>...]</p>
+<p><code>cloudapp [</code>--direct<code>] [</code>--[no-]copy`] <var>file_or_url</var> [<var>file_or_url</var>...]</p>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
@@ -106,40 +105,59 @@ copy.</p></dd>
 
 <p>Upload a file:</p>
 
-<pre><code>$ cloudapp upload screenshot.png
+<pre><code>$ cloudapp screenshot.png
 Uploading screenshot.png... http://cl.ly/image/3U2U2f3B1O0x
 </code></pre>
 
 <p>Upload several files:</p>
 
-<pre><code>$ cloudapp upload *.png
+<pre><code>$ cloudapp *.png
 Uploading screenshot-1.png... http://cl.ly/image/1E1F1k3Q3919
 Uploading screenshot-2.png... http://cl.ly/image/3P1s3p0c3545
 Uploading screenshot-3.png... http://cl.ly/image/0E3k0h353X0w
 </code></pre>
 
+<p>Upload file names and URLs from standard input:</p>
+
+<pre><code>$ ls *.png | cloudapp
+Uploading screenshot-1.png... http://cl.ly/image/1E1F1k3Q3919
+Uploading screenshot-2.png... http://cl.ly/image/3P1s3p0c3545
+Uploading screenshot-3.png... http://cl.ly/image/0E3k0h353X0w
+
+$ gifme {1,2,3}.png | cloudapp --direct
+You now have a handsome animation at /Users/Larry/Desktop/animated-2013-01-11_15h-59m-49s.gif
+Uploading animated-2013-01-11_15h-59m-49s.gif... http://cl.ly/image/373I3q2g1p36
+</code></pre>
+
 <p>Bookmark a URL:</p>
 
-<pre><code>$ cloudapp bookmark http://getcloudapp.com
+<pre><code>$ cloudapp http://getcloudapp.com
+Bookmarking http://getcloudapp.com... http://cl.ly/352T3Z2G0G2S
+</code></pre>
+
+<p>Everything at once:</p>
+
+<pre><code>$ cloudapp screenshot.png http://getcloudapp.com
+Uploading screenshot.png... http://cl.ly/image/3U2U2f3B1O0x
 Bookmarking http://getcloudapp.com... http://cl.ly/352T3Z2G0G2S
 </code></pre>
 
 <p>Copy the drop's direct link:</p>
 
-<pre><code>$ cloudapp upload --direct screenshot.png
+<pre><code>$ cloudapp --direct screenshot.png
 Uploading screenshot.png... http://cl.ly/image/3U2U2f3B1O0x/screenshot.png
 </code></pre>
 
 <p>Print but don't copy the drop's link:</p>
 
-<pre><code>$ cloudapp upload --no-copy screenshot.png
+<pre><code>$ cloudapp --no-copy screenshot.png
 Uploading screenshot.png... http://cl.ly/image/3U2U2f3B1O0x
 </code></pre>
 
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'></li>
-    <li class='tc'>December 2012</li>
+    <li class='tc'>January 2013</li>
     <li class='tr'>cloudapp(1)</li>
   </ol>
 
