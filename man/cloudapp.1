@@ -1,16 +1,13 @@
 .\" generated with Ronn/v0.7.3
 .\" http://github.com/rtomayko/ronn/tree/0.7.3
 .
-.TH "CLOUDAPP" "1" "December 2012" "" ""
+.TH "CLOUDAPP" "1" "January 2013" "" ""
 .
 .SH "NAME"
 \fBcloudapp\fR \- all the pleasures of cloudapp in a cli
 .
 .SH "SYNOPSIS"
-\fBcloudapp bookmark\fR [\fB\-\-direct\fR] [\fB\-\-[no\-]copy\fR] \fIurl\fR [\fIurl\fR\.\.\.]
-.
-.br
-\fBcloudapp upload\fR [\fB\-\-direct\fR] [\fB\-\-[no\-]copy\fR] \fIfile\fR [\fIfile\fR\.\.\.]
+\fBcloudapp [\fR\-\-direct\fB] [\fR\-\-[no\-]copy`] \fIfile_or_url\fR [\fIfile_or_url\fR\.\.\.]
 .
 .SH "DESCRIPTION"
 Upload a file or share a bookmark with CloudApp\. The drop\'s share link will be printed to standard output and copied to the system clipboard\. Account credentials are stored in \fB~/\.netrc\fR as defined by \fBftp\fR(1)\.
@@ -43,7 +40,7 @@ Upload a file:
 .
 .nf
 
-$ cloudapp upload screenshot\.png
+$ cloudapp screenshot\.png
 Uploading screenshot\.png\.\.\. http://cl\.ly/image/3U2U2f3B1O0x
 .
 .fi
@@ -57,10 +54,30 @@ Upload several files:
 .
 .nf
 
-$ cloudapp upload *\.png
+$ cloudapp *\.png
 Uploading screenshot\-1\.png\.\.\. http://cl\.ly/image/1E1F1k3Q3919
 Uploading screenshot\-2\.png\.\.\. http://cl\.ly/image/3P1s3p0c3545
 Uploading screenshot\-3\.png\.\.\. http://cl\.ly/image/0E3k0h353X0w
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Upload file names and URLs from standard input:
+.
+.IP "" 4
+.
+.nf
+
+$ ls *\.png | cloudapp
+Uploading screenshot\-1\.png\.\.\. http://cl\.ly/image/1E1F1k3Q3919
+Uploading screenshot\-2\.png\.\.\. http://cl\.ly/image/3P1s3p0c3545
+Uploading screenshot\-3\.png\.\.\. http://cl\.ly/image/0E3k0h353X0w
+
+$ gifme {1,2,3}\.png | cloudapp \-\-direct
+You now have a handsome animation at /Users/Larry/Desktop/animated\-2013\-01\-11_15h\-59m\-49s\.gif
+Uploading animated\-2013\-01\-11_15h\-59m\-49s\.gif\.\.\. http://cl\.ly/image/373I3q2g1p36
 .
 .fi
 .
@@ -73,7 +90,22 @@ Bookmark a URL:
 .
 .nf
 
-$ cloudapp bookmark http://getcloudapp\.com
+$ cloudapp http://getcloudapp\.com
+Bookmarking http://getcloudapp\.com\.\.\. http://cl\.ly/352T3Z2G0G2S
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Everything at once:
+.
+.IP "" 4
+.
+.nf
+
+$ cloudapp screenshot\.png http://getcloudapp\.com
+Uploading screenshot\.png\.\.\. http://cl\.ly/image/3U2U2f3B1O0x
 Bookmarking http://getcloudapp\.com\.\.\. http://cl\.ly/352T3Z2G0G2S
 .
 .fi
@@ -87,7 +119,7 @@ Copy the drop\'s direct link:
 .
 .nf
 
-$ cloudapp upload \-\-direct screenshot\.png
+$ cloudapp \-\-direct screenshot\.png
 Uploading screenshot\.png\.\.\. http://cl\.ly/image/3U2U2f3B1O0x/screenshot\.png
 .
 .fi
@@ -101,7 +133,7 @@ Print but don\'t copy the drop\'s link:
 .
 .nf
 
-$ cloudapp upload \-\-no\-copy screenshot\.png
+$ cloudapp \-\-no\-copy screenshot\.png
 Uploading screenshot\.png\.\.\. http://cl\.ly/image/3U2U2f3B1O0x
 .
 .fi
