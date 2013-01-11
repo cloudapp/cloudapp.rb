@@ -13,7 +13,8 @@ module CloudApp
       end
 
       def link rel
-        links.find {|link| link.rel == rel.to_s }.href
+        link = links.find {|link| link.rel == rel.to_s }
+        link && link.href
       end
 
       def data

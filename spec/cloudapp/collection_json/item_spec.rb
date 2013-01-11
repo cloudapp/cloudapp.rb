@@ -66,6 +66,11 @@ describe CloudApp::CollectionJson::Item do
                      { 'rel' => 'next', 'href' => 'http://next.com' }] }}
 
     it { should eq 'http://next.com' }
+
+    context 'a nonexistent link' do
+      subject { described_class.new(data).link('nonexistent') }
+      it { should be_nil }
+    end
   end
 
   describe '#data' do
