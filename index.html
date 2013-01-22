@@ -79,7 +79,7 @@
 
 <h2 id="SYNOPSIS">SYNOPSIS</h2>
 
-<p><code>cloudapp [</code>--direct<code>] [</code>--[no-]copy`] <var>file_or_url</var> [<var>file_or_url</var>...]</p>
+<p><code>cloudapp</code> [<code>--direct</code>] [<code>--[no-]copy</code>] <var>file_or_url</var>...</p>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
@@ -92,8 +92,8 @@ credentials are stored in <code>~/.netrc</code> as defined by <code>ftp</code>(1
 <h2 id="OPTIONS">OPTIONS</h2>
 
 <dl>
-<dt><code>-d</code>, <code>--direct</code></dt><dd><p>Print the drop's direct link after creation. The direct link is suitable for
-use in places that expect a link to a file like an HTML IMG tag.</p></dd>
+<dt><code>-d</code>, <code>--direct</code></dt><dd><p>Print the drop's direct link after creation. The direct link is suitable
+for use in places that expect a link to a file like an HTML IMG tag.</p></dd>
 <dt><code>-h</code>, <code>--help</code></dt><dd><p>Print a help message describing cloudapp's usage.</p></dd>
 <dt><code>--[no-]copy</code></dt><dd><p>Copy the new drop's link to the system clipboard. The default option is
 copy.</p></dd>
@@ -117,16 +117,12 @@ Uploading screenshot-2.png... http://cl.ly/image/3P1s3p0c3545
 Uploading screenshot-3.png... http://cl.ly/image/0E3k0h353X0w
 </code></pre>
 
-<p>Upload file names and URLs from standard input:</p>
+<p>Upload file paths and URLs from standard input:</p>
 
 <pre><code>$ ls *.png | cloudapp
 Uploading screenshot-1.png... http://cl.ly/image/1E1F1k3Q3919
 Uploading screenshot-2.png... http://cl.ly/image/3P1s3p0c3545
 Uploading screenshot-3.png... http://cl.ly/image/0E3k0h353X0w
-
-$ gifme {1,2,3}.png | cloudapp --direct
-You now have a handsome animation at /Users/Larry/Desktop/animated-2013-01-11_15h-59m-49s.gif
-Uploading animated-2013-01-11_15h-59m-49s.gif... http://cl.ly/image/373I3q2g1p36
 </code></pre>
 
 <p>Bookmark a URL:</p>
