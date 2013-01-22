@@ -3,7 +3,7 @@ cloudapp(1) -- all the pleasures of cloudapp in a cli
 
 ## SYNOPSIS
 
-`cloudapp [`--direct`] [`--[no-]copy`] <file_or_url> [<file_or_url>...]
+`cloudapp` [`--direct`] [`--[no-]copy`] <file_or_url>...
 
 ## DESCRIPTION
 
@@ -16,8 +16,8 @@ credentials are stored in `~/.netrc` as defined by `ftp`(1).
 ## OPTIONS
 
   - `-d`, `--direct`:
-    Print the drop's direct link after creation. The direct link is suitable for
-    use in places that expect a link to a file like an HTML IMG tag.
+    Print the drop's direct link after creation. The direct link is suitable
+    for use in places that expect a link to a file like an HTML IMG tag.
 
   - `-h`, `--help`:
     Print a help message describing cloudapp's usage.
@@ -43,16 +43,12 @@ Upload several files:
     Uploading screenshot-2.png... http://cl.ly/image/3P1s3p0c3545
     Uploading screenshot-3.png... http://cl.ly/image/0E3k0h353X0w
 
-Upload file names and URLs from standard input:
+Upload file paths and URLs from standard input:
 
     $ ls *.png | cloudapp
     Uploading screenshot-1.png... http://cl.ly/image/1E1F1k3Q3919
     Uploading screenshot-2.png... http://cl.ly/image/3P1s3p0c3545
     Uploading screenshot-3.png... http://cl.ly/image/0E3k0h353X0w
-
-    $ gifme {1,2,3}.png | cloudapp --direct
-    You now have a handsome animation at /Users/Larry/Desktop/animated-2013-01-11_15h-59m-49s.gif
-    Uploading animated-2013-01-11_15h-59m-49s.gif... http://cl.ly/image/373I3q2g1p36
 
 Bookmark a URL:
 

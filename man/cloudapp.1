@@ -7,7 +7,7 @@
 \fBcloudapp\fR \- all the pleasures of cloudapp in a cli
 .
 .SH "SYNOPSIS"
-\fBcloudapp [\fR\-\-direct\fB] [\fR\-\-[no\-]copy`] \fIfile_or_url\fR [\fIfile_or_url\fR\.\.\.]
+\fBcloudapp\fR [\fB\-\-direct\fR] [\fB\-\-[no\-]copy\fR] \fIfile_or_url\fR\.\.\.
 .
 .SH "DESCRIPTION"
 Upload a file or share a bookmark with CloudApp\. The drop\'s share link will be printed to standard output and copied to the system clipboard\. Account credentials are stored in \fB~/\.netrc\fR as defined by \fBftp\fR(1)\.
@@ -64,7 +64,7 @@ Uploading screenshot\-3\.png\.\.\. http://cl\.ly/image/0E3k0h353X0w
 .IP "" 0
 .
 .P
-Upload file names and URLs from standard input:
+Upload file paths and URLs from standard input:
 .
 .IP "" 4
 .
@@ -74,10 +74,6 @@ $ ls *\.png | cloudapp
 Uploading screenshot\-1\.png\.\.\. http://cl\.ly/image/1E1F1k3Q3919
 Uploading screenshot\-2\.png\.\.\. http://cl\.ly/image/3P1s3p0c3545
 Uploading screenshot\-3\.png\.\.\. http://cl\.ly/image/0E3k0h353X0w
-
-$ gifme {1,2,3}\.png | cloudapp \-\-direct
-You now have a handsome animation at /Users/Larry/Desktop/animated\-2013\-01\-11_15h\-59m\-49s\.gif
-Uploading animated\-2013\-01\-11_15h\-59m\-49s\.gif\.\.\. http://cl\.ly/image/373I3q2g1p36
 .
 .fi
 .
