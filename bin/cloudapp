@@ -57,7 +57,6 @@ def fetch_link drop, options
   $stderr.puts link unless $stdout.tty?
 end
 
-
 def print_error message
   $stderr.puts "! #{wrap(message, 78, '  ')}"
 end
@@ -123,15 +122,35 @@ def file_names options, input = $stdin
   stdin_file_names + options.arguments
 end
 
+def directory_name file_names
+  if Dir.exists?(file_names.last)
+    return file_names.delete(file_names.last)
+  end
+  Dir.pwd
+end
+
+def url? url
+  url =~ URI.regexp
+end
+
+def cloudapp_url? url
+  url? url and url =~ /cl\.ly/
+end
+
 def share file_names, options
   invalid_command if file_names.empty?
   authenticate
+
+  download_dir = directory_name(file_names)
 
   file_names.each do |arg|
     if File.exists? arg
       $stderr.print "Uploading #{File.basename(arg)}... "
       drop = service.upload(arg)
-    elsif arg =~ URI.regexp
+    elsif cloudapp_url? arg
+      $stderr.print "Downloading #{arg}... "
+      drop = service.download(arg, download_dir)
+    elsif url? arg
       $stderr.print "Bookmarking #{arg}... "
       drop = service.bookmark(arg)
     else

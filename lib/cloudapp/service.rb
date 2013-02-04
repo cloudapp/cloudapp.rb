@@ -3,6 +3,7 @@ require 'cloudapp/authorized'
 require 'cloudapp/collection_json'
 require 'mime/types'
 require 'uri'
+require 'json'
 
 module CloudApp
   class Service
@@ -59,6 +60,20 @@ module CloudApp
       end
     end
 
+    def download url, path
+      get url do |request|
+        return unless request.__response__.success?
+        data = JSON.parse(request.__response__.body)
+
+        if ['name', 'remote_url'].all? { |k| data.key?(k) }
+          name = data['name']
+          remote_url = data['remote_url']
+
+          return download_file(remote_url, name, path)
+        end
+      end
+    end
+
     def upload path
       template = drops_template.template
                    .fill('file_size', FileTest.size(path))
@@ -78,6 +93,26 @@ module CloudApp
     end
 
   private
+
+    def download_file(url, name, path)
+      uri = Addressable::URI.parse url
+      path = File.join(path, name)
+
+      conn = Faraday.new(url: uri) do |builder|
+        builder.request :multipart
+        builder.response :logger, logger
+        builder.adapter :typhoeus
+      end
+
+      conn.get(uri.request_uri).on_complete do |env|
+        File.open(path, 'wb') { |f| f.write(env[:body]) }
+      end
+
+      # faking a drop's link
+      drop = Object.new
+      drop.define_singleton_method('link') { |*args| path }
+      drop
+    end
 
     def upload_file(path, template)
       file     = File.open path
