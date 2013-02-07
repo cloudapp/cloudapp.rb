@@ -11,6 +11,13 @@ and Ruby.
 `cloudapp` requires Ruby 1.9.3 or greater. Windows is not yet supported. If
 you're willing to lend a hand, we'd love to officially support it.
 
+### Ubuntu Requirements
+
+A dependency of `cloudapp` requires that libcurl, which can be installed via apt-get.
+
+``` bash
+sudo apt-get install libcurl3-dev
+```
 
 ## Quick Start
 
