@@ -11,6 +11,16 @@ and Ruby.
 `cloudapp` requires Ruby 1.9.3 or greater. Windows is not yet supported. If
 you're willing to lend a hand, we'd love to officially support it.
 
+### Ubuntu Requirements
+
+`cloudapp` uses `libcurl` (by way of [`typhoeus`][typhoeus]). It can be
+installed using `apt-get`.
+
+``` bash
+sudo apt-get install libcurl3-dev
+```
+
+[typhoeus]: https://github.com/typhoeus/typhoeus
 
 ## Quick Start
 
