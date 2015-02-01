@@ -3,6 +3,7 @@ require 'cloudapp/authorized'
 require 'cloudapp/collection_json'
 require 'mime/types'
 require 'uri'
+require 'typhoeus/adapters/faraday'
 
 module CloudApp
   class Service
