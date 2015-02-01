@@ -8,7 +8,7 @@ and Ruby.
 
 ## Requirements
 
-`cloudapp` requires Ruby 1.9.3 or greater. Windows is not yet supported. If
+`cloudapp` requires Ruby 2.0.0 or greater. Windows is not yet supported. If
 you're willing to lend a hand, we'd love to officially support it.
 
 ### Ubuntu Requirements
