@@ -1,3 +1,4 @@
+require 'typhoeus/adapters/faraday'
 require 'leadlight'
 require 'cloudapp/authorized'
 require 'cloudapp/collection_json'

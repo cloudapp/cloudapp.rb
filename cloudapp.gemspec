@@ -47,7 +47,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'leadlight',  '~> 0.1.0'
   s.add_dependency 'mime-types', '~> 1.19'
   s.add_dependency 'netrc',      '~> 0.7.7'
-  s.add_dependency 'typhoeus',   '~> 0.3.3'
+  s.add_dependency 'typhoeus',   '~> 0.7.3'
 
   ## List your development dependencies here. Development dependencies are
   ## those that are only needed during development
