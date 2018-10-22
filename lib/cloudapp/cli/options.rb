@@ -9,6 +9,7 @@ module CloudApp
         options[:copy_link] = true unless args.delete('--no-copy')
         options[:help]      = args.delete('--help') || args.delete('-h')
         options[:version]   = args.delete('--version')
+        options[:collections]   = args.delete('--collections')
         options[:arguments] = args unless args.empty?
 
         Options.new options
@@ -20,6 +21,7 @@ module CloudApp
         @direct    = options.fetch :direct,    false
         @help      = options.fetch :help,      false
         @version   = options.fetch :version,   false
+        @collections = options.fetch :collections, false
         @arguments = options.fetch :arguments, []
       end
 
@@ -31,6 +33,8 @@ module CloudApp
           :help
         elsif @version
           :version
+        elsif @collections
+          :collections
         else
           :share
         end

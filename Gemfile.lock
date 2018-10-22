@@ -1,11 +1,14 @@
 PATH
   remote: .
   specs:
-    cloudapp (2.1.0)
+    cloudapp (2.1.1)
       clipboard (~> 1.0.1)
+      http (~> 0.7.4)
       leadlight (~> 0.1.0)
       mime-types (~> 1.19)
       netrc (~> 0.7.7)
+      pry
+      terminal-table
       typhoeus (~> 0.7.3)
 
 GEM
@@ -13,17 +16,23 @@ GEM
   specs:
     addressable (2.2.8)
     clipboard (1.0.6)
+    coderay (1.1.2)
     diff-lcs (1.1.3)
-    ethon (0.7.4)
+    ethon (0.11.0)
       ffi (>= 1.3.0)
     fail-fast (1.0.0)
     faraday (0.8.1)
       multipart-post (~> 1.1)
-    fattr (2.2.2)
-    ffi (1.9.10)
+    fattr (2.4.0)
+    ffi (1.9.25)
     hookr (1.1.1)
       fail-fast (= 1.0.0)
     hpricot (0.8.6)
+    http (0.7.4)
+      http-form_data (~> 1.0.0)
+      http_parser.rb (~> 0.6.0)
+    http-form_data (1.0.3)
+    http_parser.rb (0.6.0)
     leadlight (0.1.0)
       addressable (~> 2.2.0)
       faraday (= 0.8.1)
@@ -33,11 +42,15 @@ GEM
       mime-types
       multi_json (~> 1.0.4)
     link_header (0.0.8)
+    method_source (0.9.0)
     mime-types (1.25.1)
     multi_json (1.0.4)
     multipart-post (1.2.0)
     mustache (0.99.4)
     netrc (0.7.9)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
     rake (10.0.3)
     rdiscount (1.6.8)
     ronn (0.7.3)
@@ -52,8 +65,11 @@ GEM
     rspec-expectations (2.12.1)
       diff-lcs (~> 1.1.3)
     rspec-mocks (2.12.1)
+    terminal-table (1.8.0)
+      unicode-display_width (~> 1.1, >= 1.1.1)
     typhoeus (0.7.3)
       ethon (>= 0.7.4)
+    unicode-display_width (1.4.0)
 
 PLATFORMS
   ruby
@@ -63,3 +79,6 @@ DEPENDENCIES
   rake
   ronn
   rspec
+
+BUNDLED WITH
+   1.16.4
