@@ -151,5 +151,7 @@ case options.action
 when :help then print_help
 when :version then print_version
 when :share then share file_names(options), options
-when :collections then CloudApp::CLI::CollectionsPrompt.parse_options options
+when :collections
+  authenticate
+  CloudApp::CLI::CollectionsPrompt.parse_options options
 end

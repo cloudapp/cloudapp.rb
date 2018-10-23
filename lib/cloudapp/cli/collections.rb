@@ -2,19 +2,6 @@ require "http"
 require "pry"
 require "terminal-table"
 
-# v4_collection_items POST   /v4/collections/:collection_id/items(.:format)                         api/v4/collection_items#create {:format=>//}
-#                    v4_collection_items DELETE /v4/collections/:collection_id/items(.:format)                         api/v4/collection_items#destroy {:format=>//}
-#                 v4_collection_accesses POST   /v4/collections/:collection_id/accesses(.:format)                      api/v4/collection_accesses#create {:format=>//}
-#                   v4_collection_access PUT    /v4/collections/:collection_id/accesses/:id(.:format)                  api/v4/collection_accesses#update {:format=>//}
-#                                        DELETE /v4/collections/:collection_id/accesses/:id(.:format)                  api/v4/collection_accesses#destroy {:format=>//}
-#                         v4_collections GET    /v4/collections(.:format)                                              api/v4/collections#index {:format=>//}
-#                                        POST   /v4/collections(.:format)                                              api/v4/collections#create {:format=>//}
-#                      new_v4_collection GET    /v4/collections/new(.:format)                                          api/v4/collections#new {:format=>//}
-#                     edit_v4_collection GET    /v4/collections/:id/edit(.:format)                                     api/v4/collections#edit {:format=>//}
-#                          v4_collection GET    /v4/collections/:id(.:format)                                          api/v4/collections#show {:format=>//}
-#                                        PUT    /v4/collections/:id(.:format)                                          api/v4/collections#update {:format=>//}
-#                                        DELETE /v4/collections/:id(.:format)                                          api/v4/collections#destroy {:format=>//}
-
 module CloudApp
   module CLI
     class Collections
@@ -22,10 +9,16 @@ module CloudApp
       ITEM_FIELDS = ["id", "slug", "name", "item_type", "view_counter", "favorite", "share_url", "created_at", "updated_at"]
 
       def initialize(token)
-        @BASE_URL = "https://my.vapor.ly/v4/collections"
+        @BASE_URL = "https://my.cl.ly/v4/collections"
         @HTTP = HTTP.auth("Bearer #{token}")
           .with(accept: "application/json", content_type: "application/json")
           .accept(:json)
+      end
+
+      def self.token_to_jwt(token)
+        http = HTTP.with(accept: "application/json", content_type: "application/json")
+          .accept(:json)
+        JSON.parse(http.post("https://my.cl.ly/v3/jwt_tokens?token=#{token}").body.readpartial)["jwt"]
       end
 
       def list_collections
@@ -70,28 +63,41 @@ module CloudApp
         self.list_collections
       end
 
-      def add_item_to_collection(id, item_ids)
-        item_ids = item_ids.split(",")
-        item_ids = item_ids.map! { |i| i.to_i }
-        items = {item_ids: item_ids}
-        puts items
+      def add_item_to_collection(id, slugs)
+        slugs = slugs.split(",")
+        slugs = slugs.map! { |i| i.strip }
+        items = {slugs: slugs}
         http = @HTTP.post("#{@BASE_URL}/#{id}/items", json: items)
         self.list_items(id)
       end
 
-      def remove_item_from_collection(id, item_ids)
-      end
-
-      def get_share_link(id, private)
+      def remove_item_from_collection(id, slugs)
+        slugs = slugs.split(",")
+        slugs = slugs.map! { |i| i.strip }
+        items = {slugs: slugs}
+        http = @HTTP.delete("#{@BASE_URL}/#{id}/items", json: items)
+        self.list_items(id)
       end
 
       def list_users(id)
+        resp = JSON.parse(@HTTP.get("#{@BASE_URL}/#{id}").body.readpartial)
+        members = []
+        resp["members"].each do |i|
+          members << [i["id"], i["email"], i["roles"][0]]
+        end
+        table = Terminal::Table.new :title => "Listing Members For `#{resp["name"]}` Collection", :headings => ["Access ID", "Member Email", "Role"], :rows => members
+        puts table
       end
 
-      def invite_user(id, email)
+      def invite_user(id, email, role)
+        payload = {"collection_id": id, "email": email, "roles": [role]}
+        resp = JSON.parse(@HTTP.post("#{@BASE_URL}/#{id}/accesses", json: payload).body.readpartial)
+        self.list_users(id)
       end
 
-      def remove_user(id, email)
+      def remove_user(id, access_id)
+        resp = JSON.parse(@HTTP.delete("#{@BASE_URL}/#{id}/accesses/#{access_id}").body.readpartial)
+        self.list_users(id)
       end
     end
   end

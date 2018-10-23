@@ -1,10 +1,11 @@
 require "cloudapp/cli/collections"
-require "pry"
+require "cloudapp/credentials.rb"
+require "http"
 
 module CloudApp
   module CLI
     class CollectionsPrompt
-      COLLECTIONS_CLIENT = CloudApp::CLI::Collections.new("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJlbmdpbmUiLCJpYXQiOjE1MzkxOTQ1ODUsImF1ZCI6ImxvZ2lucHciLCJleHAiOjE1NDE3ODY1ODUsInN1YiI6MjM2NiwiY29udGV4dCI6eyJ1c2VyIjp7ImVtYWlsIjoiam9lQGNsLmx5IiwiYWRtaW4iOnRydWV9fX0.VEum5w2GirlOBmDhXii-JIPTzOtglGJg5U-gIToX_So")
+      @@token = nil
       def self.print_help
         $stdout.puts <<EOS
             
@@ -29,8 +30,20 @@ module CloudApp
             rename collection_id new_name
                 - renames an existing collection referenced by collection id with the new_name provided
 
-            add_items collection_id items_ids
-                - add items by id to an existing collection referenced by collection id. item_ids should be a comma seperated list of ids e.g. 1,55,999,2098
+            add_items collection_id slugs
+                - add items by slug to an existing collection referenced by collection id. slugs should be a comma seperated list of slugs e.g. aa5095cc7812,0o022y3o363a,1R1B310N1V3n
+
+            remove_items collection_id slugs
+                - remove items by slug to an existing collection referenced by collection id. slugs should be a comma seperated list of slugs e.g. aa5095cc7812,0o022y3o363a,1R1B310N1V3n
+            
+            list_users collection_id
+                - list all users with access to the collection 
+
+            invite_user collection_id email_address role
+                - invite a user to the collection referenced by collection_id. email_address is the address of the person to be invited. role should be either 'member' or 'admin'
+
+            list_users collection_id access_id
+                - remove a user from the collection referenced by collection_id. access_id is required.
 
             help
                 - print this message
@@ -39,19 +52,31 @@ EOS
       end
 
       def self.parse_options(args)
+        unless @@token
+          @@token = CloudApp::CLI::Collections.token_to_jwt(Credentials.token)
+        end
+        @client = CloudApp::CLI::Collections.new(@@token)
         case args.arguments[0]
         when "list"
-          COLLECTIONS_CLIENT.list_collections
+          @client.list_collections
         when "list_items"
-          COLLECTIONS_CLIENT.list_items args.arguments[1]
+          @client.list_items args.arguments[1]
         when "create"
-          COLLECTIONS_CLIENT.create_collections args.arguments[1], args.arguments[2]
+          @client.create_collections args.arguments[1], args.arguments[2]
         when "delete"
-          COLLECTIONS_CLIENT.delete_collection args.arguments[1]
+          @client.delete_collection args.arguments[1]
         when "rename"
-          COLLECTIONS_CLIENT.rename_collection args.arguments[1], args.arguments[2]
+          @client.rename_collection args.arguments[1], args.arguments[2]
         when "add_items"
-          COLLECTIONS_CLIENT.add_item_to_collection args.arguments[1], args.arguments[2]
+          @client.add_item_to_collection args.arguments[1], args.arguments[2]
+        when "remove_items"
+          @client.remove_item_from_collection args.arguments[1], args.arguments[2]
+        when "list_users"
+          @client.list_users args.arguments[1]
+        when "invite_user"
+          @client.invite_user args.arguments[1], args.arguments[2], args.arguments[3]
+        when "remove_user"
+          @client.remove_user args.arguments[1], args.arguments[2]
         else
           CloudApp::CLI::CollectionsPrompt.print_help
         end
