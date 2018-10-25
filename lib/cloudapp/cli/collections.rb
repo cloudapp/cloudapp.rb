@@ -8,12 +8,7 @@ module CloudApp
       COLLECTION_FIELDS = ["id", "name", "shared", "is_public", "created_at", "updated_at"]
       ITEM_FIELDS = ["id", "slug", "name", "item_type", "view_counter", "favorite", "share_url", "created_at", "updated_at"]
 
-      def initialize(token)
-        @BASE_URL = "https://my.cl.ly/v4/collections"
-        @HTTP = HTTP.auth("Bearer #{token}")
-          .with(accept: "application/json", content_type: "application/json")
-          .accept(:json)
-      end
+      attr_reader :http_client
 
       def self.token_to_jwt(token)
         http = HTTP.with(accept: "application/json", content_type: "application/json")
@@ -21,8 +16,15 @@ module CloudApp
         JSON.parse(http.post("https://my.cl.ly/v3/jwt_tokens?token=#{token}").body.readpartial)["jwt"]
       end
 
+      def initialize(token)
+        @BASE_URL = "https://my.cl.ly/v4/collections"
+        http_client = HTTP.auth("Bearer #{token}")
+          .with(accept: "application/json", content_type: "application/json")
+          .accept(:json)
+      end
+
       def list_collections
-        resp = JSON.parse(@HTTP.get(@BASE_URL).body.readpartial)
+        resp = JSON.parse(http_client.get(@BASE_URL).body.readpartial)
         collections = []
 
         resp.each do |h|
@@ -35,7 +37,7 @@ module CloudApp
       end
 
       def list_items(collection_id)
-        resp = JSON.parse(@HTTP.get("#{@BASE_URL}/#{collection_id}").body.readpartial)
+        resp = JSON.parse(http_client.get("#{@BASE_URL}/#{collection_id}").body.readpartial)
         items = []
         resp["items"].each do |i|
           i.select! { |k, v| ITEM_FIELDS.include? k }
@@ -48,18 +50,18 @@ module CloudApp
       def create_collections(name, public = false)
         public = public || false
         collection = {collection: {name: name, is_public: public}}
-        JSON.parse(@HTTP.post(@BASE_URL, json: collection))
+        JSON.parse(http_client.post(@BASE_URL, json: collection))
         self.list_collections
       end
 
       def delete_collection(id)
-        JSON.parse(@HTTP.delete("#{@BASE_URL}/#{id}"))
+        JSON.parse(http_client.delete("#{@BASE_URL}/#{id}"))
         self.list_collections
       end
 
       def rename_collection(id, name)
         collection = {collection: {id: id, name: name}}
-        http = @HTTP.put("#{@BASE_URL}/#{id}", json: collection)
+        http = http_client.put("#{@BASE_URL}/#{id}", json: collection)
         self.list_collections
       end
 
@@ -67,7 +69,7 @@ module CloudApp
         slugs = slugs.split(",")
         slugs = slugs.map! { |i| i.strip }
         items = {slugs: slugs}
-        http = @HTTP.post("#{@BASE_URL}/#{id}/items", json: items)
+        http = http_client.post("#{@BASE_URL}/#{id}/items", json: items)
         self.list_items(id)
       end
 
@@ -75,12 +77,12 @@ module CloudApp
         slugs = slugs.split(",")
         slugs = slugs.map! { |i| i.strip }
         items = {slugs: slugs}
-        http = @HTTP.delete("#{@BASE_URL}/#{id}/items", json: items)
+        http = http_client.delete("#{@BASE_URL}/#{id}/items", json: items)
         self.list_items(id)
       end
 
       def list_users(id)
-        resp = JSON.parse(@HTTP.get("#{@BASE_URL}/#{id}").body.readpartial)
+        resp = JSON.parse(http_client.get("#{@BASE_URL}/#{id}").body.readpartial)
         members = []
         resp["members"].each do |i|
           members << [i["id"], i["email"], i["roles"][0]]
@@ -91,12 +93,12 @@ module CloudApp
 
       def invite_user(id, email, role)
         payload = {"collection_id": id, "email": email, "roles": [role]}
-        resp = JSON.parse(@HTTP.post("#{@BASE_URL}/#{id}/accesses", json: payload).body.readpartial)
+        resp = JSON.parse(http_client.post("#{@BASE_URL}/#{id}/accesses", json: payload).body.readpartial)
         self.list_users(id)
       end
 
       def remove_user(id, access_id)
-        resp = JSON.parse(@HTTP.delete("#{@BASE_URL}/#{id}/accesses/#{access_id}").body.readpartial)
+        resp = JSON.parse(http_client.delete("#{@BASE_URL}/#{id}/accesses/#{access_id}").body.readpartial)
         self.list_users(id)
       end
     end

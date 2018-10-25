@@ -50,13 +50,13 @@ Gem::Specification.new do |s|
   s.add_dependency "typhoeus", "~> 0.7.3"
   s.add_dependency "http", "~> 0.7.4"
   s.add_dependency "terminal-table"
-  s.add_dependency "pry"
 
   ## List your development dependencies here. Development dependencies are
   ## those that are only needed during development
   s.add_development_dependency "rake"
   s.add_development_dependency "ronn"
   s.add_development_dependency "rspec"
+  s.add_development_dependency "pry"
 
   ## Leave this section as-is. It will be automatically generated from the
   ## contents of your Git repository via the gemspec task. DO NOT REMOVE
