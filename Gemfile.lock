@@ -1,13 +1,12 @@
 PATH
   remote: .
   specs:
-    cloudapp (2.1.1)
+    cloudapp (3.0.0)
       clipboard (~> 1.0.1)
       http (~> 0.7.4)
       leadlight (~> 0.1.0)
       mime-types (~> 1.19)
       netrc (~> 0.7.7)
-      pry
       terminal-table
       typhoeus (~> 0.7.3)
 
@@ -76,6 +75,7 @@ PLATFORMS
 
 DEPENDENCIES
   cloudapp!
+  pry
   rake
   ronn
   rspec

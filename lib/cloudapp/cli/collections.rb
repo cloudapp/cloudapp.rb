@@ -18,9 +18,13 @@ module CloudApp
 
       def initialize(token)
         @BASE_URL = "https://my.cl.ly/v4/collections"
-        http_client = HTTP.auth("Bearer #{token}")
+        @http_client = HTTP.auth("Bearer #{token}")
           .with(accept: "application/json", content_type: "application/json")
           .accept(:json)
+      end
+
+      def url_for(path = "")
+        "#{@BASE_URL}/#{path}"
       end
 
       def list_collections
@@ -32,18 +36,23 @@ module CloudApp
           collections << h.values
         end
 
-        table = Terminal::Table.new :title => "Listing Collections", :headings => ["Collection ID", "Collection Name", "Shared", "Public", "Created At", "Updated At"], :rows => collections
+        table = Terminal::Table.new title: "Listing Collections",
+                                    headings: ["Collection ID", "Collection Name", "Shared", "Public", "Created At", "Updated At"],
+                                    rows: collections
         puts table
       end
 
       def list_items(collection_id)
-        resp = JSON.parse(http_client.get("#{@BASE_URL}/#{collection_id}").body.readpartial)
+        puts url_for(collection_id)
+        resp = JSON.parse(http_client.get(url_for(collection_id)).body.readpartial)
         items = []
         resp["items"].each do |i|
           i.select! { |k, v| ITEM_FIELDS.include? k }
           items << i.values
         end
-        table = Terminal::Table.new :title => "Listing Items in Collection `#{resp["name"]}`", :headings => ["Item Slug", "Item Name", "Created At", "Updated At", "Item Type", "Item View Count", "Item Share URL", "Item ID", "Item Favorited"], :rows => items
+        table = Terminal::Table.new title: "Listing Items in Collection `#{resp["name"]}`",
+                                    headings: ["Item Slug", "Item Name", "Created At", "Updated At", "Item Type", "Item View Count", "Item Share URL", "Item ID", "Item Favorited"],
+                                    rows: items
         puts table
       end
 
@@ -55,13 +64,13 @@ module CloudApp
       end
 
       def delete_collection(id)
-        JSON.parse(http_client.delete("#{@BASE_URL}/#{id}"))
+        JSON.parse(http_client.delete(url_for(id)))
         self.list_collections
       end
 
       def rename_collection(id, name)
         collection = {collection: {id: id, name: name}}
-        http = http_client.put("#{@BASE_URL}/#{id}", json: collection)
+        http = http_client.put(url_for(id), json: collection)
         self.list_collections
       end
 
@@ -69,7 +78,7 @@ module CloudApp
         slugs = slugs.split(",")
         slugs = slugs.map! { |i| i.strip }
         items = {slugs: slugs}
-        http = http_client.post("#{@BASE_URL}/#{id}/items", json: items)
+        http = http_client.post(url_for("#{id}/items"), json: items)
         self.list_items(id)
       end
 
@@ -77,28 +86,30 @@ module CloudApp
         slugs = slugs.split(",")
         slugs = slugs.map! { |i| i.strip }
         items = {slugs: slugs}
-        http = http_client.delete("#{@BASE_URL}/#{id}/items", json: items)
+        http = http_client.delete(url_for("#{id}/items"), json: items)
         self.list_items(id)
       end
 
       def list_users(id)
-        resp = JSON.parse(http_client.get("#{@BASE_URL}/#{id}").body.readpartial)
+        resp = JSON.parse(http_client.get(url_for(id)).body.readpartial)
         members = []
         resp["members"].each do |i|
           members << [i["id"], i["email"], i["roles"][0]]
         end
-        table = Terminal::Table.new :title => "Listing Members For `#{resp["name"]}` Collection", :headings => ["Access ID", "Member Email", "Role"], :rows => members
+        table = Terminal::Table.new title: "Listing Members For `#{resp["name"]}` Collection",
+                                    headings: ["Access ID", "Member Email", "Role"],
+                                    rows: members
         puts table
       end
 
       def invite_user(id, email, role)
         payload = {"collection_id": id, "email": email, "roles": [role]}
-        resp = JSON.parse(http_client.post("#{@BASE_URL}/#{id}/accesses", json: payload).body.readpartial)
+        resp = JSON.parse(http_client.post(url_for("#{id}/accesses"), json: payload).body.readpartial)
         self.list_users(id)
       end
 
       def remove_user(id, access_id)
-        resp = JSON.parse(http_client.delete("#{@BASE_URL}/#{id}/accesses/#{access_id}").body.readpartial)
+        resp = JSON.parse(http_client.delete(url_for("#{id}/accesses/#{access_id}")).body.readpartial)
         self.list_users(id)
       end
     end

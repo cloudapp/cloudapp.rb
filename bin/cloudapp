@@ -146,6 +146,7 @@ def share(file_names, options)
   end
 end
 
+orig_argv = ARGV.clone
 options = CloudApp::CLI::Options.parse ARGV
 case options.action
 when :help then print_help
@@ -153,5 +154,10 @@ when :version then print_version
 when :share then share file_names(options), options
 when :collections
   authenticate
+  warn_level = $VERBOSE
+  $VERBOSE = nil
+  ARGV = orig_argv
+  ARGV.delete("--collections")
+  $VERBOSE = warn_level
   CloudApp::CLI::CollectionsPrompt.parse_options options
 end
