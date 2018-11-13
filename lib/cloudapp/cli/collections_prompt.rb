@@ -119,9 +119,14 @@ EOS
             @client.remove_user args.arguments[1], args.arguments[2] if correct_number_of_required_args?(args, 2)
           end
 
-          opts.on("-h", "--help", "") do
+          opts.on_tail("-h", "--help", "") do
             print_help
+            exit
           end
+        end
+        unless ARGV.count > 0
+          print_help
+          exit
         end
         parser.parse(ARGV)
       end
