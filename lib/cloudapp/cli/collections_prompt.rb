@@ -43,7 +43,7 @@ module CloudApp
             -i, --invite_user [collection_id] [email_address] [role]
                 - invite a user to the collection referenced by collection_id. email_address is the address of the person to be invited. role should be either 'member' or 'admin'
 
-            -u, --list_users [collection_id] [access_id]
+            -e, --remove_user [collection_id] [access_id]
                 - remove a user from the collection referenced by collection_id. access_id is required.
 
             -h, --help
