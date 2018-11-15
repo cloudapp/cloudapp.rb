@@ -1,13 +1,14 @@
 #!/usr/bin/env ruby
 
-require 'cloudapp'
-require 'cloudapp/credentials'
-require 'cloudapp/cli/options'
-require 'cloudapp/cli/prompt'
-require 'cloudapp/service'
-require 'clipboard'
+require "cloudapp"
+require "cloudapp/credentials"
+require "cloudapp/cli/options"
+require "cloudapp/cli/prompt"
+require "cloudapp/cli/collections_prompt"
+require "cloudapp/service"
+require "clipboard"
 
-trap('SIGINT') do
+trap("SIGINT") do
   puts
   exit
 end
@@ -17,17 +18,17 @@ def service
     .on_error(&method(:service_error_handler))
 end
 
-def token_for_account email, password
+def token_for_account(email, password)
   CloudApp::Service
     .token_for_account(email, password, &method(:service_error_handler))
 end
 
-def service_error_handler representation
+def service_error_handler(representation)
   if representation.collection.error
     message = representation.collection.error.message
-    if representation.collection.error.code == 'upgrade'
-      message << ' '
-      message << representation.link('upgrade').href
+    if representation.collection.error.code == "upgrade"
+      message << " "
+      message << representation.link("upgrade").href
     end
     service_error message
   end
@@ -49,32 +50,31 @@ def authenticate
   end
 end
 
-def fetch_link drop, options
+def fetch_link(drop, options)
   link_rel = options.direct_link? ? :embed : :canonical
-  link     = drop.link(link_rel) || drop.link(:canonical)
+  link = drop.link(link_rel) || drop.link(:canonical)
   copy link if options.copy_link?
   $stdout.puts link
   $stderr.puts link unless $stdout.tty?
 end
 
-
-def print_error message
-  $stderr.puts "! #{wrap(message, 78, '  ')}"
+def print_error(message)
+  $stderr.puts "! #{wrap(message, 78, "  ")}"
 end
 
-def service_error message
+def service_error(message)
   $stderr.puts
   $stderr.puts
   print_error message
   $stderr.puts
 end
 
-def error message
+def error(message)
   print_error message
   exit 1
 end
 
-def wrap message, width, padding
+def wrap(message, width, padding)
   message.gsub(/(.{1,#{width}})(\s+|$)/, "\\1\n#{padding}").strip
 end
 
@@ -83,7 +83,7 @@ def print_version
   exit
 end
 
-def print_help io = $stdout
+def print_help(io = $stdout)
   io.puts <<EOS
 cloudapp, version #{CloudApp::VERSION}
 
@@ -105,11 +105,14 @@ Options:
 
     --version
            Display the version of cloudapp.
+    
+    --collections
+           Display collections options
 
 EOS
 end
 
-def copy content
+def copy(content)
   Clipboard.copy content
 end
 
@@ -118,12 +121,12 @@ def invalid_command
   exit 1
 end
 
-def file_names options, input = $stdin
+def file_names(options, input = $stdin)
   stdin_file_names = input.tty? ? [] : input.each_line.map(&:chomp)
   stdin_file_names + options.arguments
 end
 
-def share file_names, options
+def share(file_names, options)
   invalid_command if file_names.empty?
   authenticate
 
@@ -143,9 +146,18 @@ def share file_names, options
   end
 end
 
+orig_argv = ARGV.clone
 options = CloudApp::CLI::Options.parse ARGV
 case options.action
-when :help    then print_help
+when :help then print_help
 when :version then print_version
-when :share   then share file_names(options), options
+when :share then share file_names(options), options
+when :collections
+  authenticate
+  warn_level = $VERBOSE
+  $VERBOSE = nil
+  ARGV = orig_argv
+  ARGV.delete("--collections")
+  $VERBOSE = warn_level
+  CloudApp::CLI::CollectionsPrompt.parse_options options
 end
